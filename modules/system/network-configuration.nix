@@ -13,6 +13,9 @@
       "virginia.time.system76.com"
       "brazil.time.system76.com"
     ];
+    extraConfig = ''
+      makestep 1 -1
+    '';
   };
   # General Networking
   networking = {
