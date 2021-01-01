@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }:
 {
@@ -54,7 +55,7 @@
           popd > /dev/null
         '';
         serviceConfig = {
-          User = "ayushmaan";
+          User = "${username}";
           Type = "oneshot";
         };
       };

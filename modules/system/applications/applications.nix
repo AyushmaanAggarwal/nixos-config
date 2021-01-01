@@ -4,6 +4,7 @@
   config,
   pkgs,
   lib,
+  username,
   ...
 }:
 {
@@ -32,9 +33,8 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ayushmaan = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "Ayushmaan Aggarwal";
     extraGroups = [
       "networkmanager"
       "wheel"

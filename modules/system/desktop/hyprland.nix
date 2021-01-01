@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  username,
   ...
 }:
 {
@@ -31,7 +32,7 @@
       };
     };
 
-    users.users.ayushmaan.packages = with pkgs; [
+    users.users.${username}.packages = with pkgs; [
       hyprland-qtutils
       hyprpaper
       dunst

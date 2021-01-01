@@ -3,6 +3,7 @@
   inputs,
   pkgs,
   system,
+  username,
   ...
 }:
 let
@@ -29,7 +30,7 @@ let
   );
 in
 {
-  users.users.ayushmaan.packages =
+  users.users.${username}.packages =
     with pkgs;
     [
       # Editors

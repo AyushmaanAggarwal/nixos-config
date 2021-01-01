@@ -3,19 +3,20 @@
   config,
   pkgs,
   lib,
+  username,
   ...
 }:
 let
   secrets-file = ../../../secrets/thegram/backups.yaml;
   general_restic_config = {
     initialize = false;
-    user = "ayushmaan";
+    user = "${username}";
     paths = [
-      "/home/ayushmaan/.dotfiles/"
-      "/home/ayushmaan/.config/"
-      "/home/ayushmaan/Zotero/"
-      "/home/ayushmaan/Documents/"
-      "/home/ayushmaan/Pictures/"
+      "/home/${username}/.dotfiles/"
+      "/home/${username}/.config/"
+      "/home/${username}/Zotero/"
+      "/home/${username}/Documents/"
+      "/home/${username}/Pictures/"
     ];
     exclude = [
       "*.iso"
@@ -24,7 +25,7 @@ let
     inhibitsSleep = false;
     passwordFile = config.sops.secrets.encryption.path;
     rcloneOptions.password-command = "cat ${config.sops.secrets.configuration.path}";
-    rcloneConfigFile = "/home/ayushmaan/.config/rclone/rclone.conf";
+    rcloneConfigFile = "/home/${username}/.config/rclone/rclone.conf";
 
     pruneOpts = [
       "--keep-daily 7"
@@ -42,19 +43,19 @@ let
   };
 in
 {
-  users.users.ayushmaan.packages = with pkgs; [
+  users.users.${username}.packages = with pkgs; [
     restic
   ];
 
   sops.secrets.configuration = {
-    owner = "ayushmaan";
+    owner = "${username}";
     group = "users";
     mode = "0400";
     sopsFile = secrets-file;
   };
 
   sops.secrets.encryption = {
-    owner = "ayushmaan";
+    owner = "${username}";
     group = "users";
     mode = "0400";
     sopsFile = secrets-file;

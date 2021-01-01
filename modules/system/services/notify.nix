@@ -13,7 +13,7 @@
   config = lib.mkMerge (
     [
       {
-        users.users.ayushmaan.packages = with pkgs; [ ntfy-sh ];
+        users.users.${username}.packages = with pkgs; [ ntfy-sh ];
         environment.etc."ntfy/client.yaml" = {
           text = ''
             default-host: https://ntfy.tail590ac.ts.net
