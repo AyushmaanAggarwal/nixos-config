@@ -17,7 +17,7 @@
     freeSwapThreshold = 40;
     freeSwapKillThreshold = 20;
   };
-  virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.enable = false;
   programs.singularity = {
     enable = true;
     package = pkgs.apptainer;
