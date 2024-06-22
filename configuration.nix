@@ -6,12 +6,14 @@
 { imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix 
+      ./systemd-configuration.nix
+      ./applications.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
+  system.copySystemConfiguration = true;
+  networking.hostName = "ayushmaan"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary networking.proxy.default = "http://user:password@proxy:port/"; networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -45,6 +47,14 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   
+  services.blueman.enable = true;
+  hardware.bluetooth = {
+	enable = true;
+	powerOnBoot = true;
+  };
+
+  services.flatpak.enable = true; 
+  security.polkit.enable = true;
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false; security.rtkit.enable = true; services.pipewire = {
     enable = true; alsa.enable = true; alsa.support32Bit = true; pulse.enable = true;
@@ -62,10 +72,52 @@
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
 	# GUI Applications
+	thunderbird
+      	neovim
+      	kitty
+      	swaybg
+      	waybar
+	fuzzel
+      	calibre
+      	inkscape
+	steam
+	podman
+	syncthing
+	distrobox
+	virtualbox
+	jetbrains-mono
+	signal-desktop
+	bitwarden-desktop
+	slack
+	spotify
+	vlc
+	hyprlock
+	hyprpaper
+	gnome.nautilus
+	grim
+	slurp
+	wl-clipboard
+
+      
+	# Terminal Applications
+	fd
+	tlp
+	powertop
+	rsync
+	rclone
+	tailscale
+	fastfetch
+	onefetch
 	
     ];
   };
 
+  # Install progams
+  programs = {
+	firefox.enable = true;
+	hyprland.enable = true;
+	zsh.enable = true;
+  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -74,6 +126,8 @@
     vim
     git
     gcc
+    htop
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions. programs.mtr.enable = true; programs.gnupg.agent = {
