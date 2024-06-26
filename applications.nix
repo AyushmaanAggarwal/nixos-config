@@ -7,36 +7,44 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  services.xserver = {
-  	# Enable the X11 windowing system.
-	enable = false;
-	
-	# Enable the GNOME Desktop Environment.
-	displayManager.gdm.enable = true; 
-	desktopManager.gnome.enable = false;
-	
-	# Configure keymap in X11
-	xkb.layout = "us"; 
-        xkb.variant = "";
+  # services.xserver = {
+  # 	# Enable the X11 windowing system.
+  #       enable = false;
+  #       
+  #       # Enable the GNOME Desktop Environment.
+  #       displayManager.gdm.enable = true; 
+  #       desktopManager.gnome.enable = false;
+  #       
+  #       # Configure keymap in X11
+  #       xkb.layout = "us"; 
+  #       xkb.variant = "";
 
-  	# Enable touchpad support (enabled default in most desktopManager). services.xserver.libinput.enable = true;
-  };
+  # 	# Enable touchpad support (enabled default in most desktopManager). services.xserver.libinput.enable = true;
+  # };
 	
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
   
+  services.printing.enable = true; # Enable CUPS to print documents.
+  services.tailscale.enable = true; 
   services.blueman.enable = true;
+  services.flatpak.enable = true; 
+
+  security.polkit.enable = true;
+
   hardware.bluetooth = {
 	enable = true;
 	powerOnBoot = true;
   };
 
-  services.flatpak.enable = true; 
-  security.polkit.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false; security.rtkit.enable = true; services.pipewire = {
-    enable = true; alsa.enable = true; alsa.support32Bit = true; pulse.enable = true;
+  hardware.pulseaudio.enable = false; 
+  security.rtkit.enable = true; 
+  services.pipewire = {
+    enable = true; 
+    pulse.enable = true;
+    alsa.enable = true; 
+    alsa.support32Bit = true; 
     # If you want to use JACK applications, uncomment this jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default, no need to redefine it in your config for now)
@@ -49,17 +57,17 @@
     isNormalUser = true; description = "Ayushmaan Aggarwal"; 
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
+	# System Applications
+	hyprlock
+	hyprpaper
+      	waybar
+
 	# GUI Applications
 	thunderbird
-      	neovim
       	kitty
-      	swaybg
-      	waybar
 	fuzzel
       	calibre
       	inkscape
-	steam
-	podman
 	syncthing
 	distrobox
 	virtualbox
@@ -69,24 +77,23 @@
 	slack
 	spotify
 	vlc
-	hyprlock
-	hyprpaper
 	gnome.nautilus
-	grim
-	slurp
-	wl-clipboard
 
       
 	# Terminal Applications
+      	neovim
 	fd
 	tlp
+	htop
 	powertop
 	rsync
 	rclone
-	tailscale
 	fastfetch
 	onefetch
-	
+	unzip
+	grim
+	slurp
+	wl-clipboard
     ];
   };
 
@@ -95,7 +102,19 @@
 	firefox.enable = true;
 	hyprland.enable = true;
 	zsh.enable = true;
+	steam.enable=true;
   };
+
+  virtualisation = {
+    containers.enable = true;
+    podman.enable=true;
+
+  };
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -104,7 +123,6 @@
     vim
     git
     gcc
-    htop
     wget
   ];
 
