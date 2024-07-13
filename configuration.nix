@@ -7,6 +7,7 @@
       ./applications.nix
       <home-manager/nixos>
       ./home-manager/configuration.nix
+      ./network-configuration.nix
     ];
 
   # Bootloader.

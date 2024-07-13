@@ -46,9 +46,6 @@
     alsa.enable = true; 
     alsa.support32Bit = true; 
     # If you want to use JACK applications, uncomment this jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default, no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
 
@@ -61,6 +58,7 @@
 	hyprlock
 	hyprpaper
       	waybar
+	dunst
 
 	# GUI Applications
 	thunderbird
@@ -84,6 +82,7 @@
       	neovim
 	fd
 	tlp
+	bws
 	htop
 	powertop
 	rsync
@@ -94,6 +93,7 @@
 	grim
 	slurp
 	wl-clipboard
+	python3
     ];
   };
 

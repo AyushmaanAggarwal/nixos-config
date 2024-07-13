@@ -29,6 +29,7 @@
       bindkey '^X^I' autosuggest-accept
 
       source ~/.dotfiles/config/alias_config
+      (cat ~/.cache/wal/sequences &)
 
       last_repository=
       check_directory_for_new_repository() {
