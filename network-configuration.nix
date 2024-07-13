@@ -12,7 +12,7 @@
     settings = {
       # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
       ipv6_servers = config.networking.enableIPv6;
-      block_ipv6 = ! (config.networking.enableIPv6);
+      # block_ipv6 = ! (config.networking.enableIPv6);
 
       require_dnssec = true;
       sources.public-resolvers = {
@@ -28,7 +28,7 @@
       # Here it's from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
       # If you don't specify any, dnscrypt-proxy will automatically rank servers
       # that match your criteria and choose the best one.
-      server_names = [ "cloudflare-ipv6"];
+      server_names = [ "cloudflare" "cloudflare-ipv6"];
     };
   };
 
