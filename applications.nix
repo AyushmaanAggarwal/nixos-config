@@ -2,8 +2,9 @@
 # running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
-{ 
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -27,6 +28,17 @@
   services.tailscale.enable = true; 
   services.blueman.enable = true;
   services.flatpak.enable = true; 
+  services.syncthing = {
+        enable = true;
+        user = "ayushmaan";
+        dataDir = "/home/ayushmaan/Documents";    # Default folder for new synced folders
+        configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
+      
+  };
+  # services.desktopManager = {
+  #   cosmic.enable = true;
+  #   cosmic-greeter.enable = true;
+  # };
 
   security.polkit.enable = true;
 
@@ -48,52 +60,57 @@
     # If you want to use JACK applications, uncomment this jack.enable = true;
   };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ayushmaan = { 
     isNormalUser = true; description = "Ayushmaan Aggarwal"; 
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
-	# System Applications
-	hyprlock
-	hyprpaper
-      	waybar
-	dunst
+        # System Applications
+        hyprlock
+        hyprpaper
+        waybar
+        dunst
 
-	# GUI Applications
-	thunderbird
-      	kitty
-	fuzzel
-      	calibre
-      	inkscape
-	syncthing
-	distrobox
-	virtualbox
-	jetbrains-mono
-	signal-desktop
-	bitwarden-desktop
-	slack
-	spotify
-	vlc
-	gnome.nautilus
+        # GUI Applications
+        unstable.thunderbird
+        kitty
+        fuzzel
+        calibre
+        inkscape
+        distrobox
+        virtualbox
+        jetbrains-mono
+        signal-desktop
+        bitwarden-desktop
+        slack
+        spotify
+        vlc
+        gnome.nautilus
 
       
-	# Terminal Applications
-      	neovim
-	fd
-	tlp
-	bws
-	htop
-	powertop
-	rsync
-	rclone
-	fastfetch
-	onefetch
-	unzip
-	grim
-	slurp
-	wl-clipboard
-	python3
+        # Terminal Applications
+        fd
+        tlp
+        bws
+        unzip
+        rsync
+        rclone
+        nodejs
+        python3
+        ## Notes
+        neovim
+        pandoc
+        lua-language-server
+        texliveFull
+        ## Monitoring
+        htop
+        fastfetch
+        onefetch
+        powertop
+        ## Screenshots
+        grim
+        slurp
+        wl-clipboard
     ];
   };
 
@@ -125,8 +142,6 @@
     gcc
     wget
   ];
-
-
 
 }
 

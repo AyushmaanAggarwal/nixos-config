@@ -1,12 +1,20 @@
 { config, pkgs, ... }:
 
 {
+  # General Networking
   networking = {
+    hostName = "ayu";
     nameservers = [ "127.0.0.1" "::1" ];
-    # If using NetworkManager:
     networkmanager.dns = "none";
+    # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   };
+  # Configure network proxy if necessary networking.proxy.default = "http://user:password@proxy:port/"; networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Firewall
+  # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. 
+  # networking.firewall.enable = false;
   
+  # DNS Encryption
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
@@ -24,19 +32,11 @@
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
 
-      # If you want, choose a specific set of servers that come from your sources.
-      # Here it's from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      # If you don't specify any, dnscrypt-proxy will automatically rank servers
-      # that match your criteria and choose the best one.
       server_names = [ "cloudflare" "cloudflare-ipv6"];
     };
   };
 
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
-    # If you're trying to set up persistence with dnscrypt-proxy2 and it isn't working
-    # because of permission issues, try the following:
-    # StateDirectory = lib.mkForce "";
-    # ReadWritePaths = "/var/lib/dnscrypt-proxy"; # Cache directory for dnscrypt-proxy2, persist this
   };
 }
