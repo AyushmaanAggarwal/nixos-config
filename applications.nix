@@ -2,9 +2,7 @@
 # running ‘nixos-help’).
 
 { config, pkgs, ... }:
-let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in {
+{
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -72,6 +70,8 @@ in {
         dunst
 
         # GUI Applications
+        #inputs.unstable.thunderbird
+        #pkgs-unstable.thunderbird
         unstable.thunderbird
         kitty
         fuzzel
