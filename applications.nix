@@ -6,22 +6,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # services.xserver = {
-  # 	# Enable the X11 windowing system.
-  #       enable = false;
-  #       
-  #       # Enable the GNOME Desktop Environment.
-  #       displayManager.gdm.enable = true; 
-  #       desktopManager.gnome.enable = false;
-  #       
-  #       # Configure keymap in X11
-  #       xkb.layout = "us"; 
-  #       xkb.variant = "";
-
-  # 	# Enable touchpad support (enabled default in most desktopManager). services.xserver.libinput.enable = true;
-  # };
-	
-  
   services.printing.enable = true; # Enable CUPS to print documents.
   services.tailscale.enable = true; 
   services.blueman.enable = true;
@@ -33,10 +17,8 @@
         configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
       
   };
-  # services.desktopManager = {
-  #   cosmic.enable = true;
-  #   cosmic-greeter.enable = true;
-  # };
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
 
   security.polkit.enable = true;
 
