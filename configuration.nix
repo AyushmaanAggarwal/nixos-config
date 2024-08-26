@@ -19,7 +19,15 @@
   # system.copySystemConfiguration = true;
 
   # Enable Flakes
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Collect garbage
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 60d";
+  };
+
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";

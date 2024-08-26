@@ -80,7 +80,7 @@
         nodejs
         python3
         ## Notes
-        neovim
+        unstable.neovim
         pandoc
         lua-language-server
         texliveFull
