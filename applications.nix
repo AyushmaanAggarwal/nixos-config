@@ -3,9 +3,6 @@
 
 { config, pkgs, ... }:
 {
-  # Enable networking
-  networking.networkmanager.enable = true;
-
   services.printing.enable = true; # Enable CUPS to print documents.
   services.tailscale.enable = true; 
   services.blueman.enable = true;
@@ -51,9 +48,13 @@
         waybar
         dunst
 
+        # Gnome applications
+        gnome.nautilus
+        gnome.adwaita-icon-theme
+
         # GUI Applications
-        unstable.thunderbird
-        xournalpp
+        unstable.thunderbird # fast moving project
+        unstable.xournalpp # unstable contains missing icon fix
         kitty
         fuzzel
         calibre
@@ -66,7 +67,6 @@
         slack
         spotify
         vlc
-        gnome.nautilus
 
       
         # Terminal Applications
@@ -79,7 +79,7 @@
         nodejs
         python3
         ## Notes
-        unstable.neovim
+        unstable.neovim # fast moving project
         pandoc
         lua-language-server
         texliveFull

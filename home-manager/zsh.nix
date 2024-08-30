@@ -13,7 +13,7 @@
 
       dirHashes = {
         nixconfig = "/etc/nixos/";
-        homeconfig = "/etc/nixos/";
+        homeconfig = "/etc/nixos/home-manager/";
         dotscripts = "$HOME/.dotfiles/scripts/";
         dotconfig = "$HOME/.dotfiles/config/";
         nvimconfig = "$HOME/.dotfiles/config/nvim";
@@ -26,6 +26,7 @@
         theme = "strug";
       };
     initExtra = ''
+      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       bindkey '^X^I' autosuggest-accept
 
       source ~/.dotfiles/config/alias_config
@@ -50,8 +51,8 @@
 
     shellAliases = {
       nrb="nix-rebuild";
-      nrbs="nix-rebuild switch";
-      nrbb="nix-rebuild boot";
+      nixupgrade="nix-rebuild switch --upgrade";
+      nrbb="nix-rebuild boot --upgrade";
     };
 
   };
