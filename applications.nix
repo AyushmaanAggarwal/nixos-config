@@ -52,9 +52,8 @@
         dunst
 
         # GUI Applications
-        #inputs.unstable.thunderbird
-        #pkgs-unstable.thunderbird
         unstable.thunderbird
+        xournalpp
         kitty
         fuzzel
         calibre
