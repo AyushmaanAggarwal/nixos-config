@@ -50,7 +50,6 @@
 
         # Gnome applications
         gnome.nautilus
-        gnome.adwaita-icon-theme
 
         # GUI Applications
         unstable.thunderbird # fast moving project

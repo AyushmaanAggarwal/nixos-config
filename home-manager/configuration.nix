@@ -6,9 +6,10 @@
     imports = [
       ./zsh.nix
     ];
+
     home.sessionVariables = {
       EDITOR = "nvim";
-      GTK_THEME = "Adwaita-dark";
+      GTK_THEME = "Adwaita:dark";
     };
     # home.packages = [ ];
     

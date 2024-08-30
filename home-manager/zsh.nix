@@ -26,7 +26,6 @@
         theme = "strug";
       };
     initExtra = ''
-      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       bindkey '^X^I' autosuggest-accept
 
       source ~/.dotfiles/config/alias_config
