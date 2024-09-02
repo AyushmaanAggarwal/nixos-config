@@ -3,8 +3,13 @@
 
 { config, pkgs, ... }:
 {
+  
+  services.tailscale = {
+    package = pkgs.unstable.tailscale;
+    enable = true;
+  };
+    
   services.printing.enable = true; # Enable CUPS to print documents.
-  services.tailscale.enable = true; 
   services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.syncthing = {
