@@ -68,6 +68,7 @@
         jetbrains-mono
         signal-desktop
         bitwarden-desktop
+        vscodium
         slack
         spotify
         vlc
@@ -84,6 +85,7 @@
         python3
         ## Notes
         unstable.neovim # fast moving project
+        marksman
         pandoc
         lua-language-server
         texliveFull
