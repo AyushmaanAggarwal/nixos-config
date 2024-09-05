@@ -83,6 +83,7 @@
         rclone
         nodejs
         python3
+        conda
         ## Notes
         unstable.neovim # fast moving project
         marksman
