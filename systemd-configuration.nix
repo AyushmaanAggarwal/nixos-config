@@ -1,20 +1,72 @@
 { pkgs, ... }:
 {
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
+  # -------------------- 
+  # System Services
+  # -------------------- 
+  systemd.user.services = {
+    # Authentication Agent
+    polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
       serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
+  systemd.services = {
+    # Backup Service
+    restic-backup = {
+      enable = true;
+      description = "Restic Backup System";
+      serviceConfig = {
+        User = "ayushmaan";
+        ExecStart = ''/etc/scripts/backup.sh'';
+      };
+    };
+    
+    system-update = {
+      enable = true;
+      description = "Update non-declarative package managers";
+      script = ''
+      #!/usr/bin/env sh
+      flatpak update
+      '';
+      serviceConfig = {
+        User = "ayushmaan";
+        Type = "oneshot";
+      };
+    };
+  };
+
+  # -------------------- 
+  # System Timers
+  # -------------------- 
+  systemd.timers = {
+    # Backup Timer
+    restic-backup = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "5m";
+        OnUnitActiveSec = "24h";
+        Unit = "restic-backup.service";
+      };
     };
 
+    system-update = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "5m";
+        OnUnitActiveSec = "24h";
+        Unit = "system-update.service";
+      };
+    };
 
   };
 }

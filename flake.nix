@@ -20,14 +20,6 @@
     in { 
       nixosConfigurations.ayu = nixpkgs.lib.nixosSystem {
         inherit system;
-
-        # Tag each generation with Git hash 
-        system.configurationRevision = 
-          if (inputs.self ? rev) 
-          then inputs.self.shortRev 
-          else throw "Refusing to build from a dirty Git tree!"; 
-        system.nixos.label = "GitRev.${config.system.configurationRevision}.Rel.${config.system.nixos.release}";
-
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           home-manager.nixosModules.home-manager
