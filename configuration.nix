@@ -6,7 +6,7 @@
       ./hardware-configuration.nix 
       ./systemd-configuration.nix
       ./network-configuration.nix
-      #./applications.nix
+      ./environment-configuration.nix
       ./home-manager/configuration.nix
     ];
 
@@ -15,6 +15,13 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "quiet" ];
+
+  # Add swapfile
+  swapDevices = [ {
+    device = "/var/lib/swapfile";
+    size = 16*1024;
+    randomEncryption.enable = true;
+  } ];
 
   # Create backup of system
   # system.copySystemConfiguration = true;
@@ -55,31 +62,6 @@
     LC_PAPER = "en_US.UTF-8"; 
     LC_TELEPHONE = "en_US.UTF-8"; 
     LC_TIME = "en_US.UTF-8";
-  };
-
-
-  environment.etc = {
-    "restic/repo" = {
-      text = ''
-      rclone:EncryptedDrive:NixOS/restic-repo
-      '';
-      mode = "0644";
-    };
-    "restic/include_files" = {
-      text = ''
-      /home/ayushmaan/.dotfiles/
-      /home/ayushmaan/Documents/Obsidian/
-      /home/ayushmaan/Documents/College/
-      /home/ayushmaan/Pictures/
-      '';
-      mode = "0644";
-    };
-    "restic/exclude_files" = {
-      text = ''
-      '';
-      mode = "0644";
-    };
- 
   };
 
   # This value determines the NixOS release from which the default settings for stateful data, like file locations and database versions on your system were taken. It‘s perfectly 
