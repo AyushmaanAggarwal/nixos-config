@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
 
-{ imports =
+{ 
+  imports =
     [ 
       ./hardware-configuration.nix 
       ./systemd-configuration.nix
-    #./applications.nix
       ./network-configuration.nix
+      #./applications.nix
       ./home-manager/configuration.nix
     ];
 
@@ -21,13 +22,23 @@
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Automatically update system
+  system.autoUpgrade = {
+    enable = true;
+    #flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+  };
+
   # Collect garbage
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 60d";
   };
-
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -44,6 +55,31 @@
     LC_PAPER = "en_US.UTF-8"; 
     LC_TELEPHONE = "en_US.UTF-8"; 
     LC_TIME = "en_US.UTF-8";
+  };
+
+
+  environment.etc = {
+    "restic/repo" = {
+      text = ''
+      rclone:EncryptedDrive:NixOS/restic-repo
+      '';
+      mode = "0644";
+    };
+    "restic/include_files" = {
+      text = ''
+      /home/ayushmaan/.dotfiles/
+      /home/ayushmaan/Documents/Obsidian/
+      /home/ayushmaan/Documents/College/
+      /home/ayushmaan/Pictures/
+      '';
+      mode = "0644";
+    };
+    "restic/exclude_files" = {
+      text = ''
+      '';
+      mode = "0644";
+    };
+ 
   };
 
   # This value determines the NixOS release from which the default settings for stateful data, like file locations and database versions on your system were taken. It‘s perfectly 

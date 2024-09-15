@@ -3,15 +3,14 @@
 
 { config, pkgs, ... }:
 {
-  
-  services.tailscale = {
-    package = pkgs.unstable.tailscale;
-    enable = true;
-  };
-    
+  # -------------------- 
+  # Various services
+  # -------------------- 
   services.printing.enable = true; # Enable CUPS to print documents.
   services.blueman.enable = true;
   services.flatpak.enable = true; 
+  #services.desktopManager.cosmic.enable = true;
+  #services.displayManager.cosmic-greeter.enable = true;
   services.syncthing = {
         enable = true;
         user = "ayushmaan";
@@ -19,17 +18,21 @@
         configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
       
   };
-  #services.desktopManager.cosmic.enable = true;
-  #services.displayManager.cosmic-greeter.enable = true;
+  services.tailscale = {
+    package = pkgs.unstable.tailscale;
+    enable = true;
+  };
 
+  # -------------------- 
+  # Various security and hardware
+  # -------------------- 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.polkit.enable = true;
-
   hardware.bluetooth = {
 	enable = true;
 	powerOnBoot = true;
   };
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false; 
@@ -39,7 +42,14 @@
     pulse.enable = true;
     alsa.enable = true; 
     alsa.support32Bit = true; 
-    # If you want to use JACK applications, uncomment this jack.enable = true;
+  };
+
+  # Install progams
+  programs = {
+	firefox.enable = true;
+	hyprland.enable = true;
+	zsh.enable = true;
+	steam.enable=true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -53,18 +63,16 @@
         waybar
         dunst
 
-        # Gnome applications
-        gnome.nautilus
-
         # GUI Applications
         unstable.thunderbird # fast moving project
         unstable.xournalpp # unstable contains missing icon fix
+        gnome.nautilus
         kitty
         fuzzel
         calibre
         inkscape
-        distrobox
-        virtualbox
+        # distrobox
+        # virtualbox
         jetbrains-mono
         signal-desktop
         bitwarden-desktop
@@ -72,9 +80,9 @@
         slack
         spotify
         vlc
-
       
         # Terminal Applications
+        unstable.restic
         fd
         tlp
         bws
@@ -86,15 +94,16 @@
         conda
         ## Notes
         unstable.neovim # fast moving project
-        marksman
         pandoc
-        lua-language-server
+        marksman
+        tree-sitter
         texliveFull
+        lua-language-server
         ## Monitoring
         htop
-        fastfetch
-        onefetch
         powertop
+        onefetch
+        fastfetch
         ## Screenshots
         grim
         slurp
@@ -102,19 +111,22 @@
     ];
   };
 
-  # Install progams
-  programs = {
-	firefox.enable = true;
-	hyprland.enable = true;
-	zsh.enable = true;
-	steam.enable=true;
+  users.users.restic = {
+    isNormalUser = true;
+  };
+  
+  security.wrappers.restic = {
+    source = "${pkgs.restic.out}/bin/restic";
+    owner = "restic";
+    group = "users";
+    permissions = "u=rwx,g=,o=";
+    capabilities = "cap_dac_read_search=+ep";
   };
 
-  virtualisation = {
-    containers.enable = true;
-    podman.enable=true;
-
-  };
+  # virtualisation = {
+  #   containers.enable = true;
+  #   podman.enable=true;
+  # };
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
