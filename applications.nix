@@ -12,11 +12,10 @@
   #services.desktopManager.cosmic.enable = true;
   #services.displayManager.cosmic-greeter.enable = true;
   services.syncthing = {
-        enable = true;
-        user = "ayushmaan";
-        dataDir = "/home/ayushmaan/Documents";    # Default folder for new synced folders
-        configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
-      
+    enable = true;
+    user = "ayushmaan";
+    dataDir = "/home/ayushmaan/Documents";    # Default folder for new synced folders
+    configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
   };
   services.tailscale = {
     package = pkgs.unstable.tailscale;
@@ -29,8 +28,8 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.polkit.enable = true;
   hardware.bluetooth = {
-	enable = true;
-	powerOnBoot = true;
+    enable = true;
+    powerOnBoot = true;
   };
 
 
@@ -46,10 +45,11 @@
 
   # Install progams
   programs = {
-	firefox.enable = true;
-	hyprland.enable = true;
-	zsh.enable = true;
-	steam.enable=true;
+    firefox.enable = true;
+    hyprland.enable = true;
+    zsh.enable = true;
+    steam.enable = true;
+    kdeconnect.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -57,57 +57,57 @@
     isNormalUser = true; description = "Ayushmaan Aggarwal"; 
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
-        # System Applications
-        hyprlock
-        hyprpaper
-        waybar
-        dunst
+      # System Applications
+      hyprlock
+      hyprpaper
+      waybar
+      dunst
 
-        # GUI Applications
-        unstable.thunderbird # fast moving project
-        unstable.xournalpp # unstable contains missing icon fix
-        gnome.nautilus
-        kitty
-        fuzzel
-        calibre
-        inkscape
-        # distrobox
-        # virtualbox
-        jetbrains-mono
-        signal-desktop
-        bitwarden-desktop
-        vscodium
-        slack
-        spotify
-        vlc
+      # GUI Applications
+      unstable.thunderbird # fast moving project
+      unstable.xournalpp # unstable contains missing icon fix
+      gnome.nautilus
+      kitty
+      fuzzel
+      calibre
+      inkscape
+      # distrobox
+      # virtualbox
+      jetbrains-mono
+      signal-desktop
+      bitwarden-desktop
+      vscodium
+      slack
+      spotify
+      vlc
       
-        # Terminal Applications
-        unstable.restic
-        fd
-        tlp
-        bws
-        unzip
-        rsync
-        rclone
-        nodejs
-        python3
-        conda
-        ## Notes
-        unstable.neovim # fast moving project
-        pandoc
-        marksman
-        tree-sitter
-        texliveFull
-        lua-language-server
-        ## Monitoring
-        htop
-        powertop
-        onefetch
-        fastfetch
-        ## Screenshots
-        grim
-        slurp
-        wl-clipboard
+      # Terminal Applications
+      unstable.restic
+      fd
+      tlp
+      bws
+      unzip
+      rsync
+      rclone
+      nodejs
+      python3
+      conda
+      ## Notes
+      unstable.neovim # fast moving project
+      pandoc
+      marksman
+      tree-sitter
+      texliveFull
+      lua-language-server
+      ## Monitoring
+      htop
+      powertop
+      onefetch
+      fastfetch
+      ## Screenshots
+      grim
+      slurp
+      wl-clipboard
     ];
   };
 

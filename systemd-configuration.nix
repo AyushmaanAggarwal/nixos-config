@@ -35,8 +35,11 @@
       enable = true;
       description = "Update non-declarative package managers";
       script = ''
-      #!/usr/bin/env sh
+      #!/bin/sh
+      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
+      conda-shell -c "conda update conda"
       flatpak update
+      #npm update
       '';
       serviceConfig = {
         User = "ayushmaan";
@@ -62,8 +65,8 @@
     system-update = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "5m";
-        OnUnitActiveSec = "24h";
+        OnBootSec = "4m";
+        OnUnitActiveSec = "72h";
         Unit = "system-update.service";
       };
     };
