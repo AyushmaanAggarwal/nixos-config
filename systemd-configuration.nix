@@ -37,8 +37,8 @@
       script = ''
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
-      conda-shell -c "conda update conda"
-      flatpak update
+      conda-shell -c "conda update conda --yes"
+      flatpak update -y
       #npm update
       '';
       serviceConfig = {
