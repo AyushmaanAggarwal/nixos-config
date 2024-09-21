@@ -24,6 +24,7 @@
     # Backup Service
     restic-backup = {
       enable = true;
+      after = [ "network.target" ];
       description = "Restic Backup System";
       serviceConfig = {
         User = "ayushmaan";
@@ -33,6 +34,7 @@
     
     system-update = {
       enable = true;
+      after = [ "network.target" ];
       description = "Update non-declarative package managers";
       script = ''
       #!/bin/sh
