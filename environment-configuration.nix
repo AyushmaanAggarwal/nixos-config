@@ -7,8 +7,7 @@
       rclone:EncryptedDrive:NixOS/restic-backup
       '';
       mode = "0644";
-    };
-    "restic/include_files" = {
+    }; "restic/include_files" = {
       text = ''
       /home/ayushmaan/.dotfiles/
       /home/ayushmaan/Documents/Obsidian/
@@ -33,8 +32,13 @@
       export RESTIC_PASSWORD=$(bws get secret fd396c44-c98a-4ef6-8522-b1ec00198028 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
       
+      echo; echo "Backing up files"
       nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
+
+      echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
+
+      kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"
       '';
       mode = "0755";
     };

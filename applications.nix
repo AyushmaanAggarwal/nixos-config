@@ -18,9 +18,7 @@
     configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
   };
   services.tailscale = {
-    package = pkgs.unstable.tailscale;
-    enable = true;
-  };
+    package = pkgs.unstable.tailscale; enable = true; };
 
   # -------------------- 
   # Various security and hardware
@@ -80,7 +78,7 @@
       slack
       spotify
       vlc
-      
+      unstable.mathematica
       # Terminal Applications
       unstable.restic
       fd
