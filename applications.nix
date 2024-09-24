@@ -63,22 +63,22 @@
 
       # GUI Applications
       unstable.thunderbird # fast moving project
-      unstable.xournalpp # unstable contains missing icon fix
       gnome.nautilus
+      vlc
+      slack
       kitty
       fuzzel
-      calibre
+      spotify
       inkscape
-      # distrobox
-      # virtualbox
-      jetbrains-mono
+      vscodium
       signal-desktop
       bitwarden-desktop
-      vscodium
-      slack
-      spotify
-      vlc
+      ## Academic
       unstable.mathematica
+      unstable.xournalpp # unstable contains missing icon fix
+      zotero
+      calibre
+
       # Terminal Applications
       unstable.restic
       fd
@@ -106,6 +106,9 @@
       grim
       slurp
       wl-clipboard
+
+      # Random
+      jetbrains-mono # Font
     ];
   };
 

@@ -33,11 +33,13 @@
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
       
       echo; echo "Backing up files"
+      dunstify "Backup" "Starting System Backup" --timeout=60000
       nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
 
       echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
 
+      dunstify "Backup" "Finished System Backup" --timeout=60000
       kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"
       '';
       mode = "0755";
