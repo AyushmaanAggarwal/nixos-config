@@ -40,7 +40,7 @@
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
       conda-shell -c "conda update conda --yes"
-      flatpak update -y
+      flatpak update --assumeyes --noninteractive
       #npm update
       '';
       serviceConfig = {
