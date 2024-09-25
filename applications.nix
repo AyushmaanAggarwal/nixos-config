@@ -9,8 +9,8 @@
   services.printing.enable = true; # Enable CUPS to print documents.
   services.blueman.enable = true;
   services.flatpak.enable = true; 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
   services.syncthing = {
     enable = true;
     user = "ayushmaan";
@@ -60,6 +60,7 @@
       hyprpaper
       waybar
       dunst
+      pavucontrol
 
       # GUI Applications
       unstable.thunderbird # fast moving project
