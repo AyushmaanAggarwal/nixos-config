@@ -70,6 +70,7 @@
       fuzzel
       spotify
       inkscape
+      darktable
       vscodium
       signal-desktop
       bitwarden-desktop
