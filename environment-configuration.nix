@@ -31,15 +31,16 @@
       export RCLONE_CONFIG_PASS=$(bws get secret 197ce53f-f34a-4ae0-8362-b1a0006600b5 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
       export RESTIC_PASSWORD=$(bws get secret fd396c44-c98a-4ef6-8522-b1ec00198028 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
+      export $(dbus-launch)
       
       echo; echo "Backing up files"
-      dunstify "Backup" "Starting System Backup" --timeout=60000
+      #dunstify "Backup" "Starting System Backup" --timeout=60000 || echo "Couldn't notify user"
       nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
 
       echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
 
-      dunstify "Backup" "Finished System Backup" --timeout=60000
+      #dunstify "Backup" "Finished System Backup" --timeout=60000 || echo "Couldn't notify user"
       kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"
       '';
       mode = "0755";
