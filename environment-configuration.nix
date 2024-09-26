@@ -41,7 +41,7 @@
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
 
       #dunstify "Backup" "Finished System Backup" --timeout=60000 || echo "Couldn't notify user"
-      kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"
+      kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"|| echo "Couldn't ping phone"
       '';
       mode = "0755";
     };
