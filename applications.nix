@@ -94,6 +94,7 @@
       conda
       ## Notes
       unstable.neovim # fast moving project
+      unstable.quarto
       pandoc
       marksman
       tree-sitter

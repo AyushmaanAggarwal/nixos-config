@@ -59,6 +59,42 @@
       '';
       mode = "0755";
     };
+    "scripts/nix-diff.py" = {
+      text = ''
+      #!/etc/profiles/per-user/ayushmaan/bin/python3
+      import subprocess
+      
+      old_generation = None
+      new_generation = None
+      with open("/home/ayushmaan/.local/custom-files/nix-generations.txt") as f:
+          for line in f.readlines():
+              old_generation = new_generation
+              new_generation, *_ = line.split(maxsplit=1)
+      
+      old = int(old_generation)
+      new = int(new_generation)
+      command = f"nix store diff-closures /nix/var/nix/profiles/system-{old}-link /nix/var/nix/profiles/system-{new}-link"
+      result = subprocess.run(command.split(), capture_output=True, text=True)
+      
+      with open("/home/ayushmaan/.local/custom-files/nix-version-diff.txt", "w") as f:
+          f.write(result.stdout)
+      
+      print(f"Difference between generation {old} and {new}")
+      print(result.stdout)
+      '';
+      mode = "0755";
+    };
+    "scripts/nix-update.sh" = {
+      text = ''
+      !/bin/sh
+      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
+
+      sudo nixos-rebuild switch --upgrade
+      sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
+      /etc/scripts/nix-diff.py
+      '';
+      mode = "0755";
+    };
  
   };
 }
