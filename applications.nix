@@ -62,10 +62,6 @@
       dunst
       pavucontrol
 
-      # Cosmic Apps
-      cosmic-settings
-      cosmic-launcher
-
       # GUI Applications
       unstable.thunderbird # fast moving project
       gnome.nautilus
