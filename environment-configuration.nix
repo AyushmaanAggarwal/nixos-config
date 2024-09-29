@@ -89,9 +89,19 @@
       !/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      sudo nixos-rebuild switch --upgrade
-      sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
-      /etc/scripts/nix-diff.py
+      pushd \etc\nixos 
+      if [[ -n $(git status --porcelain) ]]; then 
+        echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in /etc/nixos "
+        sudo nixos-rebuild test
+      else
+        echo "NixOS: Building Nix Configuration"
+        sudo nixos-rebuild switch --upgrade
+        
+        echo "Changed Packages"
+        sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
+        /etc/scripts/nix-diff.py
+      fi
+      popd
       '';
       mode = "0755";
     };
