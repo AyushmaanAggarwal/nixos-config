@@ -58,7 +58,7 @@
     restic-backup = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "5m";
+        OnBootSec = "20m";
         OnUnitActiveSec = "24h";
         Unit = "restic-backup.service";
       };
@@ -67,7 +67,7 @@
     system-update = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "4m";
+        OnBootSec = "10m";
         OnUnitActiveSec = "72h";
         Unit = "system-update.service";
       };
