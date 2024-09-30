@@ -44,10 +44,14 @@
   # Install progams
   programs = {
     firefox.enable = true;
-    hyprland.enable = true;
     zsh.enable = true;
     steam.enable = true;
     kdeconnect.enable = true;
+    hyprland = {
+      enable = true;
+      portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
+      package = pkgs.unstable.hyprland;
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

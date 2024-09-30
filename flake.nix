@@ -14,7 +14,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager}@inputs: 
     let
       system = "x86_64-linux";
-      system.configurationRevision = let self = inputs.self; in self.shortRev or self.dirtyShortRev or self.lastModified or "unknown";
+      # system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${self.rev}";
       overlay-unstable = final: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
