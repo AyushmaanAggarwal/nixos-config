@@ -49,8 +49,8 @@
     kdeconnect.enable = true;
     hyprland = {
       enable = true;
-      portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
-      package = pkgs.unstable.hyprland;
+      # portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
+      # package = pkgs.unstable.hyprland;
     };
   };
 
