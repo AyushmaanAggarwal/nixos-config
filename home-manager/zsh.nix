@@ -12,10 +12,10 @@
       };
 
       dirHashes = {
-        nixconfig = "/etc/nixos/";
         homeconfig = "/etc/nixos/home-manager/";
-        dotscripts = "$HOME/.dotfiles/scripts/";
+        scripts = "$HOME/.dotfiles/scripts/";
         dotconfig = "$HOME/.dotfiles/config/";
+        dotnix = "$HOME/.dotfiles/system/";
         nvimconfig = "$HOME/.dotfiles/config/nvim";
       };
 
@@ -45,7 +45,6 @@
       	check_directory_for_new_repository
       }
       fastfetch; echo
-
       '';
 
     shellAliases = {
