@@ -52,6 +52,7 @@
       nrb="nix-rebuild";
       nixupgrade="nix-rebuild switch --upgrade";
       nrbb="nix-rebuild boot --upgrade";
+      up="/etc/scripts/nix-update.sh";
     };
 
   };
