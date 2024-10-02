@@ -84,11 +84,6 @@
       unstable.xournalpp # unstable contains missing icon fix
       zotero
       calibre
-      #KDE
-      unstable.kdePackages.kmplot
-      unstable.kdePackages.okular
-      unstable.kdePackages.kcalc
-
 
       # Terminal Applications
       unstable.restic
