@@ -10,6 +10,7 @@
     }; "restic/include_files" = {
       text = ''
       /home/ayushmaan/.dotfiles/
+      /home/ayushmaan/.config/
       /home/ayushmaan/Documents/Obsidian/
       /home/ayushmaan/Documents/College/
       /home/ayushmaan/Pictures/
@@ -86,10 +87,10 @@
     };
     "scripts/nix-update.sh" = {
       text = ''
-      !/bin/sh
+      #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      pushd \etc\nixos 
+      pushd /etc/nixos 
       if [[ -n $(git status --porcelain) ]]; then 
         echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in /etc/nixos "
         sudo nixos-rebuild test

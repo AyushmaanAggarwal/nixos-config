@@ -11,14 +11,13 @@
   services.flatpak.enable = true; 
   # services.desktopManager.cosmic.enable = true;
   # services.displayManager.cosmic-greeter.enable = true;
+  services.tailscale.enable = true;
   services.syncthing = {
     enable = true;
     user = "ayushmaan";
     dataDir = "/home/ayushmaan/Documents";    # Default folder for new synced folders
     configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
   };
-  services.tailscale = {
-    package = pkgs.unstable.tailscale; enable = true; };
 
   # -------------------- 
   # Various security and hardware
@@ -47,11 +46,7 @@
     zsh.enable = true;
     steam.enable = true;
     kdeconnect.enable = true;
-    hyprland = {
-      enable = true;
-      portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
-      package = pkgs.unstable.hyprland;
-    };
+    hyprland.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -67,8 +62,8 @@
       pavucontrol
 
       # GUI Applications
-      unstable.thunderbird # fast moving project
-      gnome.nautilus
+      thunderbird
+      nautilus
       vlc
       slack
       kitty
@@ -80,13 +75,13 @@
       signal-desktop
       bitwarden-desktop
       ## Academic
-      unstable.mathematica
-      unstable.xournalpp # unstable contains missing icon fix
+      mathematica
+      xournalpp 
       zotero
       calibre
 
       # Terminal Applications
-      unstable.restic
+      restic
       fd
       tlp
       bws
@@ -97,8 +92,8 @@
       python3
       conda
       ## Notes
-      unstable.neovim # fast moving project
-      unstable.quarto
+      neovim
+      quarto
       pandoc
       marksman
       tree-sitter
