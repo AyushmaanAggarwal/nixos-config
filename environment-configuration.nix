@@ -90,10 +90,10 @@
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      pushd /etc/nixos 
+      pushd /home/ayushmaan/.dotfiles/system/
       if [[ -n $(git status --porcelain) ]]; then 
-        echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in /etc/nixos "
-        sudo nixos-rebuild test
+        echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in nix config"
+        sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system/
       else
         echo "NixOS: Building Nix Configuration"
         sudo nixos-rebuild switch --upgrade --flake /home/ayushmaan/.dotfiles/system/
