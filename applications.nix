@@ -29,7 +29,6 @@
     powerOnBoot = true;
   };
 
-
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false; 
   security.rtkit.enable = true; 
@@ -74,6 +73,7 @@
       vscodium
       signal-desktop
       bitwarden-desktop
+      onlyoffice-desktopeditors
       ## Academic
       mathematica
       xournalpp 
