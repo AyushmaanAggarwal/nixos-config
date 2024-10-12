@@ -56,7 +56,8 @@
       export RESTIC_PASSWORD=$(bws get secret fd396c44-c98a-4ef6-8522-b1ec00198028 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
       
-      restic "$@"
+      restic snapshots
+      restic check
       '';
       mode = "0755";
     };
