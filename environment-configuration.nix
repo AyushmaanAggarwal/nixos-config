@@ -92,6 +92,7 @@
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
       pushd /home/ayushmaan/.dotfiles/system/
+      nix flake update --commit-lock-file
       if [[ -n $(git status --porcelain) ]]; then 
         echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in nix config"
         sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system/
