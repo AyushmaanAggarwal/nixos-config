@@ -42,7 +42,7 @@
   };
 
   # system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev or inputs.self.lastModified or "unknown";
-  system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${self.rev}";
+  system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${inputs.self.shortRev}";
   # Collect garbage
   nix.gc = {
     automatic = true;
