@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
+  hasIPv6Internet = false;
+in
 {
   # General Networking
   networking = {
@@ -8,6 +12,7 @@
     networkmanager = {
       enable = true;
       dns = "none";
+      wifi.powersave = true;
     };
     # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   };
@@ -21,9 +26,8 @@
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
-      # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-      ipv6_servers = config.networking.enableIPv6;
-      # block_ipv6 = ! (config.networking.enableIPv6);
+      ipv6_servers = hasIPv6Internet;
+      block_ipv6 = ! hasIPv6Internet;
 
       require_dnssec = true;
       sources.public-resolvers = {
