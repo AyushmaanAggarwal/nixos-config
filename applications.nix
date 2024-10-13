@@ -89,7 +89,9 @@
       rsync
       rclone
       nodejs
+      ## Python
       python3
+      python312Packages.pip
       conda
       ## Notes
       neovim
