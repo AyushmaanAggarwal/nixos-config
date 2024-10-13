@@ -11,10 +11,14 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true; 
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [ "quiet" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot = {
+    enable = true; 
+    editor = false;
+    consoleMode = "max";
+  };
 
   # Add swapfile
   swapDevices = [ {
