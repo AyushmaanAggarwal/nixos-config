@@ -43,6 +43,11 @@
 
       #dunstify "Backup" "Finished System Backup" --timeout=60000 || echo "Couldn't notify user"
       kdeconnect-cli -d 977b80df_ab28_49bb_be25_d032af1d69ff --ping-msg "Finished restic backup for $(date +'%D %T')"|| echo "Couldn't ping phone"
+
+      pushd /home/ayushmaan/.dotfiles/scripts/python/
+      source venv/bin/activate
+      python3 slack_notification.py "Finished restic backup for $(date +'%D %T')"
+      popd
       '';
       mode = "0755";
     };
