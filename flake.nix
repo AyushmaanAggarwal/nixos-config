@@ -13,7 +13,6 @@
   outputs = { self, nixpkgs, home-manager}@inputs: 
     let
       system = "x86_64-linux";
-      # system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${self.rev}";
     in { 
       nixosConfigurations.ayu = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -29,6 +28,11 @@
           }          
           # nixos-cosmic.nixosModules.default
           ./configuration.nix
+          {
+            _module.args = {
+              inherit inputs;
+            };
+          }
           ./applications.nix
         ];
       };
