@@ -1,6 +1,4 @@
-# Edit this configuration file to define what should be installed on your system.  Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by 
-# running ‘nixos-help’).
-
+# Applications
 { config, pkgs, ... }:
 {
   # -------------------- 
@@ -9,8 +7,6 @@
   services.printing.enable = true; # Enable CUPS to print documents.
   services.blueman.enable = true;
   services.flatpak.enable = true; 
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
   services.tailscale.enable = true;
   services.syncthing = {
     enable = true;
@@ -45,7 +41,6 @@
     zsh.enable = true;
     steam.enable = true;
     kdeconnect.enable = true;
-    hyprland.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -53,13 +48,6 @@
     isNormalUser = true; description = "Ayushmaan Aggarwal"; 
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
-      # System Applications
-      hyprlock
-      hyprpaper
-      waybar
-      dunst
-      pavucontrol
-
       # GUI Applications
       thunderbird
       nautilus
@@ -106,11 +94,7 @@
       powertop
       onefetch
       fastfetch
-      ## Screenshots
-      grim
-      slurp
-      wl-clipboard
-
+      
       # Random
       jetbrains-mono # Font
     ];

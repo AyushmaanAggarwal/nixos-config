@@ -21,19 +21,14 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            # nix.settings = {
-            #   substituters = [ "https://cosmic.cachix.org/" ];
-            #   trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            # };
           }          
-          # nixos-cosmic.nixosModules.default
-          ./configuration.nix
+          ./home-manager/configuration.nix
+          ./modules/configuration.nix
           {
             _module.args = {
               inherit inputs;
             };
           }
-          ./applications.nix
         ];
       };
     };

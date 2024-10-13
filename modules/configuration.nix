@@ -1,13 +1,21 @@
+# Main Configuration
 { inputs, config, pkgs, ... }:
 
 { 
   imports =
     [ 
-      ./hardware-configuration.nix 
-      ./systemd-configuration.nix
-      ./network-configuration.nix
-      ./environment-configuration.nix
-      ./home-manager/configuration.nix
+      ./applications.nix
+
+      # --- Desktop Environment ---
+      #./desktop/cosmic.nix
+      ./desktop/hyprland.nix
+
+      # --- System Configuration ---
+      ./system/hardware-configuration.nix 
+      ./system/systemd-configuration.nix
+      ./system/network-configuration.nix
+      ./system/environment-configuration.nix
+      ./system/nix-package-configuration.nix
     ];
 
   # Bootloader.
@@ -26,33 +34,6 @@
     size = 16*1024;
     randomEncryption.enable = true;
   } ];
-
-  # Create backup of system
-  # system.copySystemConfiguration = true;
-
-  # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Automatically update system
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "-L" # print build logs
-    ];
-    dates = "02:00";
-  };
-
-  # system.configurationRevision = inputs.self.shortRev or inputs.self.dirtyShortRev or inputs.self.lastModified or "unknown";
-  system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${inputs.self.shortRev}";
-  # Collect garbage
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 30d";
-  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";

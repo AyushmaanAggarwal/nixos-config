@@ -5,23 +5,9 @@
   home-manager.users.ayushmaan = { pkgs, ... }: {
     imports = [
       ./zsh.nix
+      ./theme.nix
     ];
-
-    home.sessionVariables = {
-      EDITOR = "nvim";
-      GTK_THEME = "Adwaita:dark";
-    };
-
-    dconf.settings = {
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-      };
-    };
-    qt = {
-      enable = true;
-      style.name = "adwaita-dark";
-    };
-
+  
     # home.packages = [ ];
     
     # The state version is required and should stay at the version you
