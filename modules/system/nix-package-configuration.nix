@@ -1,5 +1,8 @@
 { inputs, config, pkgs, ... }:
 {
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -24,4 +27,5 @@
     dates = "daily";
     options = "--delete-older-than 30d";
   };
+
 }

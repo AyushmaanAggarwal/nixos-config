@@ -16,6 +16,7 @@
       ./system/network-configuration.nix
       ./system/environment-configuration.nix
       ./system/nix-package-configuration.nix
+      ./system/backup.nix
     ];
 
   # Bootloader.

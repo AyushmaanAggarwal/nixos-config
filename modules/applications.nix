@@ -9,15 +9,9 @@
   services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.tailscale.enable = true;
-  services.syncthing = {
-    enable = true;
-    user = "ayushmaan";
-    dataDir = "/home/ayushmaan/Documents";    # Default folder for new synced folders
-    configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";   # Folder for Syncthing's settings and keys
-  };
 
   # -------------------- 
-  # Various security and hardware
+  # Security and Hardware
   # -------------------- 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.polkit.enable = true;
@@ -26,7 +20,9 @@
     powerOnBoot = true;
   };
 
-  # Enable sound with pipewire.
+  # -------------------- 
+  # Sound
+  # -------------------- 
   hardware.pulseaudio.enable = false; 
   security.rtkit.enable = true; 
   services.pipewire = {
@@ -51,11 +47,9 @@
     packages = with pkgs; [
       # GUI Applications
       thunderbird
-      nautilus
       vlc
       slack
       kitty
-      fuzzel
       spotify
       inkscape
       darktable
@@ -70,7 +64,6 @@
       calibre
 
       # Terminal Applications
-      restic
       fd
       tlp
       bws
@@ -101,29 +94,9 @@
     ];
   };
 
-  users.users.restic = {
-    isNormalUser = true;
-  };
-  
-  security.wrappers.restic = {
-    source = "${pkgs.restic.out}/bin/restic";
-    owner = "restic";
-    group = "users";
-    permissions = "u=rwx,g=,o=";
-    capabilities = "cap_dac_read_search=+ep";
-  };
-
-  # virtualisation = {
-  #   containers.enable = true;
-  #   podman.enable=true;
-  # };
-
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [ 

@@ -5,9 +5,9 @@
   users.users.ayushmaan.packages = with pkgs; [
       hyprlock
       hyprpaper
-      waybar
       dunst
-      pavucontrol
+      waybar
+      fuzzel
       
       # Terminal
       ## Screenshots
@@ -15,5 +15,8 @@
       slurp
       wl-clipboard
 
+      # System Applications
+      nautilus
+      pavucontrol
   ];
 }
