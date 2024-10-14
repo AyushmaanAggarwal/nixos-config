@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
 
 { 
-  environment.etc = {
+
+    environment.etc = {
     "restic/repo" = {
       text = ''
       rclone:EncryptedDrive:NixOS/restic-backup
       '';
       mode = "0644";
-    }; "restic/include_files" = {
+    }; 
+    "restic/include_files" = {
       text = ''
       /home/ayushmaan/.dotfiles/
       /home/ayushmaan/.config/
@@ -112,4 +114,22 @@
     };
  
   };
+
+  # Set your time zone.
+  time.timeZone = "America/Los_Angeles";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = { 
+    LC_ADDRESS = "en_US.UTF-8"; 
+    LC_IDENTIFICATION = "en_US.UTF-8"; 
+    LC_MEASUREMENT = "en_US.UTF-8"; 
+    LC_MONETARY = "en_US.UTF-8"; 
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8"; 
+    LC_PAPER = "en_US.UTF-8"; 
+    LC_TELEPHONE = "en_US.UTF-8"; 
+    LC_TIME = "en_US.UTF-8";
+  };
+
 }
