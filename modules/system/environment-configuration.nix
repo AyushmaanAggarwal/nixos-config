@@ -43,10 +43,10 @@
       echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
 
-      pushd /home/ayushmaan/.dotfiles/scripts/python/
+      pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
       source venv/bin/activate
       python3 slack_notification.py "Finished restic backup for $(date +'%D %T')"
-      popd
+      popd > /dev/null
       '';
       mode = "0755";
     };
@@ -95,7 +95,7 @@
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      pushd /home/ayushmaan/.dotfiles/system/
+      pushd /home/ayushmaan/.dotfiles/system/ > /dev/null
       nix flake update --commit-lock-file
       if [[ -n $(git status --porcelain) ]]; then 
         echo "NixOS: Testing Nix Configuration - To permantely apply changes, commit all files in nix config"
@@ -108,7 +108,7 @@
         sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
         /etc/scripts/nix-diff.py
       fi
-      popd
+      popd > /dev/null
       '';
       mode = "0755";
     };

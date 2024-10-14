@@ -18,6 +18,23 @@
         TimeoutStopSec = 10;
       };
     };
+
+    system-update = {
+      enable = true;
+      after = [ "network.target" ];
+      description = "Update non-declarative package managers";
+      script = ''
+      #!/bin/sh
+      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
+      conda-shell -c "conda update conda --yes"
+      flatpak update --assumeyes --noninteractive --system
+      #npm update
+      '';
+      serviceConfig = {
+        User = "ayushmaan";
+        Type = "oneshot";
+      };
+    };
   };
 
   systemd.services = {
@@ -29,23 +46,6 @@
       serviceConfig = {
         User = "ayushmaan";
         ExecStart = ''/etc/scripts/backup.sh'';
-      };
-    };
-    
-    system-update = {
-      enable = true;
-      after = [ "network.target" ];
-      description = "Update non-declarative package managers";
-      script = ''
-      #!/bin/sh
-      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
-      conda-shell -c "conda update conda --yes"
-      #flatpak update --assumeyes --noninteractive --system
-      #npm update
-      '';
-      serviceConfig = {
-        User = "ayushmaan";
-        Type = "oneshot";
       };
     };
   };
