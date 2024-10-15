@@ -39,13 +39,15 @@
       echo; echo "Backing up files"
       #dunstify "Backup" "Starting System Backup" --timeout=60000 || echo "Couldn't notify user"
       nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
+      exit_code_backup=$?
 
       echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
+      exit_code_prune=$?
 
       pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
       source venv/bin/activate
-      python3 slack_notification.py "Finished restic backup for $(date +'%D %T')"
+      python3 slack_notification.py "Finished restic backup for $(date +'%D %T'): Error Code Backup $exit_code_backup, Error Code Prune $exit_code_prune"
       popd > /dev/null
       '';
       mode = "0755";
