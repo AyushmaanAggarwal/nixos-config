@@ -16,6 +16,7 @@
     in { 
       nixosConfigurations.ayu = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs; }; # this is the important part
         modules = [
           home-manager.nixosModules.home-manager
           {
@@ -24,11 +25,6 @@
           }          
           ./home-manager/configuration.nix
           ./modules/configuration.nix
-          {
-            _module.args = {
-              inherit inputs;
-            };
-          }
         ];
       };
     };
