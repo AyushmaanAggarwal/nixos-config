@@ -47,18 +47,18 @@
     packages = with pkgs; [
       # GUI Applications
       thunderbird
-      vlc
+      # vlc
       slack
       kitty
       spotify
-      inkscape
-      darktable
+      # inkscape
+      # darktable
       vscodium
       signal-desktop
-      bitwarden-desktop
-      onlyoffice-desktopeditors
+      # bitwarden-desktop
+      # onlyoffice-desktopeditors
       ## Academic
-      mathematica
+      # mathematica
       xournalpp 
       zotero
       calibre
