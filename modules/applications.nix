@@ -48,9 +48,9 @@
       # GUI Applications
       thunderbird
       # vlc
-      slack
+      slack #unfree
       kitty
-      spotify
+      spotify #unfree
       # inkscape
       # darktable
       vscodium
@@ -61,14 +61,13 @@
       # mathematica
       xournalpp 
       zotero
-      # calibre
+      stable.calibre
 
       # Terminal Applications
       fd
       tlp
-      bws
+      bws #unfree
       unzip
-      rsync
       rclone
       nodejs
       ## Python
