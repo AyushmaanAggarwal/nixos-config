@@ -61,7 +61,7 @@
       # mathematica
       xournalpp 
       zotero
-      calibre
+      stable.calibre
 
       # Terminal Applications
       fd
