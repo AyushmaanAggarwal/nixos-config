@@ -36,7 +36,7 @@
     };
 
     btrfs-scrub-notify = {
-      enable = false;
+      enable = true;
       after = [ "network.target" ];
       description = "Notify about btrfs scrub";
       script = ''
@@ -68,7 +68,7 @@
 
     # Btrfs Scrub
     btrfs-scrub = {
-      enable = false;
+      enable = true;
       requires = [ "btrfs-scrub-notify" ];
       before = [ "btrfs-scrub-notify" ];
       after = [ "network.target" ];
