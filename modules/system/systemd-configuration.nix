@@ -70,6 +70,7 @@
       description = "Notify about btrfs scrub";
       script = ''
       #!/bin/sh
+      source /home/ayushmaan/.bws/secret.sh
       pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
       source venv/bin/activate
       scrub_result=$(cat /home/ayushmaan/.local/custom-files/btrfs_scrub)
