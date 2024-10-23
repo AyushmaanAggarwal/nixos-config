@@ -70,6 +70,7 @@
       description = "Notify about btrfs scrub";
       script = ''
       #!/bin/sh
+      source /home/ayushmaan/.bws/secret.sh
       pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
       source venv/bin/activate
       scrub_result=$(cat /home/ayushmaan/.local/custom-files/btrfs_scrub)
@@ -93,7 +94,6 @@
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "10m";
-        #OnUnitActiveSec = "24h";
         OnCalender = "daily";
         Persistent = true;
         Unit = "restic-backup.service";
@@ -104,7 +104,7 @@
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "10m";
-        OnUnitActiveSec = "72h";
+        OnUnitActiveSec = "weekly";
         Unit = "system-update.service";
       };
     };
@@ -112,9 +112,8 @@
     btrfs-scrub = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        Persistent = true;
         OnCalender = "monthly";
-        OnBootSec = "10m";
+        Persistent = true;
         Unit = "btrfs-scrub.service";
       };
     };

@@ -52,7 +52,7 @@
       kitty
       spotify #unfree
       # inkscape
-      # darktable
+      darktable
       vscodium
       signal-desktop
       # bitwarden-desktop
@@ -65,6 +65,7 @@
 
       # Terminal Applications
       fd
+      ripgrep
       tlp
       bws #unfree
       unzip
