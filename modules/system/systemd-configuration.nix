@@ -94,7 +94,7 @@
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "10m";
-        OnCalender = "daily";
+        OnCalendar = "daily";
         Persistent = true;
         Unit = "restic-backup.service";
       };
@@ -112,7 +112,7 @@
     btrfs-scrub = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnCalender = "monthly";
+        OnCalendar = "monthly";
         Persistent = true;
         Unit = "btrfs-scrub.service";
       };
