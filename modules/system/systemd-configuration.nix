@@ -17,7 +17,9 @@
         TimeoutStopSec = 10;
       };
     };
+  };
 
+  systemd.services = {
     system-update = {
       enable = true;
       after = [ "network.target" ];
@@ -32,6 +34,33 @@
       serviceConfig = {
         User = "ayushmaan";
         Type = "oneshot";
+      };
+    };
+
+    # Backup Service
+    restic-backup = {
+      enable = true;
+      after = [ "network.target" ];
+      description = "Restic Backup System";
+      serviceConfig = {
+        User = "ayushmaan";
+        ExecStart = ''/etc/scripts/backup.sh'';
+      };
+    };
+
+    # Btrfs Scrub
+    btrfs-scrub = {
+      enable = true;
+      requires = [ "btrfs-scrub-notify.service" ];
+      before = [ "btrfs-scrub-notify.service" ];
+      after = [ "network.target" ];
+      description = "Btrfs Scrub";
+      script = ''
+      #!/bin/sh
+      /run/current-system/sw/bin/btrfs scrub start -B / > /home/ayushmaan/.local/custom-files/btrfs_scrub
+      '';
+      serviceConfig = {
+        User = "root";
       };
     };
 
@@ -50,35 +79,6 @@
       serviceConfig = {
         User = "ayushmaan";
         Type = "oneshot";
-      };
-    };
-  };
-
-  systemd.services = {
-    # Backup Service
-    restic-backup = {
-      enable = true;
-      after = [ "network.target" ];
-      description = "Restic Backup System";
-      serviceConfig = {
-        User = "ayushmaan";
-        ExecStart = ''/etc/scripts/backup.sh'';
-      };
-    };
-
-    # Btrfs Scrub
-    btrfs-scrub = {
-      enable = true;
-      requires = [ "btrfs-scrub-notify" ];
-      before = [ "btrfs-scrub-notify" ];
-      after = [ "network.target" ];
-      description = "Btrfs Scrub";
-      script = ''
-      #!/bin/sh
-      /run/current-system/sw/bin/btrfs scrub start / > /home/ayushmaan/.local/custom-files/btrfs_scrub
-      '';
-      serviceConfig = {
-        User = "root";
       };
     };
 
@@ -106,6 +106,16 @@
         OnBootSec = "10m";
         OnUnitActiveSec = "72h";
         Unit = "system-update.service";
+      };
+    };
+
+    btrfs-scrub = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        Persistent = true;
+        OnCalender = "monthly";
+        OnBootSec = "10m";
+        Unit = "btrfs-scrub.service";
       };
     };
 
