@@ -66,7 +66,6 @@
       # Terminal Applications
       fd
       ripgrep
-      tlp
       bws #unfree
       unzip
       rclone
