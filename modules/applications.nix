@@ -51,7 +51,7 @@
       slack #unfree
       kitty
       spotify #unfree
-      # inkscape
+      inkscape
       darktable
       vscodium
       signal-desktop
