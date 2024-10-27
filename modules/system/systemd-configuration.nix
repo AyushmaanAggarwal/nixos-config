@@ -22,7 +22,8 @@
   systemd.services = {
     system-update = {
       enable = true;
-      after = [ "network.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
       description = "Update non-declarative package managers";
       script = ''
       #!/bin/sh
@@ -40,7 +41,8 @@
     # Backup Service
     restic-backup = {
       enable = true;
-      after = [ "network.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
       description = "Restic Backup System";
       serviceConfig = {
         User = "ayushmaan";
@@ -53,7 +55,8 @@
       enable = true;
       requires = [ "btrfs-scrub-notify.service" ];
       before = [ "btrfs-scrub-notify.service" ];
-      after = [ "network.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
       description = "Btrfs Scrub";
       script = ''
       #!/bin/sh
@@ -66,7 +69,8 @@
 
     btrfs-scrub-notify = {
       enable = true;
-      after = [ "network.target" ];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
       description = "Notify about btrfs scrub";
       script = ''
       #!/bin/sh
@@ -117,6 +121,5 @@
         Unit = "btrfs-scrub.service";
       };
     };
-
   };
 }
