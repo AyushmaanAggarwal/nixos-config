@@ -47,7 +47,7 @@
     packages = with pkgs; [
       # GUI Applications
       thunderbird
-      # vlc
+      vlc
       slack #unfree
       kitty
       spotify #unfree
