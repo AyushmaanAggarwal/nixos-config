@@ -34,6 +34,7 @@
             nix.settings = {
               substituters = [
                 "https://hyprland.cachix.org"
+                "https://cosmic.cachix.org/"
                 "https://cache.nixos.org/"
               ];
               trusted-public-keys = [
@@ -52,8 +53,10 @@
           {
             _module.args = {
               inherit inputs;
+              inherit nixos-cosmic;
             };
           }
+          nixos-cosmic.nixosModules.default
         ];
       };
     };
