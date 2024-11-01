@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     #nixpkgs.follows = "nixos-cosmic/nixpkgs-stable";
@@ -14,8 +15,12 @@
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager}@inputs: 
     let
       system = "x86_64-linux";
-      overlay-stable = final: prev: {
+      overlay-pkgs = final: prev: {
         stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        master = import nixpkgs-master {
           inherit system;
           config.allowUnfree = true;
         };
@@ -24,7 +29,7 @@
       nixosConfigurations.ayu = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-stable ]; })
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-pkgs ]; })
           {
             nix.settings = {
               substituters = [
