@@ -12,7 +12,7 @@
   };
 
   # outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, nixos-cosmic}@inputs: 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager}@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager}@inputs: 
     let
       system = "x86_64-linux";
       overlay-pkgs = final: prev: {
