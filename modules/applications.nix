@@ -46,7 +46,7 @@
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
       # GUI Applications
-      thunderbird
+      thunderbird-128
       vlc
       slack #unfree
       kitty
