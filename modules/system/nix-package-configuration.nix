@@ -4,8 +4,21 @@
   nixpkgs.config.allowUnfree = true;
 
   # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
 
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://cosmic.cachix.org/"
+      "https://cache.nixos.org/"
+    ];
+
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+    ];
+  };
+ 
   # Automatically update system
   system.autoUpgrade = {
     enable = true;
@@ -27,5 +40,4 @@
     dates = "daily";
     options = "--delete-older-than 30d";
   };
-
 }
