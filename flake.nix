@@ -9,12 +9,12 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixpkgs.follows = "nixos-cosmic/nixpkgs";
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   #outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, nixos-cosmic}@inputs: 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nixos-cosmic}@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager }@inputs: 
     let
       system = "x86_64-linux";
       overlay-pkgs = final: prev: {
@@ -32,7 +32,7 @@
         inherit system;
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-pkgs ]; })
-          nixos-cosmic.nixosModules.default
+          # nixos-cosmic.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -43,7 +43,6 @@
           {
             _module.args = {
               inherit inputs;
-              # inherit nixos-cosmic;
             };
           }
         ];

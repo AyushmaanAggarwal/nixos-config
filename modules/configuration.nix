@@ -7,8 +7,8 @@
       ./applications.nix
 
       # --- Desktop Environment ---
-      ./desktop/cosmic.nix
-      #./desktop/hyprland.nix
+      #./desktop/cosmic.nix
+      ./desktop/hyprland.nix
 
       # --- System Configuration ---
       ./system/hardware-configuration.nix 
