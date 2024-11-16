@@ -20,7 +20,7 @@
     ];
 
   # Bootloader.
-  boot.kernelParams = [ "quiet" "video=eDP-1" "video=DP-1" "video=DP-1" ];
+  boot.kernelParams = [ "quiet" "video=eDP-1:2560x1600@59.99" "video=DP-1:3840x2160@30.00" "video=DP-2:3840x2160@30.00" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
