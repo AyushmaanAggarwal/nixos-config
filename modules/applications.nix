@@ -74,6 +74,7 @@
       python3
       python312Packages.pip
       conda
+      numbat
       ## Notes
       neovim
       quarto
