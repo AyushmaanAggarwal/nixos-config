@@ -37,7 +37,7 @@
     firefox.enable = true;
     zsh.enable = true;
     steam.enable = true;
-    kdeconnect.enable = true;
+    # kdeconnect.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -46,14 +46,14 @@
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
       # GUI Applications
-      thunderbird
-      vlc
+      # vlc
       slack #unfree
       kitty
       spotify #unfree
       inkscape
       darktable
       vscodium
+      thunderbird
       signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
@@ -61,24 +61,24 @@
       # mathematica
       xournalpp 
       zotero
-      stable.calibre
+      calibre
 
       # Terminal Applications
       fd
-      ripgrep
       bws #unfree
       unzip
       rclone
       nodejs
       ## Python
       python3
-      python312Packages.pip
+      #python312Packages.pip
       conda
       numbat
       ## Notes
       neovim
       quarto
       pandoc
+      ripgrep
       marksman
       tree-sitter
       texliveFull
