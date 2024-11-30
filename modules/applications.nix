@@ -91,12 +91,9 @@
       
       # Random
       jetbrains-mono # Font
+      nerd-fonts.fira-code
     ];
   };
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ];
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [ 
