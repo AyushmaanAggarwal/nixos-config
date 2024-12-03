@@ -9,6 +9,10 @@
   services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.tailscale.enable = true;
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 15; # <%5 free
+  };
 
   # -------------------- 
   # Security and Hardware
