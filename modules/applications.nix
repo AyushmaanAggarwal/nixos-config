@@ -11,7 +11,8 @@
   services.tailscale.enable = true;
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 15; # <%5 free
+    freeMemThreshold = 15; # <15% free
+    enableNotifications = true;
   };
 
   # -------------------- 
