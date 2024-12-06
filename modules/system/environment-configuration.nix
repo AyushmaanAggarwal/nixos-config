@@ -13,6 +13,7 @@
       text = ''
       /home/ayushmaan/.dotfiles/
       /home/ayushmaan/.config/
+      /home/ayushmaan/Zotero/
       /home/ayushmaan/Documents/Obsidian/
       /home/ayushmaan/Documents/College/
       /home/ayushmaan/Pictures/
