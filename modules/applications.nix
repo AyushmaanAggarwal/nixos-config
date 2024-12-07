@@ -11,7 +11,7 @@
   services.tailscale.enable = true;
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 15; # <15% free
+    freeMemThreshold = 20; # <15% free
     enableNotifications = true;
   };
 
@@ -51,7 +51,7 @@
     extraGroups = [ "networkmanager" "wheel" ]; 
     packages = with pkgs; [
       # GUI Applications
-      # vlc
+      vlc
       slack #unfree
       kitty
       spotify #unfree
@@ -98,7 +98,7 @@
   };
 
   fonts.packages = with pkgs; [
-      jetbrains-mono # Font
+      jetbrains-mono
       nerd-fonts.fira-code
   ];
 
