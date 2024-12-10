@@ -14,6 +14,7 @@
     freeMemThreshold = 20; # <15% free
     enableNotifications = true;
   };
+  virtualisation.waydroid.enable = true;
 
   # -------------------- 
   # Security and Hardware
