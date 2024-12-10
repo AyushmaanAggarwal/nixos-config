@@ -64,7 +64,7 @@
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
       
       restic snapshots
-      restic check
+      restic check --read-data-subset=5%
       '';
       mode = "0755";
     };

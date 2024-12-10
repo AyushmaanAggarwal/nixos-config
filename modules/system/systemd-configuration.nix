@@ -50,6 +50,17 @@
       };
     };
 
+    # restic-check = {
+    #   enable = true;
+    #   wants = [ "network-online.target" ];
+    #   after = [ "network-online.target" ];
+    #   description = "Restic Check System";
+    #   serviceConfig = {
+    #     User = "ayushmaan";
+    #     ExecStart = ''/etc/scripts/restic.sh'';
+    #   };
+    # };
+
     # Btrfs Scrub
     btrfs-scrub = {
       enable = true;
@@ -103,6 +114,18 @@
         Unit = "restic-backup.service";
       };
     };
+
+    # restic-check = {
+    #   wantedBy = [ "timers.target" ];
+    #   timerConfig = {
+    #     OnBootSec = "10m";
+    #     OnCalendar = "weekly";
+    #     Persistent = true;
+    #     Unit = "restic-check.service";
+    #   };
+    # };
+
+
 
     system-update = {
       wantedBy = [ "timers.target" ];
