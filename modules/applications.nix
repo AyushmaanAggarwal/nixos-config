@@ -11,10 +11,10 @@
   services.tailscale.enable = true;
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 30; # <15% free
-    freeMemKillThreshold = 15; # <15% free
-    freeSwapThreshold = 90;
-    freeSwapKillThreshold = 40;
+    freeMemThreshold = 15; # <15% free
+    freeMemKillThreshold = 5; # <15% free
+    freeSwapThreshold = 40;
+    freeSwapKillThreshold = 20;
   };
   virtualisation.waydroid.enable = true;
 
