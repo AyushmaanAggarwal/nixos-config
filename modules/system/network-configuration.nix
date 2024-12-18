@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-  hasIPv6Internet = false;
-in
 {
   # General Networking
   networking = {
@@ -26,20 +22,23 @@ in
   services.dnscrypt-proxy2 = {
     enable = true;
     settings = {
-      ipv6_servers = hasIPv6Internet;
-      block_ipv6 = ! hasIPv6Internet;
+      ipv4_servers = true;
+      ipv6_servers = false;
+      block_ipv6 = true;
 
+      dnscrypt_servers = true;
+      doh_servers = true;
+      odoh_servers = false;
       require_dnssec = true;
-      sources.public-resolvers = {
-        urls = [
-          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
-          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-        ];
-        cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
-        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
-      };
+      require_nolog = true;
+      require_filter = false;
 
-      server_names = [ "cloudflare" "cloudflare-ipv6"];
+      sources.public-resolvers = {
+        urls = ["https://www.quad9.net/quad9-resolvers.md"];
+        minisign_key = "RWQBphd2+f6eiAqBsvDZEBXBGHQBJfeG6G+wJPPKxCZMoEQYpmoysKUN";
+        cache_file = "quad9-resolvers.md";
+        prefix = "quad9-";
+      };
     };
   };
 
