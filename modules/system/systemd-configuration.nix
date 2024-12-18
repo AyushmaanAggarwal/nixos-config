@@ -108,7 +108,7 @@
     restic-backup = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "10m";
+        #OnBootSec = "10m";
         OnCalendar = "daily";
         Persistent = true;
         Unit = "restic-backup.service";
@@ -125,12 +125,10 @@
     #   };
     # };
 
-
-
     system-update = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "10m";
+        #OnBootSec = "10m";
         OnUnitActiveSec = "weekly";
         Unit = "system-update.service";
       };
