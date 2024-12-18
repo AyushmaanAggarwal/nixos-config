@@ -20,24 +20,6 @@
   };
 
   systemd.services = {
-    system-update = {
-      enable = true;
-      wants = [ "network-online.target" ];
-      after = [ "network-online.target" ];
-      description = "Update non-declarative package managers";
-      script = ''
-      #!/bin/sh
-      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
-      conda-shell -c "conda update conda --yes"
-      flatpak update --assumeyes --noninteractive --system
-      #npm update
-      '';
-      serviceConfig = {
-        User = "ayushmaan";
-        Type = "oneshot";
-      };
-    };
-
     # Backup Service
     restic-backup = {
       enable = true;
@@ -124,15 +106,6 @@
     #     Unit = "restic-check.service";
     #   };
     # };
-
-    system-update = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        #OnBootSec = "10m";
-        OnUnitActiveSec = "weekly";
-        Unit = "system-update.service";
-      };
-    };
 
     btrfs-scrub = {
       wantedBy = [ "timers.target" ];

@@ -97,7 +97,9 @@
       text = ''
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
-
+      echo "--------------------"
+      echo "NixOs Update"
+      echo "--------------------"
       pushd /home/ayushmaan/.dotfiles/system/ > /dev/null
       nix flake update --commit-lock-file
       if [[ -n $(git status --porcelain) ]]; then 
@@ -112,6 +114,21 @@
         /etc/scripts/nix-diff.py
       fi
       popd > /dev/null
+
+      echo "--------------------"
+      echo "Flatpak Update"
+      echo "--------------------"
+      flatpak update
+
+      echo "--------------------"
+      echo "Conda Update"
+      echo "--------------------"
+      conda-shell -c "conda update conda --yes"
+
+      echo "--------------------"
+      echo "NPM Update"
+      echo "--------------------"
+      npm update
       '';
       mode = "0755";
     };
