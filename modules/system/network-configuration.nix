@@ -34,20 +34,20 @@
       require_nofilter = false;
 
       #bootstrap_resolvers = [ "9.9.9.9:53" "1.1.1.1:53"];
-      sources.quad9-resolvers = {
-        urls = [ "https://www.quad9.net/quad9-resolvers.md" ];
-        minisign_key = "RWQBphd2+f6eiAqBsvDZEBXBGHQBJfeG6G+wJPPKxCZMoEQYpmoysKUN";
-        cache_file = "quad9-resolvers.md";
-        prefix = "quad9-";
-      };
-      #sources.public-resolvers = {
-      #   urls = [
-      #     "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
-      #     "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-      #   ];
-      #   cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
-      #   minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+      #sources.quad9-resolvers = {
+      #  urls = [ "https://www.quad9.net/quad9-resolvers.md" ];
+      #  minisign_key = "RWQBphd2+f6eiAqBsvDZEBXBGHQBJfeG6G+wJPPKxCZMoEQYpmoysKUN";
+      #  cache_file = "quad9-resolvers.md";
+      #  prefix = "quad9-";
       #};
+      sources.public-resolvers = {
+         urls = [
+           "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
+           "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
+         ];
+         cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
+         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
+      };
 
       server_names = [ 
         "quad9-doh-ip4-port443-filter-pri"
