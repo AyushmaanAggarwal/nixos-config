@@ -11,6 +11,7 @@
   };
 
   users.users.ayushmaan.packages = with pkgs; [
+      hyprland-qtutils
       hyprlock
       hyprpaper
       dunst
