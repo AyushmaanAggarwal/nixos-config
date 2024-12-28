@@ -33,7 +33,7 @@
       require_nolog = true;
       require_nofilter = false;
 
-      bootstrap_resolvers = [ "9.9.9.9:53" "149.112.112.112:53" "1.1.1.1:53" "8.8.8.8:53"];
+      bootstrap_resolvers = [ "100.100.100.100:53" "9.9.9.9:53" "149.112.112.112:53" "1.1.1.1:53" "8.8.8.8:53"];
       sources.public-resolvers = {
          urls = [
            "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
