@@ -56,6 +56,7 @@
     packages = with pkgs; [
       # GUI Applications
       vlc
+      ffmpeg # For firefox drm content
       slack #unfree
       kitty
       spotify #unfree
