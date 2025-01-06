@@ -46,16 +46,14 @@
     firefox.enable = true;
     zsh.enable = true;
     steam.enable = true;
+    adb.enable = true;
     # kdeconnect.enable = true;
   };
-
-  programs.adb.enable = true;
-  users.users.ayushmaan.extraGroups = [ "adbusers" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ayushmaan = { 
     isNormalUser = true; description = "Ayushmaan Aggarwal"; 
-    extraGroups = [ "networkmanager" "wheel" ]; 
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ]; 
     packages = with pkgs; [
       # GUI Applications
       vlc
