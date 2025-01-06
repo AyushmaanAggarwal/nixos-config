@@ -32,7 +32,7 @@
   # -------------------- 
   # Sound
   # -------------------- 
-  hardware.pulseaudio.enable = false; 
+  services.pulseaudio.enable = false; 
   security.rtkit.enable = true; 
   services.pipewire = {
     enable = true; 
@@ -43,11 +43,14 @@
 
   # Install progams
   programs = {
-    # firefox.enable = true;
+    firefox.enable = true;
     zsh.enable = true;
     steam.enable = true;
     # kdeconnect.enable = true;
   };
+
+  programs.adb.enable = true;
+  users.users.ayushmaan.extraGroups = [ "adbusers" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ayushmaan = { 
