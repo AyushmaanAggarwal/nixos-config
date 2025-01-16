@@ -18,6 +18,11 @@
     freeSwapKillThreshold = 20;
   };
   virtualisation.waydroid.enable = true;
+  programs.singularity = {
+    enable = true;
+    package = "apptainer";
+  };
+  
 
   # -------------------- 
   # Security and Hardware
@@ -56,8 +61,7 @@
     extraGroups = [ "networkmanager" "wheel" "adbusers" ]; 
     packages = with pkgs; [
       # GUI Applications
-      vlc
-      ffmpeg # For firefox drm content
+      mpv
       slack #unfree
       kitty
       spotify #unfree
@@ -99,7 +103,6 @@
       powertop
       onefetch
       fastfetch
-      
     ];
   };
 
