@@ -20,7 +20,7 @@
   virtualisation.waydroid.enable = true;
   programs.singularity = {
     enable = true;
-    package = "apptainer";
+    package = apptainer;
   };
   
 
