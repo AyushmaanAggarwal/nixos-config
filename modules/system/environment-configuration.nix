@@ -128,6 +128,7 @@
       echo "--------------------"
       echo "NPM Update"
       echo "--------------------"
+      npm install -g npm@latest
       npm update
       '';
       mode = "0755";

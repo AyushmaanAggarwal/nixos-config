@@ -48,7 +48,7 @@
 
   # Install progams
   programs = {
-    firefox.enable = true;
+    #firefox.enable = true;
     zsh.enable = true;
     steam.enable = true;
     adb.enable = true;
