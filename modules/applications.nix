@@ -10,6 +10,7 @@
   services.flatpak.enable = true; 
   services.tailscale.enable = true;
   services.udisks2.enable = true; # for calibre kindle connection
+  services.etesync-dav.enable = true;
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 15; # <15% free
