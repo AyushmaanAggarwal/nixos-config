@@ -49,10 +49,11 @@
 
   # Install progams
   programs = {
-    #firefox.enable = true;
     zsh.enable = true;
-    steam.enable = true;
     adb.enable = true;
+    steam.enable = true;
+    #firefox.enable = true;
+    thunderbird.enable = true;
     # kdeconnect.enable = true;
   };
 
@@ -69,7 +70,6 @@
       inkscape
       darktable
       vscodium
-      thunderbird
       signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
