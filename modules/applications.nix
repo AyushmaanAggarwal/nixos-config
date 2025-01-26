@@ -26,8 +26,8 @@
 
   services.printing = {
     enable = true; # Enable CUPS to print documents.
-    drivers = [ pkgs.cnijfilter2 ];
-  }
+    drivers = [ pkgs.cnijfilter2 ]; # Canon Pixma drivers
+  };
 
   # -------------------- 
   # Security and Hardware
