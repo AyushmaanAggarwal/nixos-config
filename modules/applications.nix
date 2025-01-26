@@ -5,7 +5,6 @@
   # Various services
   # -------------------- 
   services.thermald.enable = true;
-  services.printing.enable = true; # Enable CUPS to print documents.
   services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.tailscale.enable = true;
@@ -24,6 +23,11 @@
     package = pkgs.apptainer;
   };
   
+
+  services.printing = {
+    enable = true; # Enable CUPS to print documents.
+    drivers = [ pkgs.cnijfilter2 ];
+  }
 
   # -------------------- 
   # Security and Hardware
