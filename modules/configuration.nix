@@ -11,8 +11,8 @@
       ./desktop/hyprland.nix
 
       # --- System Configuration ---
+      ./system/systemd/configuration.nix
       ./system/hardware-configuration.nix 
-      ./system/systemd-configuration.nix
       ./system/network-configuration.nix
       ./system/environment-configuration.nix
       ./system/nix-package-configuration.nix

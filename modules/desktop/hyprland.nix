@@ -1,6 +1,9 @@
 # Hyprland Window Manager and Configuration
 { config, pkgs, ... }:
 {
+  imports = [
+    ../system/systemd/polkit.nix
+  ];
 
   programs.hyprland = {
     enable = true;
