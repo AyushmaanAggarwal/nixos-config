@@ -74,6 +74,7 @@
       inkscape
       darktable
       vscodium
+      firefox
       signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
