@@ -5,19 +5,20 @@
   # Various services
   # -------------------- 
   services.thermald.enable = true;
+  powerManagement.enable = true;
   services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.tailscale.enable = true;
   services.udisks2.enable = true; # for calibre kindle connection
-  services.etesync-dav.enable = true;
+  #services.etesync-dav.enable = true;
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 15; # <15% free
+    freeMemThreshold = 10; # <15% free
     freeMemKillThreshold = 5; # <15% free
-    freeSwapThreshold = 40;
-    freeSwapKillThreshold = 20;
+    freeSwapThreshold = 10;
+    freeSwapKillThreshold = 10;
   };
-  virtualisation.waydroid.enable = false;
+  #virtualisation.waydroid.enable = true;
   programs.singularity = {
     enable = true;
     package = pkgs.apptainer;
@@ -26,7 +27,7 @@
 
   services.printing = {
     enable = true; # Enable CUPS to print documents.
-    drivers = [ pkgs.cnijfilter2 ]; # Canon Pixma drivers
+    #drivers = [ pkgs.cnijfilter2 ]; # Canon Pixma drivers
   };
 
   # -------------------- 
