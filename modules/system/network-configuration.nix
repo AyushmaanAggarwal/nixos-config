@@ -5,6 +5,7 @@
   services.timesyncd = {
     servers = [ 
       "time.nist.gov"
+      "129.6.15.28"    # NIST Fallback Server 1
       "0.nixos.pool.ntp.org" 
       "1.nixos.pool.ntp.org"
       "2.nixos.pool.ntp.org"
@@ -12,7 +13,6 @@
     ];
     fallbackServers = [
       "pool.ntp.org"
-      "129.6.15.28"    # NIST Fallback Server 1
       "132.163.96.1"   # NIST Fallback Server 2
       "128.138.140.44" # NIST Fallback Server 3
     ];
