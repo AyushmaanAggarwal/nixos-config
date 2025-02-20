@@ -125,11 +125,11 @@
       echo "--------------------"
       conda-shell -c "conda update conda --yes"
 
-      echo "--------------------"
-      echo "NPM Update"
-      echo "--------------------"
-      npm install -g npm@latest
-      npm update
+      # echo "--------------------"
+      # echo "NPM Update"
+      # echo "--------------------"
+      # npm install -g npm@latest
+      # npm update
       '';
       mode = "0755";
     };
