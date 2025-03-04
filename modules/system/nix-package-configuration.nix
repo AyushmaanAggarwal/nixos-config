@@ -9,7 +9,7 @@
 
     substituters = [
       "https://hyprland.cachix.org"
-      "https://cosmic.cachix.org/"
+      #"https://cosmic.cachix.org/"
       "https://cache.nixos.org/"
     ];
 

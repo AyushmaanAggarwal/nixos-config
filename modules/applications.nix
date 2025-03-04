@@ -58,7 +58,10 @@
     adb.enable = true;
     steam.enable = true;
     #firefox.enable = true;
-    thunderbird.enable = true;
+    thunderbird = {
+      enable = true;
+      package = pkgs.thunderbird-latest;
+     };
     # kdeconnect.enable = true;
   };
 
