@@ -19,7 +19,7 @@
   };
   # General Networking
   networking = {
-    hostName = "ayu";
+    hostName = "thegram";
     nameservers = [ "127.0.0.1" "::1" ];
     networkmanager = {
       enable = true;
