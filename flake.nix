@@ -28,7 +28,7 @@
         # };
       };
     in { 
-      nixosConfigurations.ayu = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.thegram = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-pkgs ]; })
