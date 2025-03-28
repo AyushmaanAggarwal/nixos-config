@@ -133,6 +133,17 @@
       '';
       mode = "0755";
     };
+    "scripts/nix-server-update.sh" = {
+      text = ''
+      #!/bin/sh
+      echo "--------------------"
+      echo "NixOs Etebase Server Update"
+      echo "--------------------"
+      nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/server-system#nixos-etebase --target-host proxmox@etebase --use-remote-sudo
+      '';
+      mode = "0755";
+    };
+ 
  
   };
 
