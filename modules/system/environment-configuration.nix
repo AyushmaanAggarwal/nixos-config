@@ -14,8 +14,7 @@
       /home/ayushmaan/.dotfiles/
       /home/ayushmaan/.config/
       /home/ayushmaan/Zotero/
-      /home/ayushmaan/Documents/Obsidian/
-      /home/ayushmaan/Documents/College/
+      /home/ayushmaan/Documents/
       /home/ayushmaan/Pictures/
       '';
       mode = "0644";
@@ -139,7 +138,10 @@
       echo "--------------------"
       echo "NixOs Etebase Server Update"
       echo "--------------------"
+      pushd /home/ayushmaan/.dotfiles/server-system/ > /dev/null
+      nix flake update --commit-lock-file
       nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/server-system#nixos-etebase --target-host proxmox@etebase --use-remote-sudo
+      popd > /dev/null
       '';
       mode = "0755";
     };
