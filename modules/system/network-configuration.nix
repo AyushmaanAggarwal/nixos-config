@@ -4,17 +4,16 @@
   # NTP Servers
   services.timesyncd = {
     servers = [ 
-      "time.nist.gov"
-      "129.6.15.28"    # NIST Fallback Server 1
-      "0.nixos.pool.ntp.org" 
-      "1.nixos.pool.ntp.org"
-      "2.nixos.pool.ntp.org"
-      "3.nixos.pool.ntp.org"
+      "0.pool.ntp.org"
+      "1.pool.ntp.org"
+      "2.pool.ntp.org"
+      "3.pool.ntp.org"
     ];
     fallbackServers = [
-      "pool.ntp.org"
+      "129.6.15.28"    # NIST Fallback Server 1
       "132.163.96.1"   # NIST Fallback Server 2
       "128.138.140.44" # NIST Fallback Server 3
+      "time.nist.gov"
     ];
   };
   # General Networking
@@ -29,8 +28,6 @@
     firewall.checkReversePath = "loose";
     # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   };
-  # Configure network proxy if necessary networking.proxy.default = "http://user:password@proxy:port/"; networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Firewall
   # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. 
   # networking.firewall.enable = false;
@@ -51,6 +48,7 @@
       require_nofilter = false;
 
       bootstrap_resolvers = [ "100.100.100.100:53" "9.9.9.9:53" "149.112.112.112:53" "1.1.1.1:53" "8.8.8.8:53"];
+      forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
       sources.public-resolvers = {
          urls = [
            "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
@@ -76,4 +74,12 @@
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
   };
+
+  environment.etc = {
+    "nixos/services/networking/forwarding-rules.txt" = {
+      text = "local $DHCP";
+      mode = "0644";
+    }; 
+  };
+ 
 }
