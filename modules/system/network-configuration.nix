@@ -2,18 +2,16 @@
 
 {
   # NTP Servers
-  services.timesyncd = {
+  services.chrony = {
+    enable = true;
+    enableNTS = true;
     servers = [ 
-      "0.pool.ntp.org"
-      "1.pool.ntp.org"
-      "2.pool.ntp.org"
-      "3.pool.ntp.org"
-    ];
-    fallbackServers = [
-      "129.6.15.28"    # NIST Fallback Server 1
-      "132.163.96.1"   # NIST Fallback Server 2
-      "128.138.140.44" # NIST Fallback Server 3
-      "time.nist.gov"
+      "time.cloudflare.com"
+      "paris.time.system76.com"
+      "ohio.time.system76.com"
+      "oregon.time.system76.com"
+      "virginia.time.system76.com"
+      "brazil.time.system76.com"
     ];
   };
   # General Networking
@@ -79,7 +77,7 @@
     "nixos/services/networking/forwarding-rules.txt" = {
       text = ''
         local $DHCP
-        pool.ntp.org $BOOTSTRAP, $DHCP
+        time.cloudflare.com $BOOTSTRAP
       '';
       mode = "0644";
     }; 
