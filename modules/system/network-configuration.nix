@@ -47,7 +47,7 @@
       require_nolog = true;
       require_nofilter = false;
 
-      bootstrap_resolvers = [ "100.100.100.100:53" "9.9.9.9:53" "149.112.112.112:53" "1.1.1.1:53" "8.8.8.8:53"];
+      bootstrap_resolvers = [ "100.100.100.100:53" "9.9.9.9:53" "149.112.112.112:53" "1.1.1.1:53" ];
       forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
       sources.public-resolvers = {
          urls = [
@@ -77,7 +77,10 @@
 
   environment.etc = {
     "nixos/services/networking/forwarding-rules.txt" = {
-      text = "local $DHCP";
+      text = ''
+        local $DHCP
+        pool.ntp.org $BOOTSTRAP, $DHCP
+      '';
       mode = "0644";
     }; 
   };
