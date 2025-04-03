@@ -14,8 +14,9 @@
       "brazil.time.system76.com"
     ];
     extraConfig = ''
-      makestep 1 -1
+      makestep 0.1 10
     '';
+    extraFlags = ["-s"];
   };
   # General Networking
   networking = {
