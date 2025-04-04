@@ -8,7 +8,10 @@
   powerManagement.enable = true;
   services.blueman.enable = true;
   services.flatpak.enable = true; 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    package = pkgs.stable.tailscale;
+  };
   services.udisks2.enable = true; # for calibre kindle connection
   services.etesync-dav.enable = true;
   services.earlyoom = {
