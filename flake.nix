@@ -22,10 +22,6 @@
           inherit system;
           config.allowUnfree = true;
         };
-        # master = import nixpkgs-master {
-        #   inherit system;
-        #   config.allowUnfree = true;
-        # };
       };
     in { 
       nixosConfigurations.thegram = nixpkgs.lib.nixosSystem {
