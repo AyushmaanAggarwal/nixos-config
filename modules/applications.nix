@@ -82,7 +82,7 @@
       inkscape
       darktable
       vscodium
-      signal-desktop
+      stable.signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
       ## Academic
