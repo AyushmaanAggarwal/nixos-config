@@ -38,7 +38,10 @@
   # -------------------- 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.polkit.enable = true;
-  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver = {
+    enable = true;
+    package = pkgs.stable.opentabletdriver;
+  };
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
