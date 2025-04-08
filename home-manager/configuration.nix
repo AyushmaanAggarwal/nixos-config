@@ -7,7 +7,7 @@
       ./zsh.nix
       ./theme.nix
     ];
-  
+
     # home.packages = [ ];
     
     # The state version is required and should stay at the version you
