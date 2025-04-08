@@ -40,6 +40,7 @@
   security.polkit.enable = true;
   hardware.opentabletdriver = {
     enable = true;
+    daemon.enable = true;
     package = pkgs.stable.opentabletdriver;
   };
   hardware.bluetooth = {
