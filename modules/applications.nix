@@ -6,7 +6,6 @@
   # -------------------- 
   services.thermald.enable = true;
   powerManagement.enable = true;
-  services.blueman.enable = true;
   services.flatpak.enable = true; 
   services.tailscale = {
     enable = true;
@@ -38,6 +37,7 @@
   # -------------------- 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   security.polkit.enable = true;
+  services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -92,6 +92,7 @@
 
       # Terminal Applications
       fd
+      gdu
       bws #unfree
       unzip
       rclone
