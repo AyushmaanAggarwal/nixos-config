@@ -1,6 +1,9 @@
 # Applications
 { config, pkgs, ... }:
 {
+  imports = [
+    ./system/hardware/security.nix
+  ]
   # -------------------- 
   # Various services
   # -------------------- 
@@ -36,7 +39,6 @@
   # Security and Hardware
   # -------------------- 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  security.polkit.enable = true;
   services.blueman.enable = true;
   hardware.bluetooth = {
     enable = true;
