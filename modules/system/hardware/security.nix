@@ -8,7 +8,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig.Type = "simple";
   };
-  #services.fprintd.enable = true;
+  services.fprintd.enable = true;
   # If simply enabling fprintd is not enough, try enabling fprintd.tod...
   services.fprintd.tod.enable = true;
   # ...and use one of the next four drivers
