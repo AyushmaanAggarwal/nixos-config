@@ -3,7 +3,7 @@
 {
   imports = [
     ./system/hardware/security.nix
-  ]
+  ];
   # -------------------- 
   # Various services
   # -------------------- 
