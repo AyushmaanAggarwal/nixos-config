@@ -9,15 +9,12 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     # nixpkgs.follows = "nixos-cosmic/nixpkgs";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   #outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, nixos-cosmic}@inputs: 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, sops-nix }@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager }@inputs: 
     let
       system = "x86_64-linux";
       overlay-pkgs = final: prev: {
@@ -39,7 +36,6 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
           }          
-          sops-nix.nixosModules.sops
         ];
       };
     };
