@@ -1,5 +1,5 @@
 # Applications
-{ config, pkgs, ... }
+{ config, pkgs, ... }:
 {
   imports = [
     ./system/hardware/security.nix
@@ -19,7 +19,7 @@
     enable = true;
     host = "localhost";
     port = 37358;
-    apiUrl = "etebase.tail590ac.ts.net"
+    apiUrl = "etebase.tail590ac.ts.net";
   };
   services.earlyoom = {
     enable = true;
