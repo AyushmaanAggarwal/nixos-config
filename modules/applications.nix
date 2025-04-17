@@ -1,5 +1,5 @@
 # Applications
-{ config, pkgs, ... }:
+{ config, pkgs, ... }
 {
   imports = [
     ./system/hardware/security.nix
@@ -15,7 +15,12 @@
     package = pkgs.stable.tailscale;
   };
   services.udisks2.enable = true; # for calibre kindle connection
-  services.etesync-dav.enable = true;
+  services.etesync-dav = {
+    enable = true;
+    host = "localhost";
+    port = 37358;
+    apiUrl = "etebase.tail590ac.ts.net"
+  };
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 10; # <15% free
