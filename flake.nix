@@ -28,11 +28,11 @@
         modules = [
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-pkgs ]; })
           ./modules/configuration.nix
+          ./home-manager/home.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.ayushmaan = ./home-manager/home.nix;
           }
           inputs.sops-nix.nixosModules.sops
         ];
