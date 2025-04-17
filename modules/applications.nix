@@ -101,6 +101,7 @@
       fd
       gdu
       bws #unfree
+      sops
       unzip
       rclone
       nodejs
