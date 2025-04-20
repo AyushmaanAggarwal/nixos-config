@@ -13,6 +13,7 @@
   services.tailscale = {
     enable = true;
     package = pkgs.stable.tailscale;
+    extraDaemonFlags = [ "--no-logs-no-support" ];
   };
   services.udisks2.enable = true; # for calibre kindle connection
   services.etesync-dav = {
