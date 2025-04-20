@@ -29,8 +29,10 @@
     freeSwapThreshold = 99;
     freeSwapKillThreshold = 95;
     extraArgs = [ 
-      "--prefer '(^|/)(thunderbird|firefox|slack|vscode)$'"
-      "--avoid '(^|/)(Hyprland|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$'"
+      "--prefer"
+      "(^|/)(thunderbird|firefox|slack|vscode)$"
+      "--avoid"
+      "(^|/)(Hyprland|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$"
     ];
   };
   #virtualisation.waydroid.enable = true;
