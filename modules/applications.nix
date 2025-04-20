@@ -24,10 +24,14 @@
   };
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 10; # <15% free
-    freeMemKillThreshold = 5; # <15% free
-    freeSwapThreshold = 10;
-    freeSwapKillThreshold = 10;
+    freeMemThreshold = 30; # <15% free
+    freeMemKillThreshold = 10; # <15% free
+    freeSwapThreshold = 99;
+    freeSwapKillThreshold = 95;
+    extraArgs = [ 
+      "--prefer '(^|/)(thunderbird|firefox|slack|vscode)$'"
+      "--avoid '(^|/)(Hyprland|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$'"
+    ];
   };
   #virtualisation.waydroid.enable = true;
   programs.singularity = {
