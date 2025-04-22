@@ -7,7 +7,7 @@
       ./applications.nix
 
       # --- Desktop Environment ---
-      #./desktop/cosmic.nix
+      ./desktop/cosmic.nix
       ./desktop/hyprland.nix
       #./desktop/kde.nix # UNTESTED
       #./desktop/gnome.nix # UNTESTED
