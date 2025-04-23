@@ -22,7 +22,7 @@
     ];
 
   # Bootloader.
-  boot.kernelParams = [ "quiet" "video=eDP-1:2560x1600@59.99" "video=DP-1:3840x2160@30.00" "video=DP-2:3840x2160@30.00" ];
+  boot.kernelParams = [ "quiet" "acpi_backlight=native" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
