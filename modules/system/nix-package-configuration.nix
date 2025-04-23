@@ -31,16 +31,24 @@
       "nixpkgs"
       "-L" # print build logs
     ];
+    persistent = true;
     dates = "02:00";
   };
-
+  systemd.services.nixos-upgrade = {
+    after = ["chronyd.service"];
+  };
+ 
   # Label Generations
   system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${inputs.self.shortRev}";
 
   # Collect garbage
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 30d";
+  };
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
   };
 }
