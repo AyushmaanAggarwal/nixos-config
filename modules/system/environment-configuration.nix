@@ -117,7 +117,7 @@
       echo "--------------------"
       echo "Flatpak Update"
       echo "--------------------"
-      flatpak update
+      flatpak update --assumeyes --noninteractive
 
       echo "--------------------"
       echo "Conda Update"
