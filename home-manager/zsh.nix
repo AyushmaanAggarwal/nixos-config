@@ -25,7 +25,7 @@
         plugins = [ "git" ];
         theme = "strug";
       };
-    initExtra = ''
+    initContent = ''
       bindkey '^X^I' autosuggest-accept
 
       source ~/.dotfiles/config/alias_config
