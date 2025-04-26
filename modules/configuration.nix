@@ -9,8 +9,8 @@
       # --- Desktop Environment ---
       #./desktop/cosmic.nix
       #./desktop/hyprland.nix
-      #./desktop/kde.nix # UNTESTED
-      ./desktop/gnome.nix # UNTESTED
+      ./desktop/kde.nix # UNTESTED
+      #./desktop/gnome.nix
 
       # --- System Configuration ---
       ./system/systemd/configuration.nix
