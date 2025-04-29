@@ -11,11 +11,10 @@
 
   services.udev.extraRules = ''
       ACTION=="remove",\
-       ENV{ID_BUS}=="usb",\
-       ENV{ID_MODEL_ID}=="0402",\
-       ENV{ID_VENDOR_ID}=="1050",\
-       ENV{ID_VENDOR}=="Yubico",\
-       RUN+="hyprlock"
+       ENV{ID_VENDOR_FROM_DATABASE}=="Yubico.com",\
+       ENV{ID_FIDO_TOKEN}=="1",\
+       ENV{ID_SECURITY_TOKEN}=="1",\
+       RUN+="${pkgs.hyprlock}/bin/hyprlock -c /home/ayushmaan/.dotfiles/config/hypr/hyprlock.conf"
   '';
 
 }
