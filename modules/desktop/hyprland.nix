@@ -11,11 +11,6 @@
     withUWSM = true;
   };
   programs.hyprlock.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    autoNumlock = true;
-    wayland.enable = true;
-  };
 
   users.users.ayushmaan.packages = with pkgs; [
       hyprland-qtutils
