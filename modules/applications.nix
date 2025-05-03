@@ -24,27 +24,26 @@
   };
   services.earlyoom = {
     enable = true;
-    freeMemThreshold = 30; # <15% free
+    freeMemThreshold = 10; # <15% free
     freeMemKillThreshold = 10; # <15% free
-    freeSwapThreshold = 99;
-    freeSwapKillThreshold = 95;
+    freeSwapThreshold = 90;
+    freeSwapKillThreshold = 80;
     extraArgs = [ 
       "--prefer"
       "(^|/)(thunderbird|firefox|slack|vscode)$"
       "--avoid"
-      "(^|/)(Hyprland|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$"
+      "(^|/)(Hyprland|hypridle|hyprlock|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$"
     ];
   };
   #virtualisation.waydroid.enable = true;
-  programs.singularity = {
-    enable = true;
-    package = pkgs.apptainer;
-  };
+  #programs.singularity = {
+  #  enable = true;
+  #  package = pkgs.apptainer;
+  #};
   
 
   services.printing = {
     enable = true; # Enable CUPS to print documents.
-    #drivers = [ pkgs.cnijfilter2 ]; # Canon Pixma drivers
   };
 
   # -------------------- 
