@@ -4,16 +4,22 @@
   imports = [
     ../system/systemd/polkit.nix
   ];
-
+  
+  services.hypridle.enable = true;
   programs.hyprland = {
     enable = true;
     withUWSM = true;
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  programs.hyprlock.enable = true;
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    autoNumlock = true;
+    wayland.enable = true;
+    wayland.compositor = "Hyprland";
+  };
 
   users.users.ayushmaan.packages = with pkgs; [
       hyprland-qtutils
-      hyprlock
       hyprpaper
       dunst
       waybar
