@@ -11,11 +11,10 @@
     withUWSM = true;
   };
   programs.hyprlock.enable = true;
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
     wayland.enable = true;
-    wayland.compositor = "Hyprland";
   };
 
   users.users.ayushmaan.packages = with pkgs; [
