@@ -17,4 +17,3 @@
     alsa.support32Bit = true; 
   };
 }
-

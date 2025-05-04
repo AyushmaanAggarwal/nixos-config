@@ -14,28 +14,18 @@
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs: 
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
-      overlay-pkgs = final: prev: {
-        stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+    in {
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      overlays = import ./overlays {inherit inputs;};
+
+      nixosConfigurations = {
+        thegram = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs outputs;};
+          modules = [ ./hosts/thegram.nix ];
         };
-      };
-    in { 
-      nixosConfigurations.thegram = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-pkgs ]; })
-          ./modules/configuration.nix
-          ./home-manager/home.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-          }
-          inputs.sops-nix.nixosModules.sops
-        ];
       };
     };
 }

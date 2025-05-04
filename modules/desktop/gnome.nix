@@ -1,9 +1,18 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+  options = {
+    gnome.enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enable Gnome Desktop Enviroment";
+      default = false;
+    };
   };
-}
+
+  config = lib.mkIf (config..enable) {
+    services.xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+  };
+}   

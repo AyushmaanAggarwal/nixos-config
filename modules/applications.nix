@@ -1,17 +1,11 @@
 # Applications
 { config, pkgs, ... }:
 {
-  imports = [
-    ./system/hardware/security.nix
-    ./system/hardware/sound.nix
-    ./system/hardware/earlyoom.nix
-  ];
   # -------------------- 
   # Various services
   # -------------------- 
   services.thermald.enable = true;
   powerManagement.enable = true;
-  services.flatpak.enable = true; 
   services.udisks2.enable = true; # for calibre kindle connection
   
   services.printing = {

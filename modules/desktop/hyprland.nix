@@ -1,33 +1,41 @@
-# Hyprland Window Manager and Configuration
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
-  imports = [
-    ../system/systemd/polkit.nix
-  ];
-  
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  services.hypridle.enable = true;
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
+  imports = [ ../system/systemd/polkit.nix ];
+
+  options = {
+    hyprland.enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enable Hyprland Window Manager";
+      default = false;
+    };
   };
-  programs.hyprlock.enable = true;
 
-  users.users.ayushmaan.packages = with pkgs; [
-      hyprland-qtutils
-      hyprpaper
-      dunst
-      waybar
-      fuzzel
-      
-      # Terminal
-      ## Screenshots
-      grim
-      slurp
-      wl-clipboard
+  config = lib.mkIf (config.hyprland.enable) {
+    polkit-auth.enable = true;
 
-      # System Applications
-      nautilus
-      pavucontrol
-  ];
+    services.hypridle.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    programs.hyprlock.enable = true;
+
+    users.users.ayushmaan.packages = with pkgs; [
+        hyprland-qtutils
+        hyprpaper
+        dunst
+        waybar
+        fuzzel
+        
+        # Terminal
+        ## Screenshots
+        grim
+        slurp
+        wl-clipboard
+
+        # System Applications
+        nautilus
+        pavucontrol
+    ];
+  };
 }
