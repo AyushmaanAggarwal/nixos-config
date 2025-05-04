@@ -1,10 +1,13 @@
-{ inputs, config, lib, pkgs, home-manager, ... }:
+{ inputs, outputs, config, lib, pkgs, home-manager, ... }:
 {
   imports = [
     ../modules/default.nix
     ../home-manager/home.nix
   ];
-  
+ 
+  nixpkgs.overlays = [
+    outputs.overlays.stable-packages 
+  ];
   # Desktop Enviroment
   hyprland.enable = true;
 
