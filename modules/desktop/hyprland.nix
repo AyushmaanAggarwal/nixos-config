@@ -5,6 +5,7 @@
     ../system/systemd/polkit.nix
   ];
   
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   services.hypridle.enable = true;
   programs.hyprland = {
     enable = true;
