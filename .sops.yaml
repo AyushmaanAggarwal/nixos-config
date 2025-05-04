@@ -1,0 +1,26 @@
+keys:
+  - &admin_ayu age1u3asm98exz9ff3qdlm46p5v005usrp530s63hjq85wk8wplf7ygq28vmhy 
+  - &server_nextcloud age1xch7tl6puppr28fmuzuwjskz9z0u0lwe4plwy92u2xuzvq48rstqcde6ea
+  - &server_immich age136hpg6t73c88teqqq8mnplp62gry0rdtqlz5hxpvpx67z6vgnd2qtz7fth
+  - &server_adguard age1le4ju2vk3uqkl5d67sugcnzzgzqe8lad8cyt5hcxj2vxjl088vwsxz9p88
+  - &server_uptime age1jruntky7p89sv4lrktzkx9psm7gmhy6a4uxtgd8up8uh9dphcuaspac4gj
+  - &server_etebase age14ay4j5hkaf3dq27c26uh0jchdfjgaydyfahjsj2qnmndfwjxsvgq6589rt
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+  - path_regex: secrets/nextcloud/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+      - *server_nextcloud
+  - path_regex: secrets/general/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+      - *server_nextcloud
+      - *server_adguard
+      - *server_uptime
+      - *server_immich
+      - *server_etebase
