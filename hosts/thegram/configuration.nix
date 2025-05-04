@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/system/default.nix
+    ../../modules/scripts/default.nix
     ../../home-manager/home.nix
     ./hardware-configuration.nix
   ];
