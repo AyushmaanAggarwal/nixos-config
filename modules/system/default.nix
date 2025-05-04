@@ -10,6 +10,6 @@
       ./services/default.nix
       ./desktop/default.nix
 
-      inputs.sops-nix.nixosModules.sops
+      #inputs.sops-nix.nixosModules.sops
     ];
 }
