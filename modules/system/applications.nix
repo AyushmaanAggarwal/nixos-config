@@ -1,6 +1,10 @@
 # Applications
-{ config, pkgs, ... }:
+{ outputs, config, pkgs, ... }:
 {
+  nixpkgs.overlays = [
+    outputs.overlays.stable-packages 
+  ];
+ 
   # -------------------- 
   # Various services
   # -------------------- 

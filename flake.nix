@@ -23,7 +23,7 @@
       nixosConfigurations = {
         thegram = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/thegram.nix ];
+          modules = [ ./hosts/thegram/configuration.nix ];
         };
       };
     };

@@ -1,23 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  # NTP Servers
-  services.chrony = {
+  # Tailscale VPN
+  services.tailscale = {
     enable = true;
-    enableNTS = true;
-    servers = [ 
-      "time.cloudflare.com"
-      "paris.time.system76.com"
-      "ohio.time.system76.com"
-      "oregon.time.system76.com"
-      "virginia.time.system76.com"
-      "brazil.time.system76.com"
-    ];
-    extraConfig = ''
-      makestep 0.1 10
-    '';
-    extraFlags = ["-s"];
+    package = pkgs.stable.tailscale;
+    extraDaemonFlags = [ "--no-logs-no-support" ];
   };
+
   # General Networking
   networking = {
     hostName = "thegram";
@@ -31,8 +21,7 @@
     # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   };
   # Firewall
-  # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. 
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
   
   # DNS Encryption
   services.dnscrypt-proxy2 = {
@@ -77,19 +66,4 @@
     StateDirectory = "dnscrypt-proxy";
   };
 
-  environment.etc = {
-    "nixos/services/networking/forwarding-rules.txt" = {
-      text = ''
-        local $DHCP
-        time.cloudflare.com $BOOTSTRAP
-      '';
-      mode = "0644";
-    }; 
-  };
-
-  services.tailscale = {
-    enable = true;
-    package = pkgs.stable.tailscale;
-    extraDaemonFlags = [ "--no-logs-no-support" ];
-  };
 }

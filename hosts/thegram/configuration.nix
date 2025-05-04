@@ -1,18 +1,13 @@
 { inputs, outputs, config, lib, pkgs, home-manager, ... }:
 {
   imports = [
-    ../modules/default.nix
-    ../home-manager/home.nix
+    ../../modules/system/default.nix
+    ../../home-manager/home.nix
+    ./hardware-configuration.nix
   ];
  
-  nixpkgs.overlays = [
-    outputs.overlays.stable-packages 
-  ];
   # Desktop Enviroment
   hyprland.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

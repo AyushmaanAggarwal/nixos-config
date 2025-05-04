@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ ../system/systemd/polkit.nix ];
+  imports = [ ../systemd/polkit.nix ];
 
   options = {
     hyprland.enable = lib.mkOption {
