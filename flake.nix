@@ -16,9 +16,8 @@
     let
       inherit (self) outputs;
       system = "x86_64-linux";
-      forAllSystems = nixpkgs.lib.genAttrs systems;
     in {
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      formatter = nixpkgs.legacyPackages.${system}.alejandra;
       overlays = import ./overlays {inherit inputs;};
 
       nixosConfigurations = {
