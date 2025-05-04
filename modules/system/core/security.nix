@@ -7,9 +7,11 @@
       default = true;
     };
   };
-  config = {
-    # Normal Security
-    security.polkit.enable = true;
+  config = lib.mkMerge [
+    {
+      # Normal Security
+      security.polkit.enable = true;
+    }
 
     lib.mkIf (config.yubikey.enable) {
       # Add Yubikey Support
@@ -21,7 +23,7 @@
       services.udev.extraRules = ''
         ACTION=="remove", ENV{ID_VENDOR_FROM_DATABASE}=="Yubico.com", ENV{ID_FIDO_TOKEN}=="1", ENV{ID_SECURITY_TOKEN}=="1", RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
       '';
-    };
-  };
+    }
+  ];
 }
 

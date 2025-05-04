@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   options = {
     polkit-auth.enable = lib.mkOption {

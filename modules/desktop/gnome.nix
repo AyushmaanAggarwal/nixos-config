@@ -8,7 +8,7 @@
     };
   };
 
-  config = lib.mkIf (config..enable) {
+  config = lib.mkIf (config.gnome.enable) {
     services.xserver = {
       enable = true;
       displayManager.gdm.enable = true;

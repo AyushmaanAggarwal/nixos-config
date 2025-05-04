@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   options = {
     btrfs-scrub.enable = lib.mkOption {

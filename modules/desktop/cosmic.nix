@@ -1,9 +1,5 @@
 { inputs, config, lib, pkgs, ... }:
 {
-  imports = [
-    inputs.nixos-cosmic.nixosModules.default
-  ];
-
   options = {
     cosmic.enable = lib.mkOption {
       type = lib.types.bool;
