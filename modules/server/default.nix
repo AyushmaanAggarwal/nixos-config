@@ -1,5 +1,5 @@
 # Main Configuration
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, outputs, config, lib, pkgs, ... }:
 
 { 
   imports =  [ 

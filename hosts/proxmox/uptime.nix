@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, modulesPath, ... }:
+{ inputs, outputs, config, lib, pkgs, modulesPath, ... }:
 let
   hostname = "uptime";
 in
