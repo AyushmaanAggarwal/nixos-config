@@ -6,11 +6,11 @@
     [ 
       ./applications.nix
 
-      ./desktop/default.nix
+      ./desktop
 
-      ./system/core/default.nix
-      ./system/systemd/default.nix
-      ./system/services/default.nix
+      ./system/core
+      ./system/systemd
+      ./system/services
       ./system/hardware-configuration.nix
 
       inputs.sops-nix.nixosModules.sops
