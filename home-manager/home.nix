@@ -1,11 +1,13 @@
-{ config, pkgs, home-manager, ... }:
+{ inputs, config, pkgs, home-manager, ... }:
 {
   imports = [ 
-    home-manager.nixosModules.home-manager
+    inputs.home-manager.nixosModules.home-manager
   ];
   # Home Manager Package Configuration
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
 
   home-manager.users.ayushmaan = { pkgs, ... }: {
     imports = [
