@@ -17,7 +17,7 @@
       inherit (self) outputs;
       system = "x86_64-linux";
     in {
-      formatter = nixpkgs.legacyPackages.${system}.alejandra;
+      formatter = nixpkgs-stable.legacyPackages.${system}.alejandra;
       overlays = import ./overlays {inherit inputs;};
 
       nixosConfigurations = {
