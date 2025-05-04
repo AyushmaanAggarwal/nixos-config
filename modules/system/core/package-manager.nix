@@ -92,7 +92,7 @@
         sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system/
       else
         echo "NixOS: Building Nix Configuration"
-        sudo nixos-rebuild switch --upgrade --flake /home/ayushmaan/.dotfiles/system/
+        sudo nixos-rebuild switch --upgrade --flake /home/ayushmaan/.dotfiles/system#thegram
         
         echo "Changed Packages"
         sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
