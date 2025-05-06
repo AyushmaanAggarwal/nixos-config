@@ -1,11 +1,22 @@
-Welcome to my combined nixos configuration for desktop and proxmox lxc containers for various services. This is still an evolving nix-config, so expect breaking changes.
+> [!IMPORTANT]  
+> This repo is rapidly evolving, so expect rapid 
 
+# NixOS Configuration
+Welcome to my combined nixos configuration for desktop and proxmox lxc containers for various services. 
+
+# Machines
+I currently manage two machines
+- thegram: a personal laptop
+- proxmox: a proxmox host that hosts several NixOS LXC containers
+
+## Self-Hosted Services
 The current services running in production are
 - Uptime
 - Immich
 - Adguard
 - Nextcloud
 
+### Guide for using LXC containers
 Begin by building a lxc container for proxmox by running the following command:
 ```nix
 nix run github:nix-community/nixos-generators -- --flake <path to folder>/server-system#<service name> --cores 4 -f proxmox-lxc
