@@ -10,7 +10,7 @@
     extraRules = [{
       commands = [
         {
-          command = "/run/current-system/sw/bin/nix-env";
+          command = "/run/current-system/sw/bin/nix-env ^-p /nix/var/nix/profiles/system --set /nix/store/[0-9a-z]+-nixos-system-unnamed-[0-9a-g\\.]+$";
           options = [ "NOPASSWD" ];
         }
         {

@@ -1,3 +1,4 @@
+# WARNING: NOT USED ANYMORE 
 { config, lib, pkgs, ... }:
 let 
   userdb-path = "/var/lib/calibre-users";

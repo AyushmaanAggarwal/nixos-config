@@ -10,14 +10,5 @@
       '';
       mode = "0555";
     }; 
-    "scripts/nixos-update" = {
-      text = ''
-      pushd /etc/nixos > /dev/null
-      nix flake update --commit-lock-file
-      nixos-rebuild switch --upgrade --flake .
-      popd > /dev/null
-      '';
-      mode = "0544";
-    }; 
   };
 }

@@ -3,8 +3,7 @@
   # Enable Flakes
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "nixadmin" ];
   };
  
-  nix.settings.trusted-users = [ "nixadmin" ];
-
 }
