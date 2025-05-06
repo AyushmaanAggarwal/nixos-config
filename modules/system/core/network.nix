@@ -4,7 +4,6 @@
   # Tailscale VPN
   services.tailscale = {
     enable = true;
-    package = pkgs.stable.tailscale;
     extraDaemonFlags = [ "--no-logs-no-support" ];
   };
 
