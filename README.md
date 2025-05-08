@@ -1,5 +1,5 @@
 > [!IMPORTANT]  
-> This repo is rapidly evolving, so expect rapid 
+> This repo is rapidly evolving, so expect breaking changes from time to time
 
 # NixOS Configuration
 Welcome to my combined nixos configuration for desktop and proxmox lxc containers for various services. 
