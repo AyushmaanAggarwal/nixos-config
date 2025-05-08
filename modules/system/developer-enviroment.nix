@@ -26,7 +26,7 @@
       texliveFull
       lua-language-server
  
-      (python3.withPackages (python-pkgs: with python-pkgs; [
+      (python3.withPackages (p: with p; [
         # Computation Packages
         numpy
         scipy
