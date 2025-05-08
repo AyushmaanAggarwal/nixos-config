@@ -11,7 +11,7 @@
   hyprland.enable = true;
 
   # Developer Enviroment
-  developer-enviroment = {
+  developer-env = {
     enable = true;
     user = "ayushmaan";
   };
