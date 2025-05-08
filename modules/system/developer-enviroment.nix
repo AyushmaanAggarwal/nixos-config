@@ -14,6 +14,7 @@
   };
   config = lib.mkIf (config.developer-env.enable) {
     users.users.${config.developer-env.user}.packages = with pkgs; [
+      gnumake # For makefiles
       jupyter
       numbat
       neovim
@@ -46,6 +47,5 @@
         requests
       ]))
     ];
- 
   };
 }
