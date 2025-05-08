@@ -1,4 +1,4 @@
-# NOT TESTED FOR A WHILE
+# Warning: Not in production anymore
 { config, lib, pkgs, ... }:
 {
   options = {

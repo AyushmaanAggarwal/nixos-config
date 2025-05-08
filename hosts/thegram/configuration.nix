@@ -10,6 +10,12 @@
   # Desktop Enviroment
   hyprland.enable = true;
 
+  # Developer Enviroment
+  developer-enviroment = {
+    enable = true;
+    user = "ayushmaan";
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = { 

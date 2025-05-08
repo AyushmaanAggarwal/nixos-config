@@ -4,6 +4,7 @@
   imports =
     [ 
       ./applications.nix
+      ./developer-enviroment.nix
       
       ./core/default.nix
       ./systemd/default.nix

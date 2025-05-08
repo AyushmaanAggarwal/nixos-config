@@ -58,20 +58,6 @@
       unzip
       rclone
       nodejs
-      ## Python
-      python3
-      #python312Packages.pip
-      conda
-      numbat
-      ## Notes
-      neovim
-      quarto
-      pandoc
-      ripgrep
-      marksman
-      tree-sitter
-      texliveFull
-      lua-language-server
       ## Monitoring
       htop
       powertop
