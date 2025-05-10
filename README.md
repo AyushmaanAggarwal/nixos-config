@@ -16,6 +16,13 @@ The current services running in production are
 - Adguard
 - Nextcloud
 
+Planned Additions
+- GitLab - Git Hosting Platform (for backups)
+- changedetection.io - Website Change Detection
+- NewsBlur - RSS feed reader
+- A ![Recipe Manager](https://github.com/awesome-selfhosted/awesome-selfhosted?tab=readme-ov-file#recipe-management)
+- A ![Old Website](https://github.com/AyushmaanAggarwal/theCounter/tree/main)
+
 ### Guide for using LXC containers
 Begin by building a lxc container for proxmox by running the following command:
 ```nix
