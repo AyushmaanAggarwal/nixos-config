@@ -24,13 +24,13 @@ test: update
 
 build-server:
 	read system
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$system --target-host nixadmin@$system --use-remote-sudo
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$system --use-remote-sudo
 
 update-server:
 	systems=("immich" "adguard" "nextcloud" "uptime") #  "calibre" "backup" "etebase" 
-	for system in "${systems[@]}"; do
-	  echo "Updating System: ${system}"; 
-	  nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$system --target-host nixadmin@$system --use-remote-sudo
+	for system in "$${systems[@]}"; do
+	  echo "Updating System: $${system}"; 
+	  nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$system --use-remote-sudo
 	done
 
 all: update switch server
