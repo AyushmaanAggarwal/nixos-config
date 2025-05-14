@@ -27,7 +27,7 @@ build-server:
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo
 
 update-server:
-	systems=("immich" "adguard" "nextcloud" "uptime"); \
+	systems=("immich" "adguard" "nextcloud" "uptime" "changedetection"); \
 	for system in "$${systems[@]}"; do \
 		echo "Updating System: $${system}"; \
 		nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
