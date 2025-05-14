@@ -16,8 +16,8 @@
       user = "changedetection-io";
       group = "changedetection-io";
       behindProxy = true;
-      datastorePath = "/var/lib/changedetection-io";
-      environmentFile = "/run/secrets/changedetection-io.env";
+      #datastorePath = "/var/lib/changedetection-io";
+      #environmentFile = "/run/secrets/changedetection-io.env";
 
       webDriverSupport = false; # Due to memory leak
       playwrightSupport = false;
