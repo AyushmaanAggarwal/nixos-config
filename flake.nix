@@ -63,6 +63,13 @@
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/proxmox/uptime.nix ];
         };
+
+        changedetection = nixpkgs-stable.lib.nixosSystem {
+          inherit system;
+          specialArgs = {inherit inputs outputs;};
+          modules = [ ./hosts/proxmox/changedetection.nix ];
+        };
+ 
       };
     };
 }
