@@ -14,10 +14,6 @@
   };
 
   config = lib.mkIf (config.immich.enable) {
-    nixpkgs.overlays = [
-      outputs.overlays.unstable-packages 
-    ];
- 
     # -------------------- 
     # Immich Service
     # -------------------- 
