@@ -15,9 +15,9 @@ The current services running in production are
 - Immich
 - Adguard
 - Nextcloud
+- changedetection.io - Website Change Detection
 
 Planned Additions
-- changedetection.io - Website Change Detection
 - NewsBlur - RSS feed reader
 - GitLab - Git Hosting Platform (for backups)
 - A ![Recipe Manager](https://github.com/awesome-selfhosted/awesome-selfhosted?tab=readme-ov-file#recipe-management)
