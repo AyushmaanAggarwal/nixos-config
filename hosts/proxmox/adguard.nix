@@ -10,4 +10,5 @@ in
   networking.hostName = hostname;
   caddy.hostname = hostname;
   adguard.enable = true;
+  tailscale.exit-node.enable = true;
 }

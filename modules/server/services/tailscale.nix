@@ -16,6 +16,12 @@
       description = "Enables DNS Flags for Tailscale";
       default = false;
     };
+    tailscale.exit-node.enable = lib.mkOption {
+      type = lib.types.bool;
+      description = "Enables Exit Node Flags for Tailscale";
+      default = false;
+    };
+ 
   };
 
   config = {
@@ -23,7 +29,10 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       disableTaildrop = true;
-      extraDaemonFlags = [ "--no-logs-no-support" ];
+      extraDaemonFlags = [ 
+        "--no-logs-no-support" 
+        lib.mkIf (config.tailscale.exit-node.enable) "--advertise-exit-node"
+      ];
       interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
       permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
