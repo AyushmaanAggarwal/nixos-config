@@ -29,18 +29,16 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       disableTaildrop = true;
-      extraDaemonFlags = lib.mkMerge [
-        [ "--no-logs-no-support" ]
-        (lib.mkIf config.tailscale.exit-node.enable [ "--advertise-exit-node" ])
-      ];
+      extraDaemonFlags = [ "--no-logs-no-support" ];
 
       interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
       permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
 
       useRoutingFeatures = lib.mkIf (config.tailscale.dns.enable) "server";
-      extraSetFlags = lib.mkIf (config.tailscale.dns.enable) [
-        "--accept-dns=false" # Ensure tailscale doesn't interfere with adguard dns
+      extraSetFlags =  lib.mkMerge [
+        (lib.mkIf config.tailscale.dns.enable [ "--accept-dns=false"])  # Ensure tailscale doesn't interfere with adguard dns
+        (lib.mkIf config.tailscale.exit-node.enable [ "--advertise-exit-node" ])
       ];
     };
   };
