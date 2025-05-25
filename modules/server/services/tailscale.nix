@@ -31,7 +31,8 @@
       disableTaildrop = true;
       extraDaemonFlags = [ 
         "--no-logs-no-support" 
-        lib.mkIf (config.tailscale.exit-node.enable) "--advertise-exit-node"
+      ] ++ lib.mkIf (config.tailscale.exit-node.enable) [
+        "--advertise-exit-node"
       ];
       interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
