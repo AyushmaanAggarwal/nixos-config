@@ -29,11 +29,11 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       disableTaildrop = true;
-      extraDaemonFlags = [ 
-        "--no-logs-no-support" 
-      ] ++ lib.mkIf (config.tailscale.exit-node.enable) [
-        "--advertise-exit-node"
+      extraDaemonFlags = lib.mkMerge [
+        [ "--no-logs-no-support" ]
+        (lib.mkIf config.tailscale.exit-node.enable [ "--advertise-exit-node" ])
       ];
+
       interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
       permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
