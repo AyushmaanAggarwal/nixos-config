@@ -31,7 +31,7 @@
         backup = nixpkgs-stable.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/proxmox/backup.nix];
+          modules = [ ./hosts/proxmox/backup.nix ];
         };
 
         etebase = nixpkgs-stable.lib.nixosSystem {
@@ -68,6 +68,12 @@
           inherit system;
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/proxmox/changedetection.nix ];
+        };
+
+        ntfy = nixpkgs-stable.lib.nixosSystem {
+          inherit system;
+          specialArgs = {inherit inputs outputs;};
+          modules = [ ./hosts/proxmox/ntfy.nix ];
         };
  
       };
