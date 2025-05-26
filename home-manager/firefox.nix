@@ -174,6 +174,7 @@ in
         "services.sync.engine.passwords" = false;
 
         "sidebar.visibility" = "hide-sidebar";
+        "sidebar.verticalTabs" = false;
       };
     };     
   };
