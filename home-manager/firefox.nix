@@ -15,7 +15,6 @@ in
 {
   programs.firefox = {
     enable = true;
-    wrapperConfig.pipewireSupport = true; # To enable screen sharing
     languagePacks = [ "en-US" ];
     profiles.ayushmaan = {
       search = {
