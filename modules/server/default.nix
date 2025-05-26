@@ -20,6 +20,7 @@
     ./services/uptime-kuma.nix
     ./services/tailscale.nix
     ./services/changedetection.nix
+    ./services/ntfy-sh.nix
   ];
   
 }
