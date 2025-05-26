@@ -175,6 +175,7 @@ in
 
         "sidebar.visibility" = "hide-sidebar";
         "sidebar.verticalTabs" = false;
+        "sidebar.revamp" = false;
       };
     };     
   };
