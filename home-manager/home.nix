@@ -13,6 +13,7 @@
     imports = [
       ./zsh.nix
       ./theme.nix
+      ./firefox.nix
     ];
 
     # home.packages = [ ];
