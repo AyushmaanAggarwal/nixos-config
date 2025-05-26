@@ -1,6 +1,6 @@
 { inputs, outputs, config, lib, pkgs, modulesPath, ... }:
 let
-  hostname = "adguard";
+  hostname = "ntfy";
 in
 { 
   imports = [
@@ -9,6 +9,5 @@ in
   ];
   networking.hostName = hostname;
   caddy.hostname = hostname;
-  adguard.enable = true;
-  tailscale.exit-node.enable = true;
+  ntfy-sh.enable = true;
 }

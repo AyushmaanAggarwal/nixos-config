@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -31,7 +31,7 @@
         backup = nixpkgs-stable.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs;};
-          modules = [ ./hosts/proxmox/backup.nix];
+          modules = [ ./hosts/proxmox/backup.nix ];
         };
 
         etebase = nixpkgs-stable.lib.nixosSystem {
@@ -68,6 +68,12 @@
           inherit system;
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/proxmox/changedetection.nix ];
+        };
+
+        ntfy = nixpkgs-stable.lib.nixosSystem {
+          inherit system;
+          specialArgs = {inherit inputs outputs;};
+          modules = [ ./hosts/proxmox/ntfy.nix ];
         };
  
       };
