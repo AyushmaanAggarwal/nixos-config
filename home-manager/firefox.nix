@@ -92,7 +92,13 @@ in
       Preferences = { 
         "browser.tabs.groups.enabled" = true;
         "browser.toolbarbuttons.introduced.sidebar-button" = true;
-        "datareporting.usage.uploadEnabled" = true;
+        "datareporting.usage.uploadEnabled" = false;
+
+        "devtools.inspector.enabled" = false;
+        "devtools.inspector.inactive.css.enabled" = false;
+        "devtools.inspector.rule-view.focusNextOnEnter" = false;
+        "devtools.inspector.three-pane-enabled" = false;
+        "devtools.performance.popup.feature-flag" = true;
 
 
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
@@ -126,6 +132,32 @@ in
         "telemetry.fog.artifact_build" = telemetry;
         "telemetry.fog.init_on_shutdown" = telemetry;
         "toolkit.telemetry.enabled" = telemetry;
+
+        "privacy.clearOnShutdown.cache" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+        "privacy.clearOnShutdown.downloads" = false;
+        "privacy.clearOnShutdown.formdata" = false;
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.sessions" = false;
+        "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
+        "privacy.clearOnShutdown_v2.cache" = false;
+        "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
+        "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
+        "privacy.donottrackheader.enabled" = true;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.globalprivacycontrol.enabled" = true;
+        "privacy.globalprivacycontrol.was_ever_enabled" = true;
+        "privacy.query_stripping.enabled" = true;
+        "privacy.query_stripping.enabled.pbmode" = true;
+        "privacy.trackingprotection.emailtracking.enabled" = true;
+        "privacy.trackingprotection.enabled" = true;
+        "privacy.trackingprotection.socialtracking.enabled" = true;
+
+        "services.sync.declinedEngines" = "passwords,addresses,creditcards";
+        "services.sync.engine.addresses.available" = true;
+        "services.sync.engine.passwords" = false;
+
+        "sidebar.visibility" = "hide-sidebar";
       };
     };     
   };
