@@ -16,7 +16,7 @@
       user = "ntfy-sh";
       group = "ntfy-sh";
       settings = {
-        base-url = "ntfy.tail590ac.ts.net";
+        base-url = "https://ntfy.tail590ac.ts.net";
         listen-http = "127.0.0.1:8290";
         #attachment-cache-dir = "/var/lib/private/ntfy-sh/attachments";
         #auth-file = "/var/lib/private/ntfy-sh/user.db";

@@ -1,6 +1,7 @@
 { inputs, config, pkgs, modulesPath, ... }:
 { 
   imports = [
+    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server/common/sops-nix.nix
   ];
   # Disable bad systemd units for lxc containers
