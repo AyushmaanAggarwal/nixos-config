@@ -1,11 +1,8 @@
 { inputs, config, pkgs, modulesPath, ... }:
 { 
   imports = [
-    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server/common/sops-nix.nix
   ];
-
-  image = config.system.build.image;
   # Disable bad systemd units for lxc containers
   systemd.suppressedSystemUnits = [
     "dev-mqueue.mount"
