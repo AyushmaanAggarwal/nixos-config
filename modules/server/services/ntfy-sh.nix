@@ -17,7 +17,10 @@
       group = "ntfy-sh";
       settings = {
         base-url = "ntfy.tail590ac.ts.net";
-        listen-http = ":8290";
+        listen-http = "127.0.0.1:8290";
+        #attachment-cache-dir = "/var/lib/private/ntfy-sh/attachments";
+        #auth-file = "/var/lib/private/ntfy-sh/user.db";
+        #cache-file = "/var/lib/private/ntfy-sh/cache-file.db";
       };
     };
 
