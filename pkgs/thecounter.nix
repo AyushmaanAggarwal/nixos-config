@@ -62,8 +62,7 @@ python3Packages.buildPythonApplication rec {
   ];
 
   nativeCheckInputs = lib.flatten (lib.attrValues optional-dependencies);
-
-  pythonImportsCheck = [ "calibreweb" ];
+  
 
   passthru = {
     updateScript = nix-update-script { };
@@ -72,8 +71,48 @@ python3Packages.buildPythonApplication rec {
   meta = {
     description = "Web app for theCounter Website";
     homepage = "https://github.com/AyushmaanAggarwal/theCounter";
-    # license = lib.licenses.gpl3Plus;
-    mainProgram = "calibre-web"; # Change
+    license = lib.licenses.agpl3Only;
+    mainProgram = "nix"; # Change
     platforms = lib.platforms.all;
   };
 }
+# ADD TO MODULE
+# systemd.services.gunicorn = {
+#   enable = true;
+#   description = "gunicorn daemon";
+#   # In NixOS, you refer to dependencies by name without the suffix.
+#   requires = [ "gunicorn.socket" ];
+#   after = [ "network.target" ];
+#   serviceConfig = {
+#     Type = "notify";
+#     NotifyAccess = "main";
+#     User = "counter";
+#     Group = "counter";
+#     DynamicUser = true;
+#     RuntimeDirectory = "gunicorn";
+#     WorkingDirectory = "/home/proxmox/theCounter";
+#     ExecStart = "/usr/bin/gunicorn applicationname.wsgi";
+#     ExecReload = "/bin/kill -s HUP $MAINPID";
+#     KillMode = "mixed";
+#     TimeoutStopSec = "5";
+#     PrivateTmp = true;
+#     ProtectSystem = "strict";
+#   };
+#   wantedBy = [ "multi-user.target" ];
+# };
+# 
+# # Define the gunicorn socket unit
+# systemd.sockets.gunicorn = {
+#   enable = true;
+#   description = "gunicorn socket";
+#   # Listen on a Unix socket
+#   listenStream = "/run/gunicorn.sock";
+#   socketConfig = {
+#     SocketUser = "www-data";
+#     SocketGroup = "www-data";
+#     SocketMode = "0660";
+#   };
+#   wantedBy = [ "sockets.target" ];
+# };
+
+
