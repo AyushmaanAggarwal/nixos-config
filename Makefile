@@ -30,7 +30,7 @@ update-server:
 	systems=("immich" "adguard" "nextcloud" "uptime" "changedetection"); \
 	for system in "$${systems[@]}"; do \
 		echo "Updating System: $${system}"; \
-		nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+		nixos-rebuild boot --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 	done
 
 all: update switch server
