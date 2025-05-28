@@ -29,27 +29,27 @@ all-server:
 		nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 	done
 immich:
-	system="immich"
+	system="immich"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 adguard:
-	system="adguard"
+	system="adguard"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 nextcloud:
-	system="nextcloud"
+	system="nextcloud"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 uptime:
-	system="uptime"
+	system="uptime"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 changedetection:
-	system="changedetection"
+	system="changedetection"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 ntfy:
-	system="ntfy"
+	system="ntfy"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
 all: update switch all-server
