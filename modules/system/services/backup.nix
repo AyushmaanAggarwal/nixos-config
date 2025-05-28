@@ -74,7 +74,7 @@
 
       pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
       source venv/bin/activate
-      python3 slack_notification.py "Finished restic backup for $(date +'%D %T'): Error Code Backup $exit_code_backup, Error Code Prune $exit_code_prune"
+      python3 /etc/scripts/restic-notify.py "$(date +'%D %T')" "$exit_code_backup" "$exit_code_prune"
       popd > /dev/null
       '';
       mode = "0755";
@@ -94,5 +94,34 @@
       '';
       mode = "0755";
     };
+
+    "scripts/restic-notify.py" = {
+      text = ''
+      import sys
+      import requests; 
+
+      date, backup_err, check_err = sys.argv[-3:]
+      if backup_err == "0" and check_err == "0":
+        message = f"Successful Backup on {date}"
+      elif backup_err == "0":
+        message = f"Failed Prune on {date}:\nPrune Error: {check_err}"
+      elif check_err == "0":
+        message = f"Failed Backup on {date}:\nBackup Error: {backup_err}"
+      else:
+        message = f"Failed Backup and Prune on {date}:\n Backup Error: {backup_err}\n Prune Error: {check_err}" 
+
+      priority = '1' if backup_err == "0" and check_err == "0" else '3'
+
+      requests.post("https://ntfy.tail590ac.ts.net/thegram",
+        data=message,
+        headers={
+        'Title': 'Restic Backup: thegram',
+        'Priority': priority,
+      })
+      '';
+      mode = "0755";
+    };
+
+
   };
 }

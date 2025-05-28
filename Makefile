@@ -15,7 +15,7 @@ boot: update
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
 	/etc/scripts/nix-diff.py
 
-test: update
+test:
 	echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild test --upgrade --flake /home/ayushmaan/.dotfiles/system\#thegram
 	echo "Changed Packages"
