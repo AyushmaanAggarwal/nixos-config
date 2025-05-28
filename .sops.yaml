@@ -10,6 +10,10 @@ creation_rules:
     key_groups:
     - age:
       - *admin_ayu
+  - path_regex: secrets/thegram/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
   - path_regex: secrets/nextcloud/[^/]+\.yaml$
     key_groups:
     - age:

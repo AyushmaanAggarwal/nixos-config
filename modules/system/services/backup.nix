@@ -12,6 +12,22 @@
   };
 
   # --- Restic ---
+
+  sops.secrets.configuration = {
+    owner = "ayushmaan";
+    group = "users";
+    mode = "0400";
+    sopsFile = ../../../secrets/thegram/backups.yaml;
+  };
+
+  sops.secrets.encryption = {
+    owner = "ayushmaan";
+    group = "users";
+    mode = "0400";
+    sopsFile = ../../../secrets/thegram/backups.yaml;
+  };
+
+
   users.users.ayushmaan.packages = with pkgs; [
       restic
   ];
@@ -34,6 +50,8 @@
       text = ''
       rclone:EncryptedDrive:NixOS/restic-backup
       '';
+      user = "root";
+      group = "root";
       mode = "0644";
     }; 
     "restic/include_files" = {
@@ -44,11 +62,15 @@
       /home/ayushmaan/Documents/
       /home/ayushmaan/Pictures/
       '';
+      user = "root";
+      group = "root";
       mode = "0644";
     };
     "restic/exclude_files" = {
       text = ''
       '';
+      user = "root";
+      group = "root";
       mode = "0644";
     };
 
@@ -57,48 +79,45 @@
       #!/bin/sh
       export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      source /home/ayushmaan/.bws/secret.sh
-      export RCLONE_CONFIG_PASS=$(bws secret get 197ce53f-f34a-4ae0-8362-b1a0006600b5 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
-      export RESTIC_PASSWORD=$(bws secret get fd396c44-c98a-4ef6-8522-b1ec00198028 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
+      export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
+      export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
-      export $(dbus-launch)
       
       echo; echo "Backing up files"
-      #dunstify "Backup" "Starting System Backup" --timeout=60000 || echo "Couldn't notify user"
       nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
       exit_code_backup=$?
 
       echo; echo "Cleaning up backups"
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
       exit_code_prune=$?
-
-      pushd /home/ayushmaan/.dotfiles/scripts/python/ > /dev/null
-      source venv/bin/activate
-      python3 /etc/scripts/restic-notify.py "$(date +'%D %T')" "$exit_code_backup" "$exit_code_prune"
-      popd > /dev/null
+      
+      nix-shell -p python313 python313Packages.requests --run "python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune"
       '';
+      user = "root";
+      group = "root";
       mode = "0755";
     };
     "scripts/restic.sh" = {
       text = ''
       #!/bin/sh
-      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      source /home/ayushmaan/.bws/secret.sh
-      export RCLONE_CONFIG_PASS=$(bws secret get 197ce53f-f34a-4ae0-8362-b1a0006600b5 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
-      export RESTIC_PASSWORD=$(bws secret get fd396c44-c98a-4ef6-8522-b1ec00198028 | python -c "import sys, json; print(json.load(sys.stdin)['value'])")
+      export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
+      export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
       export RESTIC_REPOSITORY_FILE=/etc/restic/repo
       
       restic snapshots
       restic check --read-data-subset=5%
+      nix-shell -p python313 python313Packages.requests --run "python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune"
       '';
+      user = "root";
+      group = "root";
       mode = "0755";
     };
 
     "scripts/restic-notify.py" = {
       text = ''
       import sys
-      import requests; 
+      import requests
 
       date, backup_err, check_err = sys.argv[-3:]
       if backup_err == "0" and check_err == "0":
@@ -119,6 +138,8 @@
         'Priority': priority,
       })
       '';
+      user = "root";
+      group = "root";
       mode = "0755";
     };
 
