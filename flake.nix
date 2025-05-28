@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-oldstable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -12,7 +11,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, nixpkgs-oldstable, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }@inputs: 
     let
       inherit (self) outputs;
       system = "x86_64-linux";
@@ -71,7 +70,7 @@
           modules = [ ./hosts/proxmox/changedetection.nix ];
         };
 
-        ntfy = nixpkgs-oldstable.lib.nixosSystem {
+        ntfy = nixpkgs-stable.lib.nixosSystem {
           inherit system;
           specialArgs = {inherit inputs outputs;};
           modules = [ ./hosts/proxmox/ntfy.nix ];
