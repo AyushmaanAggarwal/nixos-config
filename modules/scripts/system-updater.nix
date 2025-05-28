@@ -45,6 +45,9 @@
         
         echo "Changed Packages"
         sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
+        echo; echo "Changed Packages Overall Size:"
+        /etc/scripts/nix-diff.py | grep -oE "[\+\-][0-9]+\.[0-9]\s[a-zA-Z]+" | tr '\n' ' ' | sed 's/$/ to GB/' | numbat
+        echo; echo "Changed Packages Breakdown: "
         /etc/scripts/nix-diff.py
       fi
       popd > /dev/null
