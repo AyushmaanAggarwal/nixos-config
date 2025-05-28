@@ -34,7 +34,6 @@
     # -------------------- 
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud30;
       hostName = "localhost";
       settings = {
         trusted_domains = [ "nextcloud.tail590ac.ts.net" ];
