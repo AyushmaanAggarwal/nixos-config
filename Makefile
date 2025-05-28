@@ -1,7 +1,7 @@
 update:
 	nix flake update --commit-lock-file
 
-switch: update
+switch: 
 	echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild switch --upgrade --flake /home/ayushmaan/.dotfiles/system\#thegram
 	echo "Changed Packages"
