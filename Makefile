@@ -22,15 +22,34 @@ test:
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
 	/etc/scripts/nix-diff.py
 
-build-server:
-	read system
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo
-
-update-server:
+all-server:
 	systems=("immich" "adguard" "nextcloud" "uptime" "changedetection"); \
 	for system in "$${systems[@]}"; do \
 		echo "Updating System: $${system}"; \
 		nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 	done
+immich:
+	system="immich"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
-all: update switch server
+adguard:
+	system="adguard"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+nextcloud:
+	system="nextcloud"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+uptime:
+	system="uptime"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+changedetection:
+	system="changedetection"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+ntfy:
+	system="ntfy"
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+all: update switch all-server
