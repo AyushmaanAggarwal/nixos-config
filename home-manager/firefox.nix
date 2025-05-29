@@ -108,47 +108,52 @@ in
       Preferences = { 
         "browser.tabs.groups.enabled" = true;
         "browser.toolbarbuttons.introduced.sidebar-button" = true;
-        "datareporting.usage.uploadEnabled" = false;
-
+        
+        # Disable inspector
         "devtools.inspector.enabled" = false;
         "devtools.inspector.inactive.css.enabled" = false;
         "devtools.inspector.rule-view.focusNextOnEnter" = false;
         "devtools.inspector.three-pane-enabled" = false;
-        "devtools.performance.popup.feature-flag" = true;
+        "devtools.performance.popup.feature-flag" = false;
+        "devtools.inspector.draggable_properties" = false;
 
-
+        # General Browser
         "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
-        "extensions.pocket.enabled" = !lock;
-        "extensions.screenshots.disabled" = lock;
-        "browser.topsites.contile.enabled" = !lock;
-        "browser.formfill.enable" = false;
+        "extensions.pocket.enabled" = false;
+        "extensions.screenshots.disabled" = false;
+        "browser.topsites.contile.enabled" = false;
         "browser.search.suggest.enabled" = false;
         "browser.search.suggest.enabled.private" = false;
         "browser.urlbar.suggest.searches" = false;
-        "browser.urlbar.showSearchSuggestionsFirst" = !lock;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = !lock;
-        "browser.newtabpage.activity-stream.feeds.snippets" = !lock;
-        "browser.newtabpage.activity-stream.section.highlights.includePocket" = !lock;
-        "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = !lock;
-        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = !lock;
-        "browser.newtabpage.activity-stream.section.highlights.includeVisited" = !lock;
-        "browser.newtabpage.activity-stream.showSponsored" = !lock;
-        "browser.newtabpage.activity-stream.system.showSponsored" = !lock;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = !lock;
+        "browser.urlbar.showSearchSuggestionsFirst" = true;
+        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+        "browser.newtabpage.activity-stream.feeds.snippets" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includePocket" = false;
+        "browser.newtabpage.activity-stream.section.highlights.includeBookmarks" = true;
+        "browser.newtabpage.activity-stream.section.highlights.includeDownloads" = true;
+        "browser.newtabpage.activity-stream.section.highlights.includeVisited" = true;
 
-        "browser.newtabpage.activity-stream.feeds.telemetry" = telemetry;
-        "browser.newtabpage.activity-stream.telemetry" = telemetry;
-        "browser.newtabpage.activity-stream.telemetry.ut.events" = telemetry;
-        "browser.search.serpEventTelemetryCategorization.enabled" = telemetry;
-        "browser.search.serpEventTelemetryCategorization.regionEnabled" = telemetry;
-        "dom.security.unexpected_system_load_telemetry_enabled" = telemetry;
-        "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = telemetry;
-        "network.trr.confirmation_telemetry_enabled" = telemetry;
-        "nimbus.telemetry.targetingContextEnabled" = telemetry;
-        "telemetry.fog.artifact_build" = telemetry;
-        "telemetry.fog.init_on_shutdown" = telemetry;
-        "toolkit.telemetry.enabled" = telemetry;
-
+        # Remove Sponsored Ads
+        "browser.newtabpage.activity-stream.showSponsored" = false;
+        "browser.newtabpage.activity-stream.system.showSponsored" = false;
+        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+        
+        # Remove Telemetry
+        "browser.newtabpage.activity-stream.feeds.telemetry" = false;
+        "browser.newtabpage.activity-stream.telemetry" = false;
+        "browser.newtabpage.activity-stream.telemetry.ut.events" = false;
+        "browser.search.serpEventTelemetryCategorization.enabled" = false;
+        "browser.search.serpEventTelemetryCategorization.regionEnabled" = false;
+        "dom.security.unexpected_system_load_telemetry_enabled" = false;
+        "identity.fxaccounts.telemetry.clientAssociationPing.enabled" = false;
+        "network.trr.confirmation_telemetry_enabled" = false;
+        "nimbus.telemetry.targetingContextEnabled" = false;
+        "telemetry.fog.artifact_build" = false;
+        "telemetry.fog.init_on_shutdown" = false;
+        "toolkit.telemetry.enabled" = false;
+        "datareporting.usage.uploadEnabled" = false;
+        
+        # Privacy Options
         "privacy.clearOnShutdown.cache" = false;
         "privacy.clearOnShutdown.cookies" = false;
         "privacy.clearOnShutdown.downloads" = false;
@@ -168,16 +173,32 @@ in
         "privacy.trackingprotection.emailtracking.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
-
+        
+        # Don't Sync Sensitive Options
         "services.sync.declinedEngines" = "passwords,addresses,creditcards";
         "services.sync.engine.addresses.available" = true;
         "services.sync.engine.passwords" = false;
-
+        
+        # Sidebar Options
         "sidebar.visibility" = "hide-sidebar";
         "sidebar.verticalTabs" = false;
         "sidebar.revamp" = false;
         "browser.aboutConfig.showWarning" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+        # Disable all autofill options
+        "browser.formfill.enable" = false;
+        "extensions.formautofill.addresses.enabled" = false;
+        "extensions.formautofill.addresses.capture.enabled" = false;
+        "extensions.formautofill.addresses.experiments.enabled" = false;
+        "extensions.formautofill.creditCards.enabled" = false;
+        "extensions.formautofill.heuristics.autofillSameOriginWithTop" = false;
+        "extensions.formautofill.heuristics.captureOnFormRemoval" = false;
+        "extensions.formautofill.heuristics.captureOnPageNavigation" = false;
+        "extensions.formautofill.heuristics.detectDynamicFormChanges" = false;
+        "extensions.formautofill.heuristics.fillOnDynamicFormChanges" = false;
+        "extensions.formautofill.heuristics.refillOnSiteClearingFields" = false;
+
       };
     };     
   };
