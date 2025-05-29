@@ -50,12 +50,12 @@
 
       server_names = [ 
         "quad9-doh-ip4-port443-filter-pri"
-        "quad9-doh-ip4-port443-filter-pri"
-        "quad9-doh-ip4-port5053-filter-pri"
         "quad9-doh-ip4-port443-filter-alt"
-        "quad9-doh-ip4-port5053-filter-alt"
         "quad9-doh-ip4-port443-filter-alt2"
-        "quad9-doh-ip4-port5053-filter-alt2" 
+        # Removed dot as performance is close to two times slower over multiple days of thousands of requests 
+        #"quad9-doh-ip4-port5053-filter-pri"
+        #"quad9-doh-ip4-port5053-filter-alt"
+        #"quad9-doh-ip4-port5053-filter-alt2" 
       ];
 
     };
