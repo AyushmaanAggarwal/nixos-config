@@ -58,6 +58,7 @@
       unzip
       rclone
       nodejs
+      psmisc # For killall command
       ## Monitoring
       htop
       powertop
