@@ -93,7 +93,7 @@
       nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
       exit_code_prune=$?
       
-      nix-shell -p python313 python313Packages.requests --run "python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune"
+      python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
