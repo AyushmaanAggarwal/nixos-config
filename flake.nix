@@ -25,7 +25,7 @@
       system = "x86_64-linux";
     in
     {
-      formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.nixfmt-tree;
+      formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.alejandra;
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {

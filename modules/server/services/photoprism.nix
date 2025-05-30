@@ -18,7 +18,7 @@
       port = 2342;
       originalsPath = "/var/lib/private/photoprism/originals";
       address = "0.0.0.0";
-      passwordFile = "/home/proxmox/.secrets/photoprism"
+      passwordFile = "/home/proxmox/.secrets/photoprism";
       settings = {
         PHOTOPRISM_ADMIN_USER = "photoprismAdmin";
         PHOTOPRISM_DEFAULT_LOCALE = "en";
