@@ -48,7 +48,7 @@
             { name = "q"; value = "lang:nix NOT is:fork {searchTerms}"; }
           ];
         }];
-        iconUpdateURL = "https://github.com/favicon.ico";
+        icon = "https://github.com/favicon.ico";
         definedAliases = [ "@gn" ];
       };
 
