@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748578356,
-        "narHash": "sha256-Ye4rPjRNyPbjIbDf2LrMLPnJlHO5Vor5yRvb8Cx+sQw=",
+        "lastModified": 1748631326,
+        "narHash": "sha256-GLKFGQ9DXfCyglrtzgAIClVM+AgvmvOG9HgHlc3m5Hs=",
         "owner": "AyushmaanAggarwal",
         "repo": "home-manager",
-        "rev": "325996daca49010bacf4702655c68b514660e1c6",
+        "rev": "bcea8b77b6deaaf4c1420ae6079a4a5c1f5d2257",
         "type": "github"
       },
       "original": {
