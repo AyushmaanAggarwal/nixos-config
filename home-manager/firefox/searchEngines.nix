@@ -1,7 +1,7 @@
-{ pkgs, profileName, ... }:
+{ pkgs, ... }:
 
 {
-  programs.firefox.profiles.${profileName}.search = {
+  programs.firefox.profiles.ayushmaan.search = {
     force = true;
     default = "ddg"; privateDefault = "ddg";
     engines = {

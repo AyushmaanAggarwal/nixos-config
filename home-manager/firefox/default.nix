@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  profileName = "ayushmaan";
-in
 {
   imports = [ 
     ./searchEngines.nix 
@@ -13,7 +10,7 @@ in
     enable = true;
     languagePacks = [ "en-US" ];
 
-    profiles.${profileName} = {
+    profiles.ayushmaan = {
       isDefault = true;
       userChrome = ''
       /* hides the title bar */

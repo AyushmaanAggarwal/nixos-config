@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-  profileName = "ayushmaan";
   extension = shortId: uuid: {
     name = uuid;
     value = {
