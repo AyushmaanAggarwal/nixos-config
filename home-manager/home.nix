@@ -4,6 +4,7 @@
     inputs.home-manager.nixosModules.home-manager
     ./zsh.nix
     ./theme.nix
+    ./numbat.nix
     ./firefox.nix
   ];
 
