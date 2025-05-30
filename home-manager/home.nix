@@ -2,11 +2,7 @@
 {
   imports = [ 
     inputs.home-manager.nixosModules.home-manager
-    ./zsh.nix
-    ./theme.nix
-    ./numbat.nix
-    ./firefox.nix
-  ];
+ ];
 
   # Home Manager Package Configuration
   home-manager = {
@@ -15,6 +11,13 @@
   };
 
   home-manager.users.ayushmaan = { pkgs, ... }: {
+    imports = [
+      ./zsh.nix
+      ./theme.nix
+      ./numbat.nix
+      ./firefox.nix
+    ];
+
     home.stateVersion = "24.05";
   };
 
