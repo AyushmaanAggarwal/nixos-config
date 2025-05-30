@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     #home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:AyushmaanAggarwal/home-manager/master";
+    home-manager.url = "github:AyushmaanAggarwal/home-manager/numbat_init_option";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
