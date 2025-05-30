@@ -29,7 +29,9 @@
 
 
   users.users.ayushmaan.packages = with pkgs; [
-      restic
+    restic
+    python3
+    python313.requests
   ];
 
   users.users.restic = {
@@ -107,7 +109,7 @@
       
       restic snapshots
       restic check --read-data-subset=5%
-      nix-shell -p python313 python313Packages.requests --run "python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune"
+      python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
