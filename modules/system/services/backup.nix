@@ -30,8 +30,8 @@
 
   users.users.ayushmaan.packages = with pkgs; [
     restic
-    python3
-    python313.requests
+    python3Full
+    python313Packages.requests
   ];
 
   users.users.restic = {
