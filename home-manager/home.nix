@@ -15,7 +15,7 @@
       ./zsh.nix
       ./theme.nix
       ./numbat.nix
-      ./firefox.nix
+      ./firefox/default.nix
     ];
 
     home.stateVersion = "24.05";
