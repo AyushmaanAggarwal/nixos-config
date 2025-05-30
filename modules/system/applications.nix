@@ -64,6 +64,9 @@
       powertop
       onefetch
       fastfetch
+
+      # Nix Packages
+      pkgs.nixfmt-rfc-style
     ];
   };
 
