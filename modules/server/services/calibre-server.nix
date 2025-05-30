@@ -1,9 +1,12 @@
 # Warning: Not in production anymore
-{ config, lib, pkgs, ... }:
-let 
-  userdb-path = "/var/lib/calibre-users";
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  userdb-path = "/var/lib/calibre-users";
+in {
   imports = [
     ./caddy.nix
   ];
@@ -16,7 +19,7 @@ in
   };
 
   config = lib.mkIf (config.calibre.enable) {
-    # Need to generate file with `calibre-server --userdb /srv/calibre/users.sqlite --manage-users` 
+    # Need to generate file with `calibre-server --userdb /srv/calibre/users.sqlite --manage-users`
     # if it doesn't exist already. Also copy usersdb into /var/lib/users.sqlite during installation
     system.activationScripts.script.text = ''
       mkdir ${userdb-path}
@@ -24,9 +27,9 @@ in
       chmod 755 ${userdb-path}
     '';
 
-    # -------------------- 
+    # --------------------
     # Calibre Configuration
-    # -------------------- 
+    # --------------------
     services.calibre-server = {
       enable = true;
       port = 8080;
@@ -37,11 +40,11 @@ in
         userDb = "${userdb-path}/users.sqlite";
       };
       openFirewall = false;
-      libraries = [ "/var/lib/calibre-server" ];
+      libraries = ["/var/lib/calibre-server"];
     };
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       port = 8080;

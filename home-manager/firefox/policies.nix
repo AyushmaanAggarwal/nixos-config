@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   extension = shortId: uuid: {
     name = uuid;
     value = {
@@ -8,8 +6,7 @@ let
       installation_mode = "force_installed";
     };
   };
-in
-{
+in {
   programs.firefox.policies = {
     # Find all admin policies options here: https://mozilla.github.io/policy-templates/
     DisableAccounts = false;
@@ -27,12 +24,11 @@ in
     PasswordManagerEnabled = false;
 
     HardwareAcceleration = true;
-    
+
     # Security
     DisableSecurityBypass = false;
     DisableSetDesktopBackground = true;
     HttpsOnlyMode = "enabled";
-    
 
     AutofillAddressEnabled = false;
     AutofillCreditCardEnabled = false;
@@ -54,21 +50,19 @@ in
       ];
     };
 
-    UserMessaging =
-    {
+    UserMessaging = {
       UrlbarInterventions = false;
       SkipOnboarding = true;
     };
 
-    FirefoxSuggest =
-    {
+    FirefoxSuggest = {
       WebSuggestions = false;
       SponsoredSuggestions = false;
       ImproveSuggest = false;
     };
 
     EnableTrackingProtection = {
-      Value= true;
+      Value = true;
       Locked = true;
       Cryptomining = true;
       Fingerprinting = true;
@@ -76,18 +70,21 @@ in
 
     Homepage.StartPage = "previous-session";
     NewTabPage = true;
-    FirefoxHome = # Make new tab only show search
-    {
-      Search = true;
-      TopSites = false;
-      SponsoredTopSites = false;
-      Highlights = false;
-      Pocket = false;
-      SponsoredPocket = false;
-      Snippets = false;
-    };
+    FirefoxHome =
+      # Make new tab only show search
+      {
+        Search = true;
+        TopSites = false;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredPocket = false;
+        Snippets = false;
+      };
 
-    /* ---- EXTENSIONS ---- */
+    /*
+    ---- EXTENSIONS ----
+    */
     # Check about:support for extension/add-on ID strings.
     # Valid strings for installation_mode are "allowed", "blocked",
     # "force_installed" and "normal_installed".
@@ -98,12 +95,14 @@ in
       (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}") # Sideberry
     ];
 
-    /* ---- PREFERENCES ---- */
+    /*
+    ---- PREFERENCES ----
+    */
     # Check about:config for options.
-    Preferences = { 
+    Preferences = {
       "browser.tabs.groups.enabled" = true;
       "browser.toolbarbuttons.introduced.sidebar-button" = true;
-      
+
       # Disable inspector
       "devtools.inspector.enabled" = false;
       "devtools.inspector.inactive.css.enabled" = false;
@@ -113,7 +112,10 @@ in
       "devtools.inspector.draggable_properties" = false;
 
       # General Browser
-      "browser.contentblocking.category" = { Value = "strict"; Status = "locked"; };
+      "browser.contentblocking.category" = {
+        Value = "strict";
+        Status = "locked";
+      };
       "extensions.pocket.enabled" = false;
       "extensions.screenshots.disabled" = false;
       "browser.topsites.contile.enabled" = false;
@@ -132,7 +134,7 @@ in
       "browser.newtabpage.activity-stream.showSponsored" = false;
       "browser.newtabpage.activity-stream.system.showSponsored" = false;
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-      
+
       # Remove Telemetry
       "browser.newtabpage.activity-stream.feeds.telemetry" = false;
       "browser.newtabpage.activity-stream.telemetry" = false;
@@ -147,7 +149,7 @@ in
       "telemetry.fog.init_on_shutdown" = false;
       "toolkit.telemetry.enabled" = false;
       "datareporting.usage.uploadEnabled" = false;
-      
+
       # Privacy Options
       "privacy.clearOnShutdown.cache" = false;
       "privacy.clearOnShutdown.cookies" = false;
@@ -168,12 +170,12 @@ in
       "privacy.trackingprotection.emailtracking.enabled" = true;
       "privacy.trackingprotection.enabled" = true;
       "privacy.trackingprotection.socialtracking.enabled" = true;
-      
+
       # Don't Sync Sensitive Options
       "services.sync.declinedEngines" = "passwords,addresses,creditcards";
       "services.sync.engine.addresses.available" = true;
       "services.sync.engine.passwords" = false;
-      
+
       # Sidebar Options
       "sidebar.visibility" = "hide-sidebar";
       "sidebar.verticalTabs" = false;

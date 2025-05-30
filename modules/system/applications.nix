@@ -1,17 +1,21 @@
 # Applications
-{ outputs, config, pkgs, ... }:
 {
+  outputs,
+  config,
+  pkgs,
+  ...
+}: {
   nixpkgs.overlays = [
-    outputs.overlays.stable-packages 
+    outputs.overlays.stable-packages
   ];
- 
-  # -------------------- 
+
+  # --------------------
   # Various services
-  # -------------------- 
+  # --------------------
   services.thermald.enable = true;
   powerManagement.enable = true;
   services.udisks2.enable = true; # for calibre kindle connection
-  
+
   services.printing = {
     enable = true; # Enable CUPS to print documents.
   };
@@ -25,13 +29,14 @@
     thunderbird = {
       enable = true;
       package = pkgs.thunderbird-latest;
-     };
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ayushmaan = { 
-    isNormalUser = true; description = "Ayushmaan Aggarwal"; 
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ]; 
+  users.users.ayushmaan = {
+    isNormalUser = true;
+    description = "Ayushmaan Aggarwal";
+    extraGroups = ["networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
       # GUI Applications
       mpv
@@ -46,7 +51,7 @@
       # onlyoffice-desktopeditors
       ## Academic
       # mathematica
-      xournalpp 
+      xournalpp
       zotero
       calibre
 
@@ -71,17 +76,15 @@
   };
 
   fonts.packages = with pkgs; [
-      jetbrains-mono
-      nerd-fonts.fira-code
+    jetbrains-mono
+    nerd-fonts.fira-code
   ];
 
   # List packages installed in system profile. To search, run: $ nix search wget
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     vim
     git
     gcc
     wget
   ];
-
 }
-

@@ -1,15 +1,10 @@
 # Main Configuration
-{ pkgs, ... }:
-
-{ 
-  imports = [ 
+{pkgs, ...}: {
+  imports = [
     # Hyprland activates ./polkit.nix
     ./btrfs-scrub.nix
     ./restic-backup.nix
   ];
 
   btrfs-scrub.enable = false;
-
-
 }
-

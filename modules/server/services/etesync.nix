@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./caddy.nix
   ];
@@ -12,9 +16,9 @@
   };
 
   config = lib.mkIf (config.etebase.enable) {
-    # -------------------- 
+    # --------------------
     # Etebase Server Setup
-    # -------------------- 
+    # --------------------
     services.etebase-server = {
       enable = true;
       port = 8001;
@@ -28,10 +32,9 @@
       };
     };
 
-
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       port = 8001;

@@ -1,6 +1,10 @@
 # Warning: Still in testing
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./caddy.nix
     ../common/sops-nix.nix
@@ -39,9 +43,8 @@
         mode = "0400";
         sopsFile = ../../../secrets/gitlab/secrets.yaml;
       };
- 
     };
- 
+
     services.gitlab = {
       enable = true;
       databasePasswordFile = config.sops.secrets.gl-database-pass.path;
@@ -50,16 +53,16 @@
         secretFile = config.sops.secrets.gl-secret.path;
         otpFile = config.sops.secrets.gl-otp.path;
         dbFile = config.sops.secrets.gl-db-file.path;
-        jwsFile = config.sops.secrets.gl-jws-file.path; 
+        jwsFile = config.sops.secrets.gl-jws-file.path;
       };
     };
-   
+
     services.openssh.enable = true;
-    
+
     systemd.services.gitlab-backup.environment.BACKUP = "dump";
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       custom = ''

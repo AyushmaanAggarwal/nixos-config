@@ -1,30 +1,28 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    history = {
+      size = 10000;
+    };
 
-{
-    programs.zsh = {
+    dirHashes = {
+      homeconfig = "/etc/nixos/home-manager/";
+      scripts = "$HOME/.dotfiles/scripts/";
+      dotconfig = "$HOME/.dotfiles/config/";
+      dotnix = "$HOME/.dotfiles/system/";
+      nvimconfig = "$HOME/.dotfiles/config/nvim";
+    };
+
+    # Your zsh config
+    oh-my-zsh = {
       enable = true;
-      autocd = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      history = {
-        size = 10000;
-      };
-
-      dirHashes = {
-        homeconfig = "/etc/nixos/home-manager/";
-        scripts = "$HOME/.dotfiles/scripts/";
-        dotconfig = "$HOME/.dotfiles/config/";
-        dotnix = "$HOME/.dotfiles/system/";
-        nvimconfig = "$HOME/.dotfiles/config/nvim";
-      };
-
-      # Your zsh config
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" ];
-        theme = "strug";
-      };
+      plugins = ["git"];
+      theme = "strug";
+    };
     initContent = ''
       bindkey '^X^I' autosuggest-accept
 
@@ -45,16 +43,15 @@
       	check_directory_for_new_repository
       }
       fastfetch; echo
-      '';
+    '';
 
     shellAliases = {
-      nrb="nix-rebuild";
-      nixupgrade="nix-rebuild switch --upgrade";
-      nrbb="nix-rebuild boot --upgrade";
-      up="/etc/scripts/nix-update.sh";
-      backup="/etc/scripts/backup.sh";
-      backup_check="/etc/scripts/restic.sh";
+      nrb = "nix-rebuild";
+      nixupgrade = "nix-rebuild switch --upgrade";
+      nrbb = "nix-rebuild boot --upgrade";
+      up = "/etc/scripts/nix-update.sh";
+      backup = "/etc/scripts/backup.sh";
+      backup_check = "/etc/scripts/restic.sh";
     };
-
   };
 }

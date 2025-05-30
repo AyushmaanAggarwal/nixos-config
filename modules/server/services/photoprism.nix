@@ -1,6 +1,10 @@
 # Warning: Not in production anymore
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     photoprism.enable = lib.mkOption {
       type = lib.types.bool;
@@ -9,10 +13,10 @@
     };
   };
 
-  config = lib.mkIf (config.photoprism.enable) {  
-    # -------------------- 
+  config = lib.mkIf (config.photoprism.enable) {
+    # --------------------
     # Various services
-    # -------------------- 
+    # --------------------
     services.photoprism = {
       enable = true;
       port = 2342;
@@ -35,13 +39,15 @@
       enable = true;
       package = pkgs.mariadb;
       dataDir = "/data/mysql";
-      ensureDatabases = [ "photoprism" ];
-      ensureUsers = [ {
-        name = "photoprism";
-        ensurePermissions = {
-          "photoprism.*" = "ALL PRIVILEGES";
-        };
-      } ];
+      ensureDatabases = ["photoprism"];
+      ensureUsers = [
+        {
+          name = "photoprism";
+          ensurePermissions = {
+            "photoprism.*" = "ALL PRIVILEGES";
+          };
+        }
+      ];
     };
 
     # NGINX
@@ -72,4 +78,3 @@
     };
   };
 }
-

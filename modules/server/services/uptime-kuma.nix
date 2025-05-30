@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./caddy.nix
     ./tailscale.nix
@@ -11,11 +15,11 @@
       default = false;
     };
   };
-  
+
   config = lib.mkIf (config.uptime.enable) {
     # Uptime Kuma
     services.uptime-kuma.enable = true;
- 
+
     # Caddy SSL Cert
     caddy = {
       enable = true;

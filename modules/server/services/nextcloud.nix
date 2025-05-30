@@ -1,6 +1,10 @@
 # Applications
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../common/sops-nix.nix
     ./caddy.nix
@@ -14,30 +18,30 @@
     };
   };
 
-  config = lib.mkIf (config.nextcloud.enable) { 
+  config = lib.mkIf (config.nextcloud.enable) {
     sops.secrets.nextcloud_database = {
       owner = "nextcloud";
       group = "nextcloud";
       mode = "0400";
       sopsFile = ../../../secrets/nextcloud/secrets.yaml;
     };
-    # -------------------- 
+    # --------------------
     # Syncthing
-    # -------------------- 
+    # --------------------
     services.syncthing = {
       enable = true;
       openDefaultPorts = false;
     };
 
-    # -------------------- 
+    # --------------------
     # Nextcloud Configuration
-    # -------------------- 
+    # --------------------
     services.nextcloud = {
       enable = true;
       hostName = "localhost";
       settings = {
-        trusted_domains = [ "nextcloud.tail590ac.ts.net" ];
-        trusted_proxies = [ "127.0.0.1" ];
+        trusted_domains = ["nextcloud.tail590ac.ts.net"];
+        trusted_proxies = ["127.0.0.1"];
       };
       extraApps = {
         inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
@@ -52,11 +56,16 @@
         adminpassFile = config.sops.secrets.nextcloud_database.path;
       };
     };
-    services.nginx.virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+    services.nginx.virtualHosts."localhost".listen = [
+      {
+        addr = "127.0.0.1";
+        port = 8080;
+      }
+    ];
 
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       custom_proxy = ''

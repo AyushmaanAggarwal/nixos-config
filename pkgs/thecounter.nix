@@ -6,7 +6,6 @@
   nixosTests,
   python3Packages,
 }:
-
 python3Packages.buildPythonApplication rec {
   pname = "theCounter";
   version = "1.0.0";
@@ -29,7 +28,7 @@ python3Packages.buildPythonApplication rec {
       --replace-fail 'cps = "calibreweb:main"' 'calibre-web = "calibreweb:main"'
   '';
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [python3Packages.setuptools];
 
   dependencies = with python3Packages; [
     flask
@@ -41,7 +40,7 @@ python3Packages.buildPythonApplication rec {
     # flask-mail
     # flask-security
     # flask-expects-json
-    
+
     apscheduler
     requests
     gunicorn
@@ -54,7 +53,7 @@ python3Packages.buildPythonApplication rec {
       google-auth-oauthlib
       google-auth-httplib2
     ];
- };
+  };
 
   pythonRelaxDeps = [
     "apscheduler"
@@ -62,10 +61,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   nativeCheckInputs = lib.flatten (lib.attrValues optional-dependencies);
-  
 
   passthru = {
-    updateScript = nix-update-script { };
+    updateScript = nix-update-script {};
   };
 
   meta = {
@@ -100,7 +98,7 @@ python3Packages.buildPythonApplication rec {
 #   };
 #   wantedBy = [ "multi-user.target" ];
 # };
-# 
+#
 # # Define the gunicorn socket unit
 # systemd.sockets.gunicorn = {
 #   enable = true;
@@ -114,5 +112,4 @@ python3Packages.buildPythonApplication rec {
 #   };
 #   wantedBy = [ "sockets.target" ];
 # };
-
 

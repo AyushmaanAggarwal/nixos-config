@@ -1,6 +1,11 @@
 # Detect Changes in Websites using changedetection-io
-{ inputs, config, lib, pkgs, ... }:
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     changedetection.enable = lib.mkOption {
       type = lib.types.bool;
@@ -23,14 +28,13 @@
       playwrightSupport = false;
       chromePort = 4444;
     };
-    
-    # -------------------- 
+
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       port = 5000;
     };
- 
   };
 }

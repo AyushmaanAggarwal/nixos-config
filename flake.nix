@@ -12,79 +12,75 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs-unstable,
-      nixpkgs-stable,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-      system = "x86_64-linux";
-    in
-    {
-      formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.alejandra;
-      overlays = import ./overlays { inherit inputs; };
+  outputs = {
+    self,
+    nixpkgs-unstable,
+    nixpkgs-stable,
+    home-manager,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    system = "x86_64-linux";
+  in {
+    formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.alejandra;
+    overlays = import ./overlays {inherit inputs;};
 
-      nixosConfigurations = {
-        # Primary System
-        thegram = nixpkgs-unstable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/thegram/configuration.nix ];
-        };
+    nixosConfigurations = {
+      # Primary System
+      thegram = nixpkgs-unstable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/thegram/configuration.nix];
+      };
 
-        # Server Containers
-        backup = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/backup.nix ];
-        };
+      # Server Containers
+      backup = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/backup.nix];
+      };
 
-        etebase = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/etebase.nix ];
-        };
+      etebase = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/etebase.nix];
+      };
 
-        adguard = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/adguard.nix ];
-        };
+      adguard = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/adguard.nix];
+      };
 
-        immich = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/immich.nix ];
-        };
+      immich = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/immich.nix];
+      };
 
-        nextcloud = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/nextcloud.nix ];
-        };
+      nextcloud = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/nextcloud.nix];
+      };
 
-        uptime = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/uptime.nix ];
-        };
+      uptime = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/uptime.nix];
+      };
 
-        changedetection = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/changedetection.nix ];
-        };
+      changedetection = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/changedetection.nix];
+      };
 
-        ntfy = nixpkgs-stable.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs outputs; };
-          modules = [ ./hosts/proxmox/ntfy.nix ];
-        };
-
+      ntfy = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/ntfy.nix];
       };
     };
+  };
 }

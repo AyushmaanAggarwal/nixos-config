@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     developer-env.enable = lib.mkOption {
       type = lib.types.bool;
@@ -25,27 +30,28 @@
       tree-sitter
       texliveFull
       lua-language-server
- 
-      (python3.withPackages (p: with p; [
-        # Computation Packages
-        numpy
-        scipy
-        sympy
 
-        # Data Structure Packages
-        astropy
-        pandas
-        uncertainties
-        
-        # Plotting
-        plotly
-        matplotlib
-        seaborn
+      (python3.withPackages (p:
+        with p; [
+          # Computation Packages
+          numpy
+          scipy
+          sympy
 
-        # Helper Packages
-        tqdm
-        requests
-      ]))
+          # Data Structure Packages
+          astropy
+          pandas
+          uncertainties
+
+          # Plotting
+          plotly
+          matplotlib
+          seaborn
+
+          # Helper Packages
+          tqdm
+          requests
+        ]))
     ];
   };
 }

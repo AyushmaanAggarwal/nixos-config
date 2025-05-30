@@ -1,5 +1,12 @@
-{ inputs, outputs, config, lib, pkgs, modulesPath, ... }:
-{ 
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
     ./proxmox.nix
     ../../modules/server/default.nix

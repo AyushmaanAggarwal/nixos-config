@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     ssh.enable = lib.mkOption {
       type = lib.types.bool;
@@ -8,15 +12,15 @@
     };
   };
 
-  config = lib.mkIf (config.ssh.enable) {  
+  config = lib.mkIf (config.ssh.enable) {
     programs.ssh.startAgent = true;
-      services.openssh = {
-        enable = true;
-        settings = {
-          PasswordAuthentication = false;
-          KbdInteractiveAuthentication = false;
-          PermitRootLogin = "no";
-        };
+    services.openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
       };
+    };
   };
 }

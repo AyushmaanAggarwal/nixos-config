@@ -1,5 +1,10 @@
-{ inputs, config, pkgs, modulesPath, ... }:
-{ 
+{
+  inputs,
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server/common/sops-nix.nix
@@ -12,6 +17,5 @@
   ];
 
   time.timeZone = "America/New_York";
-  system.stateVersion = "25.05"; 
-
+  system.stateVersion = "25.05";
 }

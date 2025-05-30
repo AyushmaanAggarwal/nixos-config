@@ -1,8 +1,13 @@
 # Main Configuration
-{ inputs, outputs, config, lib, pkgs, ... }:
-
-{ 
-  imports =  [ 
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
     # --- System Configuration ---
     ./common/general-applications.nix
     ./common/nix-package-configuration.nix
@@ -22,5 +27,4 @@
     ./services/changedetection.nix
     ./services/ntfy-sh.nix
   ];
-  
 }

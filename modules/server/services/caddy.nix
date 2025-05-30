@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
 {
-  imports = [ 
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
     ./tailscale.nix
   ];
   options = {
@@ -14,7 +18,7 @@
       description = "Set Caddy Url for simple reverse proxy";
       default = "127.0.0.1";
     };
-     caddy.port = lib.mkOption {
+    caddy.port = lib.mkOption {
       type = lib.types.port;
       description = "Set Caddy Port for simple reverse proxy";
       default = 8080;
@@ -29,19 +33,18 @@
       description = "Set hostname for tailscale caddy-configuration";
       default = config.networking.hostName;
     };
-
   };
 
   config = lib.mkIf (config.caddy.enable) {
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     services.caddy = {
       enable = true;
-      virtualHosts."${config.caddy.hostname}.tail590ac.ts.net".extraConfig = 
-        if (config.caddy.custom_proxy == "") 
-          then ''reverse_proxy ${config.caddy.url}:${toString config.caddy.port}''
-          else config.caddy.custom_proxy;
+      virtualHosts."${config.caddy.hostname}.tail590ac.ts.net".extraConfig =
+        if (config.caddy.custom_proxy == "")
+        then ''reverse_proxy ${config.caddy.url}:${toString config.caddy.port}''
+        else config.caddy.custom_proxy;
     };
     tailscale.caddycert.enable = true;
   };

@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
 {
-  imports = [ ../systemd/polkit.nix ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [../systemd/polkit.nix];
 
   options = {
     hyprland.enable = lib.mkOption {
@@ -21,21 +25,21 @@
     programs.hyprlock.enable = true;
 
     users.users.ayushmaan.packages = with pkgs; [
-        hyprland-qtutils
-        hyprpaper
-        dunst
-        waybar
-        fuzzel
-        
-        # Terminal
-        ## Screenshots
-        grim
-        slurp
-        wl-clipboard
+      hyprland-qtutils
+      hyprpaper
+      dunst
+      waybar
+      fuzzel
 
-        # System Applications
-        nautilus
-        pavucontrol
+      # Terminal
+      ## Screenshots
+      grim
+      slurp
+      wl-clipboard
+
+      # System Applications
+      nautilus
+      pavucontrol
     ];
   };
 }

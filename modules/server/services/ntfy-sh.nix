@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     ntfy-sh.enable = lib.mkOption {
       type = lib.types.bool;
@@ -8,9 +13,9 @@
     };
   };
   config = lib.mkIf (config.ntfy-sh.enable) {
-    # -------------------- 
+    # --------------------
     # Ntfy Configuration
-    # -------------------- 
+    # --------------------
     services.ntfy-sh = {
       enable = true;
       user = "ntfy-sh";
@@ -24,13 +29,12 @@
       };
     };
 
-    # -------------------- 
+    # --------------------
     # Caddy SSL Cert
-    # -------------------- 
+    # --------------------
     caddy = {
       enable = true;
       port = 8290;
     };
-
   };
 }

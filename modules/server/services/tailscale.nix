@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     tailscale.userspace.enable = lib.mkOption {
       type = lib.types.bool;
@@ -21,7 +25,6 @@
       description = "Enables Exit Node Flags for Tailscale";
       default = false;
     };
- 
   };
 
   config = {
@@ -29,18 +32,17 @@
       enable = true;
       package = pkgs.unstable.tailscale;
       disableTaildrop = true;
-      extraDaemonFlags = [ "--no-logs-no-support" ];
+      extraDaemonFlags = ["--no-logs-no-support"];
 
       interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
       permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
 
       useRoutingFeatures = lib.mkIf (config.tailscale.dns.enable) "server";
-      extraSetFlags =  lib.mkMerge [
-        (lib.mkIf config.tailscale.dns.enable [ "--accept-dns=false"])  # Ensure tailscale doesn't interfere with adguard dns
-        (lib.mkIf config.tailscale.exit-node.enable [ "--advertise-exit-node" ])
+      extraSetFlags = lib.mkMerge [
+        (lib.mkIf config.tailscale.dns.enable ["--accept-dns=false"]) # Ensure tailscale doesn't interfere with adguard dns
+        (lib.mkIf config.tailscale.exit-node.enable ["--advertise-exit-node"])
       ];
     };
   };
 }
-

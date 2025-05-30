@@ -1,6 +1,9 @@
 # Backup Services
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # --- Syncthing ---
   services.syncthing = {
     enable = true;
@@ -8,7 +11,7 @@
     # Default folder for new synced folders
     dataDir = "/home/ayushmaan/Documents";
     # Folder for Syncthing's settings and keys
-    configDir = "/home/ayushmaan/.local/state/syncthing";#.config/syncthing";
+    configDir = "/home/ayushmaan/.local/state/syncthing"; #.config/syncthing";
   };
 
   # --- Restic ---
@@ -27,7 +30,6 @@
     sopsFile = ../../../secrets/thegram/backups.yaml;
   };
 
-
   users.users.ayushmaan.packages = with pkgs; [
     restic
     python3Full
@@ -37,7 +39,7 @@
   users.users.restic = {
     isNormalUser = true;
   };
-  
+
   security.wrappers.restic = {
     source = "${pkgs.restic.out}/bin/restic";
     owner = "restic";
@@ -50,19 +52,19 @@
   environment.etc = {
     "restic/repo" = {
       text = ''
-      rclone:EncryptedDrive:NixOS/restic-backup
+        rclone:EncryptedDrive:NixOS/restic-backup
       '';
       user = "root";
       group = "root";
       mode = "0644";
-    }; 
+    };
     "restic/include_files" = {
       text = ''
-      /home/ayushmaan/.dotfiles/
-      /home/ayushmaan/.config/
-      /home/ayushmaan/Zotero/
-      /home/ayushmaan/Documents/
-      /home/ayushmaan/Pictures/
+        /home/ayushmaan/.dotfiles/
+        /home/ayushmaan/.config/
+        /home/ayushmaan/Zotero/
+        /home/ayushmaan/Documents/
+        /home/ayushmaan/Pictures/
       '';
       user = "root";
       group = "root";
@@ -78,22 +80,22 @@
 
     "scripts/backup.sh" = {
       text = ''
-      #!/bin/sh
-      export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
+        #!/bin/sh
+        export PATH=$PATH:/run/current-system/sw/bin:/etc/profiles/per-user/ayushmaan/bin
 
-      export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
-      export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
-      export RESTIC_REPOSITORY_FILE=/etc/restic/repo
-      
-      echo; echo "Backing up files"
-      nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
-      exit_code_backup=$?
+        export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
+        export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
+        export RESTIC_REPOSITORY_FILE=/etc/restic/repo
 
-      echo; echo "Cleaning up backups"
-      nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
-      exit_code_prune=$?
-      
-      python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
+        echo; echo "Backing up files"
+        nice -n 19 restic backup --verbose --skip-if-unchanged --files-from=/etc/restic/include_files --exclude-file=/etc/restic/exclude_files
+        exit_code_backup=$?
+
+        echo; echo "Cleaning up backups"
+        nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
+        exit_code_prune=$?
+
+        python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
@@ -101,15 +103,15 @@
     };
     "scripts/restic.sh" = {
       text = ''
-      #!/bin/sh
+        #!/bin/sh
 
-      export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
-      export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
-      export RESTIC_REPOSITORY_FILE=/etc/restic/repo
-      
-      restic snapshots
-      restic check --read-data-subset=5%
-      python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
+        export RCLONE_CONFIG_PASS=$(/run/current-system/sw/bin/cat ${config.sops.secrets.configuration.path})
+        export RESTIC_PASSWORD=$(/run/current-system/sw/bin/cat ${config.sops.secrets.encryption.path})
+        export RESTIC_REPOSITORY_FILE=/etc/restic/repo
+
+        restic snapshots
+        restic check --read-data-subset=5%
+        python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
@@ -118,33 +120,31 @@
 
     "scripts/restic-notify.py" = {
       text = ''
-      import sys
-      import requests
+        import sys
+        import requests
 
-      date, backup_err, check_err = sys.argv[-3:]
-      if backup_err == "0" and check_err == "0":
-        message = f"Successful Backup on {date}"
-      elif backup_err == "0":
-        message = f"Failed Prune on {date}:\nPrune Error: {check_err}"
-      elif check_err == "0":
-        message = f"Failed Backup on {date}:\nBackup Error: {backup_err}"
-      else:
-        message = f"Failed Backup and Prune on {date}:\n Backup Error: {backup_err}\n Prune Error: {check_err}" 
+        date, backup_err, check_err = sys.argv[-3:]
+        if backup_err == "0" and check_err == "0":
+          message = f"Successful Backup on {date}"
+        elif backup_err == "0":
+          message = f"Failed Prune on {date}:\nPrune Error: {check_err}"
+        elif check_err == "0":
+          message = f"Failed Backup on {date}:\nBackup Error: {backup_err}"
+        else:
+          message = f"Failed Backup and Prune on {date}:\n Backup Error: {backup_err}\n Prune Error: {check_err}"
 
-      priority = '1' if backup_err == "0" and check_err == "0" else '3'
+        priority = '1' if backup_err == "0" and check_err == "0" else '3'
 
-      requests.post("https://ntfy.tail590ac.ts.net/thegram",
-        data=message,
-        headers={
-        'Title': 'Restic Backup: thegram',
-        'Priority': priority,
-      })
+        requests.post("https://ntfy.tail590ac.ts.net/thegram",
+          data=message,
+          headers={
+          'Title': 'Restic Backup: thegram',
+          'Priority': priority,
+        })
       '';
       user = "root";
       group = "root";
       mode = "0755";
     };
-
-
   };
 }

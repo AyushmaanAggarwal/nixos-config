@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     earlyoom.enable = lib.mkOption {
       type = lib.types.bool;
@@ -14,7 +19,7 @@
       freeMemKillThreshold = 10; # <15% free
       freeSwapThreshold = 90;
       freeSwapKillThreshold = 80;
-      extraArgs = [ 
+      extraArgs = [
         "--prefer"
         "(^|/)(thunderbird|firefox|slack|vscode)$"
         "--avoid"

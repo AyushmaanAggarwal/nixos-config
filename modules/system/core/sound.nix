@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Bluetooth
   services.blueman.enable = true;
   hardware.bluetooth = {
@@ -8,12 +11,12 @@
   };
 
   # Pipewire
-  services.pulseaudio.enable = false; 
-  security.rtkit.enable = true; 
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
-    enable = true; 
+    enable = true;
     pulse.enable = true;
-    alsa.enable = true; 
-    alsa.support32Bit = true; 
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 }

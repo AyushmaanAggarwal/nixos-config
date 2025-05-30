@@ -1,8 +1,14 @@
-{ inputs, outputs, config, lib, pkgs, modulesPath, ... }:
-let
+{
+  inputs,
+  outputs,
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: let
   hostname = "ntfy";
-in
-{ 
+in {
   imports = [
     ./proxmox.nix
     ../../modules/server/default.nix

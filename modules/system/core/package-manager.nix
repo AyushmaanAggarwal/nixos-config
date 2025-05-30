@@ -1,14 +1,17 @@
-{ inputs, config, pkgs, ... }:
 {
-
-  services.flatpak.enable = true; 
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  services.flatpak.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Enable Flakes
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
 
     substituters = [
       "https://hyprland.cachix.org"
@@ -22,7 +25,7 @@
     max-jobs = 4;
     cores = 3;
   };
- 
+
   # Automatically update system
   system.autoUpgrade = {
     enable = true;
@@ -36,7 +39,7 @@
   systemd.services.nixos-upgrade = {
     after = ["chronyd.service"];
   };
- 
+
   # Label Generations
   system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${inputs.self.shortRev}";
 
@@ -48,7 +51,6 @@
   };
   nix.optimise = {
     automatic = true;
-    dates = [ "weekly" ];
+    dates = ["weekly"];
   };
- 
 }

@@ -1,8 +1,13 @@
-{ inputs, config, pkgs, home-manager, ... }:
 {
-  imports = [ 
+  inputs,
+  config,
+  pkgs,
+  home-manager,
+  ...
+}: {
+  imports = [
     inputs.home-manager.nixosModules.home-manager
- ];
+  ];
 
   # Home Manager Package Configuration
   home-manager = {
@@ -10,7 +15,7 @@
     useUserPackages = true;
   };
 
-  home-manager.users.ayushmaan = { pkgs, ... }: {
+  home-manager.users.ayushmaan = {pkgs, ...}: {
     imports = [
       ./zsh.nix
       ./theme.nix

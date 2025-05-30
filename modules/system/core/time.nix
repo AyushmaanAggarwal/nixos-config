@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
@@ -7,7 +11,7 @@
   services.chrony = {
     enable = true;
     enableNTS = true;
-    servers = [ 
+    servers = [
       "time.cloudflare.com"
       "paris.time.system76.com"
       "ohio.time.system76.com"
@@ -20,13 +24,13 @@
     '';
     extraFlags = ["-s"];
   };
-   environment.etc = {
+  environment.etc = {
     "nixos/services/networking/forwarding-rules.txt" = {
       text = ''
         local $DHCP
         time.cloudflare.com $BOOTSTRAP
       '';
       mode = "0644";
-    }; 
+    };
   };
 }

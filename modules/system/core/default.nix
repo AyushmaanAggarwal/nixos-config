@@ -1,6 +1,11 @@
-{ inputs, config, lib, pkgs, ... }:
 {
-  imports = [ 
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
     ./boot.nix
     ./network.nix
     ./time.nix
