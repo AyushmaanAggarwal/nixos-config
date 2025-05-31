@@ -12,8 +12,6 @@
   # --------------------
   # Various services
   # --------------------
-  services.thermald.enable = true;
-  powerManagement.enable = true;
   services.udisks2.enable = true; # for calibre kindle connection
 
   services.printing = {

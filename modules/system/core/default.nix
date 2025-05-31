@@ -12,5 +12,6 @@
     ./package-manager.nix
     ./security.nix
     ./sound.nix
+    ./power-management.nix
   ];
 }
