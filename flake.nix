@@ -81,6 +81,12 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./hosts/proxmox/ntfy.nix];
       };
+
+      mealie = nixpkgs-stable.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs outputs;};
+        modules = [./hosts/proxmox/mealie.nix];
+      };
     };
   };
 }

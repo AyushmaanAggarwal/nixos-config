@@ -26,5 +26,6 @@
     ./services/tailscale.nix
     ./services/changedetection.nix
     ./services/ntfy-sh.nix
+    ./services/mealie.nix
   ];
 }
