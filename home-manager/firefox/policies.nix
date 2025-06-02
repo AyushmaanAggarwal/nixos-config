@@ -92,7 +92,7 @@ in {
       (extension "ublock-origin" "uBlock0@raymondhill.net")
       (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}") # Bitwarden
       (extension "darkreader" "addon@darkreader.org") # Dark Reader
-      (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}") # Sideberry
+      # (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}") # Sideberry
     ];
 
     /*
