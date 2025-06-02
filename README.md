@@ -15,6 +15,7 @@ The current services running in production are
 - Immich
 - Adguard
 - Nextcloud
+- ntfy.sh - Notification Server
 - changedetection.io - Website Change Detection
 
 Planned Additions
