@@ -65,6 +65,10 @@ changedetection:
 	system="changedetection"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
 
+mealie:
+	system="mealie"; \
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
 ntfy:
 	system="ntfy"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \

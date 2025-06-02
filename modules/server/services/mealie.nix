@@ -13,10 +13,8 @@
       listenAddress = "127.0.0.1";
       port = 9000;
       database.createLocally = true;
-      credentialsFile = "/run/secrets/mealie-credentials.env";
-      settings = {
-
-      };
+      # credentialsFile = "/run/secrets/mealie-credentials.env";
+      # settings = { };
     };
 
     # --------------------
