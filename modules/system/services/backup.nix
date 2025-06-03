@@ -104,7 +104,7 @@
         nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
         exit_code_prune=$?
 
-        python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
+        python3 /etc/scripts/restic-notify.py "thegram to Google Drive" $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
@@ -127,7 +127,7 @@
         nice -n 19 restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 3 --keep-yearly 2
         exit_code_prune=$?
 
-        python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
+        python3 /etc/scripts/restic-notify.py "thegram to server" $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
@@ -144,7 +144,6 @@
 
         restic snapshots
         restic check --read-data-subset=5%
-        python3 /etc/scripts/restic-notify.py $(date +'%D %T') $exit_code_backup $exit_code_prune
       '';
       user = "root";
       group = "root";
@@ -156,7 +155,7 @@
         import sys
         import requests
 
-        date, backup_err, check_err = sys.argv[-3:]
+        title, date, backup_err, check_err = sys.argv[-3:]
         if backup_err == "0" and check_err == "0":
           message = f"Successful Backup on {date}"
         elif backup_err == "0":
@@ -171,7 +170,7 @@
         requests.post("https://ntfy.tail590ac.ts.net/thegram",
           data=message,
           headers={
-          'Title': 'Restic Backup: thegram',
+          'Title': f'Restic Backup: {title}',
           'Priority': priority,
         })
       '';
