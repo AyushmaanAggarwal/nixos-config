@@ -100,6 +100,10 @@ in {
     */
     # Check about:config for options.
     Preferences = {
+      # Disable DOH as system has preconfigured dns over https
+      "network.trr.mode" = 5;
+
+      #
       "browser.tabs.groups.enabled" = true;
       "browser.toolbarbuttons.introduced.sidebar-button" = true;
 
