@@ -37,13 +37,7 @@ update-difference:
 # --------------------
 # Primary Container Commands
 # --------------------
-all-server:
-	@systems=("immich" "adguard" "nextcloud" "uptime" "changedetection"); \
-	@for system in "$${systems[@]}"; do \
-		@echo "Updating System: $${system}"; \
-		nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
-
-	done; \
+all-server: immich adguard nextcloud uptime changedetection mealie backup ntfy
 
 immich:
 	system="immich"; \
@@ -68,6 +62,11 @@ changedetection:
 mealie:
 	system="mealie"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+backup:
+	system="backup"; \
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
 
 ntfy:
 	system="ntfy"; \
