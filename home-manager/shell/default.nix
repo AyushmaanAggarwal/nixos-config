@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
   imports = [
-    ./zsh.ni
+    ./zsh.nix
     ./numbat.nix
     ./direnv.nix
   ];
