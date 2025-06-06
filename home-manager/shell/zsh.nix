@@ -46,10 +46,6 @@
     '';
 
     shellAliases = {
-      nrb = "nix-rebuild";
-      nixupgrade = "nix-rebuild switch --upgrade";
-      nrbb = "nix-rebuild boot --upgrade";
-      up = "/etc/scripts/nix-update.sh";
       backup = "/etc/scripts/backup.sh";
       backup_check = "/etc/scripts/restic.sh";
     };
