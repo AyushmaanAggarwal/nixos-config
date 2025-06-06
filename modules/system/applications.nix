@@ -39,7 +39,6 @@
       # GUI Applications
       mpv
       slack #unfree
-      kitty
       spotify #unfree
       inkscape
       darktable
