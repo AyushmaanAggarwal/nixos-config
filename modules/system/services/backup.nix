@@ -133,7 +133,7 @@
       group = "root";
       mode = "0755";
     };
- 
+
     "scripts/restic.sh" = {
       text = ''
         #!/bin/sh

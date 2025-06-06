@@ -1,16 +1,30 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.pathsToLink = ["/share/zsh"];
   programs.zsh = {
     enable = true;
     autocd = true;
     enableCompletion = true;
-    autosuggestion.enable = true;
+    enableVteIntegration = true;
     syntaxHighlighting.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = [
+        "history"
+        "completion"
+      ];
+    };
     history = {
       size = 10000;
+      append = true;
+      extended = true;
     };
 
     dirHashes = {
-      homeconfig = "/etc/nixos/home-manager/";
+      home = "$HOME/.dotfiles/system/home-manager/";
       scripts = "$HOME/.dotfiles/scripts/";
       dotconfig = "$HOME/.dotfiles/config/";
       dotnix = "$HOME/.dotfiles/system/";
@@ -23,27 +37,33 @@
       plugins = ["git"];
       theme = "strug";
     };
-    initContent = ''
-      bindkey '^X^I' autosuggest-accept
 
-      source ~/.dotfiles/config/alias_config
-      (cat ~/.cache/wal/sequences &)
-
-      last_repository=
-      check_directory_for_new_repository() {
-      	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
-      	if [ "$current_repository" ] && \
-      	   [ "$current_repository" != "$last_repository" ]; then
-      		onefetch
-      	fi
-      	last_repository=$current_repository
-      }
-      cd() {
-      	builtin cd "$@"
-      	check_directory_for_new_repository
-      }
-      fastfetch; echo
-    '';
+    initContent = let
+      mkBefore = lib.mkOrder 550 ''
+           	  bindkey '^X^I' autosuggest-accept
+        source ~/.dotfiles/config/alias_config
+      '';
+      mkDefault = lib.mkOrder 1000 ''
+        (cat ~/.cache/wal/sequences &)
+        fastfetch; echo
+      '';
+      mkAfter = lib.mkOrder 1500 ''
+        last_repository=
+        check_directory_for_new_repository() {
+        current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+            if [ "$current_repository" ] && \
+               [ "$current_repository" != "$last_repository" ]; then
+                onefetch
+            fi
+            last_repository=$current_repository
+         }
+         cd() {
+            builtin cd "$@"
+            check_directory_for_new_repository
+         }
+      '';
+    in
+      lib.mkMerge [mkBefore mkDefault mkAfter];
 
     shellAliases = {
       backup = "/etc/scripts/backup.sh";

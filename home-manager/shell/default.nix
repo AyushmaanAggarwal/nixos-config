@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{pkgs, lib, ...}: {
   imports = [
     ./zsh.nix
     ./numbat.nix

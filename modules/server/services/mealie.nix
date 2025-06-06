@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   options = {
     mealie.enable = lib.mkOption {
       type = lib.types.bool;
