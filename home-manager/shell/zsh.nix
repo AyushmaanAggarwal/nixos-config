@@ -39,7 +39,7 @@
 
     initContent = let
       mkBefore = lib.mkOrder 550 ''
-           	  bindkey '^X^I' autosuggest-accept
+        bindkey '^X^I' autosuggest-accept
         source ~/.dotfiles/config/alias_config
       '';
       mkDefault = lib.mkOrder 1000 ''
@@ -47,19 +47,10 @@
         fastfetch; echo
       '';
       mkAfter = lib.mkOrder 1500 ''
-        last_repository=
-        check_directory_for_new_repository() {
-        current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
-            if [ "$current_repository" ] && \
-               [ "$current_repository" != "$last_repository" ]; then
-                onefetch
-            fi
-            last_repository=$current_repository
-         }
-         cd() {
-            builtin cd "$@"
-            check_directory_for_new_repository
-         }
+        cd() {
+          builtin cd "$@"
+          onefetch
+        }
       '';
     in
       lib.mkMerge [mkBefore mkDefault mkAfter];
