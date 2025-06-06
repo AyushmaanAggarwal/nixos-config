@@ -17,9 +17,8 @@
 
   home-manager.users.ayushmaan = {pkgs, ...}: {
     imports = [
-      ./zsh.nix
+      ./shell/default.nix
       ./theme.nix
-      ./numbat.nix
       ./firefox/default.nix
     ];
 
