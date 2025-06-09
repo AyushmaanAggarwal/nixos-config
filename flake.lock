@@ -7,17 +7,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1748631326,
-        "narHash": "sha256-GLKFGQ9DXfCyglrtzgAIClVM+AgvmvOG9HgHlc3m5Hs=",
-        "owner": "AyushmaanAggarwal",
+        "lastModified": 1749499854,
+        "narHash": "sha256-V1BgwiX8NjbRreU6LC2EzmuqFSQAHhoSeNlYJyZ40NE=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bcea8b77b6deaaf4c1420ae6079a4a5c1f5d2257",
+        "rev": "1df816c407d3a5090c8496c9b00170af7891f021",
         "type": "github"
       },
       "original": {
-        "owner": "AyushmaanAggarwal",
+        "owner": "nix-community",
+        "ref": "master",
         "repo": "home-manager",
-        "rev": "bcea8b77b6deaaf4c1420ae6079a4a5c1f5d2257",
         "type": "github"
       }
     },
