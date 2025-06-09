@@ -22,11 +22,19 @@
   programs = {
     zsh.enable = true;
     adb.enable = true;
-    steam.enable = true;
-    #firefox.enable = true;
     thunderbird = {
       enable = true;
       package = pkgs.thunderbird-latest;
+    };
+
+    # Gaming
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true; # For gamescope
+    };
+    gamescope = { # Steam Virtualized Compositor
+      enable = true;
+      capSysNice = true;
     };
   };
 
@@ -38,6 +46,7 @@
     packages = with pkgs; [
       # GUI Applications
       mpv
+      lutris
       slack #unfree
       spotify #unfree
       inkscape
