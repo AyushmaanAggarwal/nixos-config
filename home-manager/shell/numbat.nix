@@ -10,11 +10,10 @@
 
       exchange-rates.fetching-policy = "on-startup";
     };
-
-    initFile = ''
-      unit kohm: ElectricResistance = kV/A
-      unit Mohm: ElectricResistance = MV/A
-      unit Gohm: ElectricResistance = GV/A
-    '';
   };
+  xdg.configFile."numbat/init.nbt".text = ''
+    unit kohm: ElectricResistance = kV/A
+    unit Mohm: ElectricResistance = MV/A
+    unit Gohm: ElectricResistance = GV/A
+  '';
 }
