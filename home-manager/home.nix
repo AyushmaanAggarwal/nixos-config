@@ -21,6 +21,7 @@
       ./theme.nix
       ./kitty.nix
       ./shell/default.nix
+      ./hyprland/default.nix
       ./firefox/default.nix
     ];
 

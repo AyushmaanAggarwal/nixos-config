@@ -1,0 +1,165 @@
+//  __  __           _       _            
+//  \/  | ___   __| |_   _| | ___  ___  
+// |\/| |/ _ \ / _` | | | | |/ _ \/ __| 
+// |  | | (_) | (_| | |_| | |  __/\__ \ 
+// |_ |_|\___/ \__,_|\__,_|_|\___||___/ 
+//                                        
+//  
+// by Stephan Raabe (2023) 
+// modified by Ayushmaan Aggarwal (2023)
+// ----------------------------------------------------- 
+//
+{
+    // Workspaces
+    "hyprland/workspaces" : {
+        "disable-scroll": true,
+        "on-click": "true",
+        "all-outputs": true,
+        "format": "{name}",
+        "format-icons": {
+            "1": " ",
+            "2": " ",
+            "3": " ",
+            "4": " ",
+            "5": " ",
+            "6": " ",
+            "7": " ",
+            "8": " ",
+            "9": " ",
+            "10": " ",
+	    "urgent": "",
+	    "active": "",
+    	    "default": ""
+        },
+    },
+
+    // Bemenu Application Launcher
+    //"custom/appmenu": {
+    //    "format": "  ",
+    //    "on-click": "/usr/bin/bemenu-run",
+    //    "tooltip": false
+    //},
+    //"custom/xournalpp": {
+    //    "format": "  ",
+    //    "on-click": "/usr/bin/xournalpp",
+    //    "tooltip": false
+    //},
+    //"custom/pdfviewer": {
+    //    "format": "  ",
+    //    "on-click": "/var/lib/flatpak/exports/bin/org.kde.okular",
+    //    "tooltip": false
+    //},
+    //"custom/browser": {
+    //    "format": "  ",
+    //    "on-click": "/usr/bin/librewolf",
+    //    "tooltip": false
+    //},
+    "systemd-failed-units": {
+	"hide-on-ok": false, 
+	"format": "✗ {nr_failed}",
+	"format-ok": "✓",
+	"system": true, // Monitor failed systemwide units.
+	"user": true, // Ignore failed user units.
+        "on-click": "kitty systemctl list-units --failed",
+    },
+
+    // System tray
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+
+    // Clock
+    "clock": {
+        "interval": 1,
+        "format": "{:%Y-%m-%d %T}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%T}"
+    },
+
+    // CPU
+    "cpu": {
+        "format": "  {usage}%",
+        "on-click": "kitty -e htop"
+    },
+
+    // Memory
+    "memory": {
+        "format": "  {}%",
+        "on-click": "kitty -e htop"
+    },
+
+    // CPU Temperature
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "hwmon-path": "/sys/class/thermal/thermal_zone7/temp",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+
+    // Backlight
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}  {percent}%",
+        "format-icons": [""]
+    },
+
+    // Battery
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 10
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "   {capacity}%",
+        "format-alt": "{icon}  {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    // Network
+    "network": {
+        "format-wifi": "   {essid}",
+        "format-ethernet": " {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    // Pulseaudio
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}% {format_source}",
+        "format-bluetooth": " {volume}% {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    // Bluetooth
+    "bluetooth": {
+        "format-disabled": "",
+        "format-off": "",
+        "interval": 30,
+        "on-click": "blueman-manager"
+    },
+
+}
+
