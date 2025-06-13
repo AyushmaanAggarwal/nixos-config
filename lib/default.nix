@@ -22,9 +22,7 @@ in
           username
           ;
       };
-      modules = 
-        [] 
-        ++ lib.optional (builtins.pathExists (./.. + "/hosts/${hostname}/configuration.nix")) ../hosts/${hostname}/configuration.nix;
+      modules = [../hosts/${hostname}/configuration.nix];
     };
  
   mkServerLXC = 
