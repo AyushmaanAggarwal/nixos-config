@@ -4,9 +4,6 @@
   pkgs,
   lib,
   home-manager,
-  desktop,
-  hostname,
-  system,
   username,
   ...
 }: {

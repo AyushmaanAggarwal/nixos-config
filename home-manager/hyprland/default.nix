@@ -4,8 +4,6 @@
   lib,
   pkgs,
   desktop,
-  hostname,
-  system,
   username,
   ...
 }: 
