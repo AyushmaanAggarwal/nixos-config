@@ -24,7 +24,7 @@ in
       };
       modules = [
         ../hosts/${hostname}/configuration.nix
-        ../home-manager/home.nix
+        ../home-manager
       ];
     };
  
