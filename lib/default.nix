@@ -1,4 +1,8 @@
-{ inputs, outputs, lib, ... }:
+{ inputs, outputs, ... }:
+let
+  lib = inputs.nixpkgs-stable.lib;
+  lib-stable = inputs.nixpkgs-stable.lib;
+in
 {
   mkDesktop =
     {
@@ -7,7 +11,7 @@
       desktop,
       system ? "x86_64-linux",
     }:
-    inputs.nixpkgs-unstable.lib.nixosSystem {
+    lib.nixosSystem {
       specialArgs = {
         inherit
           inputs
@@ -34,7 +38,7 @@
       isTailscaleExitNode = hostname == "adguard";
       sshWithoutYubikey = hostname == "backup";
     in
-    inputs.nixpkgs-stable.lib.nixosSystem {
+    lib-stable.nixosSystem {
       specialArgs = {
         inherit
           inputs
@@ -49,7 +53,7 @@
       };
       modules = [../hosts/proxmox/proxmox.nix];
     };
-  forAllSystems = inputs.nixpkgs.lib.genAttrs [
+  forAllSystems = lib.genAttrs [
     "aarch64-linux"
     "x86_64-linux"
     "aarch64-darwin"
