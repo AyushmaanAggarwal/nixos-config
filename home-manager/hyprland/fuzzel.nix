@@ -11,13 +11,14 @@
     programs.fuzzel = {
       enable = true;
       settings = {
-        dpi-aware = "no";
-        width = 10;
-        font = "Hack:weight=bold:size=15";
-        line-height=20;
-        fields="name,generic,comment,categories,filename,keywords";
-        layer="overlay";
-        
+        main = {
+          dpi-aware = "no";
+          width = 10;
+          font = "Hack:weight=bold:size=15";
+          line-height=20;
+          fields="name,generic,comment,categories,filename,keywords";
+          layer="overlay";
+        };
         border = {
          radius=1;
          width=0;
