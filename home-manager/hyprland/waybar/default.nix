@@ -30,7 +30,7 @@
     
         height = 16;
         spacing = 10;
-        fixed-center = false;
+        fixed-center = "false";
     
         include = ["~/.config/waybar/modules.json"];
     
