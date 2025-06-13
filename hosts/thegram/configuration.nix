@@ -8,7 +8,8 @@
   desktop,
   hostname,
   system,
-  username
+  username,
+  ...
 }: {
   imports = [
     ../../modules/system/default.nix
