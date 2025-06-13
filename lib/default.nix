@@ -16,13 +16,16 @@ in
         inherit
           inputs
           outputs
-          desktop
           hostname
-          system
           username
+          desktop
+          system
           ;
       };
-      modules = [../hosts/${hostname}/configuration.nix];
+      modules = [
+        ../hosts/${hostname}/configuration.nix
+        ../home-manager/home.nix
+      ];
     };
  
   mkServerLXC = 
