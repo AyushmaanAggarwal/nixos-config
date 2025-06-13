@@ -6,7 +6,7 @@
   ...
 }: {
   options = {
-    ntfy-sh.enable = lib.mkOption {
+    ntfy.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Enable Ntfy-sh";
       default = false;

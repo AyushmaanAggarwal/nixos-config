@@ -19,73 +19,51 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    system = "x86_64-linux";
+    helper = import ./lib { inherit inputs outputs config; };
   in {
-    formatter.${system} = nixpkgs-unstable.legacyPackages.${system}.alejandra;
+    formatter = helper.forAllSystems (system: nixpkgs-unstable.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
       # Primary System
-      thegram = nixpkgs-unstable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/thegram/configuration.nix];
+      thegram = helper.mkDesktop {
+        hostname = "thegram";
+        desktop = "hyprland";
       };
 
       # Server Containers
-      backup = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/backup.nix];
+      backup = helper.mkServerLXC {
+        hostname = "backup";
       };
 
-      etebase = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/etebase.nix];
+      etebase = helper.mkServerLXC {
+        hostname = "etebase";
       };
 
-      adguard = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/adguard.nix];
+      immich = helper.mkServerLXC {
+        hostname = "immich";
       };
 
-      immich = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/immich.nix];
+      nextcloud = helper.mkServerLXC {
+        hostname = "nextcloud";
       };
 
-      nextcloud = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/nextcloud.nix];
+      uptime = helper.mkServerLXC {
+        hostname = "uptime";
       };
 
-      uptime = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/uptime.nix];
+      changedetection = helper.mkServerLXC {
+        hostname = "changedetection";
       };
 
-      changedetection = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/changedetection.nix];
+      ntfy = helper.mkServerLXC {
+        hostname = "ntfy";
       };
 
-      ntfy = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/ntfy.nix];
+      mealie = helper.mkServerLXC {
+        hostname = "mealie";
       };
 
-      mealie = nixpkgs-stable.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/proxmox/mealie.nix];
-      };
     };
   };
 }
