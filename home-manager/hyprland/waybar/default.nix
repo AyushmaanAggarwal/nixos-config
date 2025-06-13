@@ -20,7 +20,7 @@
         enable = true;
         target = config.waybar.systemd-target;
       };
-      settings = {
+      settings = [{
         position = "top";
         layer = "bottom";
         margin-top = 1;
@@ -57,7 +57,7 @@
           "clock" 
         ];
     
-      };
+      }];
     };
 
     xdg.configFile."waybar/modules.json".source = ./modules.json;
