@@ -1,6 +1,6 @@
 { inputs, outputs, ... }:
 let
-  lib = inputs.nixpkgs-stable.lib;
+  lib = inputs.nixpkgs-unstable.lib;
   lib-stable = inputs.nixpkgs-stable.lib;
 in
 {
