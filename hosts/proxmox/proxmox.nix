@@ -19,18 +19,18 @@
     ../../modules/server/default.nix
   ];
   config = lib.mkMerge [
-    lib.mkIf (options?"${hostname}".enable ) {
-      options.${hostname}.enable = true;
-    }
-    {
-      networking.hostName = hostname;
-      caddy.hostname = hostname;
-      tailscale.exit-node.enable = isTailscaleExitNode;
-      users.users.${username}.openssh.authorizedKeys.keys = lib.mkIf sshWithoutYubikey [
+    (lib.mkIf ("${hostname}" == "ntfy") { ntfy.enable = true; })
+    (lib.mkIf sshWithoutYubikey {
+      users.users.${username}.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa53AGMV87VUquUKyQ2NlqmZiN7OVV438VLUe6hYJU2"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOmhA7UsDVaSC7A+CLcKnKkYuSjgObaauAFJWdjHmK1X ayushmaan@thegram"
       ];
-    
+    })
+    ({
+      networking.hostName = hostname;
+      caddy.hostname = hostname;
+      tailscale.exit-node.enable = isTailscaleExitNode;
+   
       # Disable bad systemd units for lxc containers
       systemd.suppressedSystemUnits = [
         "dev-mqueue.mount"
@@ -40,6 +40,6 @@
     
       time.timeZone = "America/New_York";
       system.stateVersion = "25.05";
-    }
+    })
   ];
 }
