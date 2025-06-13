@@ -24,7 +24,7 @@ in
       };
       modules = 
         [] 
-        ++ lib.optional (builtins.pathExists (./.. + "/hosts/${hostname}/configuration.nix")) ./${hostname}/configuration.nix;
+        ++ lib.optional (builtins.pathExists (./.. + "/hosts/${hostname}/configuration.nix")) ../hosts/${hostname}/configuration.nix;
     };
  
   mkServerLXC = 
