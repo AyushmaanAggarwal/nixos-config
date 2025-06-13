@@ -16,16 +16,16 @@
 
     # --- All Applications ---
     ./services/adguard.nix
-    ./services/calibre-server.nix
-    ./services/etesync.nix
+    ./services/calibre.nix
+    ./services/etebase.nix
     ./services/immich.nix
     ./services/nextcloud.nix
     ./services/immich.nix
     #./services/photoprism.nix # Untested
-    ./services/uptime-kuma.nix
+    ./services/uptime.nix
     ./services/tailscale.nix
     ./services/changedetection.nix
-    ./services/ntfy-sh.nix
+    ./services/ntfy.nix
     ./services/mealie.nix
   ];
 }
