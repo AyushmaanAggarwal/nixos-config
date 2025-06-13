@@ -22,14 +22,14 @@
       };
       settings = {
         position = "top";
-        layer = "top";
+        layer = "bottom";
         margin-top = 1;
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;    
-    
         height = 16;
         spacing = 10;
+        fixed-center = "false";
     
         include = ["~/.config/waybar/modules.json"];
     
