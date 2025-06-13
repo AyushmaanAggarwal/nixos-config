@@ -19,7 +19,7 @@
     ../../modules/server/default.nix
   ];
   config = lib.mkMerge [
-    lib.mkIf options?${hostname} {
+    lib.mkIf (builtins.hasAttr "${hostname}" options) {
       ${hostname}.enable = true;
     }
     {
