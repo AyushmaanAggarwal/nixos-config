@@ -3,6 +3,10 @@
   config,
   lib,
   pkgs,
+  desktop,
+  hostname,
+  system,
+  username,
   ...
 }: {
   imports = [
@@ -11,6 +15,8 @@
     ./gnome.nix
     ./cosmic.nix
   ];
+
+  ${desktop}.enable = true;
 
   # Assume wayland desktop enviroment
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

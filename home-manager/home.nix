@@ -4,6 +4,10 @@
   pkgs,
   lib,
   home-manager,
+  desktop,
+  hostname,
+  system,
+  username,
   ...
 }: {
   imports = [
@@ -16,7 +20,7 @@
     useUserPackages = true;
   };
 
-  home-manager.users.ayushmaan = {pkgs, ...}: {
+  home-manager.users.${username} = {pkgs, ...}: {
     imports = [
       ./theme.nix
       ./kitty.nix

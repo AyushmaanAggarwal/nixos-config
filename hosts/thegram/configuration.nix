@@ -5,7 +5,10 @@
   lib,
   pkgs,
   home-manager,
-  ...
+  desktop,
+  hostname,
+  system,
+  username
 }: {
   imports = [
     ../../modules/system/default.nix
@@ -13,9 +16,6 @@
     ../../home-manager/home.nix
     ./hardware-configuration.nix
   ];
-
-  # Desktop Enviroment
-  hyprland.enable = true;
 
   # Developer Enviroment
   developer-env = {

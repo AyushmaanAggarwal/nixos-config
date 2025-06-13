@@ -16,7 +16,6 @@
 
   config = lib.mkIf (config.hyprland.enable) {
     polkit-auth.enable = true;
-    fuzzel.enable = true; # Enables fuzzel in hm
 
     services.hypridle.enable = true;
     programs.hyprland = {
