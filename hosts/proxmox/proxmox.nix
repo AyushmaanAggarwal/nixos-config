@@ -13,13 +13,17 @@
   sshWithoutYubikey,
   ...
 }: 
+let 
+  hostname-option = builtins.elem "${hostname}" 
+    [ "adguard" "changedetection" "etebase" "immich" "mealie" "nextcloud" "ntfy" "uptime"];
+in
 {
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server/default.nix
   ];
   config = lib.mkMerge [
-    (lib.mkIf ("${hostname}" == "ntfy") { ntfy.enable = true; })
+    (lib.mkIf hostname-option { ${hostname}.enable = true; })
     (lib.mkIf sshWithoutYubikey {
       users.users.${username}.openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa53AGMV87VUquUKyQ2NlqmZiN7OVV438VLUe6hYJU2"
