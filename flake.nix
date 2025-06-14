@@ -11,7 +11,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
 
     nix-github-actions.url = "github:nix-community/nix-github-actions";
-    nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
+    nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
