@@ -32,6 +32,10 @@
       };
 
       # Server Containers
+      adguard = helper.mkServerLXC {
+        hostname = "adguard";
+      };
+
       backup = helper.mkServerLXC {
         hostname = "backup";
       };
