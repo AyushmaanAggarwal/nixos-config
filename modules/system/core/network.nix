@@ -12,7 +12,10 @@
   # General Networking
   networking = {
     hostName = "thegram";
-    nameservers = ["127.0.0.1" "::1"];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
     networkmanager = {
       enable = true;
       dns = "none";
@@ -45,7 +48,10 @@
       cache_neg_min_ttl = 60;
       cache_neg_max_ttl = 600;
 
-      bootstrap_resolvers = ["9.9.9.9:53" "149.112.112.112:53"];
+      bootstrap_resolvers = [
+        "9.9.9.9:53"
+        "149.112.112.112:53"
+      ];
       forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
       sources.public-resolvers = {
         urls = [

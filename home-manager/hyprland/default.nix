@@ -8,12 +8,10 @@
   system,
   username,
   ...
-}: 
-let
-  enable-hyprland = ("${desktop}" == "hyprland");
-in
-{
-  imports = [ 
+}: let
+  enable-hyprland = "${desktop}" == "hyprland";
+in {
+  imports = [
     ./fuzzel.nix
     ./waybar/default.nix
   ];

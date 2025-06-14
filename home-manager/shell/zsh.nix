@@ -53,7 +53,11 @@
         }
       '';
     in
-      lib.mkMerge [mkBefore mkDefault mkAfter];
+      lib.mkMerge [
+        mkBefore
+        mkDefault
+        mkAfter
+      ];
 
     shellAliases = {
       backup = "/etc/scripts/backup.sh";

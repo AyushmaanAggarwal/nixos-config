@@ -32,21 +32,23 @@
       enable = true;
       gamescopeSession.enable = true; # For gamescope
       package = pkgs.steam.override {
-        extraPkgs = pkgs': with pkgs'; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-        ];
+        extraPkgs = pkgs':
+          with pkgs'; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+          ];
       };
     };
-    gamescope = { # Steam Virtualized Compositor
+    gamescope = {
+      # Steam Virtualized Compositor
       enable = true;
       capSysNice = true;
     };
@@ -56,13 +58,17 @@
   users.users.ayushmaan = {
     isNormalUser = true;
     description = "Ayushmaan Aggarwal";
-    extraGroups = ["networkmanager" "wheel" "adbusers"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "adbusers"
+    ];
     packages = with pkgs; [
       # GUI Applications
       mpv
       lutris
-      slack #unfree
-      spotify #unfree
+      slack # unfree
+      spotify # unfree
       inkscape
       darktable
       vscodium
@@ -78,7 +84,7 @@
       # Terminal Applications
       fd
       gdu
-      bws #unfree
+      bws # unfree
       sops
       unzip
       rclone
@@ -99,5 +105,4 @@
     jetbrains-mono
     nerd-fonts.fira-code
   ];
-
 }

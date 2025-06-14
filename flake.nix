@@ -19,7 +19,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    helper = import ./lib { inherit inputs outputs; };
+    helper = import ./lib {inherit inputs outputs;};
   in {
     formatter = helper.forAllSystems (system: nixpkgs-unstable.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};
@@ -67,8 +67,6 @@
       mealie = helper.mkServerLXC {
         hostname = "mealie";
       };
-
     };
-
   };
 }

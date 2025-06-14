@@ -29,27 +29,29 @@
       texliveFull
       lua-language-server
 
-      (python3.withPackages (p:
-        with p; [
-          # Computation Packages
-          numpy
-          scipy
-          sympy
+      (python3.withPackages (
+        p:
+          with p; [
+            # Computation Packages
+            numpy
+            scipy
+            sympy
 
-          # Data Structure Packages
-          astropy
-          pandas
-          uncertainties
+            # Data Structure Packages
+            astropy
+            pandas
+            uncertainties
 
-          # Plotting
-          plotly
-          matplotlib
-          seaborn
+            # Plotting
+            plotly
+            matplotlib
+            seaborn
 
-          # Helper Packages
-          tqdm
-          requests
-        ]))
+            # Helper Packages
+            tqdm
+            requests
+          ]
+      ))
     ];
   };
 }

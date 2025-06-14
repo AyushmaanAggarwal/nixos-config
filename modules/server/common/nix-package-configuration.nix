@@ -16,7 +16,10 @@
 
   # Enable Flakes
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = ["nixadmin"];
     cores = 3;
     max-jobs = 4;
@@ -29,7 +32,11 @@
     dates = "hourly";
     randomizedDelaySec = "10min";
     allowReboot = true;
-    flags = [ "--option" "tarball-ttl" "0" ];
+    flags = [
+      "--option"
+      "tarball-ttl"
+      "0"
+    ];
   };
 
   systemd.services.reboot = {

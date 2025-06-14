@@ -9,8 +9,7 @@
   system,
   username,
   ...
-}: 
-{
+}: {
   imports = [
     ./theme.nix
     ./kitty.nix

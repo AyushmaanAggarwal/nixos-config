@@ -1,16 +1,17 @@
-{ inputs, outputs, ... }:
-let
+{
+  inputs,
+  outputs,
+  ...
+}: let
   lib = inputs.nixpkgs-unstable.lib;
   lib-stable = inputs.nixpkgs-stable.lib;
-in
-{
-  mkDesktop =
-    {
-      hostname,
-      username ? "ayushmaan",
-      desktop,
-      system ? "x86_64-linux",
-    }:
+in {
+  mkDesktop = {
+    hostname,
+    username ? "ayushmaan",
+    desktop,
+    system ? "x86_64-linux",
+  }:
     lib.nixosSystem {
       specialArgs = {
         inherit
@@ -27,18 +28,16 @@ in
         ../home-manager
       ];
     };
- 
-  mkServerLXC = 
-    {
-      hostname,
-      username ? "proxmox",
-      desktop ? null,
-      system ? "x86_64-linux",
-    }:
-    let
-      isTailscaleExitNode = hostname == "adguard";
-      sshWithoutYubikey = hostname == "backup";
-    in
+
+  mkServerLXC = {
+    hostname,
+    username ? "proxmox",
+    desktop ? null,
+    system ? "x86_64-linux",
+  }: let
+    isTailscaleExitNode = hostname == "adguard";
+    sshWithoutYubikey = hostname == "backup";
+  in
     lib-stable.nixosSystem {
       specialArgs = {
         inherit

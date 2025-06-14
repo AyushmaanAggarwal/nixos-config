@@ -11,7 +11,10 @@
 
   # Enable Flakes
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     substituters = [
       "https://hyprland.cachix.org"
@@ -41,7 +44,10 @@
   };
 
   # Label Generations
-  system.nixos.label = (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags)) + config.system.nixos.version + "-SHA:${inputs.self.shortRev}";
+  system.nixos.label =
+    (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags))
+    + config.system.nixos.version
+    + "-SHA:${inputs.self.shortRev}";
 
   # Collect garbage
   nix.gc = {

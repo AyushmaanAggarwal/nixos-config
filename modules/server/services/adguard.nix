@@ -82,10 +82,12 @@
         };
 
         filters =
-          map (url: {
+          map
+          (url: {
             enabled = true;
             url = url;
-          }) [
+          })
+          [
             "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt" # AdGuard DNS filter
             "https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt" # Peter Lowe's Blocklist
             "https://adguardteam.github.io/HostlistsRegistry/assets/filter_4.txt" # Dan Pollock's List

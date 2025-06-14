@@ -11,7 +11,7 @@
     # Default folder for new synced folders
     dataDir = "/home/ayushmaan/Documents";
     # Folder for Syncthing's settings and keys
-    configDir = "/home/ayushmaan/.local/state/syncthing"; #.config/syncthing";
+    configDir = "/home/ayushmaan/.local/state/syncthing"; # .config/syncthing";
   };
 
   # --- Restic ---
@@ -80,8 +80,7 @@
       mode = "0644";
     };
     "restic/exclude_files" = {
-      text = ''
-      '';
+      text = '''';
       user = "root";
       group = "root";
       mode = "0644";

@@ -6,7 +6,10 @@
   ...
 }: {
   # Bootloader.
-  boot.kernelParams = ["quiet" "acpi_backlight=native"];
+  boot.kernelParams = [
+    "quiet"
+    "acpi_backlight=native"
+  ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {

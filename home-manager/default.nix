@@ -9,8 +9,7 @@
   system,
   username,
   ...
-}: 
-{
+}: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -29,8 +28,7 @@
         system
         ;
     };
-    
-    users.${username} = ./home.nix;
 
+    users.${username} = ./home.nix;
   };
 }

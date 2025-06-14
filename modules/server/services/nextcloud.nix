@@ -44,7 +44,13 @@
         trusted_proxies = ["127.0.0.1"];
       };
       extraApps = {
-        inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
+        inherit
+          (config.services.nextcloud.package.packages.apps)
+          news
+          contacts
+          calendar
+          tasks
+          ;
       };
       extraAppsEnable = true;
       autoUpdateApps.enable = true;

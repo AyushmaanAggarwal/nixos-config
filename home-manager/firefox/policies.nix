@@ -82,9 +82,7 @@ in {
         Snippets = false;
       };
 
-    /*
-    ---- EXTENSIONS ----
-    */
+    # ---- EXTENSIONS ----
     # Check about:support for extension/add-on ID strings.
     # Valid strings for installation_mode are "allowed", "blocked",
     # "force_installed" and "normal_installed".
@@ -95,9 +93,7 @@ in {
       # (extension "sidebery" "{3c078156-979c-498b-8990-85f7987dd929}") # Sideberry
     ];
 
-    /*
-    ---- PREFERENCES ----
-    */
+    # ---- PREFERENCES ----
     # Check about:config for options.
     Preferences = {
       # Disable DOH as system has preconfigured dns over https
