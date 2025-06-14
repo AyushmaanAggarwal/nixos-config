@@ -73,7 +73,9 @@
 
     };
 
-    inputs.githubActions = inputs.nix-github-actions.lib.mkGithubMatrix { inherit (self) checks; };
+    githubActions = inputs.nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
+    packages.x86_64-linux.thegram = nixpkgs-unstable.legacyPackages.x86_64-linux.thegram;
+    packages.x86_64-linux.backup = nixpkgs-stable.legacyPackages.x86_64-linux.backup;
     checks.x86_64-linux.thegram = nixpkgs-unstable.legacyPackages.x86_64-linux.thegram;
     checks.x86_64-linux.backup = nixpkgs-stable.legacyPackages.x86_64-linux.thegram;
   };
