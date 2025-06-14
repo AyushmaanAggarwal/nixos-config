@@ -9,9 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
-
-    nix-github-actions.url = "github:nix-community/nix-github-actions";
-    nix-github-actions.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = {
@@ -73,10 +70,5 @@
 
     };
 
-    githubActions = inputs.nix-github-actions.lib.mkGithubMatrix { checks = self.packages; };
-    packages.x86_64-linux.thegram = nixpkgs-unstable.legacyPackages.x86_64-linux.thegram;
-    packages.x86_64-linux.backup = nixpkgs-stable.legacyPackages.x86_64-linux.backup;
-    checks.x86_64-linux.thegram = nixpkgs-unstable.legacyPackages.x86_64-linux.thegram;
-    checks.x86_64-linux.backup = nixpkgs-stable.legacyPackages.x86_64-linux.thegram;
   };
 }
