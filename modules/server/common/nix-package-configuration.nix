@@ -26,7 +26,8 @@
   system.autoUpgrade = {
     enable = true;
     flake = "github:AyushmaanAggarwal/nixos-config#${hostname}";
-    dates = "minutely";
+    dates = "hourly";
+    randomizedDelaySec = "10min";
     allowReboot = true;
     flags = [ "--option" "tarball-ttl" "0" ];
   };
