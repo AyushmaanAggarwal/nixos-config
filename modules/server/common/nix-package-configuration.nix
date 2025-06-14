@@ -17,4 +17,15 @@
     cores = 3;
     max-jobs = 4;
   };
+
+  # Collect garbage
+  nix.gc = {
+    automatic = true;
+    dates = "01:00";
+    options = "--delete-older-than 30d";
+  };
+  nix.optimise = {
+    automatic = true;
+    dates = ["weekly"];
+  };
 }
