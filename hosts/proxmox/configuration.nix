@@ -20,7 +20,8 @@ in
 {
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
-    ../../modules/server/default.nix
+    ../../modules/server
+    ../../modules/shared
   ];
   config = lib.mkMerge [
     (lib.optionalAttrs hostname-option { ${hostname}.enable = true; })

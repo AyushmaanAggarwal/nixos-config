@@ -52,7 +52,7 @@ in
           sshWithoutYubikey
           ;
       };
-      modules = [../hosts/proxmox/proxmox.nix];
+      modules = [../hosts/proxmox/configuration.nix];
     };
   forAllSystems = lib.genAttrs [
     "aarch64-linux"

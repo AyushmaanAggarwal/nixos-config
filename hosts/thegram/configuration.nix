@@ -12,16 +12,13 @@
   ...
 }: {
   imports = [
-    ../../modules/system/default.nix
-    ../../modules/scripts/default.nix
+    ../../modules/system
+    ../../modules/shared
     ./hardware-configuration.nix
   ];
 
   # Developer Enviroment
-  developer-env = {
-    enable = true;
-    user = "ayushmaan";
-  };
+  developer-env.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

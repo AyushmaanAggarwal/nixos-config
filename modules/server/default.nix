@@ -5,11 +5,15 @@
   config,
   lib,
   pkgs,
+  hostname,
+  username,
+  desktop,
+  system,
   ...
 }: {
   imports = [
     # --- System Configuration ---
-    ./common/general-applications.nix
+    ./common/users.nix
     ./common/nix-package-configuration.nix
     ./common/scripts.nix
     ./services/ssh.nix

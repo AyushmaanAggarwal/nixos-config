@@ -3,6 +3,9 @@
   config,
   lib,
   pkgs,
+  hostname,
+  system,
+  username,
   ...
 }: {
   options = {
@@ -11,14 +14,9 @@
       description = "";
       default = false;
     };
-    developer-env.user = lib.mkOption {
-      type = lib.types.str;
-      description = "Install developer user packages";
-      default = "ayushmaan";
-    };
   };
   config = lib.mkIf (config.developer-env.enable) {
-    users.users.${config.developer-env.user}.packages = with pkgs; [
+    users.users.${username}.packages = with pkgs; [
       gnumake # For makefiles
       jupyter
       numbat
