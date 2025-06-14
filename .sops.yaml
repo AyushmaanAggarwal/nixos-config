@@ -19,6 +19,10 @@ creation_rules:
     - age:
       - *admin_ayu
       - *server_nextcloud
+  - path_regex: secrets/grafana/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
   - path_regex: secrets/general/[^/]+\.yaml$
     key_groups:
     - age:

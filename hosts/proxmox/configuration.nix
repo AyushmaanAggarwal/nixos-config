@@ -17,6 +17,7 @@
     "adguard"
     "changedetection"
     "etebase"
+    "grafana"
     "immich"
     "mealie"
     "nextcloud"

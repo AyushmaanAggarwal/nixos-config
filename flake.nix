@@ -44,6 +44,10 @@
         hostname = "etebase";
       };
 
+      grafana = helper.mkServerLXC {
+        hostname = "grafana";
+      };
+
       immich = helper.mkServerLXC {
         hostname = "immich";
       };

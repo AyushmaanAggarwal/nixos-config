@@ -21,15 +21,16 @@
     # --- All Applications ---
     ./services/adguard.nix
     ./services/calibre.nix
-    ./services/etebase.nix
-    ./services/immich.nix
-    ./services/nextcloud.nix
-    ./services/immich.nix
-    #./services/photoprism.nix # Untested
-    ./services/uptime.nix
-    ./services/tailscale.nix
     ./services/changedetection.nix
-    ./services/ntfy.nix
+    ./services/etebase.nix
+    #./services/gitlab.nix
+    ./services/grafana.nix
+    ./services/immich.nix
     ./services/mealie.nix
+    ./services/nextcloud.nix
+    ./services/ntfy.nix
+    #./services/ollama.nix
+    ./services/tailscale.nix
+    ./services/uptime.nix
   ];
 }
