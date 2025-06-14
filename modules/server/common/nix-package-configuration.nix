@@ -27,7 +27,18 @@
     enable = true;
     flake = "github:AyushmaanAggarwal/nixos-config#${hostname}";
     dates = "minutely";
+    allowReboot = true;
     flags = [ "--option" "tarball-ttl" "0" ];
+  };
+
+  systemd.services.reboot = {
+    enable = true;
+    after = ["nixos-upgrade.service"];
+    description = "Restic Backup System";
+    serviceConfig = {
+      User = "root";
+      ExecStart = ''reboot'';
+    };
   };
 
   # Collect garbage
