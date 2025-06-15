@@ -23,6 +23,10 @@ in
         mode = "0400";
         sopsFile = ../../../secrets/grafana/grafana.yaml;
       };
+      influxdb_admin_token = {
+        mode = "0400";
+        sopsFile = ../../../secrets/grafana/grafana.yaml;
+      };
       influxdb_user_password = {
         mode = "0400";
         sopsFile = ../../../secrets/grafana/grafana.yaml;
@@ -82,9 +86,10 @@ in
         initialSetup = {
           username = "admin";
           retention = 0;
-          passwordFile = config.sops.secrets.influxdb_user_password.path;
+          passwordFile = config.sops.secrets.influxdb_admin_password.path;
           organization = "${main-org}";
           bucket = "${main-bucket}";
+          tokenFile = config.sops.secrets.influxdb_admin_token.path;
         };
 
         users.ayushmaan = {
