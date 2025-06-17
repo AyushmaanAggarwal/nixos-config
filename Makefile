@@ -37,7 +37,7 @@ update-difference:
 # --------------------
 # Primary Container Commands
 # --------------------
-all-server: immich adguard nextcloud uptime changedetection mealie backup ntfy
+all-server: backup uptime adguard nextcloud changedetection mealie ntfy grafana immich 
 
 immich:
 	system="immich"; \
@@ -66,6 +66,11 @@ mealie:
 backup:
 	system="backup"; \
 	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
+grafana:
+	system="grafana"; \
+	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+
 
 
 ntfy:
