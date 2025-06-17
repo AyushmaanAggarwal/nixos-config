@@ -130,10 +130,8 @@ in
     caddy = {
       enable = true;
       custom_proxy = ''
-        grafana.tail590ac.ts.net {
           reverse_proxy /grafana/* 127.0.0.1:3000
           reverse_proxy /influxdb/* 127.0.0.1:8006
-        }
       '';
 
     };
