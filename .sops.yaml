@@ -1,10 +1,18 @@
+# To obtain age keys, run:
+# nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 keys:
   - &admin_ayu age1u3asm98exz9ff3qdlm46p5v005usrp530s63hjq85wk8wplf7ygq28vmhy 
-  - &server_nextcloud age1xch7tl6puppr28fmuzuwjskz9z0u0lwe4plwy92u2xuzvq48rstqcde6ea
-  - &server_immich age136hpg6t73c88teqqq8mnplp62gry0rdtqlz5hxpvpx67z6vgnd2qtz7fth
-  - &server_adguard age1le4ju2vk3uqkl5d67sugcnzzgzqe8lad8cyt5hcxj2vxjl088vwsxz9p88
   - &server_uptime age1jruntky7p89sv4lrktzkx9psm7gmhy6a4uxtgd8up8uh9dphcuaspac4gj
+  - &server_changedetection age127x46gvv56lye4hteax8wc0k2nd8r3q7s0pjxgemtsp5e86mrp5q55k56t
+  - &server_immich age136hpg6t73c88teqqq8mnplp62gry0rdtqlz5hxpvpx67z6vgnd2qtz7fth
+  - &server_nextcloud age1xch7tl6puppr28fmuzuwjskz9z0u0lwe4plwy92u2xuzvq48rstqcde6ea
+  - &server_adguard age1le4ju2vk3uqkl5d67sugcnzzgzqe8lad8cyt5hcxj2vxjl088vwsxz9p88
+  - &server_ntfy age1laqsfu0lsnj8684ulrjnpngv793udh6cg9pvdw5kx986asqyqv2s8x3jz7
   - &server_etebase age14ay4j5hkaf3dq27c26uh0jchdfjgaydyfahjsj2qnmndfwjxsvgq6589rt
+  - &server_backup age1psume4tt9vhvplvp57xt6djdfv9qeszlnhag0whzeupqsetjzfeqe2tf6c
+  - &server_mealie age1nf7r070qxmy7uy56qtv6xhw3hs3ylasccpnzjuz34dn9mxk9599q0wy3l3
+  - &server_grafana age14trc0tdw3tyhhkhd45ep3y6lygd05yqn5j3wqxxpz5ztsr987cuq0mha28
+  - &server_
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
@@ -23,12 +31,18 @@ creation_rules:
     key_groups:
     - age:
       - *admin_ayu
+      - *server_grafana
   - path_regex: secrets/general/[^/]+\.yaml$
     key_groups:
     - age:
       - *admin_ayu
+      - *server_uptime
+      - *server_changedetection
+      - *server_immich
       - *server_nextcloud
       - *server_adguard
-      - *server_uptime
-      - *server_immich
+      - *server_ntfy
       - *server_etebase
+      - *server_backup
+      - *server_mealie
+      - *server_grafana
