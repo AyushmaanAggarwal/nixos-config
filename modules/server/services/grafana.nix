@@ -37,6 +37,13 @@ in
         mode = "0400";
         sopsFile = ../../../secrets/grafana/grafana.yaml;
       };
+      influxdb_pve_token = {
+        owner = "influxdb2";
+        group = "influxdb2";
+        mode = "0400";
+        sopsFile = ../../../secrets/grafana/grafana.yaml;
+      };
+ 
     };
 
     # --------------------
@@ -66,6 +73,7 @@ in
             name = "${main-bucket}";
             type = "influxdb";
             url = "http://127.0.0.1:8006";
+            editable = true;
           }
           {
             name = "proxmox";
@@ -119,11 +127,23 @@ in
             pve = {
               present = true;
               description = "Allow read/write for proxmox server";
+              tokenFile = config.sops.secrets.influxdb_pve_token.path;
               readBuckets = [ "proxmox" ];
               readPermissions = [ "buckets" ];
               writeBuckets = [ "proxmox" ];
               writePermissions = [ "buckets" ];
             }; 
+            admin = {
+              present = true;
+              description = "Allow read/write for admin";
+              allAccess = true;
+            }; 
+            ayushmaan = {
+              present = true;
+              description = "Allow read/write for admin";
+              allAccess = true; # Eventually restrict to necessary permissions
+            }; 
+ 
           };
             
         };
