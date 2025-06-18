@@ -19,9 +19,8 @@
     users.users.${username}.packages = with pkgs; [
       gnumake # For makefiles
       jupyter
-      numbat
       neovim
-      quarto
+      stable.quarto
       pandoc
       ripgrep
       marksman
