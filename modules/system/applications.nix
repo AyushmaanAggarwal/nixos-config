@@ -3,6 +3,7 @@
   outputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   nixpkgs.overlays = [
@@ -14,44 +15,16 @@
   # --------------------
   services.udisks2.enable = true; # for calibre kindle connection
 
-  services.printing = {
-    enable = true; # Enable CUPS to print documents.
-  };
+  services.printing.enable = true; # Enable CUPS to print documents.
 
   # Install progams
   programs = {
     zsh.enable = true;
     adb.enable = true;
-    thunderbird = {
-      enable = true;
-      package = pkgs.thunderbird-latest;
-    };
+    thunderbird.enable = true;
 
     # Gaming
-    steam = { # Not free
-      enable = true;
-      gamescopeSession.enable = true; # For gamescope
-      package = pkgs.steam.override {
-        extraPkgs = pkgs':
-          with pkgs'; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            keyutils
-          ];
-      };
-    };
-    gamescope = {
-      # Steam Virtualized Compositor
-      enable = true;
-      capSysNice = true;
-    };
+    steam.enable = true; # Not free
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -65,28 +38,25 @@
     ];
     packages = with pkgs; [
       # GUI Applications
-      mpv
-      lutris
       slack # unfree
       spotify # unfree
       inkscape
       darktable
       vscodium
-      stable.signal-desktop
+      signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
       ## Academic
-      # mathematica
       xournalpp
       zotero
       # calibre
+      # mathematica # unfree
 
       # Terminal Applications
       fd
       gdu
       # bws # unfree
-      sops
-      unzip
+      # unzip
       rclone
       nodejs
       psmisc # For killall command
@@ -100,6 +70,14 @@
       nixfmt-rfc-style
     ];
   };
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "slack"
+    "spotify"
+    "bws"
+    "steam"
+    "steam-unwrapped"
+  ];
 
   fonts.packages = with pkgs; [
     jetbrains-mono

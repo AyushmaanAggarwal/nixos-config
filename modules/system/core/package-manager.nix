@@ -6,9 +6,6 @@
 }: {
   services.flatpak.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Enable Flakes
   nix.settings = {
     experimental-features = [
@@ -52,11 +49,15 @@
   # Collect garbage
   nix.gc = {
     automatic = true;
-    dates = "03:00";
+    persistent = true;
+    dates = "weekly";
+    randomizedDelaySec = "30min";
     options = "--delete-older-than 30d";
   };
   nix.optimise = {
     automatic = true;
-    dates = ["weekly"];
+    persistent = true;
+    randomizedDelaySec = "30min";
+    dates = "weekly";
   };
 }
