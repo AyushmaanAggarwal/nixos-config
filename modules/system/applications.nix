@@ -28,7 +28,7 @@
     };
 
     # Gaming
-    steam = {
+    steam = { # Not free
       enable = true;
       gamescopeSession.enable = true; # For gamescope
       package = pkgs.steam.override {
@@ -79,12 +79,12 @@
       # mathematica
       xournalpp
       zotero
-      calibre
+      # calibre
 
       # Terminal Applications
       fd
       gdu
-      bws # unfree
+      # bws # unfree
       sops
       unzip
       rclone
@@ -97,7 +97,7 @@
       fastfetch
 
       # Nix Packages
-      pkgs.nixfmt-rfc-style
+      nixfmt-rfc-style
     ];
   };
 
