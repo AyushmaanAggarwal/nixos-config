@@ -12,7 +12,6 @@
 }: {
   imports = [
     ./applications.nix
-    ./developer-enviroment.nix
 
     ./core
     ./systemd

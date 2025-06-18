@@ -68,6 +68,18 @@
 
       # Nix Packages
       nixfmt-rfc-style
+
+      # Development
+      gnumake # For makefiles
+      jupyter
+      neovim
+      stable.quarto
+      pandoc
+      ripgrep
+      marksman
+      tree-sitter
+      texliveFull
+      lua-language-server
     ];
   };
 
