@@ -3,19 +3,23 @@
   config,
   pkgs,
   ...
-}: {
+}: 
+let
+  secrets-file = ../../../../secrets/thegram/backups.yaml;
+in
+{
   sops.secrets.configuration = {
     owner = "ayushmaan";
     group = "users";
     mode = "0400";
-    sopsFile = ../../../secrets/thegram/backups.yaml;
+    sopsFile = secrets-file;
   };
 
   sops.secrets.encryption = {
     owner = "ayushmaan";
     group = "users";
     mode = "0400";
-    sopsFile = ../../../secrets/thegram/backups.yaml;
+    sopsFile = secrets-file;
   };
 
   # Required etc files

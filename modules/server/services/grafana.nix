@@ -2,6 +2,13 @@
 let 
   main-org = "myDune";
   main-bucket = "spiceSilos";
+  influxdb-secrets-options = {
+    owner = "influxdb2";
+    group = "influxdb2";
+    mode = "0400";
+    sopsFile = ../../../secrets/grafana/grafana.yaml;
+  };
+
 in
 {
   imports = [ 
@@ -19,31 +26,10 @@ in
 
   config = lib.mkIf (config.grafana.enable) {
     sops.secrets = {
-      influxdb_admin_password = {
-        owner = "influxdb2";
-        group = "influxdb2";
-        mode = "0400";
-        sopsFile = ../../../secrets/grafana/grafana.yaml;
-      };
-      influxdb_admin_token = {
-        owner = "influxdb2";
-        group = "influxdb2";
-        mode = "0400";
-        sopsFile = ../../../secrets/grafana/grafana.yaml;
-      };
-      influxdb_user_password = {
-        owner = "influxdb2";
-        group = "influxdb2";
-        mode = "0400";
-        sopsFile = ../../../secrets/grafana/grafana.yaml;
-      };
-      influxdb_pve_token = {
-        owner = "influxdb2";
-        group = "influxdb2";
-        mode = "0400";
-        sopsFile = ../../../secrets/grafana/grafana.yaml;
-      };
- 
+      influxdb_admin_password = influxdb-secrets-options;
+      influxdb_admin_token = influxdb-secrets-options;
+      influxdb_user_password = influxdb-secrets-options;
+      influxdb_pve_token = influxdb-secrets-options;
     };
 
     # --------------------
