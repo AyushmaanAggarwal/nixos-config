@@ -21,7 +21,10 @@
     programs.waybar = {
       enable = true;
       style = ./style.css;
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        target = "graphical-session.target";
+      };
       settings = [
         {
           position = "top";
