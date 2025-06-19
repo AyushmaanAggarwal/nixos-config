@@ -21,10 +21,7 @@
     programs.waybar = {
       enable = true;
       style = ./style.css;
-      systemd = {
-        enable = true;
-        target = config.waybar.systemd-target;
-      };
+      systemd.enable = true;
       settings = [
         {
           position = "top";

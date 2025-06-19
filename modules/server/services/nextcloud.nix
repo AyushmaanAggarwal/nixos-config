@@ -4,7 +4,11 @@
   lib,
   pkgs,
   ...
-}: {
+}: 
+let
+  secrets-file = ../../../secrets/nextcloud/secrets.yaml;
+in
+{
   imports = [
     ../common/sops-nix.nix
     ./caddy.nix
@@ -23,7 +27,7 @@
       owner = "nextcloud";
       group = "nextcloud";
       mode = "0400";
-      sopsFile = ../../../secrets/nextcloud/secrets.yaml;
+      sopsFile = secrets-file;
     };
     # --------------------
     # Syncthing
