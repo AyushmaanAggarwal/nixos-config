@@ -13,5 +13,4 @@
     ./polkit.nix
   ];
   btrfs-scrub.enable = false;
-  polkit-auth.enable = "${desktop}" == "hyprland";
 }

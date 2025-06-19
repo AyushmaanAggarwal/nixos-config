@@ -4,8 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [../systemd/polkit.nix];
-
   options = {
     hyprland.enable = lib.mkOption {
       type = lib.types.bool;
