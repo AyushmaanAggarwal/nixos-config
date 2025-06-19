@@ -14,7 +14,6 @@
     ./applications.nix
 
     ./core
-    ./systemd
     ./services
     ./desktop
     ./scripts

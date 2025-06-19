@@ -15,14 +15,22 @@
   };
 
   config = lib.mkIf (config.hyprland.enable) {
-    polkit-auth.enable = true;
-
     services.hypridle.enable = true;
+    programs.hyprlock.enable = true;
     programs.hyprland = {
       enable = true;
       withUWSM = true;
     };
-    programs.hyprlock.enable = true;
+
+    # GDM
+    services.displayManager.cosmic-greeter.enable = true;
+    programs.uwsm.waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+      };
+    };
 
     users.users.ayushmaan.packages = with pkgs; [
       hyprland-qtutils
@@ -40,6 +48,29 @@
       # System Applications
       nautilus
       pavucontrol
+      
+      kdePackages.polkit-kde-agent-1
+
     ];
+
+    # --------------------
+    # Polkit Authentication Agent Service
+    # --------------------
+    systemd.user.services = {
+      # Authentication Agent
+      polkit-kde-authentication-agent = {
+        description = "polkit-kde-authentication-agent";
+        wantedBy = ["graphical-session.target"];
+        wants = ["graphical-session.target"];
+        after = ["graphical-session.target"];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+      };
+    };
   };
 }
