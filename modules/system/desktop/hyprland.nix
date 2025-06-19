@@ -21,7 +21,7 @@
     };
 
     # GDM
-    services.displayManager.cosmic-greeter.enable = true;
+    services.displayManager.gdm.enable = true;
     programs.uwsm.waylandCompositors = {
       hyprland = {
         prettyName = "Hyprland";
