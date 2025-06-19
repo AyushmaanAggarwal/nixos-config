@@ -39,40 +39,49 @@ update-difference:
 # --------------------
 all-server: backup uptime adguard nextcloud changedetection mealie ntfy grafana immich 
 
+remote-build = nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
+
 immich:
-	system="immich"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="immich"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 adguard:
-	system="adguard"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="adguard"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 nextcloud:
-	system="nextcloud"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="nextcloud"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 uptime:
-	system="uptime"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="uptime"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 changedetection:
-	system="changedetection"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="changedetection"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 mealie:
-	system="mealie"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="mealie"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 backup:
-	system="backup"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="backup"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 grafana:
-	system="grafana"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
-
-
+	@system="grafana"
+	@echo "Update: $$system"
+	@$(remote-build)
 
 ntfy:
-	system="ntfy"; \
-	nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --use-remote-sudo; \
+	@system="ntfy"
+	@echo "Update: $$system"
+	@$(remote-build)
