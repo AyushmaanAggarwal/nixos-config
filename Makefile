@@ -4,16 +4,20 @@
 update:
 	nix flake update --commit-lock-file
 
+pull:
+	git pull origin master
+
 all: update switch all-server
+
 
 # --------------------
 #  Primary System Commands
 # --------------------
-switch: update noupdate-switch update-difference
+switch: pull noupdate-switch update-difference
 
-boot: update noupdate-boot update-difference
+boot: pull noupdate-boot update-difference
 
-test: update noupdate-test update-difference
+test: pull noupdate-test update-difference
 
 noupdate-switch:
 	@echo "NixOS: Building Nix Configuration"
