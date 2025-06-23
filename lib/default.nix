@@ -13,6 +13,7 @@ in {
     system ? "x86_64-linux",
   }:
     lib.nixosSystem {
+      inherit system;
       specialArgs = {
         inherit
           inputs
@@ -39,6 +40,7 @@ in {
     sshWithoutYubikey = hostname == "backup";
   in
     lib-stable.nixosSystem {
+      inherit system;
       specialArgs = {
         inherit
           inputs
