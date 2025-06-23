@@ -4,14 +4,12 @@
   lib,
   pkgs,
   ...
-}: 
-let
+}: let
   secrets-options = {
     mode = "0400";
     sopsFile = ../../../secrets/gitlab/secrets.yaml;
   };
-in
-{
+in {
   imports = [
     ./caddy.nix
     ../common/sops-nix.nix

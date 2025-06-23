@@ -1,5 +1,10 @@
-{ inputs, config, lib, pkgs, ... }:
-let 
+{
+  inputs,
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   main-org = "myDune";
   main-bucket = "spiceSilos";
   influxdb-secrets-options = {
@@ -8,10 +13,8 @@ let
     mode = "0400";
     sopsFile = ../../../secrets/grafana/grafana.yaml;
   };
-
-in
-{
-  imports = [ 
+in {
+  imports = [
     ./caddy.nix
     ../common/sops-nix.nix
   ];
@@ -47,8 +50,8 @@ in
           root_url = "https://grafana.tail590ac.ts.net/grafana/";
           serve_from_sub_path = true;
         };
-    
-        # Prevents Grafana from phoning home     
+
+        # Prevents Grafana from phoning home
         analytics.reporting_enabled = false;
       };
 
@@ -79,7 +82,6 @@ in
         http-bind-address = "127.0.0.1:8006";
       };
 
-
       provision = {
         enable = true;
 
@@ -94,7 +96,7 @@ in
 
         users.ayushmaan = {
           present = true;
-          passwordFile = config.sops.secrets.influxdb_user_password.path; 
+          passwordFile = config.sops.secrets.influxdb_user_password.path;
         };
 
         organizations.${main-org} = {
@@ -105,7 +107,7 @@ in
             "proxmox" = {
               present = true;
               description = "Proxmox Bucket";
-              retention = 0;          
+              retention = 0;
             };
           };
 
@@ -114,24 +116,22 @@ in
               present = true;
               description = "Allow read/write for proxmox server";
               tokenFile = config.sops.secrets.influxdb_pve_token.path;
-              readBuckets = [ "proxmox" ];
-              readPermissions = [ "buckets" ];
-              writeBuckets = [ "proxmox" ];
-              writePermissions = [ "buckets" ];
-            }; 
+              readBuckets = ["proxmox"];
+              readPermissions = ["buckets"];
+              writeBuckets = ["proxmox"];
+              writePermissions = ["buckets"];
+            };
             admin = {
               present = true;
               description = "Allow read/write for admin";
               allAccess = true;
-            }; 
+            };
             ayushmaan = {
               present = true;
               description = "Allow read/write for admin";
               allAccess = true; # Eventually restrict to necessary permissions
-            }; 
- 
+            };
           };
-            
         };
       };
     };
@@ -142,11 +142,9 @@ in
     caddy = {
       enable = true;
       custom_proxy = ''
-          reverse_proxy /grafana/* 127.0.0.1:3000
-          reverse_proxy /influxdb/* 127.0.0.1:8006
+        reverse_proxy /grafana/* 127.0.0.1:3000
+        reverse_proxy /influxdb/* 127.0.0.1:8006
       '';
-
     };
- 
   };
 }

@@ -83,13 +83,14 @@
     ];
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "slack"
-    "spotify"
-    "bws"
-    "steam"
-    "steam-unwrapped"
-  ];
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "slack"
+      "spotify"
+      "bws"
+      "steam"
+      "steam-unwrapped"
+    ];
 
   fonts.packages = with pkgs; [
     jetbrains-mono

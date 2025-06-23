@@ -4,11 +4,9 @@
   lib,
   pkgs,
   ...
-}: 
-let
+}: let
   secrets-file = ../../../secrets/nextcloud/secrets.yaml;
-in
-{
+in {
   imports = [
     ../common/sops-nix.nix
     ./caddy.nix

@@ -9,7 +9,6 @@
     ./restic-systemd.nix
   ];
 
-
   users.users.ayushmaan.packages = with pkgs; [
     restic
     python3Full
@@ -27,5 +26,4 @@
     permissions = "u=rwx,g=,o=";
     capabilities = "cap_dac_read_search=+ep";
   };
-
 }
