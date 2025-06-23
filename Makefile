@@ -47,7 +47,7 @@ remote-build = nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.d
 
 immich:
 	@echo "Update: immich"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich--target-host nixadmin@immich; \
+	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich --target-host nixadmin@immich; \
 
 adguard:
 	@echo "Update: adguard"; \
@@ -63,7 +63,7 @@ uptime:
 
 changedetection:
 	@echo "Update: changedetection"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#changedetection--target-host nixadmin@changedetection; \
+	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#changedetection --target-host nixadmin@changedetection; \
 
 mealie:
 	@echo "Update: mealie"
