@@ -43,49 +43,46 @@ update-difference:
 # --------------------
 all-server: backup uptime adguard nextcloud changedetection mealie ntfy grafana immich 
 
-remote-build = nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
-
 immich:
 	@system="immich"
 	@echo "Update: $$system"
-	@$(remote-build)
-
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 adguard:
 	@system="adguard"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 nextcloud:
 	@system="nextcloud"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 uptime:
 	@system="uptime"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 changedetection:
 	@system="changedetection"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 mealie:
 	@system="mealie"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 backup:
 	@system="backup"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 grafana:
 	@system="grafana"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
 
 ntfy:
 	@system="ntfy"
 	@echo "Update: $$system"
-	@$(remote-build)
+	@nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system --sudo
