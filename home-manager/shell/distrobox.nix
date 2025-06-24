@@ -15,7 +15,7 @@
       matlab = {
         image = "ubuntu:24.04";
         entry = true;
-        additional_packages = "xcb libasound2 libnss3 libgtk2.0-0 libxft2";
+        additional_packages = "xcb libasound2t64 libnss3 libgtk2.0-0 libxft2";
         init_hooks = ''export QT_QPA_PLATFORM=xcb'';
         exported_apps="Matlab";
         exported_bins="/home/ayushmaan/Applications/matlab/bin/matlab";
