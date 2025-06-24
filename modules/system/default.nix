@@ -11,7 +11,7 @@
   ...
 }: {
   imports = [
-    ./applications.nix
+    ./applications
 
     ./core
     ./services
