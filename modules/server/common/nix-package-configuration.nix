@@ -13,7 +13,7 @@
   nixpkgs.overlays = [
     outputs.overlays.unstable-packages
   ];
-
+  
   # Enable Flakes
   nix.settings = {
     experimental-features = [
@@ -33,6 +33,8 @@
     randomizedDelaySec = "10min";
     allowReboot = true;
     flags = [
+      "--build-host"
+      "proxmox@backup"
       "--option"
       "tarball-ttl"
       "0"

@@ -1,14 +1,5 @@
 # Main Configuration
 {
-  inputs,
-  outputs,
-  config,
-  lib,
-  pkgs,
-  hostname,
-  username,
-  desktop,
-  system,
   ...
 }: {
   imports = [

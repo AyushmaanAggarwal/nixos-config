@@ -32,12 +32,6 @@ in {
   ];
   config = lib.mkMerge [
     (lib.optionalAttrs hostname-option {${hostname}.enable = true;})
-    (lib.optionalAttrs sshWithoutYubikey {
-      users.users.${username}.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa53AGMV87VUquUKyQ2NlqmZiN7OVV438VLUe6hYJU2"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOmhA7UsDVaSC7A+CLcKnKkYuSjgObaauAFJWdjHmK1X ayushmaan@thegram"
-      ];
-    })
     {
       networking.hostName = hostname;
       caddy.hostname = hostname;

@@ -1,14 +1,4 @@
 {
-  inputs,
-  outputs,
-  config,
-  lib,
-  pkgs,
-  home-manager,
-  desktop,
-  hostname,
-  system,
-  username,
   ...
 }: {
   imports = [

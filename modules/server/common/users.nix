@@ -2,9 +2,37 @@
   config,
   lib,
   pkgs,
+  functions,
+  hostname,
+  username,
+  system,
+  sshWithoutYubikey,
   ...
-}: {
+}: let
+  ssh_unsecure = ["thegram"];
+  ssh_primary = [
+    "yubikey_type_a" 
+    "yubikey_type_c" 
+    "backup"
+  ];
+  ssh_containers = lib.mkIf ("${hostname}" == "backup") [
+    "uptime"
+    "changedetection"
+    "immich"
+    "nextcloud"
+    "adguard"
+    "ntfy"
+    "mealie"
+  ];
+in {
   imports = [./sops-nix.nix];
+
+  sops.secrets = functions.listToAttrsAttrs (ssh_unsecure ++ ssh_primary ++ ssh_containers) {
+    user = "root";
+    group = "root";
+    mode = "0400";
+    sopsFile = ../../../secrets/general/ssh_keys.yaml;
+  };
 
   # --------------------
   # Users
@@ -28,18 +56,16 @@
     ];
   };
 
+  # Enable backup server to act as a remote builder
+  programs.ssh.knownHosts.backup.publicKey = config.sops.secrets.backup.path;
+
   users.users = {
     nixadmin = {
       isNormalUser = true;
       description = "Nixpkgs User"; # Used as a minimal remote builder
       extraGroups = ["wheel"];
       hashedPassword = "$y$j9T$MsKPpS9seZjFQTddCHJ.g0$WeGelFn99zcnxhW.QdoIC.ZslQLxgBm4a7sQKdfBdC7";
-      openssh.authorizedKeys = {
-        keys = [
-          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKF5IDpNa1gIA9lNUv/j0p5Yicf68YJUYsxIitpwTfPVAAAABHNzaDo=" # Type A
-          "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIOuQHAZ1ATX5y5z3gQHR8Bp52ZBoPmLN1/iap8hYjw7eAAAABHNzaDo=" # Type C
-        ];
-      };
+      openssh.authorizedKeys.keyFiles = lib.map (file: config.sops.secrets."${file}".path) ssh_primary;
     };
 
     proxmox = {
@@ -56,9 +82,7 @@
         fastfetch
       ];
       hashedPassword = "$y$j9T$nuV.3iXRhPpKvTXd94fFh.$9g4xyPrktivR.wpwUxT4P69bs0NLLAe2sDWDIjus5c4";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEa53AGMV87VUquUKyQ2NlqmZiN7OVV438VLUe6hYJU2"
-      ];
+      openssh.authorizedKeys.keys = lib.map (file: config.sops.secrets."${file}".path) ssh_primary ++ ssh_unsecure ++ ssh_containers;
     };
   };
 }

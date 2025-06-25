@@ -23,14 +23,17 @@ in {
   };
 
   config = lib.mkIf (config.adguard.enable) {
-    sops.secrets = {
-      gl-database-pass = secrets-options;
-      gl-root-pass = secrets-options;
-      gl-secret = secrets-options;
-      gl-otp = secrets-options;
-      gl-db-file = secrets-options;
-      gl-jws-file = secrets-options;
-    };
+    sops.secrets = lib.genAttrs [
+      "gl-database-pass" 
+      "gl-root-pass"
+      "gl-secret"
+      "gl-otp"
+      "gl-db-file"
+      "gl-jws-file"
+    ] (secret: {
+      mode = "0400";
+      sopsFile = ../../../secrets/gitlab/secrets.yaml;
+    });
 
     services.gitlab = {
       enable = true;
