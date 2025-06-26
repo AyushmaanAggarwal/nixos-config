@@ -7,13 +7,16 @@ update:
 pull:
 	git pull origin master
 
+push:
+	git push origin master
+
 all: update switch all-server
 
 
 # --------------------
 #  Primary System Commands
 # --------------------
-switch: pull noupdate-switch update-difference
+switch: pull update push noupdate-switch update-difference
 
 boot: pull noupdate-boot update-difference
 
