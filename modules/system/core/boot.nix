@@ -8,7 +8,7 @@
   # Bootloader.
   boot.kernelParams = [
     "quiet"
-    "acpi_backlight=video"
+    "acpi_backlight=native"
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.loader.efi.canTouchEfiVariables = true;
