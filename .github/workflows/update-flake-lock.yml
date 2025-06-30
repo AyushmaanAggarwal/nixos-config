@@ -25,3 +25,5 @@ jobs:
             dependencies
             automated
       - run: "gh pr merge --auto --merge ${{ steps.update.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
