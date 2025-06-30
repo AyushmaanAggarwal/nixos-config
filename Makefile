@@ -16,7 +16,7 @@ all: update switch all-server
 # --------------------
 #  Primary System Commands
 # --------------------
-switch: pull update push noupdate-switch update-difference
+switch: pull update push noupdate-dry noupdate-switch update-difference
 
 boot: pull noupdate-boot update-difference
 
@@ -24,15 +24,19 @@ test: pull noupdate-test update-difference
 
 noupdate-switch:
 	@echo "NixOS: Building Nix Configuration"
-	sudo nixos-rebuild switch --upgrade --flake /home/ayushmaan/.dotfiles/system\#thegram
+	sudo nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#thegram
 
 noupdate-boot: update
 	@echo "NixOS: Building Nix Configuration"
-	sudo nixos-rebuild boot --upgrade --flake /home/ayushmaan/.dotfiles/system\#thegram
+	sudo nixos-rebuild boot --flake /home/ayushmaan/.dotfiles/system\#thegram
+
+noupdate-dry: update
+	@echo "NixOS: Building Nix Configuration"
+	sudo nixos-rebuild dry-build --flake /home/ayushmaan/.dotfiles/system\#thegram
 
 noupdate-test:
 	@echo "NixOS: Building Nix Configuration"
-	sudo nixos-rebuild test --upgrade --flake /home/ayushmaan/.dotfiles/system\#thegram
+	sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system\#thegram
 
 update-difference:
 	@sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt

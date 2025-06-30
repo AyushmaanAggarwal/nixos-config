@@ -8,11 +8,9 @@
   environment.systemPackages = with pkgs; [
     # Editors
     vim
-    nano
 
     # Coding
     git
-    gcc
 
     # Other
     wget
