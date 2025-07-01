@@ -10,8 +10,7 @@ pull:
 push:
 	git push origin master
 
-all: update switch all-server
-
+all: switch flatpak 
 
 # --------------------
 #  Primary System Commands
@@ -39,11 +38,14 @@ noupdate-test:
 	sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system\#thegram
 
 update-difference:
-	@sudo nix-env --list-generations --profile /nix/var/nix/profiles/system > /home/ayushmaan/.local/custom-files/nix-generations.txt
-	@echo; echo "Changed Packages Overall Size:"
-	@/etc/scripts/nix-diff.py | grep -oE "[\+\-][0-9]+\.[0-9]\s[a-zA-Z]+" | tr '\n' ' ' | awk 'END{print $0 "+ 0GB to GB"}' | numbat
-	@echo
-	@/etc/scripts/nix-diff.py
+	@/etc/scripts/nix-diff.sh
+
+# --------------------
+#  Secondary System Commands
+# --------------------
+flatpak:
+	@echo "Updating flatpaks"
+	flatpak update --noninteractive --assumeyes
 
 # --------------------
 # Primary Container Commands
