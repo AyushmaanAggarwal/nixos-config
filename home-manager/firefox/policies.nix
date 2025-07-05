@@ -103,6 +103,13 @@ in {
       "browser.tabs.groups.enabled" = true;
       "browser.toolbarbuttons.introduced.sidebar-button" = true;
 
+      # Unload Tabs
+      "browser.tabs.fadeOutExplicitlyUnloadedTabs" = true;
+      "browser.tabs.fadeOutUnloadedTabs" = true;
+      "browser.tabs.min_inactive_duration_before_unload" = 120;
+      "browser.tabs.remote.warmup.unloadDelayMs" = 2000;
+      "browser.tabs.unloadOnLowMemory" = true;
+
       # Disable inspector
       "devtools.inspector.enabled" = false;
       "devtools.inspector.inactive.css.enabled" = false;
