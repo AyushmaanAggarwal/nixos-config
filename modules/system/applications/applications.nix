@@ -78,7 +78,7 @@
       ripgrep
       marksman
       tree-sitter
-      stable.texliveFull
+      texliveFull
       lua-language-server
     ];
   };
