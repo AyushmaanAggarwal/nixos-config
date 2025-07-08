@@ -55,10 +55,7 @@
       # Terminal Applications
       fd
       gdu
-      # bws # unfree
-      # unzip
       rclone
-      nodejs
       psmisc # For killall command
       ## Monitoring
       htop
@@ -76,10 +73,6 @@
       stable.quarto
       pandoc
       ripgrep
-      marksman
-      tree-sitter
-      texliveFull
-      lua-language-server
     ];
   };
 
