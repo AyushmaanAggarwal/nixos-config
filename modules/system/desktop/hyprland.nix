@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     hyprland.enable = lib.mkOption {
       type = lib.types.bool;
@@ -57,9 +58,9 @@
       # Authentication Agent
       polkit-kde-authentication-agent = {
         description = "polkit-kde-authentication-agent";
-        wantedBy = ["graphical-session.target"];
-        wants = ["graphical-session.target"];
-        after = ["graphical-session.target"];
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
         serviceConfig = {
           Type = "simple";
           ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
@@ -69,5 +70,39 @@
         };
       };
     };
+
+    # --------------------
+    # Disable trackpad
+    # --------------------
+    environment.etc = {
+      "scripts/disable_trackpad.sh" = {
+        text = ''
+          #!/bin/sh
+
+          # Set device to be toggled
+          HYPRLAND_DEVICE="pxic2642:00-04ca:00b1-touchpad"
+          HYPRLAND_VARIABLE="device[$HYPRLAND_DEVICE]:enabled"
+
+          if [ -z "$XDG_RUNTIME_DIR" ]; then
+            export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          fi
+
+          # Check if device is currently enabled (1 = enabled, 0 = disabled)
+          DEVICE="$(hyprctl getoption $HYPRLAND_VARIABLE | grep 'int: 1')"
+
+          if [ -z "$DEVICE" ]; then
+          	# if the device is disabled, then enable
+            	notify-send -u normal "Enabling Touchpad"
+          	hyprctl keyword $HYPRLAND_VARIABLE true
+          else
+          	# if the device is enabled, then disable
+          	notify-send -u normal "Disabling Touchpad"
+          	hyprctl keyword $HYPRLAND_VARIABLE false
+          fi
+        '';
+        mode = "0555";
+      };
+    };
+
   };
 }
