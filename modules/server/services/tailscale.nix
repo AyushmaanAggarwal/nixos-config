@@ -37,10 +37,7 @@
         enable = true;
         package = pkgs.unstable.tailscale;
         disableTaildrop = true;
-        extraDaemonFlags = [
-          "--no-logs-no-support"
-          "--tun=userspace-networking"
-        ];
+        extraDaemonFlags = [ "--no-logs-no-support" ];
 
         interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
 
