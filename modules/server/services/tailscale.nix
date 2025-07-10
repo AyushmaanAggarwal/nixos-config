@@ -9,7 +9,7 @@
     tailscale.userspace.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Enables Tailscale Userspace Networking for Containers";
-      default = true;
+      default = false;
     };
     tailscale.caddycert.enable = lib.mkOption {
       type = lib.types.bool;
@@ -30,7 +30,10 @@
 
   config = lib.mkMerge [
     (lib.mkIf config.tailscale.userspace.enable {
-      services.tailscale.extraDaemonFlags = [ "--tun=userspace-networking" ];
+      services.tailscale = {
+        extraDaemonFlags = [ "--tun=userspace-networking" ];
+        interfaceName = "userspace-networking";
+      };
     })
     {
       services.tailscale = {
@@ -39,10 +42,7 @@
         disableTaildrop = true;
         extraDaemonFlags = [ "--no-logs-no-support" ];
 
-        interfaceName = lib.mkIf (config.tailscale.userspace.enable) "userspace-networking";
-
         permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
-
         useRoutingFeatures = lib.mkIf (config.tailscale.dns.enable) "server";
         extraSetFlags = lib.mkMerge [
           (lib.mkIf config.tailscale.dns.enable [ "--accept-dns=false" ]) # Ensure tailscale doesn't interfere with adguard dns
