@@ -29,11 +29,9 @@
   };
 
   config = lib.mkMerge [
-    lib.mkIf
-    config.tailscale.userspace.enable
-    {
+    (lib.mkIf config.tailscale.userspace.enable {
       services.tailscale.extraDaemonFlags = [ "--tun=userspace-networking" ];
-    }
+    })
     {
       services.tailscale = {
         enable = true;
