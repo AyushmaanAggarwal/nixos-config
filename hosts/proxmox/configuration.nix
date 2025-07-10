@@ -12,7 +12,8 @@
   isTailscaleExitNode,
   sshWithoutYubikey,
   ...
-}: let
+}:
+let
   hostname-option = builtins.elem "${hostname}" [
     "adguard"
     "changedetection"
@@ -24,14 +25,15 @@
     "ntfy"
     "uptime"
   ];
-in {
+in
+{
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server
     ../../modules/shared
   ];
   config = lib.mkMerge [
-    (lib.optionalAttrs hostname-option {${hostname}.enable = true;})
+    (lib.optionalAttrs hostname-option { ${hostname}.enable = true; })
     {
       networking.hostName = hostname;
       caddy.hostname = hostname;
