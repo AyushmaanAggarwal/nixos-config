@@ -1,7 +1,6 @@
 # Applications
 { pkgs, ... }:
 {
-  cachix.enable = false; # Don't use devenv caches
   users.users.ayushmaan.packages = with pkgs; [
     # Editors
     vscodium
