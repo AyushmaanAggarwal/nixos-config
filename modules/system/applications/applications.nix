@@ -5,7 +5,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   nixpkgs.overlays = [
     outputs.overlays.stable-packages
   ];
@@ -42,7 +43,6 @@
       spotify # unfree
       inkscape
       darktable
-      vscodium
       signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
@@ -62,21 +62,11 @@
       powertop
       onefetch
       fastfetch
-
-      # Nix Packages
-      nixfmt-rfc-style
-
-      # Development
-      gnumake # For makefiles
-      jupyter
-      neovim
-      stable.quarto
-      pandoc
-      ripgrep
     ];
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "slack"
       "spotify"

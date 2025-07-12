@@ -1,9 +1,10 @@
 {
   ...
-}: {
-  imports = [ 
+}:
+{
+  imports = [
     ./applications.nix
-    ./nvim-packages.nix
+    ./developer-env.nix
     ./virtualization.nix
   ];
 }
