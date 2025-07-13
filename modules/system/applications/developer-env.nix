@@ -15,9 +15,6 @@
     # Nix Packages
     nixfmt-rfc-style
 
-    # Python Packages
-    jupyter
-
     # Neovim Packages
     ## LSP Dependencies
     gcc
