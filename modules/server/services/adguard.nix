@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./caddy.nix
     ./tailscale.nix
@@ -18,8 +19,8 @@
 
   config = lib.mkIf (config.adguard.enable) {
     networking.firewall = {
-      allowedUDPPorts = [53];
-      allowedTCPPorts = [53];
+      allowedUDPPorts = [ 53 ];
+      allowedTCPPorts = [ 53 ];
     };
 
     # --------------------
@@ -41,7 +42,7 @@
         auth_attempts = 5;
         block_auth_min = 600;
         dns = {
-          bind_hosts = ["127.0.0.1"];
+          bind_hosts = [ "127.0.0.1" ];
           upstream_dns = [
             "https://dns.quad9.net/dns-query"
             "tls://dns.quad9.net"
@@ -83,23 +84,23 @@
 
         filters =
           map
-          (url: {
-            enabled = true;
-            url = url;
-          })
-          [
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt" # AdGuard DNS filter
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt" # Peter Lowe's Blocklist
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_4.txt" # Dan Pollock's List
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt" # OISD Blocklist Big
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt" # Steven Black's List
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt" # HaGeZi's Ultimate Blocklist
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt" # uBlock filters – Badware risks
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_53.txt" # AWAvenue Ads Rule
-            "https://adguardteam.github.io/HostlistsRegistry/assets/filter_59.txt" # AdGuard DNS Popup Hosts filter
-          ];
+            (url: {
+              enabled = true;
+              url = url;
+            })
+            [
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt" # AdGuard DNS filter
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_3.txt" # Peter Lowe's Blocklist
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_4.txt" # Dan Pollock's List
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt" # OISD Blocklist Big
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt" # Steven Black's List
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt" # HaGeZi's Ultimate Blocklist
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt" # uBlock filters – Badware risks
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_53.txt" # AWAvenue Ads Rule
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_59.txt" # AdGuard DNS Popup Hosts filter
+            ];
         schema_version = 29;
       };
     };
@@ -112,5 +113,6 @@
       port = 3003;
     };
     tailscale.dns.enable = true;
+    tailscale.userspace.enable = true;
   };
 }

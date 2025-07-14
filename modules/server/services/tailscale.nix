@@ -35,6 +35,12 @@
         interfaceName = "userspace-networking";
       };
     })
+    (lib.mkIf config.tailscale.dns.enable {
+      services.tailscale = {
+        useRoutingFeatures = "server";
+        extraSetFlags = [ "--accept-dns=false" ]; # Ensure tailscale doesn't interfere with adguard dns
+      };
+    })
     {
       services.tailscale = {
         enable = true;
@@ -43,11 +49,7 @@
         extraDaemonFlags = [ "--no-logs-no-support" ];
 
         permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
-        useRoutingFeatures = lib.mkIf (config.tailscale.dns.enable) "server";
-        extraSetFlags = lib.mkMerge [
-          (lib.mkIf config.tailscale.dns.enable [ "--accept-dns=false" ]) # Ensure tailscale doesn't interfere with adguard dns
-          (lib.mkIf config.tailscale.exit-node.enable [ "--advertise-exit-node" ])
-        ];
+        extraSetFlags = lib.mkIf (config.tailscale.exit-node.enable) [ "--advertise-exit-node" ];
       };
     }
   ];
