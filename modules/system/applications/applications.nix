@@ -42,7 +42,7 @@
       slack # unfree
       spotify # unfree
       inkscape
-      darktable
+      # darktable # Disable due to broken package
       signal-desktop
       # bitwarden-desktop
       # onlyoffice-desktopeditors
