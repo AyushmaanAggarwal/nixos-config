@@ -10,7 +10,7 @@
     direnv
     gnumake # For makefiles
     pandoc
-    stable.quarto
+    quarto
 
     # Nix Packages
     nixfmt-rfc-style
