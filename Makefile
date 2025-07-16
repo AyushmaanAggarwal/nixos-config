@@ -52,40 +52,40 @@ flatpak:
 # --------------------
 all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich 
 
-remote-build = nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
+remote-build = nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
 immich:
 	@echo "Update: immich"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich --target-host nixadmin@immich; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich --target-host nixadmin@immich; \
 
 adguard:
 	@echo "Update: adguard"; \
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#adguard --target-host nixadmin@adguard; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#adguard --target-host nixadmin@adguard; \
 
 nextcloud:
 	@echo "Update: nextcloud"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#nextcloud --target-host nixadmin@nextcloud; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#nextcloud --target-host nixadmin@nextcloud; \
 
 uptime:
 	@echo "Update: uptime"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#uptime --target-host nixadmin@uptime; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#uptime --target-host nixadmin@uptime; \
 
 changedetection:
 	@echo "Update: changedetection"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#changedetection --target-host nixadmin@changedetection; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#changedetection --target-host nixadmin@changedetection; \
 
 mealie:
 	@echo "Update: mealie"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#mealie --target-host nixadmin@mealie; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#mealie --target-host nixadmin@mealie; \
 
 backup:
 	@echo "Update: backup"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#backup --target-host nixadmin@backup; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#backup --target-host nixadmin@backup; \
 
 grafana:
 	@echo "Update: grafana"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#grafana --target-host nixadmin@grafana; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#grafana --target-host nixadmin@grafana; \
 
 ntfy:
 	@echo "Update: ntfy"
-	nixos-rebuild --use-remote-sudo switch --flake /home/ayushmaan/.dotfiles/system\#ntfy --target-host nixadmin@ntfy; \
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#ntfy --target-host nixadmin@ntfy; \
