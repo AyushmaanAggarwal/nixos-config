@@ -9,7 +9,8 @@
   desktop,
   system,
   ...
-}: {
+}:
+{
   config = lib.mkMerge [
     (lib.mkIf ("${hostname}" != "backup") {
       system.autoUpgrade.flags = [
@@ -22,18 +23,20 @@
       nixpkgs.overlays = [
         outputs.overlays.unstable-packages
       ];
-      
+
       # Enable Flakes
       nix.settings = {
         experimental-features = [
           "nix-command"
           "flakes"
         ];
-        trusted-users = ["nixadmin"];
+        trusted-users = [ "nixadmin" ];
         cores = 3;
         max-jobs = 4;
       };
-    
+      # Force stable to use nixos-rebuild-ng
+      system.rebuild.enableNg = true;
+
       # Automatic updates
       system.autoUpgrade = {
         enable = true;
@@ -47,27 +50,27 @@
           "0"
         ];
       };
- 
+
       systemd.services.reboot = {
         enable = true;
-        after = ["nixos-upgrade.service"];
+        after = [ "nixos-upgrade.service" ];
         description = "Restic Backup System";
         serviceConfig = {
           User = "root";
           ExecStart = ''reboot'';
         };
       };
-    
+
       # Collect garbage
       nix.gc = {
         automatic = true;
         dates = "01:00";
         options = "--delete-older-than 30d";
       };
-    
+
       nix.optimise = {
         automatic = true;
-        dates = ["weekly"];
+        dates = [ "weekly" ];
       };
     }
   ];
