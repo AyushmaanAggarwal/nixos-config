@@ -111,8 +111,6 @@
     caddy = {
       enable = true;
       port = 3003;
-      extraHost = "adguard.server.lan";
-      extra_custom_proxy = ''reverse_proxy 127.0.0.1:3003'';
     };
     tailscale.dns.enable = true;
     tailscale.userspace.enable = true;
