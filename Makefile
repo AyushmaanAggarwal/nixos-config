@@ -29,11 +29,11 @@ noupdate-switch:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#thegram
 
-noupdate-boot: update
+noupdate-boot:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild boot --flake /home/ayushmaan/.dotfiles/system\#thegram
 
-noupdate-dry: update
+noupdate-dry:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild dry-build --flake /home/ayushmaan/.dotfiles/system\#thegram
 
