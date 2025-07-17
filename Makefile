@@ -12,10 +12,14 @@ push:
 
 all: switch flatpak 
 
+fix:
+	sudo nix-store --verify --check-contents --repair
 # --------------------
 #  Primary System Commands
 # --------------------
 switch: pull update push noupdate-dry noupdate-switch update-difference
+
+switch_nopull: update noupdate-dry noupdate-switch update-difference
 
 boot: pull noupdate-boot update-difference
 
