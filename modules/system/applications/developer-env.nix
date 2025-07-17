@@ -11,6 +11,7 @@
     gnumake # For makefiles
     pandoc
     quarto
+    texliveSmall
 
     # Nix Packages
     nixfmt-rfc-style
@@ -25,7 +26,6 @@
     ## LSP Packages
     marksman
     tree-sitter
-    texliveFull
     lua-language-server
     matlab-language-server
 
