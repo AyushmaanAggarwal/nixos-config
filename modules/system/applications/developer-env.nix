@@ -25,7 +25,7 @@
     ## LSP Packages
     marksman
     tree-sitter
-    #texliveFull
+    texliveFull
     lua-language-server
     matlab-language-server
 
