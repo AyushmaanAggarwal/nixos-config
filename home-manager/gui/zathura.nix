@@ -28,10 +28,17 @@ in
       i = "recolor";
     };
     options = {
+      # Automatically Center Page
+      zoom-center = true;
+      vertical-center = true;
+
+      # Invert page colors
       recolor = true;
       recolor-keephue = true;
       recolor-darkcolor = light_color;
       recolor-lightcolor = dark_color;
+
+      # Reconfigure colors
       inputbar-fg = light_color;
       inputbar-bg = dark_color;
       index-active-bg = selected_color;
