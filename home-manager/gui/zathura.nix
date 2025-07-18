@@ -28,6 +28,7 @@ in
       i = "recolor";
     };
     options = {
+      recolor = true;
       recolor-keephue = true;
       recolor-darkcolor = light_color;
       recolor-lightcolor = dark_color;
@@ -39,6 +40,8 @@ in
       index-fg = light_color;
       notification-bg = lighter_dark;
       notification-fg = light_color;
+      statusbar-bg = dark_color;
+      statusbar-fg = light_color;
     };
   };
 }
