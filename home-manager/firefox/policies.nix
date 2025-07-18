@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   extension = shortId: uuid: {
     name = uuid;
     value = {
@@ -6,7 +7,8 @@
       installation_mode = "force_installed";
     };
   };
-in {
+in
+{
   programs.firefox.policies = {
     # Find all admin policies options here: https://mozilla.github.io/policy-templates/
     DisableAccounts = false;
@@ -99,7 +101,8 @@ in {
       # Disable DOH as system has preconfigured dns over https
       "network.trr.mode" = 5;
 
-      #
+      # Tab Navigation Settings
+      "browser.tabs.insertAfterCurrent" = true;
       "browser.tabs.groups.enabled" = true;
       "browser.toolbarbuttons.introduced.sidebar-button" = true;
 
