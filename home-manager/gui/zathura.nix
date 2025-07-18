@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  light_color = "#CFC8B8";
+  lighter_dark = "#525250";
+  dark_color = "#191916";
+  selected_color = "#7B92B9"; # goes well with dark colors
+in
 {
   programs.zathura = {
     enable = true;
@@ -12,12 +18,27 @@
       map [normal] k navigate previous
       map [fullscreen] j navigate next
       map [fullscreen] k navigate previous
+
+      map [normal] b focus_inputbar ":bmark current"
+      map [fullscreen] b focus_inputbar ":bmark current"
+      map [normal] n focus_inputbar ":bjump current"
+      map [fullscreen] n focus_inputbar ":bjump current"
     '';
     mappings = {
       i = "recolor";
     };
     options = {
-
+      recolor-keephue = true;
+      recolor-darkcolor = light_color;
+      recolor-lightcolor = dark_color;
+      inputbar-fg = light_color;
+      inputbar-bg = dark_color;
+      index-active-bg = selected_color;
+      index-active-fg = dark_color;
+      index-bg = dark_color;
+      index-fg = light_color;
+      notification-bg = lighter_dark;
+      notification-fg = light_color;
     };
   };
 }
