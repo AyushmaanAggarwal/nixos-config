@@ -17,9 +17,9 @@ fix:
 # --------------------
 #  Primary System Commands
 # --------------------
-switch-nopull: pull update push dry-noupdate switch-noupdate update-difference
+switch: pull update push dry-noupdate switch-noupdate update-difference
 
-switch: update dry-noupdate switch-noupdate update-difference
+switch-nopull: update dry-noupdate switch-noupdate update-difference
 
 boot: pull boot-noupdate update-difference
 
