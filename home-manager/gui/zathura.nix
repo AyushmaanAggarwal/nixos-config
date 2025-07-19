@@ -4,26 +4,29 @@ let
   lighter_dark = "#525250";
   dark_color = "#191916";
   selected_color = "#7B92B9"; # goes well with dark colors
+  extraConfigHelper = mode: ''
+    unmap [${mode}] j
+    unmap [${mode}] k
+    unmap [${mode}] l
+    unmap [${mode}] h
+    unmap [${mode}] <S-l>
+    unmap [${mode}] <S-h>
+
+    map [${mode}] j navigate next
+    map [${mode}] k navigate previous
+    map [${mode}] l scroll down
+    map [${mode}] h scroll up
+    map [${mode}] <S-l> scroll left
+    map [${mode}] <S-h> scroll right
+
+    map [${mode}] b focus_inputbar ":bmark current"
+    map [${mode}] n focus_inputbar ":bjump current"
+  '';
 in
 {
   programs.zathura = {
     enable = true;
-    extraConfig = ''
-      unmap [normal] j
-      unmap [normal] k
-      unmap [fullscreen] j
-      unmap [fullscreen] k
-
-      map [normal] j navigate next
-      map [normal] k navigate previous
-      map [fullscreen] j navigate next
-      map [fullscreen] k navigate previous
-
-      map [normal] b focus_inputbar ":bmark current"
-      map [fullscreen] b focus_inputbar ":bmark current"
-      map [normal] n focus_inputbar ":bjump current"
-      map [fullscreen] n focus_inputbar ":bjump current"
-    '';
+    extraConfig = (extraConfigHelper "normal") + (extraConfigHelper "fullscreen") + '''';
     mappings = {
       i = "recolor";
     };
