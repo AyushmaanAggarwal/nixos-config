@@ -17,27 +17,27 @@ fix:
 # --------------------
 #  Primary System Commands
 # --------------------
-switch: pull update push noupdate-dry noupdate-switch update-difference
+switch-nopull: pull update push dry-noupdate switch-noupdate update-difference
 
-switch_nopull: update noupdate-dry noupdate-switch update-difference
+switch: update dry-noupdate switch-noupdate update-difference
 
-boot: pull noupdate-boot update-difference
+boot: pull boot-noupdate update-difference
 
-test: pull noupdate-test update-difference
+test: pull test-noupdate update-difference
 
-noupdate-switch:
+switch-noupdate:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild switch --flake /home/ayushmaan/.dotfiles/system\#thegram
 
-noupdate-boot:
+boot-noupdate:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild boot --flake /home/ayushmaan/.dotfiles/system\#thegram
 
-noupdate-dry:
+dry-noupdate:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild dry-build --flake /home/ayushmaan/.dotfiles/system\#thegram
 
-noupdate-test:
+test-noupdate:
 	@echo "NixOS: Building Nix Configuration"
 	sudo nixos-rebuild test --flake /home/ayushmaan/.dotfiles/system\#thegram
 
