@@ -31,6 +31,9 @@ in
       i = "recolor";
     };
     options = {
+      # General settings
+      seletion-clipboard = "clipboard";
+
       # Automatically Center Page
       zoom-center = true;
       vertical-center = true;

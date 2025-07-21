@@ -6,6 +6,7 @@
     vscodium
     neovim
 
+    conda
     devenv
     direnv
     gnumake # For makefiles
