@@ -29,6 +29,9 @@
     tree-sitter
     lua-language-server
     matlab-language-server
+    ### For image.nvim
+    imagemagick
+    luajitPackages.magick
 
   ];
 }
