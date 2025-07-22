@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     mealie.enable = lib.mkOption {
       type = lib.types.bool;
@@ -13,6 +14,7 @@
     };
   };
   config = lib.mkIf (config.mealie.enable) {
+    systemd.services.mealie.serviceConfig.Restart = "always";
     services.mealie = {
       enable = true;
       listenAddress = "127.0.0.1";
