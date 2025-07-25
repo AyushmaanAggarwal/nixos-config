@@ -75,6 +75,11 @@
         mealie = helper.mkServerLXC {
           hostname = "mealie";
         };
+
+        jellyfin = helper.mkServerLXC {
+          hostname = "jellyfin";
+        };
+
       };
     };
 }
