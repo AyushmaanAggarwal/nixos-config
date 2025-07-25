@@ -24,6 +24,7 @@ let
     "nextcloud"
     "ntfy"
     "uptime"
+    "jellyfin"
   ];
 in
 {

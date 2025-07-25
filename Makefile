@@ -54,7 +54,7 @@ flatpak:
 # --------------------
 # Primary Container Commands
 # --------------------
-all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich 
+all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich jellyfin
 
 remote-build = nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
@@ -93,3 +93,7 @@ grafana:
 ntfy:
 	@echo "Update: ntfy"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#ntfy --target-host nixadmin@ntfy; \
+
+jellyfin:
+	@echo "Update: jellyfin"
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#jellyfin --target-host nixadmin@jellyfin; \
