@@ -32,6 +32,11 @@ let
 in
 {
   config = lib.mkMerge [
+    (
+      lib.mkIf hostname == "jellyfin" {
+        users.users.proxmox.extraGroups = [ "jellyfin" ];
+      }
+    )
     {
       # --------------------
       # Users
