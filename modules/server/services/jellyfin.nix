@@ -21,6 +21,7 @@
     };
   };
   config = lib.mkIf (config.jellyfin.enable) {
+    users.users.proxmox.extraGroups = [ "jellyfin" ];
     services.jellyfin = {
       enable = true;
     };
