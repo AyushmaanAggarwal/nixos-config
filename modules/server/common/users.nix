@@ -50,7 +50,7 @@ in
                 options = [ "NOPASSWD" ];
               }
               {
-                command = "/run/current-system/sw/bin/env ^NIXOS_INSTALL_BOOTLOADER=0 /run/current-system/sw/bin/systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER= --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration --wait (true|/nix/store/\\S+/bin/switch-to-configuration (switch|boot))$";
+                command = "/run/current-system/sw/bin/env ^NIXOS_INSTALL_BOOTLOADER=0 systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration (true|/nix/store/\\S+/bin/switch-to-configuration (switch|boot))$";
                 options = [ "NOPASSWD" ];
               }
 
