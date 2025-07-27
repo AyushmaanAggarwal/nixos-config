@@ -13,19 +13,13 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs-unstable,
-      nixpkgs-stable,
-      home-manager,
-      ...
-    }@inputs:
+    { self, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       helper = import ./lib { inherit inputs outputs; };
-    in
-    {
-      formatter = helper.forAllSystems (system: nixpkgs-unstable.legacyPackages.${system}.alejandra);
+    in {
+      formatter = helper.forAllSystems
+        (system: nixpkgs-unstable.legacyPackages.${system}.nixfmt-rfc-style);
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {
@@ -36,49 +30,27 @@
         };
 
         # Server Containers
-        adguard = helper.mkServerLXC {
-          hostname = "adguard";
-        };
+        adguard = helper.mkServerLXC { hostname = "adguard"; };
 
-        backup = helper.mkServerLXC {
-          hostname = "backup";
-        };
+        backup = helper.mkServerLXC { hostname = "backup"; };
 
-        etebase = helper.mkServerLXC {
-          hostname = "etebase";
-        };
+        etebase = helper.mkServerLXC { hostname = "etebase"; };
 
-        grafana = helper.mkServerLXC {
-          hostname = "grafana";
-        };
+        grafana = helper.mkServerLXC { hostname = "grafana"; };
 
-        immich = helper.mkServerLXC {
-          hostname = "immich";
-        };
+        immich = helper.mkServerLXC { hostname = "immich"; };
 
-        nextcloud = helper.mkServerLXC {
-          hostname = "nextcloud";
-        };
+        nextcloud = helper.mkServerLXC { hostname = "nextcloud"; };
 
-        uptime = helper.mkServerLXC {
-          hostname = "uptime";
-        };
+        uptime = helper.mkServerLXC { hostname = "uptime"; };
 
-        changedetection = helper.mkServerLXC {
-          hostname = "changedetection";
-        };
+        changedetection = helper.mkServerLXC { hostname = "changedetection"; };
 
-        ntfy = helper.mkServerLXC {
-          hostname = "ntfy";
-        };
+        ntfy = helper.mkServerLXC { hostname = "ntfy"; };
 
-        mealie = helper.mkServerLXC {
-          hostname = "mealie";
-        };
+        mealie = helper.mkServerLXC { hostname = "mealie"; };
 
-        jellyfin = helper.mkServerLXC {
-          hostname = "jellyfin";
-        };
+        jellyfin = helper.mkServerLXC { hostname = "jellyfin"; };
 
       };
     };
