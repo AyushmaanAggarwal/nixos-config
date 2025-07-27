@@ -3,9 +3,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   secrets-file = ../../../../secrets/thegram/backups.yaml;
-in {
+in
+{
   sops.secrets.configuration = {
     owner = "ayushmaan";
     group = "users";

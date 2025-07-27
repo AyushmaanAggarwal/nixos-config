@@ -1,6 +1,7 @@
 {
   ...
-}: {
+}:
+{
   imports = [
     ./system-updater.nix
   ];

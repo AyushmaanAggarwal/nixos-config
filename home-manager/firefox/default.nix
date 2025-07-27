@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./searchEngines.nix
     ./policies.nix
@@ -7,7 +8,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-beta;
-    languagePacks = ["en-US"];
+    languagePacks = [ "en-US" ];
 
     profiles.ayushmaan = {
       isDefault = true;

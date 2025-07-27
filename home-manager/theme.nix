@@ -2,7 +2,8 @@
   pkgs,
   home-manager,
   ...
-}: {
+}:
+{
   home.sessionVariables = {
     EDITOR = "nvim";
     GTK_THEME = "Adwaita:dark";

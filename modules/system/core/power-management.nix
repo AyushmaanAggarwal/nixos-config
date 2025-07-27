@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   services.thermald.enable = true;
   powerManagement.enable = true;
   services.tlp = {

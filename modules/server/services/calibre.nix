@@ -4,9 +4,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   userdb-path = "/var/lib/calibre-users";
-in {
+in
+{
   imports = [
     ./caddy.nix
   ];
@@ -40,7 +42,7 @@ in {
         userDb = "${userdb-path}/users.sqlite";
       };
       openFirewall = false;
-      libraries = ["/var/lib/calibre-server"];
+      libraries = [ "/var/lib/calibre-server" ];
     };
     # --------------------
     # Caddy SSL Cert

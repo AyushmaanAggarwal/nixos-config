@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     fuzzel.enable = lib.mkOption {
       type = lib.types.bool;

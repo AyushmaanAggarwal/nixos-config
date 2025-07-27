@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     ollama.enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,7 +19,7 @@
     # Nvidia Hardware Drivers
     # --------------------
     hardware.graphics.enable = true;
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.open = false;
 
     # --------------------
@@ -28,7 +29,7 @@
       enable = true;
       acceleration = "cuda";
       # Optional: preload models, see https://ollama.com/library
-      loadModels = ["llama3.2:3b"];
+      loadModels = [ "llama3.2:3b" ];
     };
     services.open-webui.enable = true;
 

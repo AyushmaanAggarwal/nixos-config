@@ -8,7 +8,8 @@
   system,
   username,
   ...
-}: {
+}:
+{
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;

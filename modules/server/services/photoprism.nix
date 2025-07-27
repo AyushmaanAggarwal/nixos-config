@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     photoprism.enable = lib.mkOption {
       type = lib.types.bool;
@@ -39,7 +40,7 @@
       enable = true;
       package = pkgs.mariadb;
       dataDir = "/data/mysql";
-      ensureDatabases = ["photoprism"];
+      ensureDatabases = [ "photoprism" ];
       ensureUsers = [
         {
           name = "photoprism";

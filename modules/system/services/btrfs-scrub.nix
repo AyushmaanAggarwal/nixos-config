@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     btrfs-scrub.enable = lib.mkOption {
       type = lib.types.bool;
@@ -18,10 +19,10 @@
     systemd.services = {
       btrfs-scrub = {
         enable = config.btrfs-scrub.enable;
-        requires = ["btrfs-scrub-notify.service"];
-        before = ["btrfs-scrub-notify.service"];
-        wants = ["network-online.target"];
-        after = ["network-online.target"];
+        requires = [ "btrfs-scrub-notify.service" ];
+        before = [ "btrfs-scrub-notify.service" ];
+        wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
         description = "Btrfs Scrub";
         script = ''
           #!/bin/sh
@@ -34,8 +35,8 @@
 
       btrfs-scrub-notify = {
         enable = config.btrfs-scrub.enable;
-        wants = ["network-online.target"];
-        after = ["network-online.target"];
+        wants = [ "network-online.target" ];
+        after = [ "network-online.target" ];
         description = "Notify about btrfs scrub";
         script = ''
           #!/bin/sh
@@ -59,7 +60,7 @@
     systemd.timers = {
       btrfs-scrub = {
         enable = config.btrfs-scrub.enable;
-        wantedBy = ["timers.target"];
+        wantedBy = [ "timers.target" ];
         timerConfig = {
           OnCalendar = "monthly";
           Persistent = true;

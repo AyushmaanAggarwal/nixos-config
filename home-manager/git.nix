@@ -9,7 +9,8 @@
   system,
   username,
   ...
-}: {
+}:
+{
   programs.git = {
     enable = true;
     signing = {

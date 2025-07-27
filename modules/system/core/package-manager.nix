@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.flatpak.enable = true;
 
   # Enable Flakes
@@ -37,7 +38,7 @@
     dates = "02:00";
   };
   systemd.services.nixos-upgrade = {
-    after = ["chronyd.service"];
+    after = [ "chronyd.service" ];
   };
 
   # Label Generations

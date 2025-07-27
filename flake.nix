@@ -13,13 +13,21 @@
   };
 
   outputs =
-    { self, nixpkgs-unstable, nixpkgs-stable, home-manager, ... }@inputs:
+    {
+      self,
+      nixpkgs-unstable,
+      nixpkgs-stable,
+      home-manager,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       helper = import ./lib { inherit inputs outputs; };
-    in {
-      formatter = helper.forAllSystems
-        (system: nixpkgs-unstable.legacyPackages.${system}.nixfmt-rfc-style);
+    in
+    {
+      formatter = helper.forAllSystems (
+        system: nixpkgs-unstable.legacyPackages.${system}.nixfmt-rfc-style
+      );
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {

@@ -1,6 +1,7 @@
 {
   ...
-}: {
+}:
+{
   imports = [
     ./backup
     ./earlyoom.nix

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
@@ -22,7 +23,7 @@
     extraConfig = ''
       makestep 0.1 10
     '';
-    extraFlags = ["-s"];
+    extraFlags = [ "-s" ];
   };
   environment.etc = {
     "nixos/services/networking/forwarding-rules.txt" = {

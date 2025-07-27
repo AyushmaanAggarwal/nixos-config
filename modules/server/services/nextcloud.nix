@@ -4,9 +4,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   secrets-file = ../../../secrets/nextcloud/secrets.yaml;
-in {
+in
+{
   imports = [
     ../common/sops-nix.nix
     ./caddy.nix
@@ -42,12 +44,11 @@ in {
       enable = true;
       hostName = "localhost";
       settings = {
-        trusted_domains = ["nextcloud.tail590ac.ts.net"];
-        trusted_proxies = ["127.0.0.1"];
+        trusted_domains = [ "nextcloud.tail590ac.ts.net" ];
+        trusted_proxies = [ "127.0.0.1" ];
       };
       extraApps = {
-        inherit
-          (config.services.nextcloud.package.packages.apps)
+        inherit (config.services.nextcloud.package.packages.apps)
           news
           contacts
           calendar

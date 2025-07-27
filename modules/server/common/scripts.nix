@@ -1,5 +1,6 @@
 # Main Configuration
-{config, ...}: {
+{ config, ... }:
+{
   environment.etc = {
     "scripts/ssh-key" = {
       text = ''

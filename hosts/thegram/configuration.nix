@@ -1,6 +1,7 @@
 {
   ...
-}: {
+}:
+{
   imports = [
     ../../modules/system
     ../../modules/shared

@@ -5,7 +5,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     changedetection.enable = lib.mkOption {
       type = lib.types.bool;

@@ -1,7 +1,8 @@
 {
   desktop,
   ...
-}: {
+}:
+{
   imports = [
     ./hyprland.nix
     ./kde.nix

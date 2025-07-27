@@ -1,6 +1,7 @@
 {
   ...
-}: {
+}:
+{
   imports = [
     ./applications
     ./core

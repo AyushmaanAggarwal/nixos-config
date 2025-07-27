@@ -2,11 +2,12 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Tailscale VPN
   services.tailscale = {
     enable = true;
-    extraDaemonFlags = ["--no-logs-no-support"];
+    extraDaemonFlags = [ "--no-logs-no-support" ];
   };
 
   # General Networking

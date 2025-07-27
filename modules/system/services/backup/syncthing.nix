@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # --- Syncthing ---
   services.syncthing = {
     enable = true;

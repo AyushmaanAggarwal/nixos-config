@@ -28,7 +28,7 @@ python3Packages.buildPythonApplication rec {
       --replace-fail 'cps = "calibreweb:main"' 'calibre-web = "calibreweb:main"'
   '';
 
-  build-system = [python3Packages.setuptools];
+  build-system = [ python3Packages.setuptools ];
 
   dependencies = with python3Packages; [
     flask
@@ -63,7 +63,7 @@ python3Packages.buildPythonApplication rec {
   nativeCheckInputs = lib.flatten (lib.attrValues optional-dependencies);
 
   passthru = {
-    updateScript = nix-update-script {};
+    updateScript = nix-update-script { };
   };
 
   meta = {
@@ -112,4 +112,3 @@ python3Packages.buildPythonApplication rec {
 #   };
 #   wantedBy = [ "sockets.target" ];
 # };
-

@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     cosmic.enable = lib.mkOption {
       type = lib.types.bool;

@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   main-org = "myDune";
   main-bucket = "spiceSilos";
   influxdb-secrets-options = {
@@ -13,7 +14,8 @@
     mode = "0400";
     sopsFile = ../../../secrets/grafana/grafana.yaml;
   };
-in {
+in
+{
   imports = [
     ./caddy.nix
     ../common/sops-nix.nix
@@ -116,10 +118,10 @@ in {
               present = true;
               description = "Allow read/write for proxmox server";
               tokenFile = config.sops.secrets.influxdb_pve_token.path;
-              readBuckets = ["proxmox"];
-              readPermissions = ["buckets"];
-              writeBuckets = ["proxmox"];
-              writePermissions = ["buckets"];
+              readBuckets = [ "proxmox" ];
+              readPermissions = [ "buckets" ];
+              writeBuckets = [ "proxmox" ];
+              writePermissions = [ "buckets" ];
             };
             admin = {
               present = true;

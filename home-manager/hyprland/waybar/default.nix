@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     waybar.enable = lib.mkOption {
       type = lib.types.bool;
@@ -37,7 +38,7 @@
           spacing = 10;
           fixed-center = "false";
 
-          include = ["~/.config/waybar/modules.json"];
+          include = [ "~/.config/waybar/modules.json" ];
 
           modules-left = [
             "hyprland/workspaces"

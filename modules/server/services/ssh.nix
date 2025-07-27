@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     ssh.enable = lib.mkOption {
       type = lib.types.bool;

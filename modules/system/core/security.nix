@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     yubikey.enable = lib.mkOption {
       type = lib.types.bool;

@@ -4,12 +4,14 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   secrets-options = {
     mode = "0400";
     sopsFile = ../../../secrets/gitlab/secrets.yaml;
   };
-in {
+in
+{
   imports = [
     ./caddy.nix
     ../common/sops-nix.nix
@@ -23,17 +25,20 @@ in {
   };
 
   config = lib.mkIf (config.adguard.enable) {
-    sops.secrets = lib.genAttrs [
-      "gl-database-pass" 
-      "gl-root-pass"
-      "gl-secret"
-      "gl-otp"
-      "gl-db-file"
-      "gl-jws-file"
-    ] (secret: {
-      mode = "0400";
-      sopsFile = ../../../secrets/gitlab/secrets.yaml;
-    });
+    sops.secrets =
+      lib.genAttrs
+        [
+          "gl-database-pass"
+          "gl-root-pass"
+          "gl-secret"
+          "gl-otp"
+          "gl-db-file"
+          "gl-jws-file"
+        ]
+        (secret: {
+          mode = "0400";
+          sopsFile = ../../../secrets/gitlab/secrets.yaml;
+        });
 
     services.gitlab = {
       enable = true;

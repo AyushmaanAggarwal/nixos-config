@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   options = {
     earlyoom.enable = lib.mkOption {
       type = lib.types.bool;

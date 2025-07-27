@@ -2,9 +2,11 @@
   inputs,
   outputs,
   ...
-}: let
+}:
+let
   helpers = import ./helpers.nix { inherit inputs outputs; };
-in {
+in
+{
   inherit (helpers)
     mkDesktop
     mkServerLXC

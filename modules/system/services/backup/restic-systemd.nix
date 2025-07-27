@@ -3,15 +3,16 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # --------------------
   # System Backup Service
   # --------------------
   systemd.services = {
     restic-backup = {
       enable = true;
-      wants = ["network-online.target"];
-      after = ["network-online.target"];
+      wants = [ "network-online.target" ];
+      after = [ "network-online.target" ];
       description = "Restic Backup System";
       serviceConfig = {
         User = "ayushmaan";
@@ -37,7 +38,7 @@
   systemd.timers = {
     # Backup Timer
     restic-backup = {
-      wantedBy = ["timers.target"];
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         #OnBootSec = "10m";
         OnCalendar = "daily";
