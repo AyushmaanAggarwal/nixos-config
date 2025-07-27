@@ -54,7 +54,9 @@
 
       # Terminal Applications
       fd
+      mpv
       gdu
+      rsync
       rclone
       psmisc # For killall command
       ## Monitoring
