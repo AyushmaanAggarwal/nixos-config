@@ -1,6 +1,5 @@
 # Applications
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   users.users.ayushmaan.packages = with pkgs; [
     # Editors
     vscodium
@@ -15,6 +14,7 @@
     texliveSmall
 
     # Nix Packages
+    treefmt
     nixfmt-rfc-style
 
     # Neovim Packages
