@@ -64,49 +64,124 @@ in {
                 # }
                 {
                   type = "group";
-                  widgets = [{
-                    type = "monitor";
-                    cache = "1m";
-                    title = "Self Hosted";
-                    sites = [
-                      {
-                        title = "proxmox";
-                        url = "https://proxmox.${tailurl}";
-                        icon = "sh:proxmox";
-                      }
-                      {
-                        title = "uptime";
-                        url = "https://uptime.${tailurl}";
-                        icon = "sh:uptime";
-                      }
-                      {
-                        title = "adguard";
-                        url = "https://adguard.${tailurl}";
-                        icon = "sh:adguard";
-                      }
-                      {
-                        title = "jellyfin";
-                        url = "https://jellyfin.${tailurl}";
-                        icon = "sh:jellyfin";
-                      }
-                      {
-                        title = "immich";
-                        url = "https://immich.${tailurl}";
-                        icon = "sh:immich";
-                      }
-                      {
-                        title = "mealie";
-                        url = "https://mealie.${tailurl}";
-                        icon = "sh:mealie";
-                      }
-                      {
-                        title = "ntfy";
-                        url = "https://ntfy.${tailurl}";
-                        icon = "sh:ntfy";
-                      }
+                  widgets = [
+                    {
+                      type = "monitor";
+                      cache = "1m";
+                      title = "Self Hosted";
+                      sites = [
+                        {
+                          title = "uptime";
+                          url = "https://uptime.${tailurl}";
+                          icon = "sh:uptime-kuma";
+                        }
+                        {
+                          title = "adguard";
+                          url = "https://adguard.${tailurl}";
+                          icon = "sh:adguard-home";
+                        }
+                        {
+                          title = "jellyfin";
+                          url = "https://jellyfin.${tailurl}";
+                          icon = "sh:jellyfin";
+                        }
+                        {
+                          title = "immich";
+                          url = "https://immich.${tailurl}";
+                          icon = "sh:immich";
+                        }
+                        {
+                          title = "mealie";
+                          url = "https://mealie.${tailurl}";
+                          icon = "sh:mealie";
+                        }
+                        {
+                          title = "ntfy";
+                          url = "https://ntfy.${tailurl}";
+                          icon = "sh:ntfy";
+                        }
 
-                    ];
-                  }];
+                      ];
+                    }
+                    {
+                      type = "bookmarks";
+                      groups = [
+                        {
+                          title = "NixOS";
+                          color = "200 50 50";
+                          links = [
+                            {
+                              title = "NixOS Wiki";
+                              url = "https://wiki.nixos.org/";
+                            }
+                            {
+                              title = "NixOS Packages";
+                              url =
+                                "https://search.nixos.org/packages?channel=unstable";
+                            }
+                            {
+                              title = "NixOS Options";
+                              url =
+                                "https://search.nixos.org/options?channel=unstable";
+                            }
+                          ];
+                        }
+                        {
+                          title = "College";
+                          color = "64 146 88";
+                          links = [
+                            {
+                              title = "CalCentral";
+                              url = "https://calcentral.berkeley.edu/";
+                            }
+                            {
+                              title = "BCourses";
+                              url = "https://bcourses.berkeley.edu";
+                            }
+                            {
+                              title = "Gradescope";
+                              url = "https://gradescope.com/auth/saml/berkeley";
+                            }
+
+                          ];
+
+                        }
+
+                        {
+                          title = "Entertainment";
+                          color = "10 70 50";
+                          links = [
+                            {
+                              title = "Netflix";
+                              url = "https://netflix.com/";
+                            }
+                            {
+                              title = "Formula 1";
+                              url = "https://f1tv.formula1.com/";
+                            }
+                            {
+                              title = "YouTube";
+                              url = "https://youtube.com/";
+                            }
+                            {
+                              title = "Prime Video";
+                              url = "https://primevideo.com/";
+                            }
+                          ];
+                        }
+                        {
+                          title = "Social";
+                          color = "200 50 50";
+                          links = [{
+                            title = "Reddit";
+                            url = "https://www.reddit.com/";
+                          }];
+                        }
+
+                      ];
+                    }
+
+                  ];
                 }
               ];
             }
