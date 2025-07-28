@@ -97,3 +97,7 @@ ntfy:
 jellyfin:
 	@echo "Update: jellyfin"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#jellyfin --target-host nixadmin@jellyfin; \
+
+glance:
+	@echo "Update: glance"
+	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#glance --target-host nixadmin@glance; \

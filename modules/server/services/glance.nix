@@ -1,4 +1,6 @@
-{ inputs, config, pkgs, lib, desktop, hostname, system, username, ... }: {
+{ inputs, config, pkgs, lib, desktop, hostname, system, username, ... }:
+let tailurl = "tail590ac.ts.net";
+in {
   imports = [
 
   ];
@@ -29,17 +31,82 @@
               size = "small";
               widgets = [
                 {
+                  type = "clock";
+                  hour-format = "24h";
+                  timezones = [
+                    {
+                      timezone = "Europe/Paris";
+                      label = "Paris";
+                    }
+                    {
+                      timezone = "America/New_York";
+                      label = "New York";
+                    }
+                    {
+                      timezone = "Asia/Tokyo";
+                      label = "Tokyo";
+                    }
+                  ];
+                }
+
+                {
                   type = "calendar";
                   first-day-of-week = "monday";
                 }
+                # {
+                #   type = "rss";
+                #   limit = 10;
+                #   collapse-after = 3;
+                #   cache = "12h";
+                #   feeds = [
+                #     #{ url = ""; title = "<title>"; limit = 4; }
+                #   ];
+                # }
                 {
-                  type = "rss";
-                  limit = 10;
-                  collapse-after = 3;
-                  cache = "12h";
-                  feeds = [
-                    #{ url = ""; title = "<title>"; limit = 4; }
-                  ];
+                  type = "group";
+                  widgets = [{
+                    type = "monitor";
+                    cache = "1m";
+                    title = "Self Hosted";
+                    sites = [
+                      {
+                        title = "proxmox";
+                        url = "[proxmox.${tailurl}]";
+                        icon = "sh:proxmox";
+                      }
+                      {
+                        title = "uptime";
+                        url = "[uptime.${tailurl}]";
+                        icon = "sh:uptime";
+                      }
+                      {
+                        title = "adguard";
+                        url = "[adguard.${tailurl}]";
+                        icon = "sh:adguard";
+                      }
+                      {
+                        title = "jellyfin";
+                        url = "[jellyfin.${tailurl}]";
+                        icon = "sh:jellyfin";
+                      }
+                      {
+                        title = "immich";
+                        url = "[immich.${tailurl}]";
+                        icon = "sh:immich";
+                      }
+                      {
+                        title = "mealie";
+                        url = "[mealie.${tailurl}]";
+                        icon = "sh:mealie";
+                      }
+                      {
+                        title = "ntfy";
+                        url = "[ntfy.${tailurl}]";
+                        icon = "sh:ntfy";
+                      }
+
+                    ];
+                  }];
                 }
               ];
             }
@@ -88,29 +155,9 @@
                   hour-format = "12h"; # alternatively "24h"
                 }
                 {
-                  type = "markets";
-                  markets = [
-                    {
-                      symbol = "SPY";
-                      name = "S&P 500";
-                    }
-                    {
-                      symbol = "BTC-USD";
-                      name = "Bitcoin";
-                    }
-                    {
-                      symbol = "NVDA";
-                      name = "NVIDIA";
-                    }
-                    {
-                      symbol = "AAPL";
-                      name = "Apple";
-                    }
-                    {
-                      symbol = "MSFT";
-                      name = "Microsoft";
-                    }
-                  ];
+                  type = "change-detection";
+                  instance-url = "https://changedetection.${tailurl}/";
+                  token = "f26312c1f6364eacff6a2aea89da1104";
                 }
                 {
                   type = "releases";
