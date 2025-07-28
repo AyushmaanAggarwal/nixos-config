@@ -4,8 +4,8 @@ let
   lighter_dark = "#525250";
   dark_color = "#191916";
   selected_color = "#7B92B9"; # goes well with dark colors
-  selected_color_rgba = "rgba(123,146,185,0.3)";
-  selected_color_rgba_strong = "rgba(123,146,185,0.6)";
+  selected_color_rgba = "rgba(123,146,185,0.4)";
+  selected_color_rgba_strong = "rgba(123,146,185,0.7)";
 
   extraConfigHelper = mode: ''
     unmap [${mode}] j
@@ -22,8 +22,8 @@ let
     map [${mode}] <S-l> scroll left
     map [${mode}] <S-h> scroll right
 
-    map [${mode}] b focus_inputbar ":bmark current"
-    map [${mode}] n focus_inputbar ":bjump current"
+    map [${mode}] <S-b> focus_inputbar ":bmark current"
+    map [${mode}] b focus_inputbar ":bjump current"
   '';
 in {
   programs.zathura = {
@@ -58,7 +58,7 @@ in {
       statusbar-fg = light_color;
       highlight-active-color = selected_color_rgba_strong;
       highlight-color = selected_color_rgba;
-      highlight-fg = selected_color;
+      highlight-fg = selected_color_rgba;
     };
   };
 }
