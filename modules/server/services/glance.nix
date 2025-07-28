@@ -35,24 +35,16 @@ in {
                   hour-format = "24h";
                   timezones = [
                     {
-                      timezone = "Europe/Paris";
-                      label = "Paris";
-                    }
-                    {
                       timezone = "America/New_York";
                       label = "New York";
                     }
                     {
-                      timezone = "Asia/Tokyo";
-                      label = "Tokyo";
+                      timezone = "Asia/New_Delhi";
+                      label = "Delhi";
                     }
                   ];
                 }
 
-                {
-                  type = "calendar";
-                  first-day-of-week = "monday";
-                }
                 # {
                 #   type = "rss";
                 #   limit = 10;
@@ -223,6 +215,10 @@ in {
             {
               size = "small";
               widgets = [
+                {
+                  type = "calendar";
+                  first-day-of-week = "monday";
+                }
                 {
                   type = "weather";
                   location = "Berkeley, United States";
