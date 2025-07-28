@@ -71,37 +71,37 @@ in {
                     sites = [
                       {
                         title = "proxmox";
-                        url = "[proxmox.${tailurl}]";
+                        url = "https://proxmox.${tailurl}";
                         icon = "sh:proxmox";
                       }
                       {
                         title = "uptime";
-                        url = "[uptime.${tailurl}]";
+                        url = "https://uptime.${tailurl}";
                         icon = "sh:uptime";
                       }
                       {
                         title = "adguard";
-                        url = "[adguard.${tailurl}]";
+                        url = "https://adguard.${tailurl}";
                         icon = "sh:adguard";
                       }
                       {
                         title = "jellyfin";
-                        url = "[jellyfin.${tailurl}]";
+                        url = "https://jellyfin.${tailurl}";
                         icon = "sh:jellyfin";
                       }
                       {
                         title = "immich";
-                        url = "[immich.${tailurl}]";
+                        url = "https://immich.${tailurl}";
                         icon = "sh:immich";
                       }
                       {
                         title = "mealie";
-                        url = "[mealie.${tailurl}]";
+                        url = "https://mealie.${tailurl}";
                         icon = "sh:mealie";
                       }
                       {
                         title = "ntfy";
-                        url = "[ntfy.${tailurl}]";
+                        url = "https://ntfy.${tailurl}";
                         icon = "sh:ntfy";
                       }
 
