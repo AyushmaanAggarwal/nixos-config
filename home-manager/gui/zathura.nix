@@ -22,14 +22,12 @@ let
     map [${mode}] b focus_inputbar ":bmark current"
     map [${mode}] n focus_inputbar ":bjump current"
   '';
-in
-{
+in {
   programs.zathura = {
     enable = true;
-    extraConfig = (extraConfigHelper "normal") + (extraConfigHelper "fullscreen") + '''';
-    mappings = {
-      i = "recolor";
-    };
+    extraConfig = (extraConfigHelper "normal")
+      + (extraConfigHelper "fullscreen") + "";
+    mappings = { i = "recolor"; };
     options = {
       # General settings
       seletion-clipboard = "clipboard";
@@ -55,6 +53,9 @@ in
       notification-fg = light_color;
       statusbar-bg = dark_color;
       statusbar-fg = light_color;
+      highlight-active-color = selected_color;
+      highlight-color = selected_color;
+      highlight-fg = light_color;
     };
   };
 }
