@@ -4,6 +4,9 @@ let
   lighter_dark = "#525250";
   dark_color = "#191916";
   selected_color = "#7B92B9"; # goes well with dark colors
+  selected_color_rgba = "rgba(123,146,185,0.3)";
+  selected_color_rgba_strong = "rgba(123,146,185,0.6)";
+
   extraConfigHelper = mode: ''
     unmap [${mode}] j
     unmap [${mode}] k
@@ -53,9 +56,9 @@ in {
       notification-fg = light_color;
       statusbar-bg = dark_color;
       statusbar-fg = light_color;
-      highlight-active-color = selected_color;
-      highlight-color = selected_color;
-      highlight-fg = dark_color;
+      highlight-active-color = selected_color_rgba_strong;
+      highlight-color = selected_color_rgba;
+      highlight-fg = selected_color;
     };
   };
 }
