@@ -39,7 +39,7 @@ in {
                       label = "New York";
                     }
                     {
-                      timezone = "Asia/New_Delhi";
+                      timezone = "Asia/Kolkata";
                       label = "Delhi";
                     }
                   ];
