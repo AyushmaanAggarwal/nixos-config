@@ -128,7 +128,7 @@ in {
                         }
                         {
                           title = "College";
-                          color = "64 146 88";
+                          color = "138 39 41";
                           links = [
                             {
                               title = "CalCentral";
