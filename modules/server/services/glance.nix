@@ -184,5 +184,7 @@ in {
       port = config.glance.port;
     };
 
+    # Need non-userspace networking for device pings
+    tailscale.userspace.enable = false;
   };
 }
