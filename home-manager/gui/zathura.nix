@@ -55,7 +55,7 @@ in {
       statusbar-fg = light_color;
       highlight-active-color = selected_color;
       highlight-color = selected_color;
-      highlight-fg = light_color;
+      highlight-fg = dark_color;
     };
   };
 }
