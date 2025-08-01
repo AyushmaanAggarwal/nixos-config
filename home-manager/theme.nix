@@ -12,7 +12,7 @@
     enable = true;
     cursorTheme = {
       name = "Adwaita";
-      size = 24;
+      size = 12;
       package = pkgs.adwaita-icon-theme;
     };
     font = {
