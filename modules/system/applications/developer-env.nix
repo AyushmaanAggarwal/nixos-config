@@ -1,5 +1,12 @@
 # Applications
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-small enumitem xifthen ifmtarg fontawesome5 roboto sourcesanspro
+      tcolorbox tikzfill;
+  });
+in {
   users.users.ayushmaan.packages = with pkgs; [
     # Editors
     vscodium
@@ -11,7 +18,7 @@
     gnumake # For makefiles
     pandoc
     quarto
-    texliveSmall
+    tex
 
     # Nix Packages
     treefmt
