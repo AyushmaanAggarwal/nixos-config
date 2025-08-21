@@ -15,6 +15,8 @@ The current services running in production are
 - Immich
 - Adguard
 - Nextcloud
+- Jellyfin - Media Playback
+- Glance - homepage
 - Mealie - Recipe Manager
 - ntfy.sh - Notification Server
 - changedetection.io - Website Change Detection
