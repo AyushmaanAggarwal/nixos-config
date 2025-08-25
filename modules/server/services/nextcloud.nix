@@ -53,6 +53,7 @@ in
           contacts
           calendar
           tasks
+          gpoddersync
           ;
       };
       extraAppsEnable = true;
