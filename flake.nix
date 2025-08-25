@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
   };
 
   outputs =

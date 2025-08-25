@@ -59,7 +59,7 @@ all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich j
 remote-build = nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
 immich:
-	@echo "Update: immich"
+	@echo "Update: immich" \
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich --target-host nixadmin@immich; \
 
 adguard:
