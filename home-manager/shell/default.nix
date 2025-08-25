@@ -1,13 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-{
-  imports = [
-    ./zsh.nix
-    ./numbat.nix
-    ./direnv.nix
-    ./distrobox.nix
-  ];
+{ pkgs, lib, ... }: {
+  imports =
+    [ ./zsh.nix ./numbat.nix ./direnv.nix ./distrobox.nix ./nixvim.nix ];
 }
