@@ -1,13 +1,30 @@
 # Applications
-{ inputs, pkgs, system, ... }:
+{
+  inputs,
+  pkgs,
+  system,
+  ...
+}:
 let
-  tex = (pkgs.texlive.combine {
-    inherit (pkgs.texlive)
-      scheme-small enumitem xifthen ifmtarg fontawesome5 roboto sourcesanspro
-      tcolorbox tikzfill;
-  });
-in {
-  users.users.ayushmaan.packages = with pkgs;
+  tex = (
+    pkgs.texlive.combine {
+      inherit (pkgs.texlive)
+        scheme-small
+        enumitem
+        xifthen
+        ifmtarg
+        fontawesome5
+        roboto
+        sourcesanspro
+        tcolorbox
+        tikzfill
+        ;
+    }
+  );
+in
+{
+  users.users.ayushmaan.packages =
+    with pkgs;
     [
       # Editors
       vscodium
@@ -20,25 +37,11 @@ in {
       quarto
       tex
 
+      ripgrep
       # Nix Packages
       treefmt
       nixfmt-rfc-style
 
-      # Neovim Packages
-      ## LSP Dependencies
-      gcc
-      cargo
-      nodejs
-      ripgrep
-
-      ## LSP Packages
-      marksman
-      tree-sitter
-      lua-language-server
-      matlab-language-server
-      ### For image.nvim
-      imagemagick
-      luajitPackages.magick
-
-    ] ++ [ inputs.nixvim-config.packages.${system}.default ];
+    ]
+    ++ [ inputs.nixvim-config.packages.${system}.default ];
 }
