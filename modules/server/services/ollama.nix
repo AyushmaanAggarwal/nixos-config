@@ -21,6 +21,7 @@
     hardware.graphics.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.open = false;
+    nixpkgs.config.allowUnfree = true;
 
     # --------------------
     # Ollama Server

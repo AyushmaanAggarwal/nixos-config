@@ -1,5 +1,6 @@
 # Main Configuration
-{ ... }: {
+{ ... }:
+{
   imports = [
     # --- System Configuration ---
     ./common/users.nix
@@ -23,5 +24,6 @@
     ./services/uptime.nix
     ./services/jellyfin.nix
     ./services/glance.nix
+    ./services/ollama.nix
   ];
 }
