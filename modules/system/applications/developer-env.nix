@@ -1,5 +1,5 @@
 # Applications
-{ pkgs, ... }:
+{ inputs, pkgs, system, ... }:
 let
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
@@ -7,38 +7,38 @@ let
       tcolorbox tikzfill;
   });
 in {
-  users.users.ayushmaan.packages = with pkgs; [
-    # Editors
-    vscodium
-    neovim
+  users.users.ayushmaan.packages = with pkgs;
+    [
+      # Editors
+      vscodium
 
-    conda
-    devenv
-    direnv
-    gnumake # For makefiles
-    pandoc
-    quarto
-    tex
+      conda
+      devenv
+      direnv
+      gnumake # For makefiles
+      pandoc
+      quarto
+      tex
 
-    # Nix Packages
-    treefmt
-    nixfmt-rfc-style
+      # Nix Packages
+      treefmt
+      nixfmt-rfc-style
 
-    # Neovim Packages
-    ## LSP Dependencies
-    gcc
-    cargo
-    nodejs
-    ripgrep
+      # Neovim Packages
+      ## LSP Dependencies
+      gcc
+      cargo
+      nodejs
+      ripgrep
 
-    ## LSP Packages
-    marksman
-    tree-sitter
-    lua-language-server
-    matlab-language-server
-    ### For image.nvim
-    imagemagick
-    luajitPackages.magick
+      ## LSP Packages
+      marksman
+      tree-sitter
+      lua-language-server
+      matlab-language-server
+      ### For image.nvim
+      imagemagick
+      luajitPackages.magick
 
-  ];
+    ] ++ [ inputs.nixvim-config.packages.${system}.default ];
 }
