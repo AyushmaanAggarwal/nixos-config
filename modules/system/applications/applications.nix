@@ -18,6 +18,8 @@
 
   services.printing.enable = true; # Enable CUPS to print documents.
 
+  services.ollama.enable = true;
+
   # Install progams
   programs = {
     zsh.enable = true;
