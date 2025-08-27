@@ -27,6 +27,7 @@
     # Ollama Server
     # --------------------
     services.ollama = {
+      port = 11434;
       enable = true;
       acceleration = "cuda";
       # Optional: preload models, see https://ollama.com/library
@@ -39,7 +40,7 @@
     # --------------------
     caddy = {
       enable = true;
-      port = 8080;
+      port = 11434;
     };
   };
 }
