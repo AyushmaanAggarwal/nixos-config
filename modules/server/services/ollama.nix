@@ -29,7 +29,7 @@
     services.ollama = {
       port = 11434;
       enable = true;
-      acceleration = "cuda";
+      # acceleration = "cuda";
       # Optional: preload models, see https://ollama.com/library
       loadModels = [ "llama3.2:3b" ];
     };
