@@ -107,8 +107,8 @@ in
       "browser.toolbarbuttons.introduced.sidebar-button" = true;
 
       # Unload Tabs
-      "browser.tabs.fadeOutExplicitlyUnloadedTabs" = true;
-      "browser.tabs.fadeOutUnloadedTabs" = true;
+      "browser.tabs.fadeOutExplicitlyUnloadedTabs" = false;
+      "browser.tabs.fadeOutUnloadedTabs" = false;
       "browser.tabs.min_inactive_duration_before_unload" = 120;
       "browser.tabs.remote.warmup.unloadDelayMs" = 2000;
       "browser.tabs.unloadOnLowMemory" = true;
