@@ -59,61 +59,61 @@ all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich j
 remote-build = nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
 immich:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: immich"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#immich --target-host nixadmin@immich; \
 
 adguard:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: adguard"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#adguard --target-host nixadmin@adguard; \
 
 nextcloud:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: nextcloud"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#nextcloud --target-host nixadmin@nextcloud; \
 
 uptime:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: uptime"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#uptime --target-host nixadmin@uptime; \
 
 changedetection:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: changedetection"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#changedetection --target-host nixadmin@changedetection; \
 
 mealie:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: mealie"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#mealie --target-host nixadmin@mealie; \
 
 backup:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: backup"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#backup --target-host nixadmin@backup; \
 
 grafana:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: grafana"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#grafana --target-host nixadmin@grafana; \
 
 ntfy:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: ntfy"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#ntfy --target-host nixadmin@ntfy; \
 
 jellyfin:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: jellyfin"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#jellyfin --target-host nixadmin@jellyfin; \
 
 glance:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: glance"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#glance --target-host nixadmin@glance; \
 
 ollama:
-	@echo "\n--------------------\n"
+	@echo "----------------------------------------"
 	@echo "Update: ollama"
 	nixos-rebuild --sudo switch --flake /home/ayushmaan/.dotfiles/system\#ollama --target-host nixadmin@ollama; \
