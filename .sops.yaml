@@ -18,20 +18,6 @@ creation_rules:
     key_groups:
     - age:
       - *admin_ayu
-  - path_regex: secrets/thegram/[^/]+\.yaml$
-    key_groups:
-    - age:
-      - *admin_ayu
-  - path_regex: secrets/nextcloud/[^/]+\.yaml$
-    key_groups:
-    - age:
-      - *admin_ayu
-      - *server_nextcloud
-  - path_regex: secrets/grafana/[^/]+\.yaml$
-    key_groups:
-    - age:
-      - *admin_ayu
-      - *server_grafana
   - path_regex: secrets/general/[^/]+\.yaml$
     key_groups:
     - age:
@@ -46,3 +32,21 @@ creation_rules:
       - *server_backup
       - *server_mealie
       - *server_grafana
+  - path_regex: secrets/thegram/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+  - path_regex: secrets/nextcloud/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+      - *server_nextcloud
+  - path_regex: secrets/grafana/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu
+      - *server_grafana
+  - path_regex: secrets/onlyoffice/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu

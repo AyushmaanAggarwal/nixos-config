@@ -25,5 +25,6 @@
     ./services/jellyfin.nix
     ./services/glance.nix
     ./services/ollama.nix
+    ./services/onlyoffice.nix
   ];
 }
