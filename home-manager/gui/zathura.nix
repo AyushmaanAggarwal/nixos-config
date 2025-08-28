@@ -25,12 +25,14 @@ let
     map [${mode}] <S-b> focus_inputbar ":bmark current"
     map [${mode}] b focus_inputbar ":bjump current"
   '';
-in {
+in
+{
   programs.zathura = {
     enable = true;
-    extraConfig = (extraConfigHelper "normal")
-      + (extraConfigHelper "fullscreen") + "";
-    mappings = { i = "recolor"; };
+    extraConfig = (extraConfigHelper "normal") + (extraConfigHelper "fullscreen") + "";
+    mappings = {
+      i = "recolor";
+    };
     options = {
       # General settings
       seletion-clipboard = "clipboard";

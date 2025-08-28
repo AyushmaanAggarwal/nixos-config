@@ -1,11 +1,14 @@
-{ pkgs, home-manager, ... }: {
+{ pkgs, home-manager, ... }:
+{
   home.sessionVariables = {
     EDITOR = "nvim";
     GTK_THEME = "Adwaita:dark";
   };
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
   };
 
   gtk = {
