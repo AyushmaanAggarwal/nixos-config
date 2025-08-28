@@ -1,12 +1,25 @@
-{ inputs, options, config, lib, pkgs, modulesPath, hostname, username, desktop
-, system, isTailscaleExitNode, sshWithoutYubikey, ... }:
+{
+  inputs,
+  options,
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  hostname,
+  username,
+  desktop,
+  system,
+  isTailscaleExitNode,
+  sshWithoutYubikey,
+  ...
+}:
 let
   hostname-nooption = builtins.elem "${hostname}" [ "backup" ];
   hostname-option = !hostname-nooption;
 
-in {
+in
+{
   imports = [
-    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server
     ../../modules/shared
   ];

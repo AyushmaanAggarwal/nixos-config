@@ -1,41 +1,7 @@
 # The formatter multiplexer - https://github.com/numtide/treefmt
-
-# Exclude files or directories matching the specified globs
-# Env $TREEFMT_EXCLUDES
 excludes = ["*.md", "*.pdf", "Makefile"]
 
-# Log paths that did not match any formatters at the specified log level
-# Possible values are <debug|info|warn|error|fatal>
-# Env $TREEFMT_ON_UNMATCHED
-# on-unmatched = "info"
-
-# The root directory from which treefmt will start walking the filesystem
-# Defaults to the root of the current git worktree.
-# If not in a git repo, defaults to the directory containing the config file.
-# Env $TREEFMT_TREE_ROOT
-# tree-root = "/tmp/foo"
-
-# File to search for to find the tree root (if tree-root is not set)
-# Env $TREEFMT_TREE_ROOT_FILE
-# tree-root-file = ".git/config"
-
-# Command to run to find the tree root. It is parsed using shlex, to allow quoting arguments that contain whitespace.
-# If you wish to pass arguments containing quotes, you should use nested quotes e.g. "'" or '"'
-# Env $TREEFMT_TREE_ROOT_CMD
-# tree-root-cmd = "git rev-parse --show-toplevel"
-
-# Set the verbosity of logs
-# 0 = warn, 1 = info, 2 = debug
-# Env $TREEFMT_VERBOSE
-# verbose = 2
-
-# The method used to traverse the files within the tree root
-# Currently, we support 'auto', 'git' or 'filesystem'
-# Env $TREEFMT_WALK
-# walk = "filesystem"
-
 [formatter.nix]
-# Command to execute
 command = "nix"
 options = ["fmt"]
 includes = [ "*.nix" ]

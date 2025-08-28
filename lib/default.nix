@@ -10,6 +10,7 @@ in
   inherit (helpers)
     mkDesktop
     mkServerLXC
+    mkListOfDefaultLXC
     forAllSystems
     ;
 }
