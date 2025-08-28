@@ -20,28 +20,30 @@ let
       isTailscaleExitNode = hostname == "adguard";
       sshWithoutYubikey = hostname == "backup";
     in
-    lib-stable.nixosSystem {
-      inherit system;
-      specialArgs = {
-        inherit
-          inputs
-          outputs
-          functions
-          hostname
-          username
-          desktop
-          system
-          isTailscaleExitNode
-          sshWithoutYubikey
-          ;
-      };
-      modules = [
-        ../hosts/proxmox/configuration.nix
+    lib-stable.nixosSystem (
+      lib.mkMerge [
+        {
+          inherit system;
+          specialArgs = {
+            inherit
+              inputs
+              outputs
+              functions
+              hostname
+              username
+              desktop
+              system
+              isTailscaleExitNode
+              sshWithoutYubikey
+              ;
+          };
+          modules = [ ../hosts/proxmox/configuration.nix ];
+        }
+        (lib-stable.mkIf (!buildingImage) {
+          modules = [ ../hosts/proxmox/proxmox-lxc-image.nix ];
+        })
       ]
-      ++ (lib-stable.mkIf (!buildingImage) [
-        ../hosts/proxmox/proxmox-lxc-image.nix
-      ]);
-    };
+    );
 in
 {
   mkDesktop =
@@ -71,22 +73,22 @@ in
     };
 
   mkListOfDefaultLXC =
-    {
-      hostList,
-    }:
-    let
-      # Simple function to build host with hostname
-      mkLXC =
-        buildImage: host:
-        mkServerLXC {
-          hostname = host;
-          buildingImage = buildImage;
-        };
-      # Build Name is renamed from <host> to <host>-image for all build options
-      mapBuildName = name: value: lib.attrsets.nameValuePair "${name}-image" value;
-    in
-    (lib-stable.genAttrs hostList (mkLXC false))
-    // (lib.attrsets.mapAttrs' mapBuildName (lib-stable.genAttrs hostList (mkLXC true)));
+    hostList:
+    (
+      let
+        # Simple function to build host with hostname
+        mkLXC =
+          buildImage: host:
+          mkServerLXC {
+            hostname = host;
+            buildingImage = buildImage;
+          };
+        # Build Name is renamed from <host> to <host>-image for all build options
+        mapBuildName = name: value: lib.attrsets.nameValuePair "${name}-image" value;
+      in
+      (lib-stable.genAttrs hostList (mkLXC false))
+      // (lib.attrsets.mapAttrs' mapBuildName (lib-stable.genAttrs hostList (mkLXC true)))
+    );
 
   forAllSystems = lib.genAttrs [
     "aarch64-linux"
