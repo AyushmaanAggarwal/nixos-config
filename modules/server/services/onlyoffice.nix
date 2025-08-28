@@ -33,6 +33,11 @@ in
       port = 8123;
       jwtSecretFile = config.sops.secrets.jwt.path;
     };
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "corefonts"
+      ];
 
     # --------------------
     # Caddy SSL Cert
