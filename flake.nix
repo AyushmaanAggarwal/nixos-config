@@ -65,10 +65,6 @@
         ollama = helper.mkServerLXC { hostname = "ollama"; };
 
         onlyoffice = helper.mkServerLXC { hostname = "onlyoffice"; };
-        onlyoffice-image = helper.mkServerLXC {
-          hostname = "onlyoffice";
-          buildingImage = true;
-        };
       };
     };
 }

@@ -20,6 +20,7 @@ let
 in
 {
   imports = [
+    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server
     ../../modules/shared
   ];

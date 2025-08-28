@@ -41,36 +41,28 @@ in
       username ? "proxmox",
       desktop ? null,
       system ? "x86_64-linux",
-      buildingImage ? false,
     }:
     let
       isTailscaleExitNode = hostname == "adguard";
       sshWithoutYubikey = hostname == "backup";
     in
-    lib-stable.nixosSystem (
-      lib-stable.mkMerge [
-        {
-          inherit system;
-          specialArgs = {
-            inherit
-              inputs
-              outputs
-              functions
-              hostname
-              username
-              desktop
-              system
-              isTailscaleExitNode
-              sshWithoutYubikey
-              ;
-          };
-          modules = [ ../hosts/proxmox/configuration.nix ];
-        }
-        (lib-stable.mkIf (!buildingImage) {
-          modules = [ ../hosts/proxmox/proxmox-lxc-image.nix ];
-        })
-      ]
-    );
+    lib-stable.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit
+          inputs
+          outputs
+          functions
+          hostname
+          username
+          desktop
+          system
+          isTailscaleExitNode
+          sshWithoutYubikey
+          ;
+      };
+      modules = [ ../hosts/proxmox/configuration.nix ];
+    };
 
   forAllSystems = lib.genAttrs [
     "aarch64-linux"
