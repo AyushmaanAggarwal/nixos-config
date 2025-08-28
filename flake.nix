@@ -37,24 +37,38 @@
           desktop = "hyprland";
         };
 
-      }
-      # Server Containers
-      // (helper.mkListOfDefaultLXC [
-        "adguard"
-        "backup"
-        "immich"
-        "nextcloud"
-        "uptime"
-        "changedetection"
-        "ntfy"
-        "mealie"
-        "jellyfin"
-        "glance"
-        "onlyoffice"
-        # Not in production
-        # "etebase"
-        # "grafana"
-        # "ollama"
-      ]);
+        # Server Containers
+        adguard = helper.mkServerLXC { hostname = "adguard"; };
+
+        backup = helper.mkServerLXC { hostname = "backup"; };
+
+        etebase = helper.mkServerLXC { hostname = "etebase"; };
+
+        grafana = helper.mkServerLXC { hostname = "grafana"; };
+
+        immich = helper.mkServerLXC { hostname = "immich"; };
+
+        nextcloud = helper.mkServerLXC { hostname = "nextcloud"; };
+
+        uptime = helper.mkServerLXC { hostname = "uptime"; };
+
+        changedetection = helper.mkServerLXC { hostname = "changedetection"; };
+
+        ntfy = helper.mkServerLXC { hostname = "ntfy"; };
+
+        mealie = helper.mkServerLXC { hostname = "mealie"; };
+
+        jellyfin = helper.mkServerLXC { hostname = "jellyfin"; };
+
+        glance = helper.mkServerLXC { hostname = "glance"; };
+
+        ollama = helper.mkServerLXC { hostname = "ollama"; };
+
+        onlyoffice = helper.mkServerLXC { hostname = "onlyoffice"; };
+        onlyoffice-image = helper.mkServerLXC {
+          hostname = "onlyoffice";
+          buildingImage = true;
+        };
+      };
     };
 }
