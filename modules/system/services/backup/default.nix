@@ -9,5 +9,6 @@
   imports = [
     ./restic.nix
     ./syncthing.nix
+    ./backlight.nix
   ];
 }

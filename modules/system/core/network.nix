@@ -10,6 +10,9 @@
     extraDaemonFlags = [ "--no-logs-no-support" ];
   };
 
+  # BPF AutoTune
+  services.bpftune.enable = true;
+
   # General Networking
   networking = {
     hostName = "thegram";
