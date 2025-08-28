@@ -41,13 +41,15 @@
     ];
     packages = with pkgs; [
       # GUI Applications
+
       slack # unfree
       spotify # unfree
       inkscape
       # darktable # Disable due to broken package
       signal-desktop
       # bitwarden-desktop
-      # onlyoffice-desktopeditors
+      logseq
+      libreoffice
       ## Academic
       xournalpp
       zotero
