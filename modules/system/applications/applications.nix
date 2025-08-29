@@ -49,7 +49,7 @@
       signal-desktop
       # bitwarden-desktop
       logseq
-      libreoffice
+      libreoffice-fresh
       ## Academic
       xournalpp
       zotero
