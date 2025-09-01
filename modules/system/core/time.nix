@@ -25,13 +25,4 @@
     '';
     extraFlags = [ "-s" ];
   };
-  environment.etc = {
-    "nixos/services/networking/forwarding-rules.txt" = {
-      text = ''
-        local $DHCP
-        time.cloudflare.com $BOOTSTRAP
-      '';
-      mode = "0644";
-    };
-  };
 }

@@ -12,11 +12,14 @@
   ];
   #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot = {
-    enable = true;
-    editor = false;
-    consoleMode = "max";
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    timeout = 5;
+    systemd-boot = {
+      enable = true;
+      editor = false;
+      consoleMode = "max";
+    };
   };
 
   # Add swapfile
