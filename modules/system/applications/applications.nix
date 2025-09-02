@@ -60,6 +60,7 @@
       fd
       mpv
       gdu
+      tmux
       rsync
       rclone
       psmisc # For killall command
