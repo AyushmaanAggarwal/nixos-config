@@ -18,6 +18,7 @@ let
         sourcesanspro
         tcolorbox
         tikzfill
+        pdfjam
         ;
     }
   );

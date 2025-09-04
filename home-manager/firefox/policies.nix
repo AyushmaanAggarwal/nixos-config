@@ -160,6 +160,10 @@ in
       "toolkit.telemetry.enabled" = false;
       "datareporting.usage.uploadEnabled" = false;
 
+      # Disable cookies by default
+      "cookiebanners.service.mode" = 2;
+      "cookiebanners.service.mode.privateBrowsing" = 2;
+
       # Privacy Options
       "privacy.clearOnShutdown.cache" = false;
       "privacy.clearOnShutdown.cookies" = false;
