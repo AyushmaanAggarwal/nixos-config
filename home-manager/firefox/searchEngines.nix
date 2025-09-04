@@ -80,6 +80,22 @@
         icon = "https://github.com/favicon.ico";
         definedAliases = [ "@gn" ];
       };
+      "Github" = {
+        urls = [
+          {
+            template = "https://github.com/search";
+            params = [
+              {
+                name = "type";
+                value = "code";
+              }
+            ];
+          }
+        ];
+        icon = "https://github.com/favicon.ico";
+        definedAliases = [ "@git" ];
+      };
+
     };
   };
 }
