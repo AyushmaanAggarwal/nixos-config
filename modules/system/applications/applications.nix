@@ -62,6 +62,7 @@
       gdu
       tmux
       rsync
+      sshfs
       rclone
       psmisc # For killall command
       ## Monitoring
