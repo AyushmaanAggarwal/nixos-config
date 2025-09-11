@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -9,6 +10,9 @@
     enable = true;
     extraDaemonFlags = [ "--no-logs-no-support" ];
   };
+  systemd.services.tailscaled.after = lib.mkIf (config.services.chrony.enable) [
+    "time-sync.target"
+  ]; # Ensure tailscale is after chrony
 
   # BPF AutoTune
   services.bpftune.enable = true;
