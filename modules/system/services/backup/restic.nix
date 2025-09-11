@@ -12,7 +12,7 @@
 
   users.users.ayushmaan.packages = with pkgs; [
     restic
-    python3Full
+    python3
     python313Packages.requests
   ];
 
