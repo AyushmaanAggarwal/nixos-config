@@ -48,7 +48,6 @@
       # darktable # Disable due to broken package
       signal-desktop
       # bitwarden-desktop
-      logseq
       libreoffice-fresh
       ## Academic
       xournalpp
