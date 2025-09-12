@@ -51,6 +51,15 @@
         permitCertUid = lib.mkIf (config.tailscale.caddycert.enable) "caddy";
         extraSetFlags = lib.mkIf (config.tailscale.exit-node.enable) [ "--advertise-exit-node" ];
       };
+
+      # Ignore proxmox resolv.conf for tailscale dns
+      environment.etc = {
+        ".pve-ignore.resolv.conf" = {
+          text = "";
+          mode = "0555";
+        };
+      };
+
     }
   ];
 }
