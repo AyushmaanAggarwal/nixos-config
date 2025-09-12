@@ -23,6 +23,9 @@
     extraConfig = ''
       makestep 0.1 10
     '';
-    extraFlags = [ "-s" ];
+    extraFlags = [
+      "-s"
+      "-r"
+    ];
   };
 }
