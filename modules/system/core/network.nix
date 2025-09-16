@@ -33,7 +33,7 @@
   networking.firewall.enable = true;
 
   # DNS Encryption
-  services.dnscrypt-proxy2 = {
+  services.dnscrypt-proxy = {
     enable = true;
     settings = {
       ipv4_servers = true;
