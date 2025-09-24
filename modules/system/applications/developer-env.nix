@@ -19,6 +19,7 @@ let
         tcolorbox
         tikzfill
         pdfjam
+        lualatex-math
         ;
     }
   );
