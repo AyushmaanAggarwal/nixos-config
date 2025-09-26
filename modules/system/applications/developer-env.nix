@@ -20,6 +20,7 @@ let
         tikzfill
         pdfjam
         lualatex-math
+        karnaugh-map
         ;
     }
   );
