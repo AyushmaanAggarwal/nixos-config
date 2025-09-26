@@ -21,6 +21,9 @@ let
         pdfjam
         lualatex-math
         karnaugh-map
+        circuitikz
+        xstring
+        siunitx
         ;
     }
   );
