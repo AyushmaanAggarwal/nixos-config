@@ -35,7 +35,7 @@ in
     };
     options = {
       # General settings
-      seletion-clipboard = "clipboard";
+      selection-clipboard = "clipboard";
 
       # Automatically Center Page
       zoom-center = true;
