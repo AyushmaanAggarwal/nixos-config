@@ -30,6 +30,16 @@
         ;
     };
 
-    users.${username} = ./home.nix;
+    users.${username} = {
+      imports = [
+        ./gui
+        ./shell
+        ./hyprland
+        ./theme.nix
+      ];
+
+      home.stateVersion = "24.05";
+    };
+
   };
 }

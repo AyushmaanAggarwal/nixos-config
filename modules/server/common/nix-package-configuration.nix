@@ -39,7 +39,7 @@
 
       # Automatic updates
       system.autoUpgrade = {
-        enable = false; # disable as remote autoupgrading doesn't seem to work
+        enable = true; # disable as remote autoupgrading doesn't seem to work
         flake = "github:AyushmaanAggarwal/nixos-config#${hostname}";
         dates = "hourly";
         randomizedDelaySec = "10min";
