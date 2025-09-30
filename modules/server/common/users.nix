@@ -94,5 +94,13 @@ in
     (lib.mkIf ("${hostname}" == "backup") {
       users.users.proxmox.openssh.authorizedKeys.keys = ssh_containers;
     })
+    (lib.mkIf ("${hostname}" != "backup") {
+      programs.ssh.extraConfig = ''
+        Host backup
+          User proxmox
+          IdentityFile /etc/ssh/ssh_host_ed25519_key
+      '';
+    })
+
   ];
 }
