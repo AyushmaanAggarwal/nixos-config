@@ -50,6 +50,8 @@
           "0"
         ];
       };
+      systemd.services.nixos-upgrade.serviceConfig.Enviroment =
+        ''NIX_SSHOPTS="-i /etc/ssh/ssh_host_ed25519_key"'';
 
       systemd.services.reboot = {
         enable = true;
