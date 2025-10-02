@@ -51,12 +51,22 @@
         '';
         mkDefault = lib.mkOrder 1000 ''
           (cat ~/.cache/wal/sequences &)
-          fastfetch; echo
+          fastfetch --processing-timeout 500; echo
         '';
         mkAfter = lib.mkOrder 1500 ''
+          last_repository=
+          check_directory_for_new_repository() {
+           current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
+           
+           if [ "$current_repository" ] && \
+              [ "$current_repository" != "$last_repository" ]; then
+            onefetch
+           fi
+           last_repository=$current_repository
+          }
           cd() {
             builtin cd "$@"
-            onefetch
+            check_directory_for_new_repository
           }
         '';
       in

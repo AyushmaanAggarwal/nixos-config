@@ -7,6 +7,7 @@
 
     # Tools
     ./fd.nix
+    ./tmux.nix
     #./git.nix
     ./direnv.nix
     ./distrobox.nix
