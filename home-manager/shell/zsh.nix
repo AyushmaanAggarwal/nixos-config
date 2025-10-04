@@ -25,15 +25,13 @@
 
     dirHashes = {
       # dotfiles
-      dotconfig = "$HOME/.dotfiles/config/";
-      dotnix = "$HOME/.dotfiles/system/";
-      dotnvim = "$HOME/.dotfiles/config/nvim";
+      config = "$HOME/.dotfiles/config/";
+      nix = "$HOME/.dotfiles/system/";
+      nvim = "$HOME/.dotfiles/nixvim";
       # folders
       books = "$HOME/Documents/Books/";
       downloads = "$HOME/Downloads/";
       obsidian = "$HOME/Documents/Obsidian/";
-      # classes
-      math = "$HOME/Documents/College/10-Math-W128A/";
     };
 
     # Your zsh config
