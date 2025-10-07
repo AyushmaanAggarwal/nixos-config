@@ -41,6 +41,7 @@ in
       username ? "proxmox",
       desktop ? null,
       system ? "x86_64-linux",
+      domain-name ? "tail590ac.ts.net",
     }:
     let
       isTailscaleExitNode = hostname == "adguard";
@@ -57,6 +58,7 @@ in
           username
           desktop
           system
+          domain-name
           isTailscaleExitNode
           sshWithoutYubikey
           ;
