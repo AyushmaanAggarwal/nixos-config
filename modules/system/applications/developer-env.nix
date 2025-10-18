@@ -39,6 +39,9 @@ in
       devenv
       direnv
       gnumake # For makefiles
+      ansible
+
+      # Documents
       pandoc
       quarto
       tex

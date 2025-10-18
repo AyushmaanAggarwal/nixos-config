@@ -20,5 +20,8 @@
     # System info
     fastfetch
     htop
+
+    # Languages
+    python3
   ];
 }
