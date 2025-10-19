@@ -1,0 +1,19 @@
+- name: garbage
+  hosts: proxmox
+  tasks:
+   - name: Ping my hosts
+     ansible.builtin.ping:
+
+   - name: Remove old nix-store paths
+     become: true
+     ansible.builtin.command:
+      argv:
+        - nix-collect-garbage
+        - -d
+
+   - name: Optimize nix-store
+     become: true
+     ansible.builtin.command:
+      argv:
+        - nix-store
+        - --optimise

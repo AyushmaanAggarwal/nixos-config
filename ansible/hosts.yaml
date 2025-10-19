@@ -1,0 +1,45 @@
+proxmox:
+  hosts:
+    adguard:
+      ansible_user: proxmox
+      ansible_host: adguard
+    backup:
+      ansible_user: proxmox
+      ansible_host: backup
+    changedetection:
+      ansible_user: proxmox
+      ansible_host: changedetection
+    immich:
+      ansible_user: proxmox
+      ansible_host: immich
+    jellyfin:
+      ansible_user: proxmox
+      ansible_host: jellyfin
+    mealie:
+      ansible_user: proxmox
+      ansible_host: mealie
+    nextcloud:
+      ansible_user: proxmox
+      ansible_host: nextcloud
+    ntfy:
+      ansible_user: proxmox
+      ansible_host: ntfy
+    uptime:
+      ansible_user: proxmox
+      ansible_host: uptime
+old_proxmox:
+  hosts:
+    etebase:
+      ansible_host: etebase
+    glance:
+      ansible_host: glance
+    ollama:
+      ansible_host: ollama
+    onlyoffice:
+      ansible_host: onlyoffice
+other:
+  hosts:
+    pve:
+      ansible_host: pve
+    openwrt:
+      ansible_host: openwrt
