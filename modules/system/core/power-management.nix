@@ -8,6 +8,7 @@
 {
   services.thermald.enable = true;
   powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
   services.tlp = {
     enable = false;
     settings = {
