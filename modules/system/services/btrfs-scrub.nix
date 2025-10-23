@@ -13,6 +13,12 @@
     };
   };
   config = {
+    # NEED MORE WORK
+    services.btrfs.autoScrub = {
+      enable = true;
+      interval = "monthly";
+      fileSystems = [ "/" ];
+    };
     # --------------------
     # BTRFS Scrub
     # --------------------

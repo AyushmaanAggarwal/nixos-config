@@ -4,11 +4,12 @@
 {
   imports = [
     ./boot.nix
-    ./network.nix
+    ./zfs.nix
     ./time.nix
-    ./package-manager.nix
-    ./security.nix
     ./sound.nix
+    ./network.nix
+    ./security.nix
+    ./package-manager.nix
     ./power-management.nix
   ];
 }
