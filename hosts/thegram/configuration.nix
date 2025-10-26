@@ -6,6 +6,7 @@
     ../../modules/system
     ../../modules/shared
     ./hardware-configuration.nix
+    # ./disko.nix
   ];
 
   # Select internationalisation properties.
