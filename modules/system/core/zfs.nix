@@ -27,7 +27,7 @@ in
 {
   # Bootloader
   boot.kernelPackages = latestKernelPackage;
-  boot.zfs.boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
+  boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
   boot.supportedFilesystems = [ "zfs" ];
   boot.loader.grub.zfsSupport = true;
   boot.zfs = {

@@ -9,7 +9,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
