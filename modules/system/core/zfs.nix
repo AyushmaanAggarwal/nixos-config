@@ -43,34 +43,34 @@ in
   };
 
   # Maintenance
-  services.zfs.autoReplication = {
-    enable = true;
-    username = "ayushmaan";
-    host = "pve";
-    identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
-    followDelete = true;
-    localFilesystem = "root/home";
-  };
+  # services.zfs.autoReplication = {
+  #   enable = true;
+  #   username = "ayushmaan";
+  #   host = "pve";
+  #   identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
+  #   followDelete = true;
+  #   localFilesystem = "root/home";
+  # };
 
-  services.zfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    pools = [ ]; # scrub all pools
-  };
+  # services.zfs.autoScrub = {
+  #   enable = true;
+  #   interval = "monthly";
+  #   pools = [ ]; # scrub all pools
+  # };
 
-  services.zfs.autoSnapshot = {
-    enable = true;
-    frequent = 4;
-    hourly = 24;
-    daily = 7;
-    weekly = 4;
-    monthly = 2;
-  };
+  # services.zfs.autoSnapshot = {
+  #   enable = true;
+  #   frequent = 4;
+  #   hourly = 24;
+  #   daily = 7;
+  #   weekly = 4;
+  #   monthly = 2;
+  # };
 
-  services.zfs.trim = {
-    enable = true;
-    interval = "weekly";
-  };
+  # services.zfs.trim = {
+  #   enable = true;
+  #   interval = "weekly";
+  # };
 
   # Notification Settings
   services.zfs.zed = {
