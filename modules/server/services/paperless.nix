@@ -39,7 +39,10 @@ in
       passwordFile = config.sops.secrets.paperless-pass.path;
 
       # For reverse proxying
-      domain = "paperless.tail590ac.ts.net";
+      #domain = "paperless.tail590ac.ts.net";
+      settings = {
+        PAPERLESS_URL = "https://paperless.tail590ac.ts.net";
+      };
 
       # For serving locally before reverse proxy
       address = "127.0.0.1";
