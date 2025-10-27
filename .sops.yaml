@@ -12,7 +12,7 @@ keys:
   - &server_backup age1psume4tt9vhvplvp57xt6djdfv9qeszlnhag0whzeupqsetjzfeqe2tf6c
   - &server_mealie age1nf7r070qxmy7uy56qtv6xhw3hs3ylasccpnzjuz34dn9mxk9599q0wy3l3
   - &server_grafana age14trc0tdw3tyhhkhd45ep3y6lygd05yqn5j3wqxxpz5ztsr987cuq0mha28
-  - &server_
+  - &server_paperless age10xluz8k2wl7qkcy7juzclg6huysrqg2yenjazc5damvhh6xr5g5szkjcew
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
@@ -54,3 +54,4 @@ creation_rules:
     key_groups:
     - age:
       - *admin_ayu
+      - *server_paperless

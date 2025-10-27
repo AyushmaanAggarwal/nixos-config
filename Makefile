@@ -54,7 +54,7 @@ flatpak:
 # --------------------
 # Primary Container Commands
 # --------------------
-all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich jellyfin glance
+all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich jellyfin glance paperless
 
 remote-build = nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
@@ -129,3 +129,9 @@ ollama:
 	@echo "Update: ollama"
 	@dunstify "Waiting for authentication"
 	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#ollama --target-host nixadmin@ollama; \
+
+paperless:
+	@echo "----------------------------------------"
+	@echo "Update: paperless"
+	@dunstify "Waiting for authentication"
+	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#paperless --target-host nixadmin@paperless; \

@@ -50,5 +50,14 @@ in
       address = "127.0.0.1";
       port = port;
     };
+
+    # --------------------
+    # Caddy SSL Cert
+    # --------------------
+    caddy = {
+      enable = true;
+      port = port;
+    };
+
   };
 }
