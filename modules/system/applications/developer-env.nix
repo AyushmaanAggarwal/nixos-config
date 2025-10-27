@@ -48,6 +48,7 @@ in
 
       ripgrep
       # Nix Packages
+      sops
       treefmt
       nixfmt-rfc-style
 

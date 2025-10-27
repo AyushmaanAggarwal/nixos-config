@@ -26,5 +26,6 @@
     ./services/glance.nix
     ./services/ollama.nix
     ./services/onlyoffice.nix
+    ./services/paperless.nix
   ];
 }
