@@ -13,6 +13,7 @@
 let
   secrets-file = ../../../secrets/paperless/secret.yaml;
   port = 28981;
+  vm-user = "paperless";
 in
 {
   imports = [
@@ -27,14 +28,15 @@ in
   };
   config = lib.mkIf (config.paperless.enable) {
     sops.secrets.paperless-pass = {
-      owner = config.paperless.user;
-      group = config.paperless.group;
+      owner = vm-user;
+      group = vm-user;
       mode = "0400";
       sopsFile = secrets-file;
     };
 
     services.paperless = {
       enable = true;
+      user = vm-user;
       dataDir = "/var/lib/paperless";
       passwordFile = config.sops.secrets.paperless-pass.path;
 
