@@ -50,3 +50,7 @@ creation_rules:
     key_groups:
     - age:
       - *admin_ayu
+  - path_regex: secrets/paperless/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu

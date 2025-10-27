@@ -14,9 +14,9 @@
   ...
 }:
 let
+  # Check if the lxc container has an option under its name
   hostname-nooption = builtins.elem "${hostname}" [ "backup" ];
   hostname-option = !hostname-nooption;
-
 in
 {
   imports = [

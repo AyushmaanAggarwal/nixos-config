@@ -68,6 +68,8 @@
         ollama = helper.mkServerLXC { hostname = "ollama"; };
 
         onlyoffice = helper.mkServerLXC { hostname = "onlyoffice"; };
+
+        paperless = helper.mkServerLXC { hostname = "paperless"; };
       };
     };
 }

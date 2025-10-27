@@ -11,7 +11,7 @@
   ...
 }:
 let
-  secrets-file = ../../../secrets/nextcloud/secrets.yaml;
+  secrets-file = ../../../secrets/paperless/secret.yaml;
   port = 28981;
 in
 {
