@@ -29,22 +29,24 @@
         onSuccess = [ "${service}-success.service" ];
         onFailure = [ "${service}-failure.service" ];
       };
+
       systemd.services."${service}-success" = {
         enable = config.systemd.services."${service}".enable;
         description = "Notify on ${service} Service Success";
         wantedBy = [ "${service}.service" ];
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = ''${pkgs.ntfy-sh}/bin/ntfy publish --title="Systemd Succeeded: ${service}" --priority=low thegram     "${service} just finished running"'';
+          ExecStart = ''${pkgs.ntfy-sh}/bin/ntfy publish --title="Systemd Succeeded: ${service}" --config="/etc/ntfy/client.yaml" --priority=low thegram "${service} just finished running"'';
         };
       };
+
       systemd.services."${service}-failure" = {
         enable = config.systemd.services."${service}".enable;
         description = "Notify on ${service} Service Failure";
         wantedBy = [ "${service}.service" ];
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = ''${pkgs.ntfy-sh}/bin/ntfy publish --title="Systemd Failure: ${service}" --priority=low thegram     "${service} just failed to run \n$(systemctl status ${service}.service)"'';
+          ExecStart = ''${pkgs.ntfy-sh}/bin/ntfy publish --title="Systemd Failure: ${service}" --config="/etc/ntfy/client.yaml" --priority=low thegram     "${service} just failed to run: $(systemctl status ${service}.service)"'';
         };
       };
     }))
