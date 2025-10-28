@@ -9,6 +9,7 @@
     ./btrfs-scrub.nix
     ./polkit.nix
     ./notify.nix
+    ./backlight.nix
   ];
   btrfs-scrub.enable = false;
 }

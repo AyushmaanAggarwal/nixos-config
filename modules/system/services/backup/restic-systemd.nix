@@ -10,7 +10,7 @@
   # --------------------
   systemd.services = {
     restic-backup = {
-      enable = true;
+      enable = false;
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
       description = "Restic Backup System";
@@ -37,15 +37,15 @@
   # --------------------
   systemd.timers = {
     # Backup Timer
-    restic-backup = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        #OnBootSec = "10m";
-        OnCalendar = "daily";
-        Persistent = true;
-        Unit = "restic-backup.service";
-      };
-    };
+    #restic-backup = {
+    #  wantedBy = [ "timers.target" ];
+    #  timerConfig = {
+    #    #OnBootSec = "10m";
+    #    OnCalendar = "daily";
+    #    Persistent = true;
+    #    Unit = "restic-backup.service";
+    #  };
+    #};
 
     # restic-check = {
     #   wantedBy = [ "timers.target" ];
