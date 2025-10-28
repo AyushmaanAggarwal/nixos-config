@@ -24,7 +24,7 @@
         };
       }
     ]
-    ++ (lib.forEach [ "restic-backup" ] (service: {
+    ++ (lib.forEach [ "restic-backups-gdrive" "restic-backups-pve" ] (service: {
       systemd.services."${service}" = {
         onSuccess = [ "${service}-success.service" ];
         onFailure = [ "${service}-failure.service" ];
