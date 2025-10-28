@@ -25,6 +25,7 @@
     zsh.enable = true;
     adb.enable = true;
     thunderbird.enable = true;
+    partition-manager.enable = true;
 
     # Gaming
     steam.enable = true; # Not free
