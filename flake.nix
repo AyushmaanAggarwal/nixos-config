@@ -5,14 +5,20 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-    home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     sops-nix.url = "github:Mic92/sops-nix";
-    nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
+    nixvim-config = {
+      url = "github:AyushmaanAggarwal/nixvim-config/a05abf21984fa9a770be3e9051b0dc836e49ce40";
+    };
   };
 
   outputs =
