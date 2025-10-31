@@ -11,9 +11,14 @@
   # NTP Servers
   services.ntpd-rs = {
     enable = true;
+    useNetworkingTimeServers = true;
     settings = {
-      source = (
-        lib.forEach
+      source =
+        lib.map
+          (s: {
+            mode = "nts";
+            address = s;
+          })
           [
             "time.cloudflare.com"
             "paris.time.system76.com"
@@ -21,12 +26,8 @@
             "oregon.time.system76.com"
             "virginia.time.system76.com"
             "brazil.time.system76.com"
-          ]
-          (address: {
-            mode = "nts";
-            address = "${address}";
-          })
-      );
+          ];
+
       synchronization = {
         minimum-agreeing-sources = 3;
       };
