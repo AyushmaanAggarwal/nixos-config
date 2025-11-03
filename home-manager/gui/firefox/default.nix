@@ -7,7 +7,7 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-beta;
+    package = pkgs.firefox;
     languagePacks = [ "en-US" ];
 
     profiles.ayushmaan = {
