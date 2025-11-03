@@ -13,6 +13,14 @@
     enable = true;
     useNetworkingTimeServers = false;
     settings = {
+      source-defaults = {
+        # in units of log2 time
+        poll-interval-limits = {
+          min = 1;
+          max = 5;
+        };
+        initial-poll-interval = 3;
+      };
       source =
         lib.map
           (s: {
