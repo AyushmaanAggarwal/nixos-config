@@ -43,7 +43,7 @@
         # Primary System
         thegram = helper.mkDesktop {
           hostname = "thegram";
-          desktop = "hyprland";
+          desktop = "cosmic";
         };
 
         # Server Containers
