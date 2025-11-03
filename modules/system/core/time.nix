@@ -11,7 +11,7 @@
   # NTP Servers
   services.ntpd-rs = {
     enable = true;
-    useNetworkingTimeServers = true;
+    useNetworkingTimeServers = false;
     settings = {
       source =
         lib.map
@@ -27,10 +27,6 @@
             "virginia.time.system76.com"
             "brazil.time.system76.com"
           ];
-
-      synchronization = {
-        minimum-agreeing-sources = 3;
-      };
     };
   };
 }
