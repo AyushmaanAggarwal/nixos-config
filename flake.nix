@@ -16,9 +16,7 @@
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
-    nixvim-config = {
-      url = "github:AyushmaanAggarwal/nixvim-config/a05abf21984fa9a770be3e9051b0dc836e49ce40";
-    };
+    nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
   };
 
   outputs =
