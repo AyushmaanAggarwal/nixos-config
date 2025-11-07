@@ -31,6 +31,7 @@ in
   boot.supportedFilesystems = [ "zfs" ];
   boot.loader.grub.zfsSupport = true;
   boot.zfs = {
+    requestEncryptionCredentials = true;
     passwordTimeout = 300; # Wait 5 minutes on boot for password
     forceImportRoot = false;
     # extraPools = [ "root" "root/home" "root/nix" ];
