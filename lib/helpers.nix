@@ -15,6 +15,7 @@ in
       username ? "ayushmaan",
       desktop,
       system ? "x86_64-linux",
+      hostID,
     }:
     lib.nixosSystem {
       inherit system;
@@ -27,6 +28,7 @@ in
           username
           desktop
           system
+          hostID
           ;
       };
       modules = [

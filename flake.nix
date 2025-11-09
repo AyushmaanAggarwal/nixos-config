@@ -42,6 +42,7 @@
         thegram = helper.mkDesktop {
           hostname = "thegram";
           desktop = "hyprland";
+          hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
         };
 
         # Server Containers

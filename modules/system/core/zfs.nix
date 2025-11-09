@@ -6,11 +6,10 @@
   config,
   lib,
   pkgs,
+  hostID,
   ...
 }:
 let
-  hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
-
   zfsCompatibleKernelPackages = lib.filterAttrs (
     name: kernelPackages:
     (builtins.match "linux_[0-9]+_[0-9]+" name) != null
@@ -29,18 +28,22 @@ in
   boot.kernelPackages = latestKernelPackage;
   boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
   boot.supportedFilesystems = [ "zfs" ];
-  boot.loader.grub.zfsSupport = true;
+  #boot.loader.grub.zfsSupport = true;
   boot.zfs = {
     requestEncryptionCredentials = true;
-    passwordTimeout = 300; # Wait 5 minutes on boot for password
+    passwordTimeout = 600; # Wait 5 minutes on boot for password
     forceImportRoot = false;
-    # extraPools = [ "root" "root/home" "root/nix" ];
+    extraPools = [
+      "zoot"
+      "zoot/home"
+      "zoot/nix"
+    ];
   };
 
   security.pam.zfs = {
     enable = true; # Enable unlocking home dataset at login
     noUnmount = false;
-    homes = "root/home";
+    homes = "zoot/home";
   };
 
   # Maintenance
