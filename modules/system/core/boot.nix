@@ -15,7 +15,7 @@
   # kernel is set in ./zfs.nix
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    timeout = 5;
+    timeout = lib.mkDefault 5;
     systemd-boot = {
       enable = true;
       editor = false;
