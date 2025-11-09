@@ -29,7 +29,7 @@
 
   # Automatically update system
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     flake = inputs.self.outPath;
     flags = [
       "-L" # print build logs
@@ -38,7 +38,7 @@
     dates = "02:00";
   };
   systemd.services.nixos-upgrade = {
-    after = [ "chronyd.service" ];
+    #after = [ "chronyd.service" ];
   };
 
   # Label Generations
