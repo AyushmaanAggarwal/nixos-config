@@ -9,6 +9,7 @@ in
 {
   inherit (helpers)
     mkDesktop
+    mkDisko
     mkServerLXC
     forAllSystems
     ;

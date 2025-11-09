@@ -37,6 +37,27 @@ in
       ];
     };
 
+  mkDisko =
+    {
+      hostname,
+      system ? "x86_64-linux",
+      hostID,
+    }:
+    lib.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit
+          inputs
+          outputs
+          hostID
+          ;
+      };
+
+      modules = [
+        ../hosts/${hostname}/disko.nix
+      ];
+    };
+
   mkServerLXC =
     {
       hostname,

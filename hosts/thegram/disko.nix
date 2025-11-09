@@ -1,10 +1,11 @@
 # Partition disk into encrypted root zfs /, /home, /nix
 # Based on: https://github.com/nix-community/disko/blob/master/example/zfs-encrypted-root.nix
-{ inputs, ... }:
+{ inputs, hostID, ... }:
 {
   imports = [
     inputs.disko.nixosModules.disko
   ];
+  networking.hostId = hostID; # for zfs
   disko.devices = {
     disk = {
       root = {

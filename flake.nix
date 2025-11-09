@@ -45,6 +45,11 @@
           hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
         };
 
+        thegram-disko = helper.mkDisko {
+          hostname = "thegram";
+          hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
+        };
+
         # Server Containers
         adguard = helper.mkServerLXC { hostname = "adguard"; };
 
