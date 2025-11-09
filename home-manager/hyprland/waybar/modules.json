@@ -33,29 +33,8 @@
         },
     },
 
-    // Bemenu Application Launcher
-    //"custom/appmenu": {
-    //    "format": "  ",
-    //    "on-click": "/usr/bin/bemenu-run",
-    //    "tooltip": false
-    //},
-    //"custom/xournalpp": {
-    //    "format": "  ",
-    //    "on-click": "/usr/bin/xournalpp",
-    //    "tooltip": false
-    //},
-    //"custom/pdfviewer": {
-    //    "format": "  ",
-    //    "on-click": "/var/lib/flatpak/exports/bin/org.kde.okular",
-    //    "tooltip": false
-    //},
-    //"custom/browser": {
-    //    "format": "  ",
-    //    "on-click": "/usr/bin/librewolf",
-    //    "tooltip": false
-    //},
     "systemd-failed-units": {
-	"hide-on-ok": false, 
+	"hide-on-ok": true, 
 	"format": "✗ {nr_failed}",
 	"format-ok": "✓",
 	"system": true, // Monitor failed systemwide units.
