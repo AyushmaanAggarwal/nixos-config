@@ -45,7 +45,7 @@
   system.nixos.label =
     (builtins.concatStringsSep "-" (builtins.sort (x: y: x < y) config.system.nixos.tags))
     + config.system.nixos.version
-    + "-SHA:${inputs.self.shortRev}";
+    + "-SHA:${inputs.self.shortRev or "dirty"}";
 
   # Collect garbage
   nix.gc = {
