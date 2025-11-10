@@ -33,11 +33,11 @@ in
     requestEncryptionCredentials = true;
     passwordTimeout = 600; # Wait 5 minutes on boot for password
     forceImportRoot = false;
-    extraPools = [
-      "zoot"
-      "zoot/home"
-      "zoot/nix"
-    ];
+    # extraPools = [
+    #   "zoot"
+    #   "zoot/home"
+    #   "zoot/nix"
+    # ];
   };
 
   security.pam.zfs = {
