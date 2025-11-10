@@ -4,6 +4,7 @@
 {
   imports = [
     ./boot.nix
+    ./users.nix
     ./zfs.nix
     ./time.nix
     ./sound.nix

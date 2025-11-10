@@ -32,14 +32,8 @@
     steam.enable = true; # Not free
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Set user applications
   users.users.${username} = {
-    isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "adbusers"
-    ];
     packages = with pkgs; [
       # GUI Applications
 
