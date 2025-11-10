@@ -9,36 +9,21 @@
   username,
   ...
 }:
-let
-  secrets-file = ../../../secrets/thegram/hashed-passwords.yaml;
-in
 {
-  sops.secrets.root-password = {
-    owner = "root";
-    group = "root";
-    mode = "0400";
-    sopsFile = secrets-file;
-  };
-
-  sops.secrets.user-password = {
-    owner = "${username}";
-    group = "users";
-    mode = "0400";
-    sopsFile = secrets-file;
-  };
-
+  users.mutableUsers = true;
   users.users.root = {
-    hashedPasswordFile = config.sops.secrets.root-password.path;
+    initialHashedPassword = "$y$j9T$UTgPaJmN.gmA/TlxACfvP0$Q4PEQLVvBeCWFYYmZOvA3eJDU5GsoZrh6rLG6mptYy9";
   };
 
   users.users.${username} = {
     isNormalUser = true;
+    createHome = true;
     extraGroups = [
       "networkmanager"
       "wheel"
       "adbusers"
     ];
-    hashedPasswordFile = config.sops.secrets.user-password.path;
+    initialHashedPassword = "$y$j9T$tCTWlRyMEbQFgQbrmNFXA0$pIIAbnbwC712dNEqLD7Xypr/Ll5zk.yhCjsu.Llzri8";
   };
 
 }

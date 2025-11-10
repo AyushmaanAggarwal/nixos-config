@@ -1,8 +1,11 @@
 > [!IMPORTANT]  
 > This repo is rapidly evolving, so expect breaking changes from time to time
 
+> [!WARNING]
+> Currently migrating from btrfs to zfs on root, so filesystem setup will be in flux
+
 # NixOS Configuration
-Welcome to my combined nixos configuration for desktop and proxmox lxc containers for various services. 
+Welcome to my combined nixos configuration for my personal desktop and proxmox lxc containers for various services. 
 
 # Machines
 I currently manage two machines
@@ -18,8 +21,9 @@ The current services running in production are
 - Jellyfin - Media Playback
 - Glance - homepage
 - Mealie - Recipe Manager
-- ntfy.sh - Notification Server
-- changedetection.io - Website Change Detection
+- Ntfy.sh - Notification Server
+- Changedetection.io - Website Change Detection
+- Paperless-ngx - document archiver and manager
 
 Planned Additions
 - NewsBlur - RSS feed reader
@@ -29,7 +33,7 @@ Planned Additions
 
 ### Guide for using LXC containers
 Begin by building a lxc container for proxmox by running the following command:
-```nix
+```sh
 nix run github:nix-community/nixos-generators -- --flake .#<service name> --cores 4 -f proxmox-lxc
 ```
 
@@ -41,6 +45,20 @@ sudo tailscale login
 ```
 
 In order to update a server remotely, run the following command:
-```nix
+```sh
 make <hostname>
 ```
+or for all machines
+```sh
+make all-server -i 
+```
+
+## Personal Machine
+
+### Post-install Checklist
+- [ ] setup new password for user and root
+- [ ] ssh key 
+- [ ] setup rclone + restic
+- [ ] sops-nix backup config
+- [ ] setup tailscale
+- [ ] maybe more
