@@ -42,6 +42,14 @@
         thegram = helper.mkDesktop {
           hostname = "thegram";
           desktop = "hyprland";
+          filesystem = "btrfs";
+          hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
+        };
+
+        thegram-zfs = helper.mkDesktop {
+          hostname = "thegram";
+          desktop = "hyprland";
+          filesystem = "zfs";
           hostID = "4303477a"; # generate using "head -c4 /dev/urandom | od -A none -t x4"
         };
 
