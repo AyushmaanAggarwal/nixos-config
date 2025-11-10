@@ -16,6 +16,7 @@ in
       desktop,
       system ? "x86_64-linux",
       hostID,
+      filesystem ? "btrfs",
     }:
     lib.nixosSystem {
       inherit system;
@@ -29,6 +30,7 @@ in
           desktop
           system
           hostID
+          filesystem
           ;
       };
       modules = [
