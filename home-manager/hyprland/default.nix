@@ -16,6 +16,7 @@ in
   imports = [
     ./fuzzel.nix
     ./waybar/default.nix
+    ./profile.nix
   ];
   fuzzel.enable = enable-hyprland;
   waybar.enable = enable-hyprland;
