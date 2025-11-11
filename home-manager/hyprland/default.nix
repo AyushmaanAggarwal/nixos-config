@@ -19,4 +19,5 @@ in
   ];
   fuzzel.enable = enable-hyprland;
   waybar.enable = enable-hyprland;
+  hyprland-profile.enable = enable-hyprland;
 }
