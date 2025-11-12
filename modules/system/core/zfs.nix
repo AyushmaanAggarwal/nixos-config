@@ -7,6 +7,7 @@
   lib,
   pkgs,
   hostID,
+  username,
   ...
 }:
 let
@@ -69,7 +70,9 @@ in
     enable = true;
     interval = "*-*-* *:15:00";
     commonArgs = [ ];
-    sshKey = "/home/ayushmaan/.ssh/id_ed25519";
+    sshKey = "/home/${username}/.ssh/id_ed25519";
+    user = username;
+    group = "users";
     commands."thegram/zoot/home" = {
       extraArgs = [ ];
       useCommonArgs = true;
