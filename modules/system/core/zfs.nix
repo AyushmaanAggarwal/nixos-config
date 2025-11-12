@@ -67,7 +67,7 @@ in
 
   services.syncoid = {
     enable = true;
-    interval = { };
+    interval = "*-*-* *:15:00";
     commonArgs = [ ];
     sshKey = "/home/ayushmaan/.ssh/id_ed25519";
     commands."thegram/zoot/home" = {
