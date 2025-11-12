@@ -37,4 +37,26 @@
           ];
     };
   };
+
+  # hw clock is broken so set the time to last build time
+  environment.etc = {
+    "scripts/hwclock.sh" = {
+      text = ''
+        #!/bin/sh
+        hwclock --set --date="$(date -d @$(stat -c %Y /nix/var/nix/profiles/system) '+%Y-%m-%d %H:%M:%S')"
+        hwclock -s 
+      '';
+      mode = "0555";
+    };
+  };
+  systemd.user.services = {
+    reset-hwclock = {
+      description = "reset time to build time of last nixos generation";
+      before = [ "ntpd-rs.service" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "/etc/scripts/hwclock.sh";
+      };
+    };
+  };
 }

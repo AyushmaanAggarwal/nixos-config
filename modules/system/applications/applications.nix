@@ -15,10 +15,7 @@
   # --------------------
   # Various services
   # --------------------
-  services.udisks2.enable = true; # for calibre kindle connection
-
   services.printing.enable = true; # Enable CUPS to print documents.
-
   services.ollama.enable = true;
 
   # Install progams
@@ -27,8 +24,6 @@
     adb.enable = true;
     thunderbird.enable = true;
     partition-manager.enable = true;
-
-    # Gaming
     steam.enable = true; # Not free
   };
 
@@ -36,19 +31,16 @@
   users.users.${username} = {
     packages = with pkgs; [
       # GUI Applications
-
       slack # unfree
       spotify # unfree
       inkscape
       # darktable # Disable due to broken package
       signal-desktop
-      # bitwarden-desktop
+      bitwarden-cli
       libreoffice-fresh
       ## Academic
       xournalpp
       zotero
-      # calibre
-      # mathematica # unfree
 
       # Terminal Applications
       fd
@@ -56,7 +48,6 @@
       gdu
       tmux
       rsync
-      sshfs
       rclone
       psmisc # For killall command
       ## Monitoring
