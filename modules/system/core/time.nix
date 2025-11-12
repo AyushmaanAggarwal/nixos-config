@@ -51,6 +51,7 @@
   };
   systemd.services = {
     reset-hwclock = {
+      enable = config.services.ntpd-rs.enable;
       description = "reset time to build time of last nixos generation";
       before = [ "ntpd-rs.service" ];
       serviceConfig = {
