@@ -49,7 +49,7 @@
       mode = "0555";
     };
   };
-  systemd.user.services = {
+  systemd.services = {
     reset-hwclock = {
       description = "reset time to build time of last nixos generation";
       before = [ "ntpd-rs.service" ];
