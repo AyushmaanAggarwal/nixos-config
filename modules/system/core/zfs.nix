@@ -41,29 +41,68 @@ in
   };
 
   # Maintenance
-  services.zfs.autoReplication = {
+
+  services.sanoid = {
     enable = true;
-    username = "ayushmaan";
-    host = "pve";
-    identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
-    followDelete = true;
-    localFilesystem = "thegram/zoot/home";
-    remoteFilesystem = "rpool/thegram/backup";
+    extraArgs = [
+      "--verbose"
+      "--readonly"
+    ];
+    datasets."thegram/zoot/home" = {
+      hourly = 12;
+      daily = 7;
+      monthly = 1;
+      yearly = 0;
+      script_timeout = 0;
+      recursive = false;
+      #pruning_script
+      #pre_snapshot_script
+      #post_snapshot_script
+      #no_inconsistent_snapshot
+      #force_post_snapshot_script
+      autosnap = true;
+      autoprune = true;
+    };
   };
+
+  services.syncoid = {
+    enable = true;
+    interval = { };
+    commonArgs = [ ];
+    sshKey = "/home/ayushmaan/.ssh/id_ed25519";
+    commands."thegram/zoot/home" = {
+      extraArgs = [ ];
+      useCommonArgs = true;
+      source = "thegram/zoot/home";
+      target = "ayushmaan@pve:rpool/thegram/syncoid";
+      sendOptions = "vw";
+      recvOptions = "";
+      recursive = false;
+    };
+  };
+  # services.zfs.autoReplication = {
+  #   enable = true;
+  #   username = "ayushmaan";
+  #   host = "pve";
+  #   identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
+  #   followDelete = true;
+  #   localFilesystem = "thegram/zoot/home";
+  #   remoteFilesystem = "rpool/thegram/backup";
+  # };
+
+  # services.zfs.autoSnapshot = {
+  #   enable = true;
+  #   frequent = 4;
+  #   hourly = 24;
+  #   daily = 7;
+  #   weekly = 1;
+  #   monthly = 1;
+  # };
 
   services.zfs.autoScrub = {
     enable = true;
     interval = "monthly";
     pools = [ ]; # scrub all pools
-  };
-
-  services.zfs.autoSnapshot = {
-    enable = true;
-    frequent = 4;
-    hourly = 24;
-    daily = 7;
-    weekly = 1;
-    monthly = 1;
   };
 
   services.zfs.trim = {
