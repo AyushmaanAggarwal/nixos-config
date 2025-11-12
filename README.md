@@ -1,9 +1,6 @@
 > [!IMPORTANT]  
 > This repo is rapidly evolving, so expect breaking changes from time to time
 
-> [!WARNING]
-> Currently migrating from btrfs to zfs on root, so filesystem setup will be in flux
-
 # NixOS Configuration
 Welcome to my combined nixos configuration for my personal desktop and proxmox lxc containers for various services. 
 
@@ -12,7 +9,23 @@ I currently manage two machines
 - thegram: a personal laptop
 - proxmox: a proxmox host that hosts several NixOS LXC containers
 
-## Self-Hosted Services
+## Personal Machine
+### System Setup
+- Disko managed ZFS Filesystem with automatic snapshots and replication
+- NTS encrypted time settings
+- Encrypted DNS
+- Home-manager
+- Hyprland Desktop
+
+### Post-install Checklist
+- [ ] setup new password for user and root
+- [ ] ssh key 
+- [ ] setup rclone + restic
+- [ ] sops-nix backup config/switch out ssh key
+- [ ] setup tailscale
+- [ ] maybe more
+## Proxmox Machine
+### Self-Hosted Services
 The current services running in production are
 - Uptime
 - Immich
@@ -52,13 +65,3 @@ or for all machines
 ```sh
 make all-server -i 
 ```
-
-## Personal Machine
-
-### Post-install Checklist
-- [ ] setup new password for user and root
-- [ ] ssh key 
-- [ ] setup rclone + restic
-- [ ] sops-nix backup config
-- [ ] setup tailscale
-- [ ] maybe more

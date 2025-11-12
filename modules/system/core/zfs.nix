@@ -28,53 +28,48 @@ in
   boot.kernelPackages = latestKernelPackage;
   boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
   boot.supportedFilesystems = [ "zfs" ];
-  #boot.loader.grub.zfsSupport = true;
   boot.zfs = {
     requestEncryptionCredentials = true;
     passwordTimeout = 600; # Wait 5 minutes on boot for password
     forceImportRoot = false;
-    # extraPools = [
-    #   "zoot"
-    #   "zoot/home"
-    #   "zoot/nix"
-    # ];
   };
 
   security.pam.zfs = {
     enable = true; # Enable unlocking home dataset at login
     noUnmount = false;
-    homes = "zoot/home";
+    homes = "thegram/zoot/home";
   };
 
   # Maintenance
-  # services.zfs.autoReplication = {
-  #   enable = true;
-  #   username = "ayushmaan";
-  #   host = "pve";
-  #   identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
-  #   followDelete = true;
-  #   localFilesystem = "root/home";
-  # };
+  services.zfs.autoReplication = {
+    enable = true;
+    username = "ayushmaan";
+    host = "pve";
+    identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
+    followDelete = true;
+    localFilesystem = "thegram/zoot/home";
+    remoteFilesystem = "rpool/thegram/backup";
+  };
 
-  # services.zfs.autoScrub = {
-  #   enable = true;
-  #   interval = "monthly";
-  #   pools = [ ]; # scrub all pools
-  # };
+  services.zfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    pools = [ ]; # scrub all pools
+  };
 
-  # services.zfs.autoSnapshot = {
-  #   enable = true;
-  #   frequent = 4;
-  #   hourly = 24;
-  #   daily = 7;
-  #   weekly = 4;
-  #   monthly = 2;
-  # };
+  services.zfs.autoSnapshot = {
+    enable = true;
+    frequent = 4;
+    hourly = 24;
+    daily = 7;
+    weekly = 1;
+    monthly = 1;
+  };
 
-  # services.zfs.trim = {
-  #   enable = true;
-  #   interval = "weekly";
-  # };
+  services.zfs.trim = {
+    enable = true;
+    interval = "weekly";
+  };
 
   # Notification Settings
   services.zfs.zed = {
