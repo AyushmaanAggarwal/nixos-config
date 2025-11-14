@@ -73,34 +73,26 @@ in
     sshKey = "/home/${username}/.ssh/id_ed25519";
     user = username;
     group = "users";
-    commands."thegram/zoot/home" = {
+    commands."home-pve" = {
       extraArgs = [ ];
       useCommonArgs = true;
       source = "thegram/zoot/home";
       target = "ayushmaan@pve:rpool/thegram/syncoid";
       sendOptions = "vw";
-      recvOptions = "";
+      #recvOptions = "";
       recursive = false;
     };
-  };
-  # services.zfs.autoReplication = {
-  #   enable = true;
-  #   username = "ayushmaan";
-  #   host = "pve";
-  #   identityFilePath = "/home/ayushmaan/.ssh/id_ed25519";
-  #   followDelete = true;
-  #   localFilesystem = "thegram/zoot/home";
-  #   remoteFilesystem = "rpool/thegram/backup";
-  # };
+    commands."home-sanback" = {
+      extraArgs = [ ];
+      useCommonArgs = true;
+      source = "thegram/zoot/home";
+      target = "sanback/thegram/syncoid";
+      sendOptions = "vw";
+      #recvOptions = "";
+      recursive = false;
+    };
 
-  # services.zfs.autoSnapshot = {
-  #   enable = true;
-  #   frequent = 4;
-  #   hourly = 24;
-  #   daily = 7;
-  #   weekly = 1;
-  #   monthly = 1;
-  # };
+  };
 
   services.zfs.autoScrub = {
     enable = true;

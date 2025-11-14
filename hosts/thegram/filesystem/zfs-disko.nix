@@ -5,6 +5,7 @@
   lib,
   hostID,
   filesystem,
+  username,
   ...
 }:
 {
@@ -80,6 +81,12 @@
               type = "zfs_fs";
               options.mountpoint = "/home";
               mountpoint = "/home";
+            };
+
+            "zoot/home/steam" = {
+              type = "zfs_fs";
+              options.mountpoint = "/home/${username}/.local/share/Steam";
+              mountpoint = "/home/${username}/.local/share/Steam";
             };
 
             "zoot/swap" = {
