@@ -86,7 +86,7 @@ in
       extraArgs = [ ];
       useCommonArgs = true;
       source = "thegram/zoot/home";
-      target = "sanback/thegram/syncoid";
+      target = "samback/thegram/syncoid";
       sendOptions = "vw";
       #recvOptions = "";
       recursive = false;
