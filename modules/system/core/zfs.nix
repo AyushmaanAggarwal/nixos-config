@@ -26,7 +26,8 @@ let
 in
 {
   # Bootloader
-  boot.kernelPackages = latestKernelPackage;
+  #boot.kernelPackages = latestKernelPackage;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
   boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs = {
