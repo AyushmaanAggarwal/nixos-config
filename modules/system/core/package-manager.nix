@@ -6,13 +6,6 @@
 }:
 {
   services.flatpak.enable = true;
-  # fix issues with flatpak scaling
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-  };
 
   # Enable Flakes
   nix.settings = {
