@@ -54,13 +54,4 @@
     style.name = "adwaita-dark";
   };
 
-  # fix issues with flatpak scaling
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
-    ];
-  };
-
 }
