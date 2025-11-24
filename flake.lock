@@ -20,6 +20,54 @@
         "type": "github"
       }
     },
+    "dnscrypt-hagezi": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-4MeL8X39BbBBw5K/14YeH8EbyQEPreG0XMRXp2CKg2E=",
+        "type": "file",
+        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
+      }
+    },
+    "dnscrypt-hagezi-tif": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Olc2AZ0okn3hxDvB2ggon4d3mboJM+36sZtgA50nhZo=",
+        "type": "file",
+        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
+      }
+    },
+    "dnscrypt-oisd": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-v2Iy4g8UNKXIsFZFcKm3YvMrzMl0ISieTanLaSHlXKg=",
+        "type": "file",
+        "url": "https://big.oisd.nl/domainswild"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://big.oisd.nl/domainswild"
+      }
+    },
+    "dnscrypt-stevenblack": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-x9r3zBBj0IzyhezFyviB3tAzHq4lfnOxefAUEP47YnY=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -275,6 +323,10 @@
     "root": {
       "inputs": {
         "disko": "disko",
+        "dnscrypt-hagezi": "dnscrypt-hagezi",
+        "dnscrypt-hagezi-tif": "dnscrypt-hagezi-tif",
+        "dnscrypt-oisd": "dnscrypt-oisd",
+        "dnscrypt-stevenblack": "dnscrypt-stevenblack",
         "home-manager": "home-manager",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
