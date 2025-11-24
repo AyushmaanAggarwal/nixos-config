@@ -1,9 +1,29 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }:
+let
+  blocklist_oisd = builtins.readFile inputs.dnscrypt-oisd;
+  blocklist_stevenblack = builtins.readFile inputs.dnscrypt-stevenblack;
+  blocklist_hagezi = builtins.readFile inputs.dnscrypt-hagezi;
+  blocklist_hagezi_tif = builtins.readFile inputs.dnscrypt-hagezi-tif;
+  extraBlocklist = ''
+    *.tailscale.online
+    *.log.tailscale.com
+    *.log.tailscale.io
+    *.tailshafts.com
+  '';
+  blocklist_txt = pkgs.writeText "blocklist.txt" ''
+    ${extraBlocklist}
+    ${blocklist_oisd}
+    ${blocklist_stevenblack}
+    ${blocklist_hagezi}
+    ${blocklist_hagezi_tif}
+  '';
+in
 {
   # Tailscale VPN
   services.tailscale = {
@@ -58,6 +78,7 @@
         "149.112.112.112:53"
       ];
       forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
+      blocked_names.blocked_names_file = blocklist_txt;
       captive_portals.map_file = "/etc/nixos/services/networking/captive-portals.txt";
       sources.public-resolvers = {
         urls = [

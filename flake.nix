@@ -2,9 +2,12 @@
   description = "NixOS Configuration";
 
   inputs = {
+    # General Inputs
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    sops-nix.url = "github:Mic92/sops-nix";
 
+    # Desktop Inputs
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -15,8 +18,26 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
     nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
+
+    # DNS Crypt
+    dnscrypt-stevenblack = {
+      url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+      flake = false;
+    };
+    dnscrypt-oisd = {
+      url = "https://big.oisd.nl/domainswild";
+      flake = false;
+    };
+    dnscrypt-hagezi = {
+      url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt";
+      flake = false;
+    };
+    dnscrypt-hagezi-tif = {
+      url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt";
+      flake = false;
+    };
+
   };
 
   outputs =
