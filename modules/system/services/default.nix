@@ -16,5 +16,4 @@
     ./restic.nix
     ./syncthing.nix
   ];
-  btrfs-scrub.enable = false;
 }

@@ -3,6 +3,7 @@
   lib,
   pkgs,
   username,
+  filesystem,
   ...
 }:
 {
@@ -10,7 +11,7 @@
     btrfs-scrub.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Btrfs Periodic Scrub";
-      default = false;
+      default = filesystem == "btrfs";
     };
   };
   config = {

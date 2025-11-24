@@ -19,14 +19,15 @@
       settings = {
         main = {
           dpi-aware = "no";
-          width = 10;
-          font = "Hack:weight=bold:size=15";
-          line-height = 20;
+          width = 30;
+          line-height = 25;
+          lines = 25;
+          font = "FiraCodeNerdFont:weight=bold:size=15";
           fields = "name,generic,comment,categories,filename,keywords";
           layer = "overlay";
         };
         border = {
-          radius = 1;
+          radius = 10;
           width = 0;
         };
 
