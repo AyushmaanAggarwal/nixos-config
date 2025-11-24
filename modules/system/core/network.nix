@@ -6,6 +6,8 @@
   ...
 }:
 let
+  dnscrypt_log = "/var/log/dnscrypt-proxy/";
+
   blocklist_oisd = builtins.readFile inputs.dnscrypt-oisd;
   blocklist_stevenblack = builtins.readFile inputs.dnscrypt-stevenblack;
   blocklist_hagezi = builtins.readFile inputs.dnscrypt-hagezi;
@@ -98,6 +100,21 @@ in
         "quad9-doh-ip4-port5053-filter-alt"
         "quad9-doh-ip4-port5053-filter-alt2"
       ];
+
+      query_log = {
+        file = "${dnscrypt_log}/query.log";
+        format = "tsv";
+        ignored_qtypes = [
+          "DNSKEY"
+          "NS"
+        ];
+      };
+      nx_log.file = "${dnscrypt_log}/nx.log";
+      blocked_names.log_file = "${dnscrypt_log}/blocked_names.log";
+      blocked_ips.log_file = "${dnscrypt_log}/blocked_ips.log";
+      allowed_names.log_file = "${dnscrypt_log}/allowed_names.log";
+      allowed_ips.log_file = "${dnscrypt_log}/allowed_ips.log";
+
     };
   };
 
