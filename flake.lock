@@ -47,7 +47,7 @@
     "dnscrypt-oisd": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-v2Iy4g8UNKXIsFZFcKm3YvMrzMl0ISieTanLaSHlXKg=",
+        "narHash": "sha256-rd46Wtm+TfchdkgxFe/J4f52d0FkAiT1ghoG4DXEVac=",
         "type": "file",
         "url": "https://big.oisd.nl/domainswild"
       },
