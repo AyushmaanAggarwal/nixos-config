@@ -24,6 +24,18 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # swapDevices = [
+  #   {
+  #     device = "/dev/disk/by-partuuid/aaaaaaaaa-bbbb-cccc-dddd-0123456789ab";
+  #     options = [ "discard" ];
+  #     randomEncryption.enable = true;
+  #   }
+  # ];
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10; # minimize swap usage
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
