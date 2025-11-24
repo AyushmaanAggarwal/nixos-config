@@ -19,7 +19,6 @@ let
     *.tailshafts.com
   '';
   blocklist_txt = pkgs.writeText "blocklist.txt" ''
-    ${extraBlocklist}
     ${blocklist_oisd}
     ${blocklist_stevenblack}
     ${blocklist_hagezi}
