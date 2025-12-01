@@ -92,7 +92,13 @@
             "zoot/swap" = {
               type = "zfs_volume";
               size = "16G";
-              content.type = "swap";
+              content = {
+                type = "swap";
+                mountOptions = [
+                  "defaults"
+                  "nofail"
+                ];
+              };
               options = {
                 volblocksize = "4096";
                 compression = "zle";
