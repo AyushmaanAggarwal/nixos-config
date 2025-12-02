@@ -44,6 +44,7 @@
       grim
       slurp
       wl-clipboard
+      brightnessctl
 
       # System Applications
       nautilus

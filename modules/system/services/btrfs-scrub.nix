@@ -14,7 +14,7 @@
       default = filesystem == "btrfs";
     };
   };
-  config = {
+  config = lib.mkIf (config.btrfs-scrub.enable) {
     # NEED MORE WORK
     services.btrfs.autoScrub = {
       enable = true;
