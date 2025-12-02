@@ -64,7 +64,7 @@
 
     // Memory
     "memory": {
-        "format": "  {percentage}% {swapPercentage}%",
+        "format": "  {percentage}%   {swapPercentage}%",
         "on-click": "kitty -e htop"
     },
 
