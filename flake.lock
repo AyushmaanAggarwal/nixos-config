@@ -35,7 +35,7 @@
     "dnscrypt-hagezi-tif": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kosHt/ydlccOTz02JqXkY5VozsJpFZ4e2UJ2IRIj45A=",
+        "narHash": "sha256-dMqFU6xhvRmAmDiPLSuVt559TRKNX9i8sT0uaM9R6Zc=",
         "type": "file",
         "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
       },
