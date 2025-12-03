@@ -16,16 +16,18 @@
   config = lib.mkIf (config.earlyoom.enable) {
     services.earlyoom = {
       enable = true;
-      freeMemThreshold = 10; # <15% free
+      enableNotifications = true;
+      freeMemThreshold = 30; # <15% free
       freeMemKillThreshold = 10; # <15% free
       freeSwapThreshold = 90;
       freeSwapKillThreshold = 80;
       extraArgs = [
         "--prefer"
-        "(^|/)(thunderbird|firefox|slack|vscode)$"
+        "(thunderbird|slack|vscode|spotify|iscord|electron)"
         "--avoid"
-        "(^|/)(Hyprland|hypridle|hyprlock|hyprpaper|kitty|waybar|systemd|networkmanager|nsncd|dbus)$"
+        "(Hyprland|hypr|systemd|networkmanager|nsncd|dbus|xdg|dnscrypt)"
       ];
     };
+    services.systembus-notify.enable = true;
   };
 }
