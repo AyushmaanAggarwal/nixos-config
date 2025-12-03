@@ -19,24 +19,25 @@ let
   #     builtins.attrValues zfsCompatibleKernelPackages
   #   )
   # );
-  pinnedKernelPackage = pkgs.linuxPackagesFor (
-    pkgs.linuxKernel.kernels.linux_6_17.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-          url = "mirror://kernel/linux/kernel/v${lib.versions.major version}.x/linux-${version}.tar.xz";
-          sha256 = "0ibayrvrnw2lw7si78vdqnr20mm1d3z0g6a0ykndvgn5vdax5x9a";
-        };
-        version = "6.17.10";
-        modDirVersion = "6.17.10";
-      };
-    }
-  );
+  # pinnedKernelPackage = pkgs.linuxPackagesFor (
+  #   pkgs.linuxKernel.kernels.linux_6_17.override {
+  #     argsOverride = rec {
+  #       src = pkgs.fetchurl {
+  #         url = "mirror://kernel/linux/kernel/v${lib.versions.major version}.x/linux-${version}.tar.xz";
+  #         sha256 = "0ibayrvrnw2lw7si78vdqnr20mm1d3z0g6a0ykndvgn5vdax5x9a";
+  #       };
+  #       version = "6.17.10";
+  #       modDirVersion = "6.17.10";
+  #     };
+  #   }
+  # );
 
 in
 {
   config = lib.mkMerge [
     (lib.mkIf (filesystem == "zfs") {
-      boot.kernelPackages = pinnedKernelPackage;
+      #boot.kernelPackages = pinnedKernelPackage;
+      boot.kernelPackages = pkgs.linuxPackages_6_17;
     })
     (lib.mkIf (filesystem != "zfs") {
       boot.kernelPackages = pkgs.linuxPackages_zen;
