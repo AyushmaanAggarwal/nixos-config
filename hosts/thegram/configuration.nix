@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ platform, ... }:
 {
   imports = [
     ./filesystem
@@ -8,6 +6,7 @@
     ../../modules/system
     ../../modules/shared
   ];
+  nixpkgs.hostPlatform = platform;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

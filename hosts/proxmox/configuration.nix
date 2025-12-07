@@ -1,16 +1,9 @@
 {
-  inputs,
-  options,
-  config,
   lib,
-  pkgs,
   modulesPath,
   hostname,
-  username,
-  desktop,
-  system,
+  platform,
   isTailscaleExitNode,
-  sshWithoutYubikey,
   ...
 }:
 let
@@ -27,6 +20,7 @@ in
   config = lib.mkMerge [
     (lib.optionalAttrs hostname-option { ${hostname}.enable = true; })
     {
+
       networking.hostName = hostname;
       tailscale.exit-node.enable = isTailscaleExitNode;
 
@@ -38,6 +32,7 @@ in
       ];
 
       time.timeZone = "America/New_York";
+      nixpkgs.hostPlatform = platform;
       system.stateVersion = "25.05";
     }
   ];

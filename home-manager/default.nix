@@ -6,7 +6,6 @@
   home-manager,
   desktop,
   hostname,
-  system,
   username,
   ...
 }:
@@ -26,7 +25,6 @@
         hostname
         username
         desktop
-        system
         ;
     };
 

@@ -5,7 +5,6 @@
   lib,
   desktop,
   hostname,
-  system,
   username,
   ...
 }:

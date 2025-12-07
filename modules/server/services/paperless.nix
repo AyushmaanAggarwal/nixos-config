@@ -3,11 +3,6 @@
   config,
   pkgs,
   lib,
-  desktop,
-  hostname,
-  system,
-  username,
-  domain-name,
   ...
 }:
 let

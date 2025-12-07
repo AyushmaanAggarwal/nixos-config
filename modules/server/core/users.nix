@@ -5,7 +5,6 @@
   functions,
   hostname,
   username,
-  system,
   sshWithoutYubikey,
   ...
 }:

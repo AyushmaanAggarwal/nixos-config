@@ -1,12 +1,5 @@
 {
-  inputs,
-  config,
-  lib,
-  pkgs,
   desktop,
-  hostname,
-  system,
-  username,
   ...
 }:
 let

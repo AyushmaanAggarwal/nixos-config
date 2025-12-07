@@ -1,11 +1,9 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
   desktop,
   hostname,
-  system,
   username,
   ...
 }:
@@ -17,7 +15,7 @@
     hyprlock.enable = lib.mkOption {
       type = lib.types.bool;
       description = "Enable hyprlock";
-      default = false;
+      default = desktop == "hyprland";
     };
   };
   config = lib.mkIf (config.hyprlock.enable) {

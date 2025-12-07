@@ -7,7 +7,6 @@
   hostname,
   username,
   desktop,
-  system,
   ...
 }:
 {

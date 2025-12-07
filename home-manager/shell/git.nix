@@ -1,15 +1,5 @@
 # Not ready for use
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  desktop,
-  hostname,
-  system,
-  username,
-  ...
-}:
+{ ... }:
 {
   programs.git = {
     enable = true;

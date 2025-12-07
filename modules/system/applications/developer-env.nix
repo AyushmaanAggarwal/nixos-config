@@ -2,7 +2,6 @@
 {
   inputs,
   pkgs,
-  system,
   username,
   ...
 }:
@@ -54,5 +53,5 @@ in
       nixfmt-rfc-style
 
     ]
-    ++ [ inputs.nixvim-config.packages.${system}.default ];
+    ++ [ inputs.nixvim-config.packages.${pkgs.system}.default ];
 }

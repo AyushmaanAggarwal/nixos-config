@@ -14,12 +14,11 @@ in
       hostname,
       username ? "ayushmaan",
       desktop,
-      system ? "x86_64-linux",
+      platform ? "x86_64-linux",
       hostID,
       filesystem ? "btrfs",
     }:
     lib.nixosSystem {
-      inherit system;
       specialArgs = {
         inherit
           inputs
@@ -28,7 +27,7 @@ in
           hostname
           username
           desktop
-          system
+          platform
           hostID
           filesystem
           ;
@@ -42,11 +41,10 @@ in
   mkDisko =
     {
       hostname,
-      system ? "x86_64-linux",
+      platform ? "x86_64-linux",
       hostID,
     }:
     lib.nixosSystem {
-      inherit system;
       specialArgs = {
         inherit
           inputs
@@ -65,7 +63,7 @@ in
       hostname,
       username ? "proxmox",
       desktop ? null,
-      system ? "x86_64-linux",
+      platform ? "x86_64-linux",
       domain-name ? "tail590ac.ts.net",
     }:
     let
@@ -73,7 +71,6 @@ in
       sshWithoutYubikey = hostname == "backup";
     in
     lib-stable.nixosSystem {
-      inherit system;
       specialArgs = {
         inherit
           inputs
@@ -82,7 +79,7 @@ in
           hostname
           username
           desktop
-          system
+          platform
           domain-name
           isTailscaleExitNode
           sshWithoutYubikey
