@@ -138,3 +138,10 @@ paperless:
 	@echo "Update: paperless"
 	@dunstify "Waiting for authentication"
 	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#paperless --target-host nixadmin@paperless; \
+
+linkwarden:
+	@echo "----------------------------------------"
+	@echo "Update: linkwarden"
+	@dunstify "Waiting for authentication"
+	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#linkwarden --target-host nixadmin@linkwarden; \
+	

@@ -55,3 +55,7 @@ creation_rules:
     - age:
       - *admin_ayu
       - *server_paperless
+  - path_regex: secrets/linkwarden/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu

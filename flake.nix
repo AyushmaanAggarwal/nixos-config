@@ -97,6 +97,8 @@
         onlyoffice = helper.mkServerLXC { hostname = "onlyoffice"; };
 
         paperless = helper.mkServerLXC { hostname = "paperless"; };
+
+        linkwarden = helper.mkServerLXC { hostname = "linkwarden"; };
       };
     };
 }

@@ -6,6 +6,7 @@
     ./glance.nix
     ./immich.nix
     ./jellyfin.nix
+    ./linkwarden.nix
     ./mealie.nix
     ./nextcloud.nix
     ./ntfy.nix
