@@ -23,7 +23,7 @@
     "dnscrypt-hagezi": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-VWMVLvvKu1LO6ISYrDYOnUYOjubraF0wYRY2RAEgejQ=",
+        "narHash": "sha256-tDueq8OGJWbquw4s4GEXD6uK6ACVhmJafT+OHnbRjr4=",
         "type": "file",
         "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
       },
@@ -35,7 +35,7 @@
     "dnscrypt-hagezi-tif": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-kLcjM1H1gMmeRl5tJmoQ24In8y7fHPLiEHciLuoblTY=",
+        "narHash": "sha256-epiPlAC0l0GdbLA5RRjMaEALCX61WzKOO9c2tvtYNmg=",
         "type": "file",
         "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
       },
