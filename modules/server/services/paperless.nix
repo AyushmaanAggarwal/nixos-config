@@ -17,7 +17,7 @@ let
 in
 {
   imports = [
-    ../common/sops-nix.nix
+    ../core/sops-nix.nix
   ];
   options = {
     paperless.enable = lib.mkOption {

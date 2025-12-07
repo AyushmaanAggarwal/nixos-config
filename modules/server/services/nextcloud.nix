@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    ../common/sops-nix.nix
+    ../core/sops-nix.nix
     ./caddy.nix
     ./tailscale.nix
   ];

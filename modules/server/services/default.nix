@@ -1,6 +1,6 @@
 { ... }:
 {
-  import = [
+  imports = [
     ./adguard.nix
     ./changedetection.nix
     ./glance.nix

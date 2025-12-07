@@ -28,7 +28,6 @@ in
     (lib.optionalAttrs hostname-option { ${hostname}.enable = true; })
     {
       networking.hostName = hostname;
-      caddy.hostname = hostname;
       tailscale.exit-node.enable = isTailscaleExitNode;
 
       # Disable bad systemd units for lxc containers

@@ -14,7 +14,7 @@ in
 {
   imports = [
     ./caddy.nix
-    ../common/sops-nix.nix
+    ../core/sops-nix.nix
   ];
   options = {
     gitlab.enable = lib.mkOption {

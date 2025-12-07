@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  hostname,
   ...
 }:
 {
@@ -32,7 +33,7 @@
     caddy.hostname = lib.mkOption {
       type = lib.types.str;
       description = "Set hostname for tailscale caddy-configuration";
-      default = config.networking.hostName;
+      default = hostname;
     };
     caddy.extraHost = lib.mkOption {
       type = lib.types.str;
