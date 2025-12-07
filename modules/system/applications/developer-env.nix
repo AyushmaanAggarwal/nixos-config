@@ -53,5 +53,5 @@ in
       nixfmt-rfc-style
 
     ]
-    ++ [ inputs.nixvim-config.packages.${pkgs.system}.default ];
+    ++ [ inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default ];
 }
