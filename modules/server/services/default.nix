@@ -2,7 +2,6 @@
 {
   import = [
     ./adguard.nix
-    ./caddy.nix
     ./changedetection.nix
     ./glance.nix
     ./immich.nix
