@@ -39,6 +39,12 @@ in
       mode = "0400";
       sopsFile = secrets-file;
     };
+    sops.secrets.meili-key = {
+      owner = linkwarden-user;
+      group = linkwarden-user;
+      mode = "0400";
+      sopsFile = secrets-file;
+    };
 
     services.linkwarden = {
       enable = true;
@@ -49,6 +55,7 @@ in
       openFirewall = true;
       secretFiles = {
         NEXTAUTH_SECRET = config.sops.secrets.nextauth-secret.path;
+        MEILI_MASTER_KEY = config.sops.secrets.meili-key.path;
       };
       enableRegistration = true;
       database = {
