@@ -35,11 +35,11 @@ in
 
     services.linkwarden = {
       enable = true;
+      host = "127.0.0.1";
       port = port;
-      host = "localhost";
       user = linkwarden-user;
       group = linkwarden-user;
-      openFirewall = false;
+      openFirewall = true;
       secretFiles = {
         NEXTAUTH_SECRET = config.sops.secrets.nextauth-secret.path;
       };
