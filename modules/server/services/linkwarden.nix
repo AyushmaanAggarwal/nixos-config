@@ -33,6 +33,13 @@ in
       sopsFile = secrets-file;
     };
 
+    sops.secrets.meili-master = {
+      owner = linkwarden-user;
+      group = linkwarden-user;
+      mode = "0400";
+      sopsFile = secrets-file;
+    };
+
     services.linkwarden = {
       enable = true;
       host = "127.0.0.1";
@@ -48,8 +55,17 @@ in
         name = "linkwarden";
         createLocally = true;
       };
+      environment = {
+        MEILI_HOST = "http://localhost:7700";
+      };
     };
 
+    services.meilisearch = {
+      enable = true;
+      listenPort = 7700;
+      listenAddress = "127.0.0.1";
+      masterKeyFile = config.sops.secrets.meili-master.path;
+    };
     # --------------------
     # Caddy SSL Cert
     # --------------------
