@@ -85,16 +85,5 @@ in
       general_restic_config
     ];
 
-    pve = lib.mkMerge [
-      {
-        repository = "rclone:EncryptedProxmoxBackupServer:NixOS/restic-backup";
-        timerConfig = {
-          OnCalendar = "daily";
-          Persistent = true;
-        };
-      }
-      general_restic_config
-    ];
-
   };
 }
