@@ -23,7 +23,7 @@
     "dnscrypt-hagezi": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-14RB2I7224xB0Hn44vXi9ni1RSy5adDuwxamM2Ah/NA=",
+        "narHash": "sha256-1s9OR7g//jnH6T6t2I/t3EIsUHxqU1vxU/tstXgINK0=",
         "type": "file",
         "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
       },
@@ -35,7 +35,7 @@
     "dnscrypt-hagezi-tif": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-bl9mHT5zbi6hCCW6Zf1HisxanDlS6avIQZx4DJqfttM=",
+        "narHash": "sha256-pNUv+kxhd2Vb203A8akdtD6Uevr+YzAhlG+mu38CqqA=",
         "type": "file",
         "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
       },
@@ -47,7 +47,7 @@
     "dnscrypt-oisd": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-QSmrCbFcs23Ae1iZTCsCTAnITH9YcTpCHHe3Uvk9r8I=",
+        "narHash": "sha256-iIpUCKgABbf1bOQxeNJ3zwelRTfJpDFXuYKg0Y7qYL4=",
         "type": "file",
         "url": "https://big.oisd.nl/domainswild"
       },
@@ -59,7 +59,7 @@
     "dnscrypt-stevenblack": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-bdo6QXn7GVUhscDzj7GKyk+zkKthRLxFOy1n/x2y75c=",
+        "narHash": "sha256-5oi/h72kdMgJA0tCeIIdTA3ESADFDfzuBFGgyA0btg4=",
         "type": "file",
         "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
       },
@@ -97,11 +97,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765337252,
-        "narHash": "sha256-HuWQp8fM25fyWflbuunQkQI62Hg0ecJxWD52FAgmxqY=",
+        "lastModified": 1765606130,
+        "narHash": "sha256-KOP4QnkiRwiD5KEOr6ceF67rfTP1OqPmCCft6xDC3k4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "13cc1efd78b943b98c08d74c9060a5b59bf86921",
+        "rev": "d787ec69c3216ea33be1c0424fe65cb23aa8fb31",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1765186076,
-        "narHash": "sha256-hM20uyap1a0M9d344I692r+ik4gTMyj60cQWO+hAYP8=",
+        "lastModified": 1765472234,
+        "narHash": "sha256-9VvC20PJPsleGMewwcWYKGzDIyjckEz8uWmT0vCDYK0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "addf7cf5f383a3101ecfba091b98d0a1263dc9b8",
+        "rev": "2fbfb1d73d239d2402a8fe03963e37aab15abe8b",
         "type": "github"
       },
       "original": {
@@ -266,11 +266,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1765231718,
-        "narHash": "sha256-qdBzo6puTgG4G2RHG0PkADg22ZnQo1JmSVFRxrD4QM4=",
+        "lastModified": 1765553226,
+        "narHash": "sha256-Ii16Nq5jL2wURXpV3D3tOM3vPpbKh18roHLkyZCHK4Q=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "7fd1416aba1865eddcdec5bb11339b7222c2363e",
+        "rev": "496a6f625f63b780ce849891868f2fad22fd49c6",
         "type": "github"
       },
       "original": {
