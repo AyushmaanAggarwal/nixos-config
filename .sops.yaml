@@ -62,3 +62,7 @@ creation_rules:
     - age:
       - *admin_ayu
       - *server_linkwarden
+  - path_regex: secrets/searxng/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_ayu

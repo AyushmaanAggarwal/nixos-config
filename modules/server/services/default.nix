@@ -11,6 +11,7 @@
     ./nextcloud.nix
     ./ntfy.nix
     ./paperless.nix
+    ./searxng.nix
     ./tailscale.nix
     ./uptime.nix
   ];

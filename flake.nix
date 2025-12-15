@@ -99,6 +99,8 @@
         paperless = helper.mkServerLXC { hostname = "paperless"; };
 
         linkwarden = helper.mkServerLXC { hostname = "linkwarden"; };
+
+        searxng = helper.mkServerLXC { hostname = "searxng"; };
       };
     };
 }
