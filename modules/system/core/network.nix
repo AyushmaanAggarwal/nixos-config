@@ -77,7 +77,7 @@ in
         "149.112.112.112:53"
       ];
       forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
-      blocked_names.blocked_names_file = blocklist_txt;
+      # blocked_names.blocked_names_file = blocklist_txt;
       captive_portals.map_file = "/etc/nixos/services/networking/captive-portals.txt";
       sources.public-resolvers = {
         urls = [
@@ -98,19 +98,19 @@ in
         "quad9-doh-ip4-port5053-filter-alt2"
       ];
 
-      query_log = {
-        file = "${dnscrypt_log}/query.log";
-        format = "tsv";
-        ignored_qtypes = [
-          "DNSKEY"
-          "NS"
-        ];
-      };
-      nx_log.file = "${dnscrypt_log}/nx.log";
-      blocked_names.log_file = "${dnscrypt_log}/blocked_names.log";
-      blocked_ips.log_file = "${dnscrypt_log}/blocked_ips.log";
-      allowed_names.log_file = "${dnscrypt_log}/allowed_names.log";
-      allowed_ips.log_file = "${dnscrypt_log}/allowed_ips.log";
+      # query_log = {
+      #   file = "${dnscrypt_log}/query.log";
+      #   format = "tsv";
+      #   ignored_qtypes = [
+      #     "DNSKEY"
+      #     "NS"
+      #   ];
+      # };
+      # nx_log.file = "${dnscrypt_log}/nx.log";
+      # blocked_names.log_file = "${dnscrypt_log}/blocked_names.log";
+      # blocked_ips.log_file = "${dnscrypt_log}/blocked_ips.log";
+      # allowed_names.log_file = "${dnscrypt_log}/allowed_names.log";
+      # allowed_ips.log_file = "${dnscrypt_log}/allowed_ips.log";
 
     };
   };
