@@ -20,30 +20,6 @@
         "type": "github"
       }
     },
-    "dnscrypt-hagezi": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-HLVXe9okVEzXJ4x7GyR1vaMB4JdCvGvZgar3+hAMY20=",
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt"
-      }
-    },
-    "dnscrypt-hagezi-tif": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-rT7rt/KaXUJmJI1Flor8YewJMvKJ4b2/nDXYZF4dDYI=",
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt"
-      }
-    },
     "dnscrypt-oisd": {
       "flake": false,
       "locked": {
@@ -250,8 +226,6 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "dnscrypt-hagezi": "dnscrypt-hagezi",
-        "dnscrypt-hagezi-tif": "dnscrypt-hagezi-tif",
         "dnscrypt-oisd": "dnscrypt-oisd",
         "dnscrypt-stevenblack": "dnscrypt-stevenblack",
         "home-manager": "home-manager",

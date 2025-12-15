@@ -10,8 +10,8 @@ let
 
   blocklist_oisd = builtins.readFile inputs.dnscrypt-oisd;
   blocklist_stevenblack = builtins.readFile inputs.dnscrypt-stevenblack;
-  blocklist_hagezi = builtins.readFile inputs.dnscrypt-hagezi;
-  blocklist_hagezi_tif = builtins.readFile inputs.dnscrypt-hagezi-tif;
+  #blocklist_hagezi = builtins.readFile inputs.dnscrypt-hagezi;
+  #blocklist_hagezi_tif = builtins.readFile inputs.dnscrypt-hagezi-tif;
   extraBlocklist = ''
     *.tailscale.online
     *.log.tailscale.com
@@ -21,8 +21,6 @@ let
   blocklist_txt = pkgs.writeText "blocklist.txt" ''
     ${blocklist_oisd}
     ${blocklist_stevenblack}
-    ${blocklist_hagezi}
-    ${blocklist_hagezi_tif}
   '';
 in
 {

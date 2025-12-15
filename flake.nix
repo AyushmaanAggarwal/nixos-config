@@ -29,14 +29,14 @@
       url = "https://big.oisd.nl/domainswild";
       flake = false;
     };
-    dnscrypt-hagezi = {
-      url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt";
-      flake = false;
-    };
-    dnscrypt-hagezi-tif = {
-      url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt";
-      flake = false;
-    };
+    # dnscrypt-hagezi = {
+    #   url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt";
+    #   flake = false;
+    # };
+    #dnscrypt-hagezi-tif = {
+    #  url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/tif-onlydomains.txt";
+    #  flake = false;
+    #};
 
   };
 
