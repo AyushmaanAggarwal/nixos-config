@@ -27,6 +27,16 @@ in
   # Tailscale VPN
   services.tailscale = {
     enable = true;
+    package = pkgs.tailscale.overrideAttrs (_old: rec {
+      pname = "tailscale";
+      version = "1.88.4";
+      src = pkgs.fetchFromGitHub {
+        owner = "tailscale";
+        repo = "tailscale";
+        tag = "v1.88.4";
+        hash = "sha256-fzJwRTB2U2GuLmv1XUSMLnhyLlp+4kGorLGAvRVjDqw=";
+      };
+    });
     extraDaemonFlags = [ "--no-logs-no-support" ];
   };
 
