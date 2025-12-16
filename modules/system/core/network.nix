@@ -36,6 +36,7 @@ in
         tag = "v1.88.4";
         hash = "sha256-fzJwRTB2U2GuLmv1XUSMLnhyLlp+4kGorLGAvRVjDqw=";
       };
+      vendorHash = "sha256-8aE6dWMkTLdWRD9WnLVSzpOQQh61voEnjZAJHtbGCSs=";
     });
     extraDaemonFlags = [ "--no-logs-no-support" ];
   };
