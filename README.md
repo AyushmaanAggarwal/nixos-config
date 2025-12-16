@@ -37,6 +37,7 @@ The current services running in production are
 - Ntfy.sh - Notification Server
 - Changedetection.io - Website Change Detection
 - Paperless-ngx - document archiver and manager
+- SearXNG - self-hosted meta search engine
 
 Planned Additions
 - NewsBlur - RSS feed reader
