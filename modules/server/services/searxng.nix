@@ -73,7 +73,7 @@ in
       settings = {
         # Instance settings
         general = {
-          debug = false;
+          debug = true;
           instance_name = "SearXNG Instance";
           donation_url = false;
           contact_url = false;
