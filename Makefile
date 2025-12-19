@@ -57,7 +57,7 @@ flatpak:
 # --------------------
 # Primary Container Commands
 # --------------------
-all-server: backup uptime adguard nextcloud changedetection mealie ntfy immich jellyfin glance paperless
+all-server: backup uptime adguard searxng nextcloud changedetection mealie ntfy immich jellyfin glance paperless
 
 remote-build = nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#$$system --target-host nixadmin@$$system
 
@@ -144,4 +144,10 @@ linkwarden:
 	@echo "Update: linkwarden"
 	@dunstify "Waiting for authentication"
 	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#linkwarden --target-host nixadmin@linkwarden; \
-	
+
+searxng:
+	@echo "----------------------------------------"
+	@echo "Update: SearXNG"
+	@dunstify "Waiting for authentication"
+	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#searxng --target-host nixadmin@searxng; \
+		
