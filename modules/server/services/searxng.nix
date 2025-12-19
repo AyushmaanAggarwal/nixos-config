@@ -13,7 +13,7 @@ let
   url = "https://searxng.tail590ac.ts.net";
   port = 8888;
 
-  user = "searxng";
+  user = "searx";
   secrets-file = ../../../secrets/searxng/secret.yaml;
 in
 {
@@ -62,8 +62,7 @@ in
       };
 
       # UWSGI configuration
-      runInUwsgi = true;
-
+      configureUwsgi = true;
       uwsgiConfig = {
         socket = "/run/searx/searx.sock";
         http = ":8888";
