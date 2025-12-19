@@ -62,12 +62,12 @@ in
       };
 
       # UWSGI configuration
-      configureUwsgi = true;
-      uwsgiConfig = {
-        socket = "/run/searx/searx.sock";
-        http = ":8888";
-        chmod-socket = "660";
-      };
+      configureUwsgi = false;
+      #uwsgiConfig = {
+      #  socket = "/run/searx/searx.sock";
+      #  http = ":8888";
+      #  chmod-socket = "660";
+      #};
 
       # Searx configuration
       settings = {
