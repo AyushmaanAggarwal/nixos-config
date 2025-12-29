@@ -15,6 +15,7 @@
   boot.kernelParams = [ "zfs.zfs_arc_max=4294967296" ]; # 4 GiB of arc
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs = {
+    package = pkgs.zfs_2_4;
     requestEncryptionCredentials = true;
     passwordTimeout = 600; # Wait 5 minutes on boot for password
     forceImportRoot = false;
