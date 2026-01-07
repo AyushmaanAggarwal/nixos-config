@@ -35,7 +35,7 @@ in
   config = lib.mkMerge [
     (lib.mkIf (filesystem == "zfs") {
       #boot.kernelPackages = pinnedKernelPackage;
-      boot.kernelPackages = pkgs.linuxPackages_6_17;
+      boot.kernelPackages = pkgs.linuxPackages_6_18;
     })
     (lib.mkIf (filesystem != "zfs") {
       boot.kernelPackages = pkgs.linuxPackages_zen;
