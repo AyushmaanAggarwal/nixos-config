@@ -5,7 +5,7 @@ update:
 	nix flake update --commit-lock-file
 
 pull:
-	git pull  -X theirs origin master  -- flake.lock
+	git pull origin master
 
 push:
 	git push origin master
