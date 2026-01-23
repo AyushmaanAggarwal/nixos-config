@@ -50,7 +50,7 @@ in
       # Nix Packages
       sops
       treefmt
-      nixfmt-rfc-style
+      nixfmt
 
     ]
     ++ [ inputs.nixvim-config.packages.${pkgs.stdenv.hostPlatform.system}.default ];

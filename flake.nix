@@ -53,9 +53,7 @@
       helper = import ./lib { inherit inputs outputs; };
     in
     {
-      formatter = helper.forAllSystems (
-        system: nixpkgs-unstable.legacyPackages.${system}.nixfmt-rfc-style
-      );
+      formatter = helper.forAllSystems (system: nixpkgs-unstable.legacyPackages.${system}.nixfmt);
       overlays = import ./overlays { inherit inputs; };
 
       nixosConfigurations = {
