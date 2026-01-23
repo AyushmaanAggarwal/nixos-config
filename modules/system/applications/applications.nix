@@ -21,7 +21,6 @@
   # Install progams
   programs = {
     zsh.enable = true;
-    adb.enable = true;
     thunderbird.enable = true;
     partition-manager.enable = true;
     steam.enable = true; # Not free
@@ -50,6 +49,8 @@
       rsync
       rclone
       psmisc # For killall command
+      android-tools
+
       ## Monitoring
       htop
       powertop
