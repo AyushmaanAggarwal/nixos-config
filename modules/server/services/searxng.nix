@@ -16,12 +16,16 @@ let
   user = "searx";
   secrets-file = ../../../secrets/searxng/secret.yaml;
 
-  generate_engine_enabled = category: engine_name: {
-    name = engine_name;
-    engine = engine_name;
-    categories = category;
-    disabled = false;
-  };
+  generate_engine_enabled =
+    category:
+    { engine_name, weight_value }:
+    {
+      name = engine_name;
+      engine = engine_name;
+      categories = category;
+      disabled = false;
+      weight = weight_value;
+    };
   generate_engine_disabled = engine_name: {
     name = engine_name;
     engine = engine_name;
@@ -144,94 +148,179 @@ in
 
         # Search engines
         engines = lib.mkMerge [
-          (lib.map (generate_engine_enabled "general") [
-            # General
-            "openlibrary"
-            "currency"
-            "dictzone"
-            "mymemory translated"
-            "bing"
-            "duckduckgo"
-            "google"
-            "startpage"
-            "wikibooks"
-            "wikiquote"
-            "wikisource"
-            "wikiversity"
-            "wikivoyage"
-            "ddg definitions"
-            "mwmbl"
-            "wikidata"
-            "wikipedia"
-          ])
+          (lib.map (generate_engine_enabled "general") (
+            lib.zip
+              [
+                # General
+                "duckduckgo"
+                "google"
+                "bing"
+                "openlibrary"
+                "currency"
+                "dictzone"
+                "startpage"
+                "mwmbl"
+                "wikipedia"
+              ]
+              [
+                100 # "duckduckgo"
+                90 # "google"
+                70 # "wikipedia"
+                50 # "bing"
+                10 # "openlibrary"
+                10 # "currency"
+                10 # "dictzone"
+                10 # "startpage"
+                10 # "mwmbl"
 
-          (lib.map (generate_engine_enabled "images") [
-            # Images
-            "devicons"
-            "bing images"
-            "google images"
-            "duckduckgo images"
-            "artic"
-            "deviantart"
-            "flickr"
-            "pinterest"
-            "unsplash"
-            "library of congress"
-            "wallhaven"
-            "wikicommons.images"
-          ])
+              ]
+          ))
 
-          (lib.map (generate_engine_enabled "videos") [
-            # Videos
-            "bing videos"
-            "google videos"
-            "qwant videos"
-            "vimeo"
-            "peertube"
-            "wikicommons.videos"
-            "youtube"
-          ])
+          (lib.map (generate_engine_enabled "images") (
+            lib.zip
+              [
+                # Images
+                "google images"
+                "duckduckgo images"
+                "bing images"
+                "devicons"
+                "artic"
+                "deviantart"
+                "flickr"
+                "pinterest"
+                "unsplash"
+                "wallhaven"
+                "wikicommons.images"
+              ]
+              [
+                # Images
+                100 # "google images"
+                90 # "duckduckgo images"
+                60 # "bing images"
+                40 # "pinterest"
+                40 # "unsplash"
+                40 # "wikicommons.images"
+                10 # "devicons"
+                10 # "artic"
+                10 # "deviantart"
+                10 # "flickr"
+                10 # "wallhaven"
+              ]
+          ))
 
-          (lib.map (generate_engine_enabled "news") [
-            # News
-            "duckduckgo news"
-            "startpage news"
-            "google news"
-            "wikinews"
-            "reuters"
-          ])
+          (lib.map (generate_engine_enabled "videos") (
+            lib.zip
+              [
+                # Videos
+                "bing videos"
+                "google videos"
+                "qwant videos"
+                "vimeo"
+                "peertube"
+                "wikicommons.videos"
+                "youtube"
+              ]
+              [
+                # Videos
+                100 # "youtube"
+                50 # "google videos"
+                30 # "bing videos"
+                20 # "qwant videos"
+                10 # "vimeo"
+                10 # "peertube"
+                5 # "wikicommons.videos"
+              ]
+          ))
 
-          (lib.map (generate_engine_enabled "maps") [
-            # Maps
-            "apple maps"
-            "openstreetmap"
-            "photon"
-          ])
+          (lib.map (generate_engine_enabled "news") (
+            lib.zip
+              [
+                # News
+                "duckduckgo news"
+                "startpage news"
+                "google news"
+                "wikinews"
+                "reuters"
+              ]
+              [
+                # News
+                100 # "duckduckgo news"
+                100 # "reuters"
+                50 # "startpage news"
+                50 # "google news"
+                20 # "wikinews"
+              ]
+          ))
 
-          (lib.map (generate_engine_enabled "it") [
-            # IT
-            "lib.rs"
-            "pypi"
-            "askubuntu"
-            "caddy.community"
-            "stackoverflow"
-            "superuser"
-            "github"
-            "arch linux wiki"
-            "nixos wiki"
-            "anaconda"
-            "hackernews"
-          ])
+          (lib.map (generate_engine_enabled "maps") (
+            lib.zip
+              [
+                # Maps
+                "apple maps"
+                "openstreetmap"
+                "photon"
+              ]
+              [
+                # Maps
+                100 # "apple maps"
+                100 # "openstreetmap"
+                10 # "photon"
+              ]
+          ))
 
-          (lib.map (generate_engine_enabled "science") [
-            # Science
-            "arxiv"
-            "google scholar"
-            "semantic scholar"
-            "openairedatasets"
-            "openairepublications"
-            "pdbe"
-          ])
+          (lib.map (generate_engine_enabled "it") (
+            lib.zip
+              [
+                # IT
+                "arch linux wiki"
+                "nixos wiki"
+                "github"
+                "stackoverflow"
+                "superuser"
+                "askubuntu"
+                "hackernews"
+                "lib.rs"
+                "pypi"
+                "caddy.community"
+                "anaconda"
+              ]
+              [
+                # IT
+                100 # "arch linux wiki"
+                80 # "nixos wiki"
+                80 # "github"
+                75 # "stackoverflow"
+                75 # "superuser"
+                60 # "askubuntu"
+                50 # "hackernews"
+                20 # "lib.rs"
+                20 # "pypi"
+                10 # "caddy.community"
+                10 # "anaconda"
+              ]
+          ))
+
+          (lib.map (generate_engine_enabled "science") (
+            lib.zip
+              [
+                # Science
+                "arxiv"
+                "google scholar"
+                "semantic scholar"
+                "openairedatasets"
+                "openairepublications"
+                "pdbe"
+              ]
+              [
+                # Science
+                100 # "arxiv"
+                80 # "google scholar"
+                60 # "semantic scholar"
+                50 # "openairedatasets"
+                50 # "openairepublications"
+                10 # "pdbe"
+              ]
+          ))
 
           (lib.map generate_engine_disabled [
             # General
@@ -253,78 +342,8 @@ in
             "encyclosearch"
             "right dao"
             "searchmysite"
-            ""
-
           ])
         ];
-        # engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
-        #   # enabled
-        #   "duckduckgo"
-
-        #   "mwmbl"
-        #   "mwmbl".weight = 0.4;
-        #   "bing"
-        #   "crowdview"
-        #   "crowdview".weight = 0.5;
-        #   "ddg definitions"
-        #   "ddg definitions".weight = 2;
-        #   "wikibooks"
-        #   "wikidata"
-        #   "wikispecies"
-        #   "wikispecies".weight = 0.5;
-        #   "wikiversity"
-        #   "wikiversity".weight = 0.5;
-        #   "wikivoyage"
-        #   "wikivoyage".weight = 0.5;
-        #   "bing images"
-        #
-        #   "google images"
-        #   "artic"
-        #   "deviantart"
-        #   "imgur"
-        #   "library of congress"
-        #   "openverse"
-        #   "svgrepo"
-        #   "unsplash"
-        #   "wallhaven"
-        #   "wikicommons.images"
-        #   "bing videos"
-        #   "google videos"
-        #   "qwant videos"
-        #   "peertube"
-        #   "rumble"
-        #   "sepiasearch"
-        #   "youtube"
-        #   # disabled
-        #   "brave".disabled = true;
-        #   "mojeek".disabled = true;
-        #   "qwant".disabled = true;
-        #   "curlie".disabled = true;
-        #   "wikiquote".disabled = true;
-        #   "wikisource".disabled = true;
-        #   "currency".disabled = true;
-        #   "dictzone".disabled = true;
-        #   "lingva".disabled = true;
-        #   "brave.images".disabled = true;
-        #   "duckduckgo images".disabled = true;
-        #   "qwant images".disabled = true;
-        #   "1x".disabled = true;
-        #   "flickr".disabled = true;
-        #   "material icons".disabled = true;
-        #   "material icons".weight = 0.2;
-        #   "pinterest".disabled = true;
-        #   "yacy images".disabled = true;
-        #   "brave.videos".disabled = true;
-        #   "duckduckgo videos".disabled = true;
-        #   "dailymotion".disabled = true;
-        #   "google play movies".disabled = true;
-        #   "invidious".disabled = true;
-        #   "odysee".disabled = true;
-        #   "piped".disabled = true;
-        #   "vimeo".disabled = true;
-        #   "brave.news".disabled = true;
-        #   "google news".disabled = true;
-        # };
 
         # Outgoing requests
         outgoing = {
