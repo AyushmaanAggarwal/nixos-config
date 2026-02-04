@@ -13,6 +13,7 @@
     ./paperless.nix
     ./searxng.nix
     ./tailscale.nix
+    ./updater.nix
     ./uptime.nix
   ];
 }
