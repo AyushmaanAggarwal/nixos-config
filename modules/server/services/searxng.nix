@@ -16,7 +16,8 @@ let
   user = "searx";
   secrets-file = ../../../secrets/searxng/secret.yaml;
 
-  generate_engine_enabled =
+  # Helper
+  engine_enabled_helper =
     category:
     { engine_name, weight_value }:
     {
@@ -26,14 +27,29 @@ let
       disabled = false;
       weight = weight_value;
     };
-  generate_engine_disabled = engine_name: {
+
+  engine_disabled_helper = engine_name: {
     name = engine_name;
     engine = engine_name;
     disabled = true;
   };
+
+  # Generators
+  generate_enabled_engines =
+    catagory: engine_attrs:
+    lib.map (engine_enabled_helper catagory) (
+      lib.mapAttrsToList (name: value: {
+        engine_name = name;
+        weight_value = value;
+      }) engine_attrs
+    );
+
+  generate_disabled_engines = engines: (lib.map engine_disabled_helper engines);
+
   generate_categories = cat_name: {
     cat_name = { };
   };
+
 in
 {
   imports = [
@@ -147,203 +163,102 @@ in
         ];
 
         # Search engines
-        engines = lib.mkMerge [
-          (lib.map (generate_engine_enabled "general") (
-            lib.zip
-              [
-                # General
-                "duckduckgo"
-                "google"
-                "bing"
-                "openlibrary"
-                "currency"
-                "dictzone"
-                "startpage"
-                "mwmbl"
-                "wikipedia"
-              ]
-              [
-                100 # "duckduckgo"
-                90 # "google"
-                70 # "wikipedia"
-                50 # "bing"
-                10 # "openlibrary"
-                10 # "currency"
-                10 # "dictzone"
-                10 # "startpage"
-                10 # "mwmbl"
+        engines = (
+          lib.lists.concatLists [
+            (generate_enabled_engines "general" {
+              "duckduckgo" = 100;
+              "google" = 90;
+              "bing" = 70;
+              "openlibrary" = 50;
+              "currency" = 10;
+              "dictzone" = 10;
+              "startpage" = 10;
+              "mwmbl" = 10;
+              "wikipedia" = 10;
+            })
+            (generate_enabled_engines "images" {
+              "google images" = 100;
+              "duckduckgo images" = 90;
+              "bing images" = 60;
+              "pinterest" = 40;
+              "unsplash" = 40;
+              "wikicommons.images" = 40;
+              "devicons" = 10;
+              "artic" = 10;
+              "deviantart" = 10;
+              "flickr" = 10;
+              "wallhaven" = 10;
+            })
 
-              ]
-          ))
+            (generate_enabled_engines "videos" {
+              "youtube" = 100;
+              "google videos" = 50;
+              "bing videos" = 30;
+              "qwant videos" = 20;
+              "vimeo" = 10;
+              "peertube" = 10;
+              "wikicommons.videos" = 10;
+            })
 
-          (lib.map (generate_engine_enabled "images") (
-            lib.zip
-              [
-                # Images
-                "google images"
-                "duckduckgo images"
-                "bing images"
-                "devicons"
-                "artic"
-                "deviantart"
-                "flickr"
-                "pinterest"
-                "unsplash"
-                "wallhaven"
-                "wikicommons.images"
-              ]
-              [
-                # Images
-                100 # "google images"
-                90 # "duckduckgo images"
-                60 # "bing images"
-                40 # "pinterest"
-                40 # "unsplash"
-                40 # "wikicommons.images"
-                10 # "devicons"
-                10 # "artic"
-                10 # "deviantart"
-                10 # "flickr"
-                10 # "wallhaven"
-              ]
-          ))
+            (generate_enabled_engines "news" {
+              "duckduckgo news" = 100;
+              "reuters" = 100;
+              "startpage news" = 50;
+              "google news" = 50;
+              "wikinews" = 20;
+            })
 
-          (lib.map (generate_engine_enabled "videos") (
-            lib.zip
-              [
-                # Videos
-                "bing videos"
-                "google videos"
-                "qwant videos"
-                "vimeo"
-                "peertube"
-                "wikicommons.videos"
-                "youtube"
-              ]
-              [
-                # Videos
-                100 # "youtube"
-                50 # "google videos"
-                30 # "bing videos"
-                20 # "qwant videos"
-                10 # "vimeo"
-                10 # "peertube"
-                5 # "wikicommons.videos"
-              ]
-          ))
+            (generate_enabled_engines "maps" {
+              "apple maps" = 100;
+              "openstreetmap" = 100;
+            })
 
-          (lib.map (generate_engine_enabled "news") (
-            lib.zip
-              [
-                # News
-                "duckduckgo news"
-                "startpage news"
-                "google news"
-                "wikinews"
-                "reuters"
-              ]
-              [
-                # News
-                100 # "duckduckgo news"
-                100 # "reuters"
-                50 # "startpage news"
-                50 # "google news"
-                20 # "wikinews"
-              ]
-          ))
+            (generate_enabled_engines "it" {
+              "arch linux wiki" = 100;
+              "nixos wiki" = 80;
+              "github" = 80;
+              "stackoverflow" = 75;
+              "superuser" = 75;
+              "askubuntu" = 60;
+              "hackernews" = 50;
+              "lib.rs" = 20;
+              "pypi" = 20;
+              "caddy.community" = 10;
+              "anaconda" = 10;
+            })
 
-          (lib.map (generate_engine_enabled "maps") (
-            lib.zip
-              [
-                # Maps
-                "apple maps"
-                "openstreetmap"
-                "photon"
-              ]
-              [
-                # Maps
-                100 # "apple maps"
-                100 # "openstreetmap"
-                10 # "photon"
-              ]
-          ))
+            (generate_enabled_engines "science" {
+              "arxiv" = 100;
+              "google scholar" = 80;
+              "semantic scholar" = 60;
+              "openairedatasets" = 50;
+              "openairepublications" = 50;
+              "pdbe" = 10;
+            })
 
-          (lib.map (generate_engine_enabled "it") (
-            lib.zip
-              [
-                # IT
-                "arch linux wiki"
-                "nixos wiki"
-                "github"
-                "stackoverflow"
-                "superuser"
-                "askubuntu"
-                "hackernews"
-                "lib.rs"
-                "pypi"
-                "caddy.community"
-                "anaconda"
-              ]
-              [
-                # IT
-                100 # "arch linux wiki"
-                80 # "nixos wiki"
-                80 # "github"
-                75 # "stackoverflow"
-                75 # "superuser"
-                60 # "askubuntu"
-                50 # "hackernews"
-                20 # "lib.rs"
-                20 # "pypi"
-                10 # "caddy.community"
-                10 # "anaconda"
-              ]
-          ))
-
-          (lib.map (generate_engine_enabled "science") (
-            lib.zip
-              [
-                # Science
-                "arxiv"
-                "google scholar"
-                "semantic scholar"
-                "openairedatasets"
-                "openairepublications"
-                "pdbe"
-              ]
-              [
-                # Science
-                100 # "arxiv"
-                80 # "google scholar"
-                60 # "semantic scholar"
-                50 # "openairedatasets"
-                50 # "openairepublications"
-                10 # "pdbe"
-              ]
-          ))
-
-          (lib.map generate_engine_disabled [
-            # General
-            "lingva"
-            "mozhi"
-            "brave"
-            "mojeek"
-            "presearch"
-            "presearch videos"
-            "qwant"
-            "wiby"
-            "yahoo"
-            "seznam"
-            "naver"
-            "wikibooks"
-            "wikispecies"
-            "ask"
-            "crowdview"
-            "encyclosearch"
-            "right dao"
-            "searchmysite"
-          ])
-        ];
+            (generate_disabled_engines [
+              # General
+              "lingva"
+              "mozhi"
+              "brave"
+              "mojeek"
+              "presearch"
+              "presearch videos"
+              "qwant"
+              "wiby"
+              "yahoo"
+              "seznam"
+              "naver"
+              "wikibooks"
+              "wikispecies"
+              "ask"
+              "crowdview"
+              "encyclosearch"
+              "right dao"
+              "searchmysite"
+            ])
+          ]
+        );
 
         # Outgoing requests
         outgoing = {
