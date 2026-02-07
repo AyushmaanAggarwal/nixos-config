@@ -59,7 +59,6 @@
           virtualHosts."${config.caddy.hostname}.tail590ac.ts.net".extraConfig =
             if (config.caddy.custom_proxy == "") then
               ''
-                encode zstd gzip
                 reverse_proxy ${config.caddy.url}:${toString config.caddy.port}
               ''
             else
