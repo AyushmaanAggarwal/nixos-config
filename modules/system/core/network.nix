@@ -8,7 +8,7 @@
 let
   dnscrypt_log = "/var/log/dnscrypt-proxy/";
 
-  blocklist_oisd = builtins.readFile inputs.dnscrypt-oisd;
+  #blocklist_oisd = builtins.readFile inputs.dnscrypt-oisd;
   blocklist_stevenblack = builtins.readFile inputs.dnscrypt-stevenblack;
   #blocklist_hagezi = builtins.readFile inputs.dnscrypt-hagezi;
   #blocklist_hagezi_tif = builtins.readFile inputs.dnscrypt-hagezi-tif;
@@ -19,7 +19,6 @@ let
     *.tailshafts.com
   '';
   blocklist_txt = pkgs.writeText "blocklist.txt" ''
-    ${blocklist_oisd}
     ${blocklist_stevenblack}
   '';
 in

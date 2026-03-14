@@ -25,10 +25,10 @@
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
       flake = false;
     };
-    dnscrypt-oisd = {
-      url = "https://big.oisd.nl/domainswild";
-      flake = false;
-    };
+    # dnscrypt-oisd = {
+    #   url = "https://big.oisd.nl/domainswild";
+    #   flake = false;
+    # };
     # dnscrypt-hagezi = {
     #   url = "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/pro-onlydomains.txt";
     #   flake = false;
