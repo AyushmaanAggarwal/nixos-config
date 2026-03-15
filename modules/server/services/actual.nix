@@ -31,7 +31,7 @@ in
 
       settings = {
         port = 5909;
-        hostname = "localhost";
+        hostname = "127.0.0.1";
         dataDir = "/var/lib/actual";
       };
     };
