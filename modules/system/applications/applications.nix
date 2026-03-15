@@ -40,6 +40,7 @@
       ## Academic
       xournalpp
       zotero
+      notesnook
 
       # Terminal Applications
       fd
