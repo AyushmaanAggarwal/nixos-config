@@ -41,7 +41,7 @@ in
     # --------------------
     caddy = {
       enable = true;
-      port = 8283;
+      port = port;
     };
   };
 }
