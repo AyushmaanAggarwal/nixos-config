@@ -151,3 +151,9 @@ searxng:
 	@dunstify "Waiting for authentication"
 	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#searxng --target-host nixadmin@searxng; \
 		
+actual:
+	@echo "----------------------------------------"
+	@echo "Update: Actual Budget"
+	@dunstify "Waiting for authentication"
+	nixos-rebuild --sudo switch --log-format=bar --flake /home/ayushmaan/.dotfiles/system\#actual --target-host nixadmin@actual; \
+	

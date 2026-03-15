@@ -99,6 +99,8 @@
         linkwarden = helper.mkServerLXC { hostname = "linkwarden"; };
 
         searxng = helper.mkServerLXC { hostname = "searxng"; };
+
+        actual = helper.mkServerLXC { hostname = "actual"; };
       };
     };
 }

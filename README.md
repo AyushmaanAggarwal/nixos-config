@@ -31,11 +31,10 @@ The current services running in production are
 - Immich
 - Adguard
 - Nextcloud
+- Actual Budget
 - Jellyfin - Media Playback
-- Glance - homepage
 - Mealie - Recipe Manager
 - Ntfy.sh - Notification Server
-- Changedetection.io - Website Change Detection
 - Paperless-ngx - document archiver and manager
 - SearXNG - self-hosted meta search engine
 
@@ -44,6 +43,10 @@ Planned Additions
 - GitLab - Git Hosting Platform (for backups)
 - A ![Old Website](https://github.com/AyushmaanAggarwal/theCounter/tree/main)
 - Graphana + InfluxDB
+
+Deprecated (no longer running)
+- Glance - homepage
+- Changedetection.io - Website Change Detection
 
 ### Guide for using LXC containers
 Begin by building a lxc container for proxmox by running the following command:
