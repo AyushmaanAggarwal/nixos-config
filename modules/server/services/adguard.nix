@@ -96,7 +96,7 @@
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_27.txt" # OISD Blocklist Big
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt" # Steven Black's List
-              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_49.txt" # HaGeZi's Ultimate Blocklist
+              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt" # HaGeZi's Pro Blocklist
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_50.txt" # uBlock filters – Badware risks
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_53.txt" # AWAvenue Ads Rule
               "https://adguardteam.github.io/HostlistsRegistry/assets/filter_59.txt" # AdGuard DNS Popup Hosts filter
