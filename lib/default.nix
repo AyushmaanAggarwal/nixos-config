@@ -11,6 +11,7 @@ in
     mkDesktop
     mkDisko
     mkServerLXC
+    mkServerLXCBuild
     forAllSystems
     ;
 }

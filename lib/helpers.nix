@@ -58,7 +58,7 @@ in
       ];
     };
 
-  mkServerLXC =
+  mkServerLXCBuild =
     {
       hostname,
       username ? "proxmox",
@@ -86,6 +86,39 @@ in
           ;
       };
       modules = [ ../hosts/proxmox/configuration.nix ];
+    };
+
+  mkServerLXC =
+    {
+      hostname,
+      username ? "proxmox",
+      desktop ? null,
+      platform ? "x86_64-linux",
+      domain-name ? "tail590ac.ts.net",
+    }:
+    let
+      isTailscaleExitNode = hostname == "adguard";
+      sshWithoutYubikey = hostname == "backup";
+    in
+    lib-stable.nixosSystem {
+      specialArgs = {
+        inherit
+          inputs
+          outputs
+          functions
+          hostname
+          username
+          desktop
+          platform
+          domain-name
+          isTailscaleExitNode
+          sshWithoutYubikey
+          ;
+      };
+      modules = [
+        ../hosts/proxmox/proxmox-lxc.nix
+        ../hosts/proxmox/configuration.nix
+      ];
     };
 
   forAllSystems = lib.genAttrs [

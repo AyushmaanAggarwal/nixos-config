@@ -1,6 +1,5 @@
 {
   lib,
-  modulesPath,
   hostname,
   platform,
   isTailscaleExitNode,
@@ -13,7 +12,6 @@ let
 in
 {
   imports = [
-    (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ../../modules/server
     ../../modules/shared
   ];

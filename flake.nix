@@ -101,6 +101,7 @@
         searxng = helper.mkServerLXC { hostname = "searxng"; };
 
         actual = helper.mkServerLXC { hostname = "actual"; };
+        actual-build = helper.mkServerLXCBuild { hostname = "actual"; };
       };
     };
 }
