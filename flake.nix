@@ -20,6 +20,11 @@
 
     nixvim-config.url = "github:AyushmaanAggarwal/nixvim-config";
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # DNS Crypt
     dnscrypt-stevenblack = {
       url = "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
