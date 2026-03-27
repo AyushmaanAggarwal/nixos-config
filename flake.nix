@@ -116,7 +116,6 @@
       "flakes"
     ];
 
-    substituters = [ "https://cache.nixos.org/" ];
     extra-substituters = [
       "https://hyprland.cachix.org"
       "https://noctalia.cachix.org"
