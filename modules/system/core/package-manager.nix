@@ -7,28 +7,6 @@
 {
   services.flatpak.enable = true;
 
-  # Enable Flakes
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-
-    substituters = [
-      "https://hyprland.cachix.org"
-      "https://cache.nixos.org/"
-      "https://noctalia.cachix.org"
-    ];
-
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-    ];
-
-    max-jobs = 4;
-    cores = 3;
-  };
-
   # Automatically update system
   system.autoUpgrade = {
     enable = false;
