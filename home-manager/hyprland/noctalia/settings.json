@@ -2,7 +2,7 @@
   "settingsVersion": 59,
   "bar": {
     "barType": "floating",
-    "position": "top",
+    "position": "left",
     "monitors": [],
     "density": "default",
     "showOutline": false,
@@ -51,6 +51,17 @@
       ],
       "center": [
         {
+          "clockColor": "none",
+          "customFont": "",
+          "formatHorizontal": "MMMM d, yyyy HH:mm:ss",
+          "formatVertical": "MMM d yy  - HH mm ss",
+          "id": "Clock",
+          "tooltipFormat": "HH:mm ddd, MMM dd",
+          "useCustomFont": false
+        }
+      ],
+      "right": [
+        {
           "compactMode": true,
           "diskPath": "/",
           "iconColor": "none",
@@ -72,17 +83,6 @@
           "useMonospaceFont": true,
           "usePadding": false
         },
-        {
-          "clockColor": "none",
-          "customFont": "",
-          "formatHorizontal": "HH:mm",
-          "formatVertical": "HH mm",
-          "id": "Clock",
-          "tooltipFormat": "HH:mm ddd, MMM dd",
-          "useCustomFont": false
-        }
-      ],
-      "right": [
         {
           "iconColor": "none",
           "id": "NoctaliaPerformance"
