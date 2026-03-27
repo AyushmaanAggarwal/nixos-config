@@ -7,6 +7,14 @@
 {
   services.flatpak.enable = true;
 
+  # Enable Flakes
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
+
   # Automatically update system
   system.autoUpgrade = {
     enable = false;
