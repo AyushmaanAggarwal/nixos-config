@@ -34,9 +34,7 @@
 
     users.users.${username}.packages = with pkgs; [
       hyprland-qtutils
-      hyprpaper
       dunst
-      waybar
       fuzzel
 
       # Terminal
