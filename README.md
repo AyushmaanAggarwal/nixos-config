@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This repo has moved to codeberg: https://codeberg.org/AyushmaanAggarwal/nixos-config
+
 > [!IMPORTANT]  
 > This repo is rapidly evolving, so expect breaking changes from time to time
 
